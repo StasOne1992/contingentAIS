@@ -1,0 +1,48 @@
+{{ form_start(form) }}
+<div class="d-none">{{ form_widget(form.student) }}</div>
+<div class="row">
+    <div class="col-12 col-md-4">
+        <div class="block block-rounded block-bordered block-themed">
+            <div class="block-header block-header-default bg-secondary">
+                <h3 class="block-title text-center text-md-start">Информация о приказе</h3>
+            </div>
+            <div class="block-content pb-4">
+                <div class="row">
+                    <span class="form-label">
+                    Номер приказа</span>{{ form_widget(form.number,{ 'attr': {'class':'form-control'}}) }}
+                </div>
+                <div class="row">
+                    <span class="form-label">
+                   Дата</span>{{ form_widget(form.createDate,{ 'attr': {'class':'js-flatpickr form-control','placeholder':'d-m-y', 'data-date-format':"d-m-Y"}}) }}
+                </div>
+                <div class="row">
+                    <span class="form-label">
+                    Вид приказа</span>{{ form_widget(form.type ,{ 'attr': {'class':'form-control'}}) }}
+                </div>
+
+                <div class="row">
+                    <span class="form-label">
+                    ПОО</span>{{ form_widget(form.college ,{ 'attr': {'class':'form-control'}}) }}
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">{{ form_label(form.isActive) }}</label>{{ form_widget(form.isActive) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{{ form_widget(form) }}
+<div class="block block-rounded block-bordered block-themed">
+    <div class="block-header block-header-default bg-secondary">
+        <span> </span>
+        <div class="block-options">
+            <button class="btn btn-primary btn-lg">{{ button_label|default('Save') }}</button>
+        </div>
+    </div>
+
+</div>
+
+{{ form_end(form) }}
+

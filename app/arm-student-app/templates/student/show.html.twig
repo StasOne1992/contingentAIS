@@ -1,0 +1,470 @@
+{% extends 'base.html.twig' %}
+{% set refer = 1 %}
+{% set page_title = 'Профиль студента' %}
+{% set sub_page_title =  student.LastName~" "~student.FirstName~" "~student.MiddleName %}
+
+{% block title %}
+    {% if page_title is defined %} {{ page_title }} {% endif %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-12 col-md-3">
+            <div class="block block-rounded block-bordered block-themed">
+
+                <div class="block-content">
+                    <div class="col-12 pb-4">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                             alt="avatar"
+                             class="rounded-circle img-fluid  mx-auto d-block" style="width: 150px;">
+                    </div>
+                </div>
+                <div class="block-header block-header-default bg-secondary">
+                    <div class="col-12">
+                        <h3 class="block-title text-center">{{ student.LastName~" "~student.firstName~" "~student.MiddleName }}</h3>
+                        <div class="row">
+                            <p class=" text-sm-center mb-1">
+                                {% set difference = date(student.birthData|date('Y/m/d')).diff(date('now'|date('Y/m/d'))) %}
+                                {% set leftDays = difference.days %}
+
+                                <small class="mb-2"> {{ (leftDays // 365)~" лет" }}
+                                    ...rolse... {{ student.studentGroup }} </small></p></div>
+                        <div class="row mt-2 mb-2">
+                            <div class=" d-flex justify-content-center">
+                                {% if(student.IsInvalid) %}
+                                    <span class="badge rounded-pill bg-info mx-1 d-flex">Инвалид</span>
+                                {% endif %}
+                                {% if(student.IsPoor) %}
+                                    <span class="badge rounded-pill bg-info mx-1 d-flex">Малоимущие</span>
+                                {% endif %}
+                                {% if(student.IsOrphan) %}
+                                    <span class="badge rounded-pill bg-danger mx-1d-flex">Сирота</span>
+                                {% endif %}
+                                {% if(student.IsPaid) %}
+                                    <span class="badge rounded-pill bg-warning mx-1 d-flex">Платно</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="block-header block-header-default mt-2 bg-secondary">
+
+                    <div class="d-flex justify-content-center mx-auto">
+                        <a type="button" class="btn btn-outline-light"
+                           href="{{ path('app_student_edit', {'id': student.id}) }}">Редактировать</a>
+                        {{ include('student/_delete_form.html.twig') }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-12 col-md-9">
+            <div class="block  block-rounded">
+
+                <div class="bg-secondary">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item ">
+                            <a class="nav-link active link-light" id="btab-home-tab" data-bs-toggle="tab"
+                               data-bs-target="#btabs-home" role="tab"
+                               aria-controls="btabs-home" aria-selected="true">Основная информация</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link  link-light" id="btabs-docs-tab" data-bs-toggle="tab"
+                                    data-bs-target="#btabs-docs" role="tab"
+                                    aria-controls="btabs-docs" aria-selected="false">Документы
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link  link-light" id="btabs-achievements-tab" data-bs-toggle="tab"
+                                    data-bs-target="#btabs-achievements" role="tab"
+                                    aria-controls="btabs-achievements" aria-selected="false">Достижения
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link  link-light" id="btabs-penalty-tab" data-bs-toggle="tab"
+                                    data-bs-target="#btabs-penalty" role="tab"
+                                    aria-controls="btabs-penalty" aria-selected="false">Поощрения и взыскания
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link  link-light" id="btabs-social-profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#btabs-social-profile" role="tab"
+                                    aria-controls="btabs-social-profile" aria-selected="false">Социальный профиль
+                            </button>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="block-content tab-content overflow-hidden">
+                    <div class="tab-pane fade fade-right show active" id="btabs-home"
+                         role="tabpanel" aria-labelledby="btabs-home-tab">
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <div class="block block-rounded block-bordered block-themed">
+                                    <div class="block-header block-header-default bg-secondary">
+                                        <h3 class="block-title text-center text-md-start">Сведения о студенте</h3>
+                                    </div>
+                                    <div class="block-content">
+                                        <div class="row">
+                                        </div>
+                                        <div class="row">
+                                            <div class="row">
+                                                <div class="col-4"><h6>Дата рождения</h6></div>
+                                                <div class="col-8">{{ student.birthData|format_datetime('medium', 'none', locale='ru') }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4"><h6>Пол</h6></div>
+                                                <div class="col-8">{{ student.sex }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4"><h6>Телефон</h6></div>
+                                                <div class="col-8">{{ student.phoneNumber }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4"><h6>E-mail</h6></div>
+                                                <div class="col-8">{{ student.email }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4"><h6>Группа здоровья</h6></div>
+                                                <div class="col-8">{{ student.healtgGroupID }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-8">
+                                <div class="block block-rounded block-bordered block-themed">
+                                    <div class="block-header block-header-default bg-secondary">
+                                        <h3 class="block-title text-center text-md-start">Основные документы</h3>
+                                    </div>
+                                    <div class="block-content">
+                                        <div class="row">
+                                        </div>
+                                        <div class="row">
+                                            <div class="row">
+                                                <div class="col-4"><h6>№ мед. полиса</h6></div>
+                                                <div class="col-8">{{ student.DocumentMedicalID }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4"><h6>СНИЛС</h6></div>
+                                                <div class="col-8">{{ student.DocumentSnils }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4"><h6>Паспорт серия №</h6></div>
+                                                <div class="col-8">{{ student.PasportSeries ~" "~ student.PasportNumber }}</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-4"><h6>Выдан</h6></div>
+                                                <div class="col-8">{{ student.PasportIssueOrgan }}
+                                                    <br>{{ student.PasportDate|format_datetime('medium', 'none', locale='ru') }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade fade-right" id="btabs-docs" role="tabpanel"
+                         aria-labelledby="btabs-docs-tab">
+                        <div class="col-12 col-md-12">
+                            <div class="block block-rounded block-bordered block-themed ">
+                                <div class="block-header block-header-default bg-secondary">
+                                    <h3 class="block-title text-start">Персональные документы</h3>
+                                    <div class="block-options">
+                                        <a type="button" class="btn btn-sm btn-light d-none d-md-block">
+
+                                            <i class="fas fa-plus"></i> Добавить
+
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-light d-block d-md-none">
+                                            <span class="row"><i class="fas fa-plus"></i></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="block-content">
+                                    <!--Вывод списка документов для Mobile-->
+                                    <div class="row d-block d-md-none">
+                                        {% for presonaldoc in student.personalDocuments %}
+                                            <div class="row">
+                                                <div class="block-content">
+                                                    <div class="mb-1">
+                                                        <div class="fw-semibold float-end ms-1">
+                                                            <div class="btn-group">
+                                                                <a class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                                                   href="{{ path('app_student_edit', {'id': student.id}) }}">
+                                                                    <i class="fa-solid fa-file"></i></a>
+                                                                <a class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                                                   href="{{ path('app_student_edit', {'id': student.id}) }}"><i
+                                                                            class="fa fa-fw fa-pencil-alt"></i></a>
+                                                            </div>
+                                                        </div>
+                                                        <a class="h6"
+                                                           href="/documents/personal/">  {{ presonaldoc.getDocumentType() }}</a>
+                                                    </div>
+                                                    <div class="fs-sm text-muted">
+                                                        Серия:<small>{{ presonaldoc.getDocumentSeries() }}</small>
+                                                        Номер: <small>{{ presonaldoc.getDocumentNumber() }}</small>
+                                                        Выдан:
+                                                        <small>{{ presonaldoc.getDocumentIssueDate()|format_date('short',locale="ru") }}
+                                                            , {{ presonaldoc.getDocumentOfficialSeal() }}</small>
+                                                        <hr>
+                                                        {{ presonaldoc.getComment() }}
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <!--Вывод списка документов для Desktop-->
+                                    <table class="table table-bordered table-striped table-vcenter d-none d-md-block">
+                                        <thead>
+                                        <tr>
+                                            <td class="">Вид документа</td>
+                                            <td class="">Серия</td>
+                                            <td class="">Номер</td>
+                                            <td class="d-none d-xl-table-cell">Дата выдачи</td>
+                                            <td class="d-none d-xl-table-cell">Кто выдал</td>
+                                            <td class="d-none d-xl-table-cell">Комментарий</td>
+                                            <td class="">Действия</td>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for presonaldoc in student.personalDocuments %}
+                                            <tr>
+                                                <td>{{ presonaldoc.getDocumentType() }}</td>
+                                                <td> {{ presonaldoc.getDocumentSeries() }}</td>
+                                                <td>{{ presonaldoc.getDocumentNumber() }}</td>
+                                                <td class="d-none d-xl-table-cell">{{ presonaldoc.getDocumentIssueDate()|format_date('short',locale="ru") }}</td>
+                                                <td class="d-none d-xl-table-cell">{{ presonaldoc.getDocumentOfficialSeal() }}</td>
+                                                <td class="d-none d-xl-table-cell">{{ presonaldoc.getComment() }}</td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                                           href="{{ path('app_student_edit', {'id': student.id}) }}">
+                                                            <i class="fa-solid fa-file"></i></a>
+                                                        <a class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                                           href="{{ path('app_student_edit', {'id': student.id}) }}"><i
+                                                                    class="fa fa-fw fa-pencil-alt"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-12">
+                            <div class="block block-rounded block-bordered block-themed ">
+                                <div class="block-header block-header-default bg-secondary">
+                                    <h3 class="block-title text-start">Характеристики студента</h3>
+                                    <div class="block-options">
+                                        <a type="button"
+                                           href="{{ path('app_characteristic_new_for_student',{'studentid': student.id}) }}"
+                                           class="btn btn-sm btn-light d-none d-md-block">
+                                            <i class="fas fa-plus"></i> Сформировать
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-light d-block d-md-none">
+                                            <span class="row"><i class="fas fa-plus"></i></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="block-content">
+                                    <!--Вывод списка документов для Mobile-->
+                                    <div class="row">
+                                        {% for characteristic in student.characteristics %}
+                                            <div class="col-12 col-md-4">
+                                                <div class="block block-rounded block-bordered block-themed ">
+                                                    <div class="block-content pb-2">
+                                                    <span class="fw-bold h6">Характеристика
+                                                        от {{ characteristic.CreateData|format_date('short',locale="ru") }}</span>
+                                                        <br><small> {{ characteristic.checkValidation() }}</small>
+                                                    </div>
+                                                    <div class="block-header bg-secondary">
+                                                        <div class="block-options mx-auto">
+                                                            <div class="btn-group btn-group-sm" role="group">
+                                                                <a class="btn btn-light w-100"
+                                                                   href="{{ path('app_characteristic_show', {'id': characteristic.id}) }}">Просмотреть </a>
+                                                                <a class="btn btn-outline-light w-100"
+                                                                   href="{{ path('app_characteristic_edit', {'id': characteristic.id}) }}">Редактировать</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-12">
+                            <div class="block block-rounded block-bordered block-themed ">
+                                <div class="block-header block-header-default bg-secondary">
+                                    <h3 class="block-title text-start">Приказы о движении</h3>
+                                    <div class="block-options">
+                                        <a type="button"
+                                           href="{{ path('app_characteristic_new_for_student',{'studentid': student.id}) }}"
+                                           class="btn btn-sm btn-light d-none d-md-block">
+                                            <i class="fas fa-plus"></i> Сформировать
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-light d-block d-md-none">
+                                            <span class="row"><i class="fas fa-plus"></i></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="block-content">
+                                    <!--Вывод списка документов для Mobile-->
+                                    <div class="row">
+                                        <table class="table table-bordered table-striped table-vcenter js-dataTable-responsive">
+                                            <thead class="table-secondary">
+                                            <tr>
+                                                <td>Документ</td>
+                                                <td>Действия</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for document in student.contingentDocuments %}
+                                            <tr>
+                                                <td> {{ document.type~' '~document.number~' от '~document.createDate|date('d.m.Y') }}</td>
+                                                {% endfor %}
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        {{ dump(student.contingentDocuments) }}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade fade-right" id="btabs-achievements" role="tabpanel"
+                         aria-labelledby="btabs-achievements-tab">
+                        <h4 class="fw-normal">Достижения</h4>
+                        <div class="block block-rounded block-bordered block-themed">
+                            <div class="block-header block-header-default bg-secondary">
+                                <h3 class="block-title text-center text-md-start">Участие в мероприятиях</h3>
+                            </div>
+                            <div class="block-content">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade fade-right" id="btabs-penalty" role="tabpanel"
+                         aria-labelledby="btabs-animated-penalty-tab">
+                        <h4 class="fw-normal">Поощрения и взыскания</h4>
+                        <div class="block block-rounded block-bordered block-themed">
+                            <div class="block-header block-header-default bg-secondary">
+                                <h3 class="block-title text-center text-md-start">Участие в мероприятиях</h3>
+                            </div>
+                            <div class="block-content">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade fade-right" id="btabs-social-profile" role="tabpanel"
+                         aria-labelledby="btabs-social-profile-tab">
+
+                        <div class="col-12 col-md-12">
+                            <div class="block block-rounded block-bordered block-themed ">
+                                <div class="block-header block-header-default bg-secondary">
+                                    <h3 class="block-title text-start">Семья <small>Характеристика</small></h3>
+                                </div>
+                                <div class="block-content">
+                                    <div class="row pb-4">
+                                        <div class="col-12 col-md-4">
+                                            <div class="row">
+                                                <div class="col-5"><h6>Тип семьи <small>(по составу)</small></h6></div>
+                                                <div class="col-7 h6"> {{ student.FamilyTypeID }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <div class="row">
+                                                {% if student.isPoor==1 %}
+                                                    <div class="col h6">Малоимущая семья</div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block block-rounded block-bordered block-themed ">
+                                <div class="block-header block-header-default bg-secondary">
+                                    <h3 class="block-title text-start">Семья <small>Состав семьи</small></h3>
+                                    <div class="block-options">
+                                        <a type="button" class="btn btn-sm btn-light d-none d-md-block">
+                                            <i class="fas fa-plus"></i> Добавить
+                                        </a>
+                                        <button type="button" class="btn btn-sm btn-light d-block d-md-none">
+                                            <span class="row"><i class="fas fa-plus"></i></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="block-content">
+                                    <div class="row">
+
+                                        {% for legalRepresentative in student.legalRepresentatives %}
+                                            <div class="col-12 col-md-4">
+                                                <div class="block  block-rounded block-bordered block-themed ">
+                                                    <div class="block-content pb-2">
+                                                        <div class="badge bg-primary-dark-op fs-4 pb-2">{{ legalRepresentative.RepresentativesType }}</div>
+                                                        <div class="fs-5 ">{{ legalRepresentative.LastName~" "~legalRepresentative.FirstName~" "~legalRepresentative.MiddleName }} </div>
+                                                        <small class="lh-1">{{ legalRepresentative.Comment }}</small>
+                                                    </div>
+                                                    <div class="block-header bg-secondary">
+                                                        <div class="block-options px-0">
+                                                            <div class="block-options-item">
+                                                                <div class="btn-group btn-group-sm" role="group">
+                                                                    <a class="btn btn-light w-100"
+                                                                       href="tel:{{ legalRepresentative.Phone }}">
+                                                                        <i class="fas fa-phone"></i>{{ legalRepresentative.Phone }}
+                                                                    </a>
+                                                                    <a class="btn btn-outline-light w-100"
+                                                                       href="{{ path('app_legal_representative_edit', {'id': legalRepresentative.id}) }}">Редактировать</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade fade-right" id="btabs-animated-slideright-settings" role="tabpanel"
+                     aria-labelledby="btabs-animated-slideright-settings-tab">
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+
+
+        </div>
+    </div>
+
+    <div class="col-12 col-md-3"></div>
+    <div class="col-12 col-md-9">
+        <div class="row">
+            <div class="col-12">
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+{% endblock %}

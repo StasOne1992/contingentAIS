@@ -1,0 +1,129 @@
+security:
+  access_denied_url: /accessDenied
+  # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+  # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+  providers:
+    # used to reload user from session & other features (e.g. switch_user)
+    app_user_provider:
+      entity:
+        class: App\Entity\User
+        property: email
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    main:
+      lazy: true
+      provider: app_user_provider
+      form_login:
+        login_path: app_sign_in
+        check_path: app_sign_in
+        default_target_path: /secure
+        enable_csrf: true
+      logout:
+        path: app_sign_out
+
+  role_hierarchy:
+    ## Для всех ролей созданы под роли со следующими обозначениям:
+    ## C  CREATE  создание записей
+    ## R  READ    чтение записей
+    ## U  UPDATE  изменение записей
+    ## D  DELETE  удаление записей
+    ## F  FULL    Разрешено всё
+    ## IMP IMPORT - Импорт данных в сущность
+    ##
+    ##
+    ## В системе предусмотрено следующие типы пользователей
+    ##
+    ##  STUD    STUDENT   студент
+    ##  STAFF   STAFF     сотрудник
+    ##  ROOT    ROOT      Супер-пользователь
+    ##  ADM     ADMIN     Пользователь с правами администратора
+    ##
+    ## !!ПРАВИЛА ФОРМИРОВАНИЯ НАИМЕНОВАНИЯ РОЛИ
+    ## Любая роль именуется по следующей схеме ROLE_[ТИП ПОЛЬЗОВАТЕЛЯ]_[СУЩНОСТЬ]_[ПРАВА/ГРУППА ПРАВ]
+
+
+
+    ##ENTITY ROLES
+    ##!!ENT_STUDENTS
+    ROLE_STAFF_STUDENT_C: ROLE_STAFF_STUDENT_C
+    ROLE_STAFF_STUDENT_R: ROLE_STAFF_STUDENT_R
+    ROLE_STAFF_STUDENT_U: ROLE_STAFF_STUDENT_U
+    ROLE_STAFF_STUDENT_D: ROLE_STAFF_STUDENT_D
+    ROLE_STAFF_STUDENT_IMP: ROLE_STAFF_STUDENT_IMP
+    ##Группы ролей
+
+    ROLE_STAFF_STUDENT_FULL: [ ROLE_STAFF_STUDENT_C,ROLE_STAFF_STUDENT_R,ROLE_STAFF_STUDENT_U,ROLE_STAFF_STUDENT_D,ROLE_STAFF_STUDENT_IMP ]
+    ROLE_STAFF_STUDENT_RU: [ ROLE_STAFF_STUDENT_R,ROLE_STAFF_STUDENT_U ]
+    ROLE_STAFF_STUDEN_CRU: [ ROLE_STAFF_STUDENT_C,ROLE_STAFF_STUDENT_R,ROLE_STAFF_STUDENT_U ]
+
+    ##ENT_STUDENTS!!
+
+    ##!!ENT_AB_PETITIONS
+    ## Тип лоступа VIS - нужен для взаимодействия с API внешней системы prof.mo.mosreg.ru
+
+    ROLE_STAFF_AB_PETITIONS_C: ROLE_STAFF_AB_PETITIONS_C
+    ROLE_STAFF_AB_PETITIONS_R: ROLE_STAFF_AB_PETITIONS_R
+    ROLE_STAFF_AB_PETITIONS_U: ROLE_STAFF_AB_PETITIONS_U
+    ROLE_STAFF_AB_PETITIONS_D: ROLE_STAFF_AB_PETITIONS_D
+    ROLE_STAFF_AB_PETITIONS_IMP: ROLE_STAFF_AB_PETITIONS_IMP
+    ROLE_STAFF_AB_PETITIONS_VIS: ROLE_STAFF_AB_PETITIONS_VIS
+    ROLE_STAFF_AB_PETITIONS_MANUAL_C: ROLE_STAFF_AB_PETITIONS_MANUAL_C
+
+    ##Группы ролей
+    ROLE_STAFF_AB_PETITIONS_FULL: [ ROLE_STAFF_AB_PETITIONS_C,ROLE_STAFF_AB_PETITIONS_R,ROLE_STAFF_AB_PETITIONS_U,ROLE_STAFF_AB_PETITIONS_D,ROLE_STAFF_AB_PETITIONS_IMP,ROLE_STAFF_AB_PETITIONS_VIS,ROLE_STAFF_AB_PETITIONS_MANUAL_C ]
+    ROLE_STAFF_AB_PETITIONS_CR: [ ROLE_STAFF_AB_PETITIONS_C,R ]
+    ROLE_STAFF_AB_PETITIONS_CRU: [ ROLE_STAFF_AB_PETITIONS_C,ROLE_STAFF_AB_PETITIONS_R,ROLE_STAFF_AB_PETITIONS_U ]
+
+
+    ##ENT_AB_PETITIONS!!
+
+
+
+    ROLE_CL: [ ROLE_CL,ROLE_STUDENT_READ, ROLE_STUDENT_EDIT ]
+    ROLE_STUDENT: [ ROLE_STUDENT,ROLE_USER ]
+    ROLE_USER: ROLE_USER
+    ROLE_ROOT: [ ROLE_ALLOWED_TO_SWITCH, ROLE_STAFF_STUDENT_FULL, ROLE_STAFF_AB_PETITIONS_FULL ]
+    ROLE_ADMIN: ROLE_ADM
+    ROLE_ZAM_UR: [ ROLE_STAFF_STUDENT_FULL ]
+    ROLE_ADMISS_ADMIN: [ ROLE_STAFF_AB_PETITIONS_FULL, ROLE_USER ]
+
+
+
+    # activate different ways to authenticate
+    # https://symfony.com/doc/current/security.html#the-firewall
+
+    # https://symfony.com/doc/current/security/impersonating_user.html
+    # switch_user: true
+
+    # Простой способ контролировать доступ к большим разделам вашего сайта
+  # Примечание: будет использоваться только *первый* соответствующий элемент управления доступом.
+  access_control:
+    - { path: ^/sign_in, role: PUBLIC_ACCESS }
+    - { path: ^/accessDenied, role: PUBLIC_ACCESS }
+    - { path: ^/student-app, roles: [ ROLE_STUDENT ] }
+    - { path: ^/app, roles: [ ROLE_ROOT ] }
+    - { path: ^/admin, roles: ROLE_ROOT }
+    - { path: ^/user, roles: ROLE_ROOT }
+    - { path: ^/profile, roles: ROLE_ROOT }
+    - { path: ^/leg_repres, roles: ROLE_ROOT }
+    - { path: ^/education_form, roles: ROLE_ROOT }
+    - { path: ^/admission, roles: ROLE_USER }
+  # - { path: ^/admin, roles: ROLE_ADMIN }
+  # - { path: ^/profile, roles: ROLE_USER }
+
+when@test:
+  security:
+    password_hashers:
+      # By default, password hashers are resource intensive and take time. This is
+      # important to generate secure password hashes. In tests however, secure hashes
+      # are not important, waste resources and increase test times. The following
+      # reduces the work factor to the lowest possible values.
+      Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+        algorithm: auto
+        cost: 4 # Lowest possible value for bcrypt
+        time_cost: 3 # Lowest possible value for argon
+        memory_cost: 10 # Lowest possible value for argon

@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+{% set page_title = 'Студенческие группы' %}
+{% set sub_page_title = 'Список групп' %}
+
+{% block title %}
+    {% if page_title is defined %} {{ page_title }} {% endif %}
+{% endblock %}
+
+
+{% block body %}
+    <div class="">
+        <div class="block block-rounded block-bordered">
+            <div class="block-header block-header-default">
+                <h3 class="block-title">{{ page_title }} <small></small></h3>
+                <div class="block-options">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                id="dropdown-default-outline-primary" data-bs-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                            <i class="fa-regular fa-plus"></i>
+                        </button>
+                        <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-default-outline-primary"
+                             style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);"
+                             data-popper-placement="bottom-start">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        <a href="{{ path('app_student_groups_new')}}" type="button"
+                           class="btn-outline-primary btn-lg w-100 js-bs-popover-enabled"
+                           data-bs-toggle="popover"
+                           data-bs-placement="top" title=""
+                           data-bs-content="Добавить"
+                           data-bs-original-title="Добавить нового студента">
+                            <i class="far fa-fw fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="block-content">
+                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                    <div class="row">
+                        <div class="col-sm-12">
+
+
+                            <table class="table table-bordered table-striped table-vcenter"
+                                   aria-describedby="DataTables_Table_0_info">
+                                <thead class="text-center">
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Letter</th>
+                                <th>actions</th>
+                                </thead>
+                                <tbody>
+                                {% for student_group in student_groups %}
+                                    <tr>
+                                        <td>{{ student_group.id }}</td>
+                                        <td>{{ student_group.Name }}</td>
+                                        <td>{{ student_group.Letter }}</td>
+                                        <td>
+                                            <a href="{{ path('app_student_groups_show', {'id': student_group.id}) }}">show</a>
+                                            <a href="{{ path('app_student_groups_edit', {'id': student_group.id}) }}">edit</a>
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="4">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

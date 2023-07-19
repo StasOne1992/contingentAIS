@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% if  form.vars.value.blockStudentEdit is defined %}
+    {% set blockStudentEdit= form.vars.value.blockStudentEdit %}
+{% else %}
+    {% set blockStudentEdit=false %}
+{% endif %}
+{% if form.vars.value.ShowGenerator is defined %}
+    {% set ShowGenerator= form.vars.value.ShowGenerator %}
+{% else %}
+    {% set ShowGenerator=false %}
+{% endif %}
+{% set student=form.vars.value.student %}
+{% set refer = 0 %}
+{% set refer_link=path('app_user_show',{'id':student.id}) %}
+{% set canreset = 0 %}
+{% set  sub_page_title=  student.LastName~" "~student.FirstName~" "~student.MiddleName %}
+{% set page_title = 'Характеристика на студента' %}
+
+{% block title %}
+    {% if page_title is defined %} {{ page_title }} {% endif %}
+{% endblock %}
+
+
+{% block body %}
+    {{ include('characteristic/_form.html.twig', {'button_label': 'Записать изменения'}) }}
+    {{ include('characteristic/_generate_modal.html.twig') }}
+
+
+{% endblock %}
+{% block customjs %}
+
+    {% if ShowGenerator==true %}
+        var modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+        modal.show();
+    {% endif %}
+
+{% endblock %}

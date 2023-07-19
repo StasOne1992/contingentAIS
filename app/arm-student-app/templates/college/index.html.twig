@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}College index{% endblock %}
+
+{% block body %}
+    <h1>College index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>ShortName</th>
+                <th>PostalAddress</th>
+                <th>RegisteredAddress</th>
+                <th>Email</th>
+                <th>WebSite</th>
+                <th>Logo</th>
+                <th>Phone</th>
+                <th>Fax</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for college in colleges %}
+            <tr>
+                <td>{{ college.id }}</td>
+                <td>{{ college.name }}</td>
+                <td>{{ college.shortName }}</td>
+                <td>{{ college.postalAddress }}</td>
+                <td>{{ college.registeredAddress }}</td>
+                <td>{{ college.email }}</td>
+                <td>{{ college.webSite }}</td>
+                <td>{{ college.logo }}</td>
+                <td>{{ college.phone }}</td>
+                <td>{{ college.fax }}</td>
+                <td>
+                    <a href="{{ path('app_college_show', {'id': college.id}) }}">show</a>
+                    <a href="{{ path('app_college_edit', {'id': college.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_college_new') }}">Create new</a>
+{% endblock %}
