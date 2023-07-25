@@ -26,10 +26,6 @@ class DashboardController extends AbstractController
         $this->currentUser=$UserRepository->find($this->getUser());
         $this->groupLeaderId=$this->currentUser->getStaff()->getId();
         $this->groups=$StudentGroupsRepository->findby(['GroupLeader'=>$this->groupLeaderId]);
-        foreach ($this->groups as $group)
-        {
-            dump($group);
-        }
         return $this->render('dashboard/index.html.twig',
             [
                 'groups'=>$this->groups

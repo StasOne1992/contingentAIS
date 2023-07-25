@@ -1750,9 +1750,6 @@ class CharacteristicGenerate
 
     public function CharacteristicGen($characteristic): string
     {
-
-        //dump($_POST);
-
         $this->loadStudentInfo($characteristic->getStudent());
         $this->loadCharacteristic($characteristic);
         $this->genFristLine();

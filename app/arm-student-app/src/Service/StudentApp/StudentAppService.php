@@ -8,12 +8,5 @@ use App\Repository\RolesRepository;
 
 class StudentAppService
 {
- /*   public function getRoles():array
-    {
-        $roles= new Roles();
-
-        dump($roles->getRoleName());
-        return ['a'];
-    }*/
 
 }

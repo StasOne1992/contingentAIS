@@ -17,7 +17,7 @@ class AuditMiddleware implements MiddlewareInterface
     public function handle(Envelope $envelope, StackInterface $stack): Envelope
     {
         $context = ['class' => get_class($envelope->getMessage())];
-        if ($envelope->last(ReceivedStamp::class)) {
+        /*if ($envelope->last(ReceivedStamp::class)) {
             dump('Received ', $context);
         }
         elseif ($envelope->last(SentStamp::class)) {
@@ -26,7 +26,7 @@ class AuditMiddleware implements MiddlewareInterface
         elseif($envelope->last(HandledStamp::class))
         {
             dump('Handling ', $envelope->getMessage());
-        }
+        }*/
         return $stack->next()->handle($envelope, $stack);
     }
 

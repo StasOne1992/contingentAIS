@@ -27,11 +27,13 @@ services:
       context: .
       dockerfile: ./.docker/php/Dockerfile
     container_name: php82-container
+
     ports:
       - "9000:9000"
     volumes:
       - ./app/arm-student-app:/var/www/project
       - ./.docker/certs:/var/www/ssl-home/project
+      - ./.docker/supervisor:/etc/supervisor
     networks:
       - nginx-php-PSQL
 

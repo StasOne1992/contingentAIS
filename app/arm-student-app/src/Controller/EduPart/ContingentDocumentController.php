@@ -101,7 +101,7 @@ class ContingentDocumentController extends AbstractController
         $contingentDocumentId = $_POST['contingent_document_id'];
         $contingentDocument = $contingentDocumentRepository->findOneBy(['id' => $contingentDocumentId]);
 
-        dump($contingentDocument);
+
         foreach ($_POST as $item => $value) {
             if (str_starts_with($item,'row')) {
                 $student=$studentRepository->findOneBy(['id'=>$value]);

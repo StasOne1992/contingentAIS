@@ -142,8 +142,6 @@ class PetitionLoadService
         if (count($responseData) > 0) {
             $responseDataIdColumnArray = array_column($responseData, 'id');
             $petitionRepoData = $this->petitionRepository->getAllGUID();
-            dump("Заявлений в ВИС:" . count($responseData));
-            dump("Заявлений в Системе:" . count($petitionRepoData));
 
             foreach ($responseData as $petition) {
                 if (array_search($petition['id'], $petitionRepoData) === false) {
@@ -151,7 +149,6 @@ class PetitionLoadService
                     unset($responseData[array_search($petition['id'], $responseDataIdColumnArray)]);
                 };
             }
-            dump($notLoad);
             return $responseData;
         }
         return array();
@@ -163,8 +160,7 @@ class PetitionLoadService
         $petitionRepoData = $this->petitionRepository->getAllGUID();
 
         $spoPetitions = $this->getPetitionList();
-        dump("Заявлений в ВИС:" . count($spoPetitions));
-        dump("Заявлений в Системе:" . count($petitionRepoData));
+
         $spoPetitionsGUID = array_column($spoPetitions, 'id');
         $diff = array_diff($spoPetitionsGUID, $petitionRepoData);
         $toLoad = array();
@@ -175,7 +171,7 @@ class PetitionLoadService
                 }
             }
         }
-        dump("Заявлений к загрузке:" . count($toLoad), $toLoad);
+
         return $toLoad;
     }
 
@@ -275,7 +271,7 @@ class PetitionLoadService
         if (!$petition->isLockUpdateFormVIS()) {
             $petition->setLastUpdateTS(new DateTime(date("Y-m-d H:i:s")));
             $this->petitionRepository->save($petition, true);
-            $this->push('popup-notify', 'success', ' fa fa-check me-1 ', 'Обновлено заявление', $petition->getNumber());
+            $this->push('popup-notify', 'success', ' fa fa-check me-1 ', 'Обновлено заявление', $petition['number']());
         } else {
             $this->push('popup-notify', 'success', ' fa fa-check me-1 ', 'БЛОКИРОВКА. Заявление не доступно для изменения', $petition->getNumber());
         }
@@ -371,7 +367,7 @@ class PetitionLoadService
         $faculty = $this->convertSpeciality($basicEducationType, $studyForms, $financialType, $specialisation[0]);
 
         if (is_array($faculty)) {
-            dump($faculty);
+
             $petition->setFaculty($faculty['Faculty']);
             $petition->setCanPay($faculty['CanPay']);
             $petition->setHaveErrorInPetition($faculty['HaveErrorInPetition']);
@@ -393,13 +389,7 @@ class PetitionLoadService
         $petition->setSchoolName($PetitionData['details']['basicEducationOrganizationPlain']);
         $petition->setEducationDocumentNumber($PetitionData['details']['educationDocument']['number']);
         $petition->setNeedStudentAccommondation($PetitionData['details']['needDormitory']);
-        foreach ($PetitionData['details']['attaches'] as $attach) {
-            dump($attach);
-        }
-
         $petition->setAttaches($PetitionData['details']['attaches']);
-
-        dump($petition);
         return $petition;
     }
 

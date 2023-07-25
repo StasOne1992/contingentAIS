@@ -75,11 +75,9 @@ class PetitionToSiteService
             'headers' => [
                 'authtoken'=>'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2ODkyMzAzNTksImV4cCI6MTcyMDc2NjM1OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.mPpziu1-a5lAhmoof0sQ38mSkZLojqagkALBd_jJzO8',
             ]]);
-        dump($response->getContent());
         $statusCode = $response->getStatusCode();
 
         if ($statusCode!==200){
-            dump($response->getContent());
             throw new Exception('Ошибка отправки запроса. Код ошибки:  ' . $response->getStatusCode(). ' '.$response->getContent());
         }
 

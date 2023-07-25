@@ -4,7 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45536ea5-9412-4026-bc64-5f6634c799f3" name="Changes" comment="Реструктуризация проекта.&#10;Переход на контейнеры" />
+    <list default="true" id="45536ea5-9412-4026-bc64-5f6634c799f3" name="Changes" comment="Реструктуризация проекта.&#10;Переход на контейнеры">
+      <change afterPath="$PROJECT_DIR$/.docker/supervisor/conf.d/messenger-worker.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.docker/supervisor/supervisord.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/ServicesDashboard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationPlanController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationSubjectsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EducationSubjects.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Form/EducationPlanType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Form/EducationSubjectsType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EducationSubjectsRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/administrator/services/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.docker/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/php/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/58b01eea-ad08-4aac-94ab-110f063e5933.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/58b01eea-ad08-4aac-94ab-110f063e5933/storage_v2/_src_/database/pgs_arm_student.9WwQoQ/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/58b01eea-ad08-4aac-94ab-110f063e5933/storage_v2/_src_/database/pgs_arm_student.9WwQoQ/schema/public.abK9xQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/bd_dashboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/be_pages_dashboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Dashboard/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Dashboard/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/ContingentDocumentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/ContingentDocumentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AbiturientPetitionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Form/AbiturientPetitionType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Menu/Builder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Menu/Builder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Messenger/AuditMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Messenger/AuditMiddleware.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionLoadService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionLoadService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionToSiteService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionToSiteService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/CharacteristicGenerate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Service/CharacteristicGenerate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/StudentApp/StudentAppService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Service/StudentApp/StudentAppService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/abiturient_petition/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/abiturient_petition/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/admission_dashboard/admission_dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/admission_dashboard/admission_dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/dashboard/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/dashboard/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +59,7 @@
     </execution>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/older" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -323,31 +360,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "false",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
-    "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "credentialsType com.jetbrains.php.remote.interpreter.ui.PhpCreateRemoteSdkForm": "SSH Configuration",
-    "credentialsType com.jetbrains.php.remote.interpreter.ui.PhpInplaceEditRemoteSdkForm": "SSH Configuration",
-    "database.data.extractors.current.export.id": "Excel (xlsx)",
-    "last_opened_file_path": "C:/Users/root/PhpstormProjects/StudentAIS",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;credentialsType com.jetbrains.php.remote.interpreter.ui.PhpCreateRemoteSdkForm&quot;: &quot;SSH Configuration&quot;,
+    &quot;credentialsType com.jetbrains.php.remote.interpreter.ui.PhpInplaceEditRemoteSdkForm&quot;: &quot;SSH Configuration&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;Excel (xlsx)&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/root/PhpstormProjects/StudentAIS/app/arm-student-app/src&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\root\PhpstormProjects\StudentAIS\app\arm-student-app\templates\contingent_document" />
       <recent name="C:\Users\root\PhpstormProjects\StudentAIS\.docker\certs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\.docker\supervisor" />
+      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\.docker" />
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.phpunit.xml.dist">
@@ -387,7 +434,8 @@
       <updated>1689165623514</updated>
       <workItem from="1689165628445" duration="480000" />
       <workItem from="1689166116496" duration="78772000" />
-      <workItem from="1689745003027" duration="627000" />
+      <workItem from="1689745003027" duration="23639000" />
+      <workItem from="1690269445745" duration="3548000" />
     </task>
     <task id="LOCAL-00001" summary="Восстановлены файлы проекта&#10;Выполнена настройка представления списка заявлений&#10;Реализован функционал выгрузки заявлений на сайт через API сайта&#10;Добавлены новые поля для заявления&#10;Доработана процедура загрузки информации из ВИС&#10;Реализована возможность блокировки заявлений от обновлений из ВИС">
       <created>1689240112658</created>

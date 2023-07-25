@@ -104,7 +104,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
         if (!(is_Null($this->getStudent())) && ($StudentRole)) {
-            dump($this);
             $result = $this->getStudent()->getId();
             return $result;
         }

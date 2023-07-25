@@ -29,7 +29,6 @@ class AbiturientPetitionType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        dump($options);
         if (!$this->authorizationChecker->isGranted('ROLE_STAFF_AB_PETITIONS_MANUAL_C')) {
             $readOnly = ['readonly' => 'readonly'];
             $disabled = ['disabled' => 'disabled'];
