@@ -5,42 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45536ea5-9412-4026-bc64-5f6634c799f3" name="Changes" comment="Реструктуризация проекта.&#10;Переход на контейнеры">
-      <change afterPath="$PROJECT_DIR$/.docker/supervisor/conf.d/messenger-worker.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.docker/supervisor/supervisord.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/ServicesDashboard.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationPlanController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationSubjectsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EducationSubjects.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Form/EducationPlanType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Form/EducationSubjectsType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EducationSubjectsRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/administrator/services/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.docker/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/php/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/58b01eea-ad08-4aac-94ab-110f063e5933.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/58b01eea-ad08-4aac-94ab-110f063e5933/storage_v2/_src_/database/pgs_arm_student.9WwQoQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/58b01eea-ad08-4aac-94ab-110f063e5933/storage_v2/_src_/database/pgs_arm_student.9WwQoQ/schema/public.abK9xQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/bd_dashboard.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/be_pages_dashboard.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Dashboard/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Dashboard/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/ContingentDocumentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/ContingentDocumentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AbiturientPetitionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Form/AbiturientPetitionType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Menu/Builder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Menu/Builder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Messenger/AuditMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Messenger/AuditMiddleware.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionLoadService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionLoadService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionToSiteService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionToSiteService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/CharacteristicGenerate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Service/CharacteristicGenerate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/StudentApp/StudentAppService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Service/StudentApp/StudentAppService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/abiturient_petition/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/abiturient_petition/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/admission_dashboard/admission_dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/admission_dashboard/admission_dashboard.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/dashboard/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/dashboard/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +24,7 @@
     </execution>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -435,7 +401,7 @@
       <workItem from="1689165628445" duration="480000" />
       <workItem from="1689166116496" duration="78772000" />
       <workItem from="1689745003027" duration="23639000" />
-      <workItem from="1690269445745" duration="3548000" />
+      <workItem from="1690269445745" duration="7225000" />
     </task>
     <task id="LOCAL-00001" summary="Восстановлены файлы проекта&#10;Выполнена настройка представления списка заявлений&#10;Реализован функционал выгрузки заявлений на сайт через API сайта&#10;Добавлены новые поля для заявления&#10;Доработана процедура загрузки информации из ВИС&#10;Реализована возможность блокировки заявлений от обновлений из ВИС">
       <created>1689240112658</created>
@@ -472,7 +438,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689744404718</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Реструктуризация проекта.&#10;Переход на контейнеры">
+      <created>1690277891456</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1690277891456</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Реструктуризация проекта.&#10;Переход на контейнеры">
+      <created>1690277899131</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1690277899131</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,7 +463,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
