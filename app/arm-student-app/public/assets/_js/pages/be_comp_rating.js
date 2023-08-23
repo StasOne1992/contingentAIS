@@ -47,4 +47,4 @@ class pageCompRating {
 }
 
 // Initialize when page loads
-One.onLoad(pageCompRating.init());
+One.onLoad(() => pageCompRating.init());

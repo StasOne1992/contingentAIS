@@ -31,4 +31,4 @@ class pageComingSoon {
 }
 
 // Initialize when page loads
-One.onLoad(pageComingSoon.init());
+One.onLoad(() => pageComingSoon.init());

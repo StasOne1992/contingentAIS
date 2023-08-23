@@ -1,36 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
+
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- Title and Meta -->
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <!-- END Title and Meta -->
 
-    <title></title>
 
-    <meta name="description"
-          content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-    <meta name="author" content="pixelcave">
-    <meta name="robots" content="noindex, nofollow">
-    <!-- Open Graph Meta -->
-    <meta property="og:title" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework">
-    <meta property="og:site_name" content="OneUI">
-    <meta property="og:description"
-          content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
     <!-- Icons -->
     <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
     <link rel="shortcut icon" href="/assets/media/favicons/favicon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/media/favicons/favicon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/media/favicons/apple-touch-icon-180x180.png">
     <!-- END Icons -->
-    <!-- Fonts and OneUI framework -->
+
+    <!-- Stylesheets -->
+    <!-- Page JS Plugins CSS go here -->
+
+
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
-    <link rel="stylesheet" id="css-main" href="/assets/css/oneui.css">
     <link rel="stylesheet" href="/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
-    <link rel="stylesheet" href="/assets/js/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
     <link rel="stylesheet" href="/assets/js/plugins/select2/css/select2.min.css">
     <link rel="stylesheet" href="/assets/js/plugins/ion-rangeslider/css/ion.rangeSlider.css">
     <link rel="stylesheet" href="/assets/js/plugins/dropzone/min/dropzone.min.css">
@@ -38,10 +30,16 @@
     <link rel="stylesheet" href="/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css">
     <link rel="stylesheet" href="/assets/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome/css/all.css">
 
 
-    <link rel="icon"
-          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <link rel="stylesheet" id="css-main" href="/assets/css/oneui.css">
+
+    <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+    <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/amethyst.min.css"> -->
+    <!-- END Stylesheets -->
+
+
     {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
     {% block stylesheets %}
         {# { encore_entry_link_tags('app') } #}
@@ -50,567 +48,39 @@
     {% block javascripts %}
         {# { encore_entry_script_tags('app') } #}
     {% endblock %}
+
+
 </head>
 <body>
 
-<div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed">
-    <!-- Side Overlay-->
-    <aside id="side-overlay">
-        <!-- Side Header -->
-        <div class="content-header border-bottom">
-            <!-- User Avatar -->
-            <a class="img-link me-1" href="javascript:void(0)">
-                <img class="img-avatar img-avatar32" src="/assets/media/avatars/avatar10.jpg" alt="">
-            </a>
-            <!-- END User Avatar -->
+<div id="page-container"
+     class="enable-page-overlay side-scroll page-header-fixed">
+    <script>
 
-            <!-- User Info -->
-            <div class="ms-2">
-                <a class="text-dark fw-semibold fs-sm" href="javascript:void(0)">John Smith</a>
-            </div>
-            <!-- END User Info -->
+        let pageContainer = document.getElementById("page-container"),
+            sidebar_mini = '{{ app.user.FrontEndParams['frontend']['sidebar']['sidebar_mini'] |raw }}',
+            sidebar_style = '{{ app.user.FrontEndParams['frontend']['sidebar']['sidebar_style'] |raw }}',
+            layout_dark_mode = '{{ app.user.FrontEndParams['frontend']['layout']['dark_mode_'] |raw }}';
+        if (sidebar_mini === 'off') {
+            pageContainer.classList.add('sidebar-o');
+        } else {
+            pageContainer.classList.add('sidebar-mini');
+        }
+        if (layout_dark_mode === 'on') {
+            pageContainer.classList.add('sidebar-dark');
+            pageContainer.classList.add('page-header-dark');
+            pageContainer.classList.add('dark-mode');
+        } else {
+            if (sidebar_style === 'dark') {
+                pageContainer.classList.add('sidebar-dark');
+            }
+        }
 
-            <!-- Close Side Overlay -->
-            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <a class="ms-auto btn btn-sm btn-alt-danger" href="javascript:void(0)" data-toggle="layout"
-               data-action="side_overlay_close">
-                <i class="fa fa-fw fa-times"></i>
-            </a>
-            <!-- END Close Side Overlay -->
-        </div>
-        <!-- END Side Header -->
+    </script>
 
-        <!-- Side Content -->
-        <div class="content-side">
-            <!-- Side Overlay Tabs -->
-            <div class="block block-transparent pull-x pull-t">
-                <ul class="nav nav-tabs nav-tabs-block nav-justified" role="tablist">
-                    <li class="nav-item">
-                        <button type="button" class="nav-link active" id="so-overview-tab" data-bs-toggle="tab"
-                                data-bs-target="#so-overview" role="tab" aria-controls="so-overview"
-                                aria-selected="true">
-                            <i class="fa fa-fw fa-coffee text-gray opacity-75 me-1"></i> Overview
-                        </button>
-                    </li>
-                    <li class="nav-item">
-                        <button type="button" class="nav-link" id="so-sales-tab" data-bs-toggle="tab"
-                                data-bs-target="#so-sales" role="tab" aria-controls="so-sales" aria-selected="false">
-                            <i class="fa fa-fw fa-chart-line text-gray opacity-75 me-1"></i> Sales
-                        </button>
-                    </li>
-                </ul>
-                <div class="block-content tab-content overflow-hidden">
-                    <!-- Overview Tab -->
-                    <div class="tab-pane pull-x fade fade-left show active" id="so-overview" role="tabpanel"
-                         aria-labelledby="so-overview-tab">
-                        <!-- Activity -->
-                        <div class="block block-transparent">
-                            <div class="block-header block-header-default">
-                                <h3 class="block-title">Recent Activity</h3>
-                                <div class="block-options">
-                                    <button type="button" class="btn-block-option" data-toggle="block-option"
-                                            data-action="state_toggle" data-action-mode="demo">
-                                        <i class="si si-refresh"></i>
-                                    </button>
-                                    <button type="button" class="btn-block-option" data-toggle="block-option"
-                                            data-action="content_toggle"></button>
-                                </div>
-                            </div>
-                            <div class="block-content">
-                                <!-- Activity List -->
-                                <ul class="nav-items mb-0">
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-plus text-success"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">New sale ($15)</div>
-                                                <div>Admin Template</div>
-                                                <small class="text-muted">3 min ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-pencil-alt text-info"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">You edited the file</div>
-                                                <div>Documentation.doc</div>
-                                                <small class="text-muted">15 min ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-trash text-danger"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">Project deleted</div>
-                                                <div>Line Icon Set</div>
-                                                <small class="text-muted">4 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!-- END Activity List -->
-                            </div>
-                        </div>
-                        <!-- END Activity -->
-
-                        <!-- Online Friends -->
-                        <div class="block block-transparent">
-                            <div class="block-header block-header-default">
-                                <h3 class="block-title">Online Friends</h3>
-                                <div class="block-options">
-                                    <button type="button" class="btn-block-option" data-toggle="block-option"
-                                            data-action="state_toggle" data-action-mode="demo">
-                                        <i class="si si-refresh"></i>
-                                    </button>
-                                    <button type="button" class="btn-block-option" data-toggle="block-option"
-                                            data-action="content_toggle"></button>
-                                </div>
-                            </div>
-                            <div class="block-content">
-                                <!-- Users Navigation -->
-                                <ul class="nav-items mb-0">
-                                    <li>
-                                        <a class="d-flex py-2" href="javascript:void(0)">
-                                            <div class="me-3 ms-2 overlay-container overlay-bottom">
-                                                <img class="img-avatar img-avatar48"
-                                                     src="/assets/media/avatars/avatar6.jpg" alt="">
-                                                <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-success"></span>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">Lisa Jenkins</div>
-                                                <div class="text-muted">Copywriter</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="d-flex py-2" href="javascript:void(0)">
-                                            <div class="me-3 ms-2 overlay-container overlay-bottom">
-                                                <img class="img-avatar img-avatar48"
-                                                     src="/assets/media/avatars/avatar10.jpg" alt="">
-                                                <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-success"></span>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">Scott Young</div>
-                                                <div class="text-muted">Web Developer</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="d-flex py-2" href="javascript:void(0)">
-                                            <div class="me-3 ms-2 overlay-container overlay-bottom">
-                                                <img class="img-avatar img-avatar48"
-                                                     src="/assets/media/avatars/avatar8.jpg" alt="">
-                                                <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-success"></span>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">Lisa Jenkins</div>
-                                                <div class="text-muted">Web Designer</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="d-flex py-2" href="javascript:void(0)">
-                                            <div class="me-3 ms-2 overlay-container overlay-bottom">
-                                                <img class="img-avatar img-avatar48"
-                                                     src="/assets/media/avatars/avatar6.jpg" alt="">
-                                                <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-warning"></span>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">Susan Day</div>
-                                                <div class="text-muted">Photographer</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="d-flex py-2" href="javascript:void(0)">
-                                            <div class="me-3 ms-2 overlay-container overlay-bottom">
-                                                <img class="img-avatar img-avatar48"
-                                                     src="/assets/media/avatars/avatar13.jpg" alt="">
-                                                <span class="overlay-item item item-tiny item-circle border border-2 border-white bg-warning"></span>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">Thomas Riley</div>
-                                                <div class="text-muted">Graphic Designer</div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!-- END Users Navigation -->
-                            </div>
-                        </div>
-                        <!-- END Online Friends -->
-
-                        <!-- Quick Settings -->
-                        <div class="block block-transparent mb-0">
-                            <div class="block-header block-header-default">
-                                <h3 class="block-title">Quick Settings</h3>
-                                <div class="block-options">
-                                    <button type="button" class="btn-block-option" data-toggle="block-option"
-                                            data-action="content_toggle"></button>
-                                </div>
-                            </div>
-                            <div class="block-content">
-                                <!-- Quick Settings Form -->
-                                <form action="be_pages_dashboard.html" method="POST" onsubmit="return false;">
-                                    <div class="mb-4">
-                                        <p class="fs-sm fw-semibold mb-2">
-                                            Online Status
-                                        </p>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                   id="so-settings-check1" name="so-settings-check1" checked>
-                                            <label class="form-check-label fs-sm" for="so-settings-check1">Show your
-                                                status to all</label>
-                                        </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <p class="fs-sm fw-semibold mb-2">
-                                            Auto Updates
-                                        </p>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                   id="so-settings-check2" name="so-settings-check2" checked>
-                                            <label class="form-check-label fs-sm" for="so-settings-check2">Keep up to
-                                                date</label>
-                                        </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <p class="fs-sm fw-semibold mb-1">
-                                            Application Alerts
-                                        </p>
-                                        <div class="space-y-2">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       id="so-settings-check3" name="so-settings-check3" checked>
-                                                <label class="form-check-label fs-sm" for="so-settings-check3">Email
-                                                    Notifications</label>
-                                            </div>
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       id="so-settings-check4" name="so-settings-check4" checked>
-                                                <label class="form-check-label fs-sm" for="so-settings-check4">SMS
-                                                    Notifications</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <p class="fs-sm fw-semibold mb-1">
-                                            API
-                                        </p>
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                   id="so-settings-check5" name="so-settings-check5" checked>
-                                            <label class="form-check-label fs-sm" for="so-settings-check5">Enable
-                                                access</label>
-                                        </div>
-                                    </div>
-                                </form>
-                                <!-- END Quick Settings Form -->
-                            </div>
-                        </div>
-                        <!-- END Quick Settings -->
-                    </div>
-                    <!-- END Overview Tab -->
-
-                    <!-- Sales Tab -->
-                    <div class="tab-pane pull-x fade fade-right" id="so-sales" role="tabpanel"
-                         aria-labelledby="so-sales-tab">
-                        <div class="block block-transparent mb-0">
-                            <!-- Stats -->
-                            <div class="block-content">
-                                <div class="row items-push pull-t">
-                                    <div class="col-6">
-                                        <div class="fs-sm fw-semibold text-uppercase">Sales</div>
-                                        <a class="fs-lg" href="javascript:void(0)">22.030</a>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="fs-sm fw-semibold text-uppercase">Balance</div>
-                                        <a class="fs-lg" href="javascript:void(0)">$4.589,00</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END Stats -->
-
-                            <!-- Today -->
-                            <div class="block-content block-content-full block-content-sm bg-body-light">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <span class="fs-sm fw-semibold text-uppercase">Today</span>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <span class="ext-muted">$996</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="block-content">
-                                <ul class="nav-items push">
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-plus text-success"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">New sale! + $249</div>
-                                                <small class="text-muted">3 min ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-plus text-success"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">New sale! + $129</div>
-                                                <small class="text-muted">50 min ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-plus text-success"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">New sale! + $119</div>
-                                                <small class="text-muted">2 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-plus text-success"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">New sale! + $499</div>
-                                                <small class="text-muted">3 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- END Today -->
-
-                            <!-- Yesterday -->
-                            <div class="block-content block-content-full block-content-sm bg-body-light">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <span class="fs-sm fw-semibold text-uppercase">Yesterday</span>
-                                    </div>
-                                    <div class="col-6 text-end">
-                                        <span class="text-muted">$765</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="block-content">
-                                <ul class="nav-items push">
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-plus text-success"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">New sale! + $249</div>
-                                                <small class="text-muted">26 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-minus text-danger"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">Product Purchase - $50</div>
-                                                <small class="text-muted">28 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-plus text-success"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">New sale! + $119</div>
-                                                <small class="text-muted">29 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-minus text-danger"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">Paypal Withdrawal - $300</div>
-                                                <small class="text-muted">37 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-plus text-success"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">New sale! + $129</div>
-                                                <small class="text-muted">39 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-plus text-success"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">New sale! + $119</div>
-                                                <small class="text-muted">45 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="text-dark d-flex py-2" href="javascript:void(0)">
-                                            <div class="flex-shrink-0 me-3 ms-2">
-                                                <i class="fa fa-fw fa-plus text-success"></i>
-                                            </div>
-                                            <div class="flex-grow-1 fs-sm">
-                                                <div class="fw-semibold">New sale! + $499</div>
-                                                <small class="text-muted">46 hours ago</small>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-
-                                <!-- More -->
-                                <div class="text-center">
-                                    <a class="btn btn-sm btn-alt-secondary" href="javascript:void(0)">
-                                        <i class="fa fa-arrow-down opacity-50 me-1"></i> Load More..
-                                    </a>
-                                </div>
-                                <!-- END More -->
-                            </div>
-                            <!-- END Yesterday -->
-                        </div>
-                    </div>
-                    <!-- END Sales Tab -->
-                </div>
-            </div>
-            <!-- END Side Overlay Tabs -->
-        </div>
-        <!-- END Side Content -->
-    </aside>
-    <!-- END Side Overlay -->
-
-
+    {% include '_side_overlay.html.twig' %}
     {% include '_sidebar.html.twig' %}
-
-    <!-- Header -->
-    <header id="page-header">
-        <!-- Header Content -->
-        <div class="content-header">
-            <!-- Left Section -->
-            <div class="d-flex align-items-center">
-                <!-- Toggle Sidebar -->
-                <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
-                <button type="button" class="btn btn-sm btn-alt-secondary me-2 d-lg-none" data-toggle="layout"
-                        data-action="sidebar_toggle">
-                    <i class="fa fa-fw fa-bars"></i>
-                </button>
-                <!-- END Toggle Sidebar -->
-
-                <!-- Toggle Mini Sidebar -->
-                <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
-                <button type="button" class="btn btn-sm btn-alt-secondary me-2 d-none d-lg-inline-block"
-                        data-toggle="layout" data-action="sidebar_mini_toggle">
-                    <i class="fa fa-fw fa-ellipsis-v"></i>
-                </button>
-                <!-- END Toggle Mini Sidebar -->
-
-                <!-- Open Search Section (visible on smaller screens) -->
-                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                <button type="button" class="btn btn-sm btn-alt-secondary d-md-none" data-toggle="layout"
-                        data-action="header_search_on">
-                    <i class="fa fa-fw fa-search"></i>
-                </button>
-                <!-- END Open Search Section -->
-
-                <!-- Search Form (visible on larger screens) -->
-                <form class="d-none d-md-inline-block" action="be_pages_generic_search.html" method="POST">
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control form-control-alt" placeholder="Search.."
-                               id="page-header-search-input2" name="page-header-search-input2">
-                        <span class="input-group-text border-0">
-                  <i class="fa fa-fw fa-search"></i>
-                </span>
-                    </div>
-                </form>
-                <!-- END Search Form -->
-            </div>
-            <!-- END Left Section -->
-
-            <!-- Right Section -->
-            <div class="d-flex align-items-center">
-                <!-- User Dropdown -->
-                {% include '_userdropdown.html.twig' %}
-                <!-- END User Dropdown -->
-
-                <!-- Notifications Dropdown -->
-                {% include '_notificationsDropDown.html.twig' %}
-                <!-- END Notifications Dropdown -->
-
-                <!-- Toggle Side Overlay -->
-                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                <button type="button" class="btn btn-sm btn-alt-secondary ms-2" data-toggle="layout"
-                        data-action="side_overlay_toggle">
-                    <i class="fa fa-fw fa-list-ul fa-flip-horizontal"></i>
-                </button>
-                <!-- END Toggle Side Overlay -->
-            </div>
-            <!-- END Right Section -->
-        </div>
-        <!-- END Header Content -->
-
-        <!-- Header Search -->
-        <div id="page-header-search" class="overlay-header bg-body-extra-light">
-            <div class="content-header">
-                <form class="w-100" action="be_pages_generic_search.html" method="POST">
-                    <div class="input-group">
-                        <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                        <button type="button" class="btn btn-alt-danger" data-toggle="layout"
-                                data-action="header_search_off">
-                            <i class="fa fa-fw fa-times-circle"></i>
-                        </button>
-                        <input type="text" class="form-control" placeholder="Search or hit ESC.."
-                               id="page-header-search-input" name="page-header-search-input">
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- END Header Search -->
-
-        <!-- Header Loader -->
-        <!-- Please check out the Loaders page under Components category to see examples of showing/hiding it -->
-        <div id="page-header-loader" class="overlay-header bg-body-extra-light">
-            <div class="content-header">
-                <div class="w-100 text-center">
-                    <i class="fa fa-fw fa-circle-notch fa-spin"></i>
-                </div>
-            </div>
-        </div>
-        <!-- END Header Loader -->
-    </header>
-    <!-- END Header -->
+    {% include '_header.html.twig' %}
 
     <!-- Main Container -->
     <main id="main-container">
@@ -624,9 +94,7 @@
                                                     class="btn btn-secondary mx-2"><i class="fa-solid fa-reply"></i></a>
                         </div>
                     {% else %}
-                        <div class="flex-grow-0"><a href="{{ app.request.headers.get('referer') }}"
-                                                    class="btn btn-secondary mx-2"><i class="fa-solid fa-reply"></i></a>
-                        </div>
+
                     {% endif %}
 
                     <div class="flex-grow-1">
@@ -651,18 +119,14 @@
                         </ol>
                     </nav>
                 </div>
+
+
             </div>
         </div>
         <!-- END Hero -->
-
-        <!-- Page Content -->
         <!-- Page Content -->
         <div class="content">
-
-
-
-
-            <div class="progress pb-2" style="height: 50px">
+            <div class="progress d-none" id="pbmain_div" style="height: 50px">
                 <div id="pbmain"
                      class="progress-bar  progress-bar-striped progress-bar-animated bg-secondary text-light"
                      role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
@@ -675,25 +139,8 @@
 
     </main>
     <!-- END Main Container -->
+    {% include '_footer.html.twig' %}
 
-    <!-- Footer -->
-    <footer id="page-footer" class="bg-body-light">
-        <div class="content py-3">
-            <div class="row fs-sm">
-                <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-end">
-                    Создано на основе работы <a class="fw-semibold"
-                                                href="https://1.envato.market/ydb"
-                                                target="_blank">pixelcave</a>
-                </div>
-                <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
-                    <a class="fw-semibold" href="https://volok-it.ru" target="_blank">Общество с органиченной
-                        ответственностю "Волок АйТи"</a> &copy;
-                    <span data-toggle="year-copy"></span>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- END Footer -->
 </div>
 
 
@@ -703,31 +150,37 @@
         Core libraries and functionality
         webpack is putting everything together at assets/_js/main/app.js
     -->
-<script src="/assets/js/oneui.app.min.js"></script>
-<script>
+<script src="/assets/js/oneui.app.js"></script>
 
-    var sidebar_position ='{{ app.user.FrontEndParams['frontend']['sidebar']['position'] |raw}}';
-    var sidebar_mini ='{{ app.user.FrontEndParams['frontend']['sidebar']['sidebar_mini'] |raw}}';
-    var sidebar_style ='{{ app.user.FrontEndParams['frontend']['sidebar']['sidebar_style'] |raw}}';
-    var layout_dark_mode_ ='{{ app.user.FrontEndParams['frontend']['layout']['dark_mode_'] |raw}}';
 
-    One.layout('dark_mode_'+layout_dark_mode_);
-    One.layout('sidebar_pos_'+sidebar_position);
-    One.layout('sidebar_mini_'+sidebar_mini);
-    One.layout('sidebar_style_'+sidebar_style);
-</script>
 <script src="/assets/js/lib/jquery.min.js"></script>
 
+
 <!-- Page JS Plugins -->
+
+<!-- Charts  -->
+<script src="/assets/js/plugins/chart.js/chart.umd.js"></script>
+<!-- End Charts -->
+
+<!-- Bootstrap Notify -->
+<script src="/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+<!-- End Bootstrap Notify -->
+
+<!--Form Plugins-->
 <script src="/assets/js/plugins/flatpickr/flatpickr.min.js"></script>
 <script src="/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-<script src="/assets/js/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
-<script src="/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
 <script src="/assets/js/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
-<script src="/assets/js/plugins/easy-pie-chart/jquery.easypiechart.min.js"></script>
-<script src="/assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
-<script src="/assets/js/plugins/chart.js/chart.min.js"></script>
-<script src="/assets/js/pages/be_comp_charts.min.js"></script>
+<script src="/assets/js/plugins/select2/js/select2.full.min.js"></script>
+<script src="/assets/js/plugins/jquery.maskedinput/jquery.maskedinput.min.js"></script>
+<script src="/assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+<script src="/assets/js/plugins/dropzone/min/dropzone.min.js"></script>
+<!--End Form Plugins -->
+
+<!--slick-carousel-->
+<script src="/assets/js/plugins/slick-carousel/slick.min.js"></script>
+<!--END slick-carousel-->
+
+<!-- DataTable -->
 <script src="/assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js"></script>
 <script src="/assets/js/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -739,24 +192,28 @@
 <script src="/assets/js/plugins/datatables-buttons-pdfmake/vfs_fonts.js"></script>
 <script src="/assets/js/plugins/datatables-buttons/buttons.print.min.js"></script>
 <script src="/assets/js/plugins/datatables-buttons/buttons.html5.min.js"></script>
-<script src="/assets/js/pages/be_tables_datatables.min.js"></script>
+<!-- End DataTable -->
+
+
+<script src="/assets/js/plugins/easy-pie-chart/jquery.easypiechart.min.js"></script>
+<script src="/assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+
+
+
 <script>
-    {% block customjs %}
-    {% endblock %}
+    One.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-notify', 'jq-maxlength', 'jq-select2', 'jq-masked-inputs', 'jq-rangeslider', 'jq-slick']);
 
 </script>
 
-<!-- Page JS Helpers (Flatpickr + BS Datepicker + BS Maxlength + Select2 + Masked Inputs + Ion Range Slider + BS Colorpicker plugins) -->
-<script>
-    One.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-notify', 'jq-maxlength', 'jq-select2', 'jq-masked-inputs', 'jq-rangeslider', 'jq-colorpicker']);
-
-</script>
 <script>
 
     var timer;
 
     function hideProgressBar() {
         document.getElementById('pbmain').setAttribute("style", 'width:0%');
+        document.getElementById('pbmain_div').classList.remove('d-block');
+        document.getElementById('pbmain_div').classList.add('d-none')
     }
 
     const eventSource = new EventSource("{{ mercure('popup-notify')|escape('js') }}");
@@ -776,13 +233,104 @@
         //console.log(message.countElement);
 
         // console.log(JSON.parse(event.data));
+        document.getElementById('pbmain_div').classList.remove('d-none');
+        document.getElementById('pbmain_div').classList.add('d-block');
         var progressbar = document.getElementById('pbmain');
         progressbar.setAttribute("style", 'width: 100%');
         progressbar.innerHTML = '<b> Фоновая задача: ' + message.header + ' ' + message.message + '</b>';
         timer = setTimeout(hideProgressBar, 5000);
 
     }
+</script>
 
+<script>
+
+    !(function () {
+        class e {
+            static initDataTables() {
+                jQuery.extend(jQuery.fn.DataTable.ext.classes,
+                    {
+                        sWrapper: "dataTables_wrapper dt-bootstrap5",
+                        sFilterInput: "form-control form-control-sm",
+                        sLengthSelect: "form-select form-select-sm"
+                    }),
+                    jQuery.extend(!0, jQuery.fn.DataTable.defaults, {
+                        language: {
+                            lengthMenu: "_MENU_",
+                            search: "_INPUT_",
+                            searchPlaceholder: "Поиск..",
+                            info: "Страница <strong>_PAGE_</strong> из <strong>_PAGES_</strong>",
+                            paginate: {
+                                first: '<i class="fa fa-angle-double-left"></i>',
+                                previous: '<i class="fa fa-angle-left"></i>',
+                                next: '<i class="fa fa-angle-right"></i>',
+                                last: '<i class="fa fa-angle-double-right"></i>'
+                            },
+                        },
+                    }),
+                    jQuery.extend(!0, jQuery.fn.DataTable.Buttons.defaults, {dom: {button: {className: "btn btn-sm btn-primary"}}}),
+                    jQuery(".js-dataTable-full").DataTable({
+                        pageLength: 25,
+                        lengthMenu: [
+                            [25, 35, 45, 55],
+                            [25, 35, 45, 55],
+                        ],
+                        autoWidth: !1,
+                    }),
+                    jQuery(".js-dataTable-full-pagination").DataTable({
+                        pagingType: "full_numbers",
+                        pageLength: 25,
+                        lengthMenu: [
+                            [25, 35, 45, 55],
+                            [25, 35, 45, 55],
+                        ],
+                        autoWidth: !1,
+                    }),
+                    jQuery(".js-dataTable-simple").DataTable({
+                        pageLength: 10,
+                        lengthMenu: !1,
+                        searching: !1,
+                        autoWidth: !1,
+                        dom: "<'row'<'col-sm-12'tr>><'row'<'col-sm-6'i><'col-sm-6'p>>"
+                    }),
+                    jQuery(".js-dataTable-buttons").DataTable({
+                        pageLength: 25,
+                        lengthMenu: [
+                            [25, 35, 45, 55],
+                            [25, 35, 45, 55],
+                        ],
+                        autoWidth: !1,
+                        buttons: ["copy", "csv", "excel", "pdf", "print"],
+                        dom: "<'row'<'col-sm-12'<'text-center bg-body-light py-2 mb-2'B>>><'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+                    }),
+                    jQuery(".js-dataTable-responsive").DataTable({
+                        pagingType: "full_numbers",
+                        pageLength: 25,
+                        lengthMenu: [
+                            [25, 35, 45, 55],
+                            [25, 35, 45, 55],
+                        ],
+                        autoWidth: !1,
+                        responsive: !0,
+                    });
+            }
+
+            static init() {
+                this.initDataTables();
+            }
+        }
+
+        One.onLoad(() => e.init());
+    })();
+</script>
+
+
+
+<script>
+    {% block customjs %}
+    {% endblock %}
 </script>
 </body>
+
+
 </html>

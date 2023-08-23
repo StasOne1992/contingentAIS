@@ -24,7 +24,7 @@ class Builder
     {
 
         $menu = $this->factory->createItem('root');
-        $menu->addChild('Home', ['uri' => '/dashboard']);
+        $menu->addChild('Личный кабинет', ['uri' => '/dashboard']);
         if ($this->authorizationChecker->isGranted('ROLE_STAFF_AB_PETITIONS_R')) {
             $menu->addChild('Приемная комиссия', ['attributes' => ['class' => 'nav-main-heading']]);
             $menu->addChild('Панель управления', ['route' => 'app_admission_dashboard_index']);
@@ -35,19 +35,35 @@ class Builder
                 $admission->addChild('Приемные кампании', ['route' => 'app_admission_index']);
                 $admission->addChild('КЦП', ['route' => 'app_admission_plan_index']);
             }
+            $admissionExamination = $menu->addChild('Вступительные испытания', ['uri' => '#', 'attributes' => ['dropdown' => true]]);
+            $admissionExamination->addChild('Испытания', ['route' => 'app_admission_examination_index']);
+            $admissionExamination->addChild('Дисциплины', ['route' => 'app_admission_examination_subjects_index']);
             $admission_reports = $menu->addChild('Отчёты по ПК', ['uri' => '/', 'attributes' => ['dropdown' => true]]);
             $admission_reports->addChild('Выполнение плана', ['route' => 'app_abiturient_petition_index']);
         }
         if ($this->authorizationChecker->isGranted('ROLE_STAFF_STUDENT_R')) {
-            $menu->addChild('Учебная часть', ['attributes' => ['class' => 'nav-main-heading']]);
-            $student = $menu->addChild('Студенты', ['uri' => '/', 'attributes' => ['dropdown' => true]]);
-            $student->addChild('Список студентов', ['route' => 'app_student_index']);
-            if ($this->authorizationChecker->isGranted('ROLE_STAFF_STUDENT_C')) {
-                $student->addChild('Добавить студента', ['route' => 'app_student_new']);
+            if (($this->authorizationChecker->isGranted('ROLE_STAFF_STUDENT_R')
+                and !($this->authorizationChecker->isGranted('ROLE_CL')))) {
+                $menu->addChild('Учебная часть', ['attributes' => ['class' => 'nav-main-heading']]);
+            } elseif ($this->authorizationChecker->isGranted('ROLE_CL')) {
+                $menu->addChild('Контингент', ['attributes' => ['class' => 'nav-main-heading']]);
             }
-            $decree = $menu->addChild('Документы', ['uri' => '#', 'attributes' => ['dropdown' => true]]);
-            $decree->addChild('Приказы о движении', ['route' => 'app_contingent_document_index']);
+            if ($this->authorizationChecker->isGranted('ROLE_STAFF_STUDENT_R')) {
+                $student = $menu->addChild('Студенты', ['uri' => '/', 'attributes' => ['dropdown' => true]]);
+                $student->addChild('Список студентов', ['route' => 'app_student_index']);
+                if ($this->authorizationChecker->isGranted('ROLE_STAFF_STUDENT_C')) {
+                    $student->addChild('Добавить студента', ['route' => 'app_student_new']);
+                }
+            }
+            if ($this->authorizationChecker->isGranted('ROLE_STAFF_CONT_DOC_R')) {
+                $decree = $menu->addChild('Документы', ['uri' => '#', 'attributes' => ['dropdown' => true]]);
+                $decree->addChild('Приказы о движении', ['route' => 'app_contingent_document_index']);
+            }
             $menu->addChild('Студенчекие группы', ['route' => 'app_student_groups_index']);
+            $education = $menu->addChild('Образование', ['uri' => '#', 'attributes' => ['dropdown' => true]]);
+            $education->addChild('Учебные планы', ['route' => 'app_education_plan_index']);
+            $education->addChild('Дисциплины', ['route' => 'app_education_subjects_index']);
+
         }
         if ($this->authorizationChecker->isGranted('ROLE_ROOT')) {
             $menu->addChild('Администрирование', ['attributes' => ['class' => 'nav-main-heading']]);
@@ -56,16 +72,18 @@ class Builder
             $users->addchild('Добавить', ['route' => 'app_user_new']);
             $users->addchild('Дейсвия пользователей', ['uri' => '#']);
             $users->addchild('Роли пользователей', ['uri' => '#']);
-            $users = $menu->addChild('Справочники', ['attributes' => ['dropdown' => true]]);
-            $users->addChild('Справочник. Виды законных представителей', ['route' => 'app_legal_representative_type_list_index']);
-            $users->addchild('Справочник. Виды семей', ['route' => 'app_family_type_list_index']);
-            $users->addchild('Дейсвия пользователей', ['uri' => '#']);
-            $users->addchild('Роли пользователей', ['uri' => '#']);
-            $users = $menu->addChild('Сотрудники', ['route' => 'app_staff_index', 'attributes' => ['dropdown' => true]]);
-            $users->addChild('Список сотрудников', ['route' => 'app_staff_index']);
-            $users->addchild('Добавить', ['route' => 'app_staff_new']);
-            $users->addchild('Дейсвия пользователей', ['uri' => '#']);
-            $users->addchild('Роли пользователей', ['uri' => '#']);
+            $directories = $menu->addChild('Справочники', ['attributes' => ['dropdown' => true]]);
+            $directories->addChild('Справочник. Виды законных представителей', ['route' => 'app_legal_representative_type_list_index']);
+            $directories->addchild('Справочник. Виды семей', ['route' => 'app_family_type_list_index']);
+            $directories->addchild('Дейсвия пользователей', ['uri' => '#']);
+            $directories->addchild('Роли пользователей', ['uri' => '#']);
+            $staff = $menu->addChild('Сотрудники', ['route' => 'app_staff_index', 'attributes' => ['dropdown' => true]]);
+            $staff->addChild('Список сотрудников', ['route' => 'app_staff_index']);
+            $staff->addchild('Добавить', ['route' => 'app_staff_new']);
+            $staff->addchild('Действия пользователей', ['uri' => '#']);
+            $staff->addchild('Роли пользователей', ['uri' => '#']);
+            $system = $menu->addChild('Система', ['uri' => '#', 'attributes' => ['dropdown' => true]]);
+            $system->addChild('Системные сервисы', ['route' => 'app_system_services_index']);
         }
         if ($this->authorizationChecker->isGranted('ROLE_STUDENT')) {
             $menu->addChild('Перейти в профиль студента', ['route' => 'app_student_dashboard', 'attributes' => ['class' => 'mt-6  ']]);

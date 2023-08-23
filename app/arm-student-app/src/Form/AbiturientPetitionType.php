@@ -135,6 +135,19 @@ class AbiturientPetitionType extends AbstractType
                 ])
             ],
             )
+            ->add('TargetAgreementDate', DateType::class, [
+                'label' => 'Дата подписания',
+                'widget' => 'single_text',
+                'empty_data' => '',
+                'html5' => false,
+                'required' => false,
+                'attr' => array_merge([
+                    'required' => false,
+                    'class' => 'js-flatpickr form-control ',
+                    'placeholder' => 'Дата подписания целевого договора'
+                ])
+            ],
+            )
             ->add('gender', EntityType::class, array(
                 'label' => 'Пол',
                 'placeholder' => 'Укажите пол',
@@ -182,6 +195,15 @@ class AbiturientPetitionType extends AbstractType
                 'empty_data' => null,
                 'attr' => array_merge($readOnly, [
                     'placeholder' => 'Укажите наименование образовательной организации',
+                    'required' => false,
+                    'class' => TextType::class . ' form-control'])
+            ))
+            ->add('TargetAgreementEmployer', TextareaType::class, array(
+                'label' => 'Работодатель',
+                'empty_data' => null,
+                'required' => false,
+                'attr' => array_merge($readOnly, [
+                    'placeholder' => 'Укажите наименование организации-работодателя',
                     'required' => false,
                     'class' => TextType::class . ' form-control'])
             ))
@@ -350,6 +372,14 @@ class AbiturientPetitionType extends AbstractType
                     'required' => false,
                 ],
             ])
+            ->add('HasTargetAgreement', CheckboxType::class, [
+                'label' => 'Целевой договор',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-check-input ',
+                    'required' => false,
+                ],
+            ])
             ->add('pasportSeries', TextType::class, array(
                 'label' => 'Серия паспорта',
                 'empty_data' => null,
@@ -386,7 +416,18 @@ class AbiturientPetitionType extends AbstractType
                 'attr' => array_merge([
                     'required' => false,
                     'class' => TextType::class . ' form-control',
-                    'placeholder' => 'Укажите регистрационный номер заявления',])));
+                    'placeholder' => 'Укажите регистрационный номер заявления',])))
+            ->add('TargetAgreementNumber', TextType::class, array(
+                'label' => 'Номер договора',
+                'empty_data' => null,
+                'required' => false,
+                'attr' => array_merge([
+                    'required' => false,
+                    'class' => TextType::class . ' form-control',
+                    'placeholder' => 'Укажите номер целевого договора',])))
+
+
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

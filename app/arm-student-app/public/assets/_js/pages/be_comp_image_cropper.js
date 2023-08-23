@@ -85,4 +85,4 @@ class pageCompImageCropper {
 }
 
 // Initialize when page loads
-One.onLoad(pageCompImageCropper.init());
+One.onLoad(() => pageCompImageCropper.init());

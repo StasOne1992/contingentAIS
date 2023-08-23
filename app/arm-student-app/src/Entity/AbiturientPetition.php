@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AbiturientPetitionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -151,6 +153,39 @@ class AbiturientPetition
 
     #[ORM\Column(nullable: true)]
     private ?bool $LockUpdateFormVIS = null;
+
+    #[ORM\OneToMany(mappedBy: 'AbiturientPetition', targetEntity: AdmissionExaminationResult::class)]
+    private Collection $AdmissionExaminationResult;
+
+    #[ORM\ManyToOne(inversedBy: 'abiturientPetitions')]
+    private ?AdmissionPlan $AdmissionPlanPosition = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $potok = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $HasTargetAgreement = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $TargetAgreementNumber = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $TargetAgreementDate = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $TargetAgreementEmployer = null;
+
+    #[ORM\OneToMany(mappedBy: 'AbiturientPetition', targetEntity: Student::class)]
+    private Collection $students;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $isBlockedToEdit = null;
+
+    public function __construct()
+    {
+        $this->Result = new ArrayCollection();
+        $this->students = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -697,6 +732,150 @@ class AbiturientPetition
     public function setLockUpdateFormVIS(?bool $LockUpdateFormVIS): static
     {
         $this->LockUpdateFormVIS = $LockUpdateFormVIS;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AdmissionExaminationResult>
+     */
+    public function getResult(): Collection
+    {
+        return $this->AdmissionExaminationResult;
+    }
+
+    public function addResult(AdmissionExaminationResult $AdmissionExaminationResult): static
+    {
+        if (!$this->AdmissionExaminationResult->contains($AdmissionExaminationResult)) {
+            $this->AdmissionExaminationResult->add($AdmissionExaminationResult);
+            $AdmissionExaminationResult->setAbiturientPetition($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResult(AdmissionExaminationResult $AdmissionExaminationResult): static
+    {
+        if ($this->AdmissionExaminationResult->removeElement($AdmissionExaminationResult)) {
+            // set the owning side to null (unless already changed)
+            if ($AdmissionExaminationResult->getAbiturientPetition() === $this) {
+                $AdmissionExaminationResult->setAbiturientPetition(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAdmissionPlanPosition(): ?AdmissionPlan
+    {
+        return $this->AdmissionPlanPosition;
+    }
+
+    public function setAdmissionPlanPosition(?AdmissionPlan $AdmissionPlanPosition): static
+    {
+        $this->AdmissionPlanPosition = $AdmissionPlanPosition;
+
+        return $this;
+    }
+
+    public function getPotok(): ?string
+    {
+        return $this->potok;
+    }
+
+    public function setPotok(?string $potok): static
+    {
+        $this->potok = $potok;
+
+        return $this;
+    }
+
+    public function isHasTargetAgreement(): ?bool
+    {
+        return $this->HasTargetAgreement;
+    }
+
+    public function setHasTargetAgreement(?bool $HasTargetAgreement): static
+    {
+        $this->HasTargetAgreement = $HasTargetAgreement;
+
+        return $this;
+    }
+
+    public function getTargetAgreementNumber(): ?string
+    {
+        return $this->TargetAgreementNumber;
+    }
+
+    public function setTargetAgreementNumber(?string $TargetAgreementNumber): static
+    {
+        $this->TargetAgreementNumber = $TargetAgreementNumber;
+
+        return $this;
+    }
+
+    public function getTargetAgreementDate(): ?\DateTimeInterface
+    {
+        return $this->TargetAgreementDate;
+    }
+
+    public function setTargetAgreementDate(?\DateTimeInterface $TargetAgreementDate): static
+    {
+        $this->TargetAgreementDate = $TargetAgreementDate;
+
+        return $this;
+    }
+
+    public function getTargetAgreementEmployer(): ?string
+    {
+        return $this->TargetAgreementEmployer;
+    }
+
+    public function setTargetAgreementEmployer(?string $TargetAgreementEmployer): static
+    {
+        $this->TargetAgreementEmployer = $TargetAgreementEmployer;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Student>
+     */
+    public function getStudents(): Collection
+    {
+        return $this->students;
+    }
+
+    public function addStudent(Student $student): static
+    {
+        if (!$this->students->contains($student)) {
+            $this->students->add($student);
+            $student->setAbiturientPetition($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStudent(Student $student): static
+    {
+        if ($this->students->removeElement($student)) {
+            // set the owning side to null (unless already changed)
+            if ($student->getAbiturientPetition() === $this) {
+                $student->setAbiturientPetition(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isIsBlockedToEdit(): ?bool
+    {
+        return $this->isBlockedToEdit;
+    }
+
+    public function setIsBlockedToEdit(?bool $isBlockedToEdit): static
+    {
+        $this->isBlockedToEdit = $isBlockedToEdit;
 
         return $this;
     }

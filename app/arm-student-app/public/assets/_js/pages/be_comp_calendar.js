@@ -176,4 +176,4 @@ class pageCompCalendar {
 }
 
 // Initialize when page loads
-One.onLoad(pageCompCalendar.init());
+One.onLoad(() => pageCompCalendar.init());

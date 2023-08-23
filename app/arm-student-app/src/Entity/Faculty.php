@@ -44,6 +44,9 @@ class Faculty
     #[ORM\OneToMany(mappedBy: 'Faculty', targetEntity: EducationPlan::class)]
     private Collection $educationPlans;
 
+    #[ORM\OneToMany(mappedBy: 'Faculty', targetEntity: AdmissionExamination::class)]
+    private Collection $admissionExaminations;
+
 
     public function __construct()
     {
@@ -51,6 +54,7 @@ class Faculty
         $this->admissionPlans = new ArrayCollection();
         $this->abiturientPetitions = new ArrayCollection();
         $this->educationPlans = new ArrayCollection();
+        $this->admissionExaminations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -237,6 +241,36 @@ class Faculty
             // set the owning side to null (unless already changed)
             if ($educationPlan->getFaculty() === $this) {
                 $educationPlan->setFaculty(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AdmissionExamination>
+     */
+    public function getAdmissionExaminations(): Collection
+    {
+        return $this->admissionExaminations;
+    }
+
+    public function addAdmissionExamination(AdmissionExamination $admissionExamination): static
+    {
+        if (!$this->admissionExaminations->contains($admissionExamination)) {
+            $this->admissionExaminations->add($admissionExamination);
+            $admissionExamination->setFaculty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdmissionExamination(AdmissionExamination $admissionExamination): static
+    {
+        if ($this->admissionExaminations->removeElement($admissionExamination)) {
+            // set the owning side to null (unless already changed)
+            if ($admissionExamination->getFaculty() === $this) {
+                $admissionExamination->setFaculty(null);
             }
         }
 

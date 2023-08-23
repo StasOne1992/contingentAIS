@@ -26,7 +26,7 @@ class AdmissionDashboard extends AbstractController
         private AdmissionStatusRepository          $admissionStatusRepository,
         private AdmissionPlanRepository            $admissionPlanRepository,
         private FacultyRepository                  $facultyRepository,
-        private PetitionLoadService                $petitionLoadService,
+        //private PetitionLoadService                $petitionLoadService,
         private RegionsRepository                  $regionsRepository,
 
     )
@@ -67,7 +67,7 @@ class AdmissionDashboard extends AbstractController
         $this->SummaryMetricReport['CanLoad']['Title'] = ' для загрузки';
         $this->SummaryMetricReport['CanLoad']['Icon'] = 'fa-solid fa-cloud-arrow-down';
         $this->SummaryMetricReport['CanLoad']['Color'] = 'text-success';
-        $this->SummaryMetricReport['CanLoad']['Value'] = count($this->petitionLoadService->getNewPetitionList());
+        $this->SummaryMetricReport['CanLoad']['Value'] = 0;//count($this->petitionLoadService->getNewPetitionList());
         $this->SummaryMetricReport['Unique']['Title'] = 'Абитуриентов всего';
         $this->SummaryMetricReport['Unique']['Icon'] = 'fa-solid fa-people';
         $this->SummaryMetricReport['Unique']['Color'] = 'text-success';
@@ -82,7 +82,7 @@ class AdmissionDashboard extends AbstractController
         foreach ($this->regionsRepository->findAll() as $region) {
             $this->byRegionsReport[$region->getCode()]['Count'] = count($this->abiturientPetitionRepository->findBy(['admission' => $this->currentAdmission, 'Region' => $region, 'status' => $this->statusACCEPTED]));
             $this->byRegionsReport[$region->getCode()]['Title'] = $region->getName();
-            array_multisort($this->byRegionsReport,SORT_DESC);
+            array_multisort($this->byRegionsReport, SORT_DESC);
         }
 
         $counter = 0;
@@ -93,8 +93,10 @@ class AdmissionDashboard extends AbstractController
             $this->facultyPetitionCount[$counter]['Registred'] = count($this->abiturientPetitionRepository->findBy(['admission' => $this->currentAdmission, 'Faculty' => $item->getFaculty(), 'status' => $this->statusREGISTRED]));
             $this->facultyPetitionCount[$counter]['Origins'] = count($this->abiturientPetitionRepository->findBy(['admission' => $this->currentAdmission, 'Faculty' => $item->getFaculty(), 'documentObtained' => true]));
             $this->facultyPetitionCount[$counter]['PetitionCount'] = $item->getFaculty()->getAbiturientPetitions()->count();
+            $this->facultyPetitionCount[$counter]['Enroll'] = count($this->abiturientPetitionRepository->findBy(['admission' => $this->currentAdmission, 'Faculty' => $item->getFaculty(), 'status' => $this->statusRECOMMENDED]));
+            $this->facultyPetitionCount[$counter]['Induct'] = count($this->abiturientPetitionRepository->findBy(['admission' => $this->currentAdmission, 'Faculty' => $item->getFaculty(), 'status' => $this->statusINDUCTED]));
             $this->facultyPetitionCount[$counter]['FISGIA'] = count($this->abiturientPetitionRepository->findBy(['admission' => $this->currentAdmission, 'Faculty' => $item->getFaculty(), 'LoadToFISGIA' => true]));
-            $counter = $counter + 1;
+            $counter++;
         }
     }
 
@@ -115,12 +117,13 @@ class AdmissionDashboard extends AbstractController
     {
         $admissionId = $request->get('admission');
         $faculty = $request->get('faculty');
-        $petitionList = $this->abiturientPetitionRepository->findBy(['admission' => $admissionId, 'Faculty' => $faculty]);
+        $petitionList = $this->abiturientPetitionRepository->findBy(['admission' => $admissionId, 'Faculty' => $faculty], ['educationDocumentGPA' => 'DESC']);
         $faculty = $facultyRepository->find($faculty);
-        return $this->render('admission_dashboard/show_petition_list.html.twig',
+        return $this->render('abiturient_petition/index.html.twig',
             [
                 'abiturient_petitions' => $petitionList,
                 'faculty' => $faculty,
+                'facultyTitle' => $faculty->getName(),
 
             ]);
     }

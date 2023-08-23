@@ -66,4 +66,4 @@ class pageAuthSignUp {
 }
 
 // Initialize when page loads
-One.onLoad(pageAuthSignUp.init());
+One.onLoad(() => pageAuthSignUp.init());

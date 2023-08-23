@@ -43,6 +43,12 @@ class StudentGroups
     #[ORM\Column( nullable: true)]
     private ?int $CourseNumber = null;
 
+    #[ORM\ManyToOne(inversedBy: 'studentGroups')]
+    private ?EducationPlan $EducationPlan = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $ParallelNumber = null;
+
 
 
 
@@ -183,6 +189,30 @@ class StudentGroups
     public function setCourseNumber(int $CourseNumber): self
     {
         $this->CourseNumber = $CourseNumber;
+
+        return $this;
+    }
+
+    public function getEducationPlan(): ?EducationPlan
+    {
+        return $this->EducationPlan;
+    }
+
+    public function setEducationPlan(?EducationPlan $EducationPlan): static
+    {
+        $this->EducationPlan = $EducationPlan;
+
+        return $this;
+    }
+
+    public function getParallelNumber(): ?int
+    {
+        return $this->ParallelNumber;
+    }
+
+    public function setParallelNumber(?int $ParallelNumber): static
+    {
+        $this->ParallelNumber = $ParallelNumber;
 
         return $this;
     }

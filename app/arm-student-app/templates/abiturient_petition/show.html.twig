@@ -3,6 +3,7 @@
 {% block title %}AbiturientPetition{% endblock %}
 
 {% block body %}
+
     <div class="row">
         <div class="col-12 col-sm-4">
             <div class="block block-themed block-bordered">
@@ -113,6 +114,9 @@
                         {% endif %}
                         {% if(abiturient_petition.LockUpdateFormVIS==true) %}
                             <span class="badge bg-info">Заблокировано обновление из ВИС</span>
+                        {% endif %}
+                        {% if(abiturient_petition.HasTargetAgreement ==true) %}
+                            <span class="badge bg-info">Целевой договор</span>
                         {% endif %}
 
                     </div>

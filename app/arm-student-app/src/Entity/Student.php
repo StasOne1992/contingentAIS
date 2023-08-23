@@ -119,6 +119,12 @@ class Student
     #[ORM\ManyToMany(targetEntity: ContingentDocument::class, mappedBy: 'student')]
     private Collection $contingentDocuments;
 
+    #[ORM\ManyToOne(inversedBy: 'students')]
+    private ?AbiturientPetition $AbiturientPetition = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $FirstPassword = null;
+
 
     public function __construct()
     {
@@ -646,6 +652,30 @@ class Student
         if ($this->contingentDocuments->removeElement($contingentDocument)) {
             $contingentDocument->removeStudent($this);
         }
+
+        return $this;
+    }
+
+    public function getAbiturientPetition(): ?AbiturientPetition
+    {
+        return $this->AbiturientPetition;
+    }
+
+    public function setAbiturientPetition(?AbiturientPetition $AbiturientPetition): static
+    {
+        $this->AbiturientPetition = $AbiturientPetition;
+
+        return $this;
+    }
+
+    public function getFirstPassword(): ?string
+    {
+        return $this->FirstPassword;
+    }
+
+    public function setFirstPassword(?string $FirstPassword): static
+    {
+        $this->FirstPassword = $FirstPassword;
 
         return $this;
     }

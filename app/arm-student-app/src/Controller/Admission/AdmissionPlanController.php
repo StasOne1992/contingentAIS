@@ -5,10 +5,13 @@ namespace App\Controller\Admission;
 use App\Entity\AdmissionPlan;
 use App\Form\AdmissionPlanType;
 use App\Repository\AdmissionPlanRepository;
+use App\Service\TypicalDocuments;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 #[Route('/admission/plan')]
 class AdmissionPlanController extends AbstractController
@@ -69,10 +72,37 @@ class AdmissionPlanController extends AbstractController
     #[Route('/{id}/delete', name: 'app_admission_plan_delete', methods: ['POST'])]
     public function delete(Request $request, AdmissionPlan $admissionPlan, AdmissionPlanRepository $admissionPlanRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$admissionPlan->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $admissionPlan->getId(), $request->request->get('_token'))) {
             $admissionPlanRepository->remove($admissionPlan, true);
         }
 
         return $this->redirectToRoute('app_admission_plan_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/{id}/examination_result', name: 'app_admission_plan_examination_result', methods: ['GET'])]
+    public function examination_result(AdmissionPlan $admissionPlan, TypicalDocuments $typicalDocuments): Response
+    {
+
+        $html =  $this->renderView('_printtemplate.html.twig',
+            [
+                'content' => $typicalDocuments->generateAdmissionExaminationResultReport($admissionPlan)
+            ]);
+        $options = new Options();
+        $options->set('defaultFont', '');
+
+        $dompdf = new Dompdf($options);
+        $options = $dompdf->getOptions();
+        $dompdf->setOptions($options);
+        $dompdf->loadHtml($html, 'UTF-8');
+        $dompdf->setPaper('A4');
+        $dompdf->render();
+
+        return new Response (
+            $dompdf->stream('resume', ["Attachment" => false]),
+            Response::HTTP_OK,
+            ['Content-Type' => 'application/pdf']
+        );
+
+    }
+
 }

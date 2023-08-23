@@ -28,6 +28,7 @@ class pageEcomDashboard {
 
     // Overview Chart Options
     chartOverviewOptions = {
+      responsive: true,
       maintainAspectRatio: false,
       tension: .4,
       scales: {
@@ -107,4 +108,4 @@ class pageEcomDashboard {
 }
 
 // Initialize when page loads
-One.onLoad(pageEcomDashboard.init());
+One.onLoad(() => pageEcomDashboard.init());

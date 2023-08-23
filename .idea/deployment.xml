@@ -6,7 +6,7 @@
       <paths name="arm.vatholm.ru">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/app/arm-student-app/public" />
           </mappings>
         </serverdata>
       </paths>

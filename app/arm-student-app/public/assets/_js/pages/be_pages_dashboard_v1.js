@@ -29,6 +29,7 @@ class pageDashboardv1 {
 
     // Earnigns Chart Options
     chartEarningsOptions = {
+      responsive: true,
       maintainAspectRatio: false,
       tension: .4,
       scales: {
@@ -53,6 +54,7 @@ class pageDashboardv1 {
 
     // Earnigns Chart Options
     chartSalesOptions = {
+      responsive: true,
       maintainAspectRatio: false,
       tension: .4,
       scales: {
@@ -162,4 +164,4 @@ class pageDashboardv1 {
 }
 
 // Initialize when page loads
-One.onLoad(pageDashboardv1.init());
+One.onLoad(() => pageDashboardv1.init());

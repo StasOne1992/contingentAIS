@@ -1,37 +1,55 @@
 {% extends 'base.html.twig' %}
+{% set refer = 1 %}
+{% set canreset = 0 %}
+{% set page_title = 'Приемная комиссия' %}
 
-{% block title %}AdmissionPlan index{% endblock %}
+{% set sub_page_title = 'КЦП' %}
 
+{% block title %}
+    {% if page_title is defined %} {{ page_title }} {% endif %}
+{% endblock %}
 {% block body %}
-    <h1>AdmissionPlan index</h1>
+    <div class="block block-rounded block-bordered block-themed">
+        <div class="block-header block-header-default bg-secondary">
+            <h3 class="block-title">Перечень специальностей <small></small></h3>
+            <div class="block-options">
+                <a href="{{ path('app_admission_plan_new') }}">Create new</a>
+            </div>
+        </div>
+        <div class="block-content">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>TargetCount</th>
+                    <th>faculty</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for admission_plan in admission_plans %}
+                    <tr>
+                        <td>{{ admission_plan.id }}</td>
+                        <td>{{ admission_plan.TargetCount }}</td>
+                        <td>{{ admission_plan.faculty }}</td>
+                        <td>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>TargetCount</th>
-                <th>faculty</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for admission_plan in admission_plans %}
-            <tr>
-                <td>{{ admission_plan.id }}</td>
-                <td>{{ admission_plan.TargetCount }}</td>
-                <td>{{ admission_plan.faculty }}</td>
-                <td>
-                    <a href="{{ path('app_admission_plan_show', {'id': admission_plan.id}) }}">show</a>
-                    <a href="{{ path('app_admission_plan_edit', {'id': admission_plan.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                            {% if admission_plan.HaveAdmissionExamination  %}
+                                <a href="{{ path('app_admission_plan_examination_result', {'id': admission_plan.id}) }}">Протокол ВИ</a>
+                            {% endif %}
+                            <a href="{{ path('app_admission_plan_show', {'id': admission_plan.id}) }}">show</a>
+                            <a href="{{ path('app_admission_plan_edit', {'id': admission_plan.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-    <a href="{{ path('app_admission_plan_new') }}">Create new</a>
+    </div>
+
 {% endblock %}

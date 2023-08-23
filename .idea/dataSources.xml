@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://arm.vatholm.ru:5432/pgs_arm_student</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="postgres@arm.vatholm.ru" uuid="b88c91e9-7b1c-4aa0-8a08-279a37ccb6c2">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://arm.vatholm.ru:15432/postgres</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

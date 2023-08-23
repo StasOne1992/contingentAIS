@@ -151,4 +151,4 @@ class pageCompMapsVector {
 }
 
 // Initialize when page loads
-One.onLoad(pageCompMapsVector.init());
+One.onLoad(() => pageCompMapsVector.init());

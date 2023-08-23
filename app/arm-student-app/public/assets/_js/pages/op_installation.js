@@ -75,4 +75,4 @@ class pageInstallation {
 }
 
 // Initialize when page loads
-One.onLoad(pageInstallation.init());
+One.onLoad(() => pageInstallation.init());

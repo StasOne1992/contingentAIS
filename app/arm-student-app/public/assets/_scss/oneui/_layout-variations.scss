@@ -100,7 +100,7 @@
   }
 
   // Sidebar and Side Overlay
-  #sidebar > .content-header {
+  #sidebar .content-header {
     background-color: $body-bg-light;
   }
 
@@ -108,7 +108,7 @@
     color: $body-color-light;
     background-color: $sidebar-dark-bg;
 
-    > .content-header {
+    .content-header {
       background-color: lighten($sidebar-dark-bg, 2%);
     }
   }
@@ -125,6 +125,13 @@
         .content-header,
         .content-side {
           width: $sidebar-width !important;
+        }
+      }
+
+      #sidebar.with-mini-nav {
+        .content-header,
+        .content-side {
+          width: $sidebar-width - $sidebar-mini-nav-width !important;
         }
       }
 

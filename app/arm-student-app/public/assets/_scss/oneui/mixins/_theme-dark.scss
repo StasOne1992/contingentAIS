@@ -17,6 +17,10 @@
   $link-color,
   $link-hover-color
 ) {
+  #page-container.dark-mode {
+    background-color: darken($primary-darker, 3%);
+  }
+
   .dark-mode {
     // Main Structure
     &,
@@ -42,6 +46,11 @@
       color: $body-bg-dark;
     }
 
+    .content-heading,
+    .content-heading small {
+      color: darken($body-bg-light, 30%);
+    }
+
     hr {
       border-top-color: lighten($primary-darker, 6%);
     }
@@ -56,7 +65,13 @@
     }
 
     // Links
-    a:not(.badge):not(.btn):not(.btn-block-option):not(.block):not(.dropdown-item):not(.nav-link):not(.page-link):not(.alert-link):not(.nav-main-link):not(.list-group-item-action):not(.close):not(.fc-event):not(.text-success-light):not(.text-danger-light):not(.text-warning-light):not(.text-info-light) {
+    a:not(.mini-nav-item):not(.badge):not(.btn):not(.btn-block-option):not(
+        .block
+      ):not(.dropdown-item):not(.nav-link):not(.page-link):not(.alert-link):not(
+        .nav-main-link
+      ):not(.list-group-item-action):not(.close):not(.fc-event):not(
+        .text-success-light
+      ):not(.text-danger-light):not(.text-warning-light):not(.text-info-light) {
       color: lighten($primary, 5%);
 
       &.link-fx::before {
@@ -212,6 +227,36 @@
     
       > li:not(:last-child) > a {
         border-bottom-color: lighten($primary-darker, 6%);
+      }
+    }
+
+    // Cards
+    .card {
+      background-color: $primary-darker;
+
+      &.card-borderless {
+        box-shadow: 0 1px 2px rgba(darken($primary-darker, 4%), .5), 0 1px 2px rgba(darken($primary-darker, 4%), .5);
+      }
+  
+      > .card-header:not(.bg-transparent),
+      > .card-footer:not(.bg-transparent) {
+        background-color: lighten($primary-darker, 6%);
+      }
+  
+      > .card-header:not(.border-bottom-0),
+      > .card-footer:not(.border-top-0) {
+        border-color: lighten($primary-darker, 6%);
+      }
+  
+      &:not(.card-borderless) {
+        &,
+        > .card-header {
+          border-color: lighten($primary-darker, 6%);
+        }
+      }
+
+      > .card-header .block-title small {
+        color: darken($body-bg-light, 30%);
       }
     }
 
@@ -386,12 +431,14 @@
 
     // Tables
     .table {
-      --#{$variable-prefix}table-striped-color: #{$body-bg-light};
-      --#{$variable-prefix}table-striped-bg: #{darken($primary-darker, 1.5%)};
-      --#{$variable-prefix}table-active-color: #{$body-bg-light};
-      --#{$variable-prefix}table-active-bg: #{lighten($primary-darker, 6%)};
-      --#{$variable-prefix}table-hover-color: #{$body-bg-light};
-      --#{$variable-prefix}table-hover-bg: #{darken($primary-darker, 2.5%)};
+      --#{$prefix}table-color: darken($body-bg-dark, 10%);
+      --#{$prefix}table-bg: $primary-darker;
+      --#{$prefix}table-striped-color: #{$body-bg-light};
+      --#{$prefix}table-striped-bg: #{darken($primary-darker, 1.5%)};
+      --#{$prefix}table-active-color: #{$body-bg-light};
+      --#{$prefix}table-active-bg: #{lighten($primary-darker, 6%)};
+      --#{$prefix}table-hover-color: #{$body-bg-light};
+      --#{$prefix}table-hover-bg: #{darken($primary-darker, 2.5%)};
       
       color: $body-bg-light;
       border-color: darken($primary-darker, 6%);
@@ -432,8 +479,7 @@
         border-color: $primary;
       }
 
-      &:disabled,
-      &[readonly] {
+      &:disabled {
         background-color: lighten($primary-darker, 2%);
         border-color: lighten($primary-darker, 2%);
       }
@@ -567,6 +613,10 @@
       .breadcrumb-item + .breadcrumb-item::before {
         color: rgba($white, .15);
       }
+    }
+
+    .breadcrumb-item.active {
+      color: $white;
     }
 
     // Alerts
@@ -830,9 +880,9 @@
     }
 
     // FullCalendar
-    .fc-theme-standard {
+    .fc.fc-theme-standard {
       a {
-        color: darken($body-bg-dark, 15%);
+        color: darken($body-bg-dark, 15%) !important;
       }
 
       .fc-button-primary {
@@ -1080,5 +1130,10 @@
     .flatpickr-months .flatpickr-next-month:hover svg {
       fill: $primary;
     }
-  }
+
+    // DataTables
+    table.dataTable.table-striped > tbody > tr.odd > * {
+      box-shadow: inset 0 0 0 9999px darken($primary-darker, 1.5%);
+    }
+  } 
 }

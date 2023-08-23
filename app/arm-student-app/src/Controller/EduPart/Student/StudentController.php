@@ -5,6 +5,7 @@ namespace App\Controller\EduPart\Student;
 use App\Entity\Student;
 use App\Form\EduPart\StudentType;
 use App\Form\EduPart\StudentImportType;
+use App\Repository\StudentGroupsRepository;
 use App\Repository\StudentRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +14,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\File;
 use App\Service\FileUploader;
-
 
 
 #[Route('/student')]
@@ -29,7 +29,7 @@ class StudentController extends AbstractController
     }
 
     #[Route('/new', name: 'app_student_new', methods: ['GET', 'POST'])]
-    #[IsGranted("ROLE_STAFF_STUDENT_С")]
+    #[IsGranted("ROLE_STAFF_STUDENT_C")]
     public function new(Request $request, StudentRepository $studentRepository): Response
     {
         $student = new Student();
@@ -71,52 +71,61 @@ class StudentController extends AbstractController
                 dd($array);
             }
 
-        return $this->redirectToRoute('app_student_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_student_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('student/import.html.twig', ['student' => $student,
+            'form' => $form,]);
     }
 
-return $this->renderForm('student/import.html.twig', ['student' => $student,
-'form' => $form,]);
-}
-
-#[Route('/{id}', name: 'app_student_show', methods: ['GET'])]
-#[IsGranted("ROLE_STAFF_STUDENT_R")]
+    #[Route('/{id}', name: 'app_student_show', methods: ['GET'])]
+    #[IsGranted("ROLE_STAFF_STUDENT_R")]
     public function show(Student $student): Response
-{
-    $student->getPersonalDocuments()->getValues();
-    $student->getCharacteristics()->getValues();
-    $student->getLegalRepresentatives()->getValues();
-    $student->getContingentDocuments()->getValues();
-    return $this->render('student/show.html.twig', [
-        'student' => $student,
-    ]);
-}
+    {
+        $student->getPersonalDocuments()->getValues();
+        $student->getCharacteristics()->getValues();
+        $student->getLegalRepresentatives()->getValues();
+        $student->getContingentDocuments()->getValues();
+        return $this->render('student/show.html.twig', [
+            'student' => $student,
+        ]);
+    }
 
     #[Route('/{id}/edit', name: 'app_student_edit', methods: ['GET', 'POST'])]
     #[IsGranted("ROLE_STAFF_STUDENT_U")]
     public function edit(Request $request, Student $student, StudentRepository $studentRepository): Response
-{
-    $form = $this->createForm(StudentType::class, $student);
-    $form->handleRequest($request);
+    {
+        $form = $this->createForm(StudentType::class, $student);
+        $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        $studentRepository->save($student, true);
-        return $this->redirectToRoute('app_student_index', [], Response::HTTP_SEE_OTHER);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $studentRepository->save($student, true);
+            return $this->redirectToRoute('app_student_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('student/edit.html.twig', [
+            'student' => $student,
+            'form' => $form,
+        ]);
     }
 
-    return $this->renderForm('student/edit.html.twig', [
-        'student' => $student,
-        'form' => $form,
-    ]);
-}
+    #[Route('/{id}/setGroup', name: 'app_student_setGroup', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_STAFF_STUDENT_U")]
+    public function setGroup(Request $request, Student $student, StudentRepository $studentRepository, StudentGroupsRepository $studentGroupsRepository): Response
+    {
+        $student->setStudentGroup($studentGroupsRepository->find($request->get('group-select')));
+        $studentRepository->save($student, true);
+        return $this->redirectToRoute('app_contingent_document_edit', ['id'=>$request->get('contingentDocumentID')], Response::HTTP_SEE_OTHER);
+    }
 
-    #[Route('/{id}', name: 'app_student_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'app_student_delete', methods: ['POST'])]
     #[IsGranted("ROLE_STAFF_STUDENT_D")]
     public function delete(Request $request, Student $student, StudentRepository $studentRepository): Response
-{
-    if ($this->isCsrfTokenValid('delete' . $student->getId(), $request->request->get('_token'))) {
-        $studentRepository->remove($student, true);
-    }
+    {
+        if ($this->isCsrfTokenValid('delete' . $student->getId(), $request->request->get('_token'))) {
+            $studentRepository->remove($student, true);
+        }
 
-    return $this->redirectToRoute('app_student_index', [], Response::HTTP_SEE_OTHER);
-}
+        return $this->redirectToRoute('app_student_index', [], Response::HTTP_SEE_OTHER);
+    }
 }

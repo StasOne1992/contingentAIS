@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\PersonalDocuments;
+use App\Repository\StudentGroupsRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -11,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class PersonalDocumentsType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -20,8 +23,8 @@ class PersonalDocumentsType extends AbstractType
             ->add('DocumentOfficialSeal')
             ->add('Comment')
             ->add('DocumentType')
-            ->add('Student')
-        ;
+            ->add('Student');
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

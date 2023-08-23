@@ -14,6 +14,9 @@
 // Bootstrap variables
 @import 'bootstrap/variables';
 
+// Bootstrap maps
+@import 'bootstrap/maps';
+
 // Bootstrap mixins
 @import 'bootstrap/mixins';
 
@@ -56,6 +59,7 @@
 @import 'bootstrap/popover';
 @import 'bootstrap/carousel';
 @import 'bootstrap/spinners';
+@import 'bootstrap/offcanvas';
 @import 'bootstrap/placeholders';
 
 // Bootstrap Helpers
@@ -80,6 +84,7 @@
 @import 'oneui/dropdown';
 @import 'oneui/forms';
 @import 'oneui/nav';
+@import 'oneui/card';
 @import 'oneui/breadcrumb';
 @import 'oneui/pagination';
 @import 'oneui/modal';
@@ -117,7 +122,6 @@
 @import 'vendor/simplebar';
 
 // Optional third party plugins (style overrides)
-@import 'vendor/bootstrap-colorpicker';
 @import 'vendor/bootstrap-datepicker';
 @import 'vendor/ckeditor';
 @import 'vendor/dropzone';

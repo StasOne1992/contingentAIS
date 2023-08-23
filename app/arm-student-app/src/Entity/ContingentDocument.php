@@ -157,4 +157,9 @@ class ContingentDocument
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->getType().' '.$this->getNumber().' '.$this->getCreateDate()->format('d.m.Y');
+    }
 }

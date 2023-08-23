@@ -38,4 +38,4 @@ class pageProgress {
 }
 
 // Initialize when page loads
-One.onLoad(pageProgress.init());
+One.onLoad(() => pageProgress.init());

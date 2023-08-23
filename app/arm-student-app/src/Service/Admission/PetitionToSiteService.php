@@ -8,6 +8,7 @@ use App\Repository\AdmissionRepository;
 use App\Repository\AdmissionStatusRepository;
 use App\Repository\FacultyRepository;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use function PHPUnit\Framework\isNull;
 
 class PetitionToSiteService
 {
@@ -46,7 +47,11 @@ class PetitionToSiteService
             $currentElement['date'] = $petition->getCreatedTs()->format('Y-m-d H:i:s');
             $currentElement['numbervis'] = $petition->getNumber();
             $currentElement['ball'] = $petition->getEducationDocumentGPA();
-            $currentElement['potok'] = 1;
+            if ($petition->getPotok()!==null) {
+                $currentElement['potok'] = $petition->getPotok();
+            } else {
+                $currentElement['potok'] = 100;
+            }
             $currentElement['origin'] = ' ';
             if ($petition->isDocumentObtained()) {
                 $currentElement['origin'] = 'Сдан';
@@ -54,7 +59,6 @@ class PetitionToSiteService
             $currentElement['dogovor'] = ' ';
             $currentElement['status'] = '1';
             $JsonPetitionList[] = $currentElement;
-
 
         }
         $this->Body = json_encode($JsonPetitionList, JSON_UNESCAPED_UNICODE);
@@ -71,14 +75,14 @@ class PetitionToSiteService
     private function loadToDB(): void
     {
         $response = $this->client->request('POST', 'https://api.vatholm.ru/site/petitionsupload.php', [
-            'body'=>$this->Body,
+            'body' => $this->Body,
             'headers' => [
-                'authtoken'=>'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2ODkyMzAzNTksImV4cCI6MTcyMDc2NjM1OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.mPpziu1-a5lAhmoof0sQ38mSkZLojqagkALBd_jJzO8',
+                'authtoken' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2ODkyMzAzNTksImV4cCI6MTcyMDc2NjM1OSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.mPpziu1-a5lAhmoof0sQ38mSkZLojqagkALBd_jJzO8',
             ]]);
         $statusCode = $response->getStatusCode();
 
-        if ($statusCode!==200){
-            throw new Exception('Ошибка отправки запроса. Код ошибки:  ' . $response->getStatusCode(). ' '.$response->getContent());
+        if ($statusCode !== 200) {
+            throw new Exception('Ошибка отправки запроса. Код ошибки:  ' . $response->getStatusCode() . ' ' . $response->getContent());
         }
 
     }

@@ -11,12 +11,22 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\StudentGroupsService;
 
+
 #[Route('/student-groups')]
 class StudentGroupsController extends AbstractController
 {
     #[Route('/', name: 'app_student_groups_index', methods: ['GET'])]
     public function index(StudentGroupsRepository $studentGroupsRepository): Response
     {
+        $user = $this->getUser();
+        if (in_array('ROLE_CL', $user->getRoles()) and !in_array('ROLE_ROOT', $user->getRoles())) {
+            dump('haverole CL');
+        }
+        else if (in_array('ROLE_ROOT', $user->getRoles()))
+        {
+            dump('RoleRoot');
+        }
+
         return $this->render('student_groups/index.html.twig', [
             'student_groups' => $studentGroupsRepository->findAll(),
         ]);
@@ -41,12 +51,11 @@ class StudentGroupsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_student_groups_show', methods: ['GET'])]
-    public function show(StudentGroups $studentGroup, StudentGroupsService $StudentGroupsService,StudentGroupsRepository $StudentGroupsRepository): Response
+    #[Route('/{id}/show', name: 'app_student_groups_show', methods: ['GET'])]
+    public function show(StudentGroups $studentGroup, StudentGroupsService $StudentGroupsService, StudentGroupsRepository $StudentGroupsRepository): Response
     {
         $studentGroup->getStudents()->getValues();
-        $studentGroup->socialPassport=$StudentGroupsService->generateSocialPasport($studentGroup);
-
+        $studentGroup->socialPassport = $StudentGroupsService->generateSocialPasport($studentGroup);
 
 
         return $this->render('student_groups/show.html.twig', [
@@ -72,10 +81,10 @@ class StudentGroupsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_student_groups_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'app_student_groups_delete', methods: ['POST'])]
     public function delete(Request $request, StudentGroups $studentGroup, StudentGroupsRepository $studentGroupsRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$studentGroup->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $studentGroup->getId(), $request->request->get('_token'))) {
             $studentGroupsRepository->remove($studentGroup, true);
         }
 

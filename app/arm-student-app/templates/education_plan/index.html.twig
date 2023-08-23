@@ -9,6 +9,8 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Title</th>
+                <th>Faculty</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -16,6 +18,8 @@
         {% for education_plan in education_plans %}
             <tr>
                 <td>{{ education_plan.id }}</td>
+                <td>{{ education_plan.Title }}</td>
+                <td>{{ education_plan.Faculty }}</td>
                 <td>
                     <a href="{{ path('app_education_plan_show', {'id': education_plan.id}) }}">show</a>
                     <a href="{{ path('app_education_plan_edit', {'id': education_plan.id}) }}">edit</a>

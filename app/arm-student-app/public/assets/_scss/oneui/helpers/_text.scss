@@ -2,6 +2,11 @@
 // Text
 // --------------------------------------------------
 
+// Transformation
+.text-normal {
+  text-transform: none !important;
+}
+
 // Contextual colors
 @include text-emphasis-variant(".text-primary", $primary);
 @include text-emphasis-variant(".text-primary-dark", $primary-dark);
@@ -18,7 +23,7 @@
 @include text-emphasis-variant(".text-danger", $danger);
 @include text-emphasis-variant(".text-danger-light", $danger-light);
 
-@include text-emphasis-variant(".text-body-bg", $body-bg);
+@include text-emphasis-variant(".text-body-bg", $light);
 @include text-emphasis-variant(".text-body-bg-dark", $body-bg-dark);
 @include text-emphasis-variant(".text-body-bg-light", $body-bg-light);
 @include text-emphasis-variant(".text-body-color", $body-color);

@@ -24,9 +24,13 @@ class EducationType
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $title = null;
 
+    #[ORM\OneToMany(mappedBy: 'BaseEducationType', targetEntity: EducationPlan::class)]
+    private Collection $educationPlans;
+
     public function __construct()
     {
         $this->faculties = new ArrayCollection();
+        $this->educationPlans = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,6 +92,36 @@ class EducationType
     public function setTitle(?string $title): static
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EducationPlan>
+     */
+    public function getEducationPlans(): Collection
+    {
+        return $this->educationPlans;
+    }
+
+    public function addEducationPlan(EducationPlan $educationPlan): static
+    {
+        if (!$this->educationPlans->contains($educationPlan)) {
+            $this->educationPlans->add($educationPlan);
+            $educationPlan->setBaseEducationType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEducationPlan(EducationPlan $educationPlan): static
+    {
+        if ($this->educationPlans->removeElement($educationPlan)) {
+            // set the owning side to null (unless already changed)
+            if ($educationPlan->getBaseEducationType() === $this) {
+                $educationPlan->setBaseEducationType(null);
+            }
+        }
 
         return $this;
     }

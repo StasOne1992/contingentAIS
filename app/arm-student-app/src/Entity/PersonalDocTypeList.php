@@ -21,6 +21,9 @@ class PersonalDocTypeList
     #[ORM\OneToMany(mappedBy: 'DocumentType', targetEntity: PersonalDocuments::class)]
     private Collection $personalDocuments;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Title = null;
+
     public function __construct()
     {
         $this->personalDocuments = new ArrayCollection();
@@ -76,6 +79,18 @@ class PersonalDocTypeList
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->Title;
+    }
+
+    public function setTitle(?string $Title): static
+    {
+        $this->Title = $Title;
+
+        return $this;
     }
 
 }

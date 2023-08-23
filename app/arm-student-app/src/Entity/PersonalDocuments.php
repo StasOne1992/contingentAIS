@@ -28,7 +28,7 @@ class PersonalDocuments
     private ?Student $Student = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $DocumentNumber = null;
+    private ?string $DocumentNumber = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $DocumentIssueDate = null;

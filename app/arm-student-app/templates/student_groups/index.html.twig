@@ -9,33 +9,20 @@
 
 {% block body %}
     <div class="">
-        <div class="block block-rounded block-bordered">
-            <div class="block-header block-header-default">
+        <div class="block block-rounded block-themed block-bordered">
+            <div class="block-header block-header-default bg-secondary">
                 <h3 class="block-title">{{ page_title }} <small></small></h3>
                 <div class="block-options">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-outline-primary dropdown-toggle"
-                                id="dropdown-default-outline-primary" data-bs-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                            <i class="fa-regular fa-plus"></i>
-                        </button>
-                        <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-default-outline-primary"
-                             style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);"
-                             data-popper-placement="bottom-start">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                        <a href="{{ path('app_student_groups_new')}}" type="button"
-                           class="btn-outline-primary btn-lg w-100 js-bs-popover-enabled"
-                           data-bs-toggle="popover"
-                           data-bs-placement="top" title=""
-                           data-bs-content="Добавить"
-                           data-bs-original-title="Добавить нового студента">
-                            <i class="far fa-fw fa-plus"></i>
-                        </a>
-                    </div>
+
+                    <a href="{{ path('app_student_groups_new') }}" type="button"
+                       class="btn btn-outline-light btn-lg w-100 js-bs-popover-enabled"
+                       data-bs-toggle="popover"
+                       data-bs-placement="top" title=""
+                       data-bs-content="Добавить"
+                       data-bs-original-title="Добавить нового студента">
+                        <i class="far fa-fw fa-plus"></i>Добавить
+                    </a>
+
                 </div>
             </div>
             <div class="block-content">
@@ -43,24 +30,56 @@
                     <div class="row">
                         <div class="col-sm-12">
 
-
-                            <table class="table table-bordered table-striped table-vcenter"
+                            {{ dump(student_groups) }}
+                            <table class="table table-bordered table-striped table-vcenter js-dataTable-responsive"
                                    aria-describedby="DataTables_Table_0_info">
                                 <thead class="text-center">
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Letter</th>
-                                <th>actions</th>
+                                <th>№ п/п</th>
+                                <th>Имя группы</th>
+                                <th>Куратор</th>
+                                <th>Курс/Параллель</th>
+                                <th>Действия</th>
                                 </thead>
                                 <tbody>
+
                                 {% for student_group in student_groups %}
                                     <tr>
-                                        <td>{{ student_group.id }}</td>
-                                        <td>{{ student_group.Name }}</td>
-                                        <td>{{ student_group.Letter }}</td>
+                                        <td>{{ loop.index }}</td>
                                         <td>
-                                            <a href="{{ path('app_student_groups_show', {'id': student_group.id}) }}">show</a>
-                                            <a href="{{ path('app_student_groups_edit', {'id': student_group.id}) }}">edit</a>
+                                            <a href="{{ path('app_student_groups_show', {'id': student_group.id}) }}"> {{ student_group.Name }}
+                                                <br><span
+                                                        class="text-muted">{{ student_group.Code }}</small></a></td>
+                                        <td>{{ student_group.GroupLeader }}</td>
+                                        <td>{{ student_group.CourseNumber }}/{{ student_group.ParallelNumber }}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="btn-group w-75 mx-auto">
+                                                    <a class="btn btn-dark"
+                                                       href="{{ path('app_student_groups_show', {'id': student_group.id}) }}"><i
+                                                                class="fa fa-info-circle"></i> Сведения</a>
+                                                    <button type="button"
+                                                            class="btn btn-dark  dropdown-toggle dropdown-toggle-split"
+                                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item"
+                                                               href="{{ path('app_student_groups_edit', {'id': student_group.id}) }}"><i
+                                                                        class="fa fa-pencil"></i> Редактировать</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"
+                                                               href="{{ path('app_student_groups_show', {'id': student_group.id}) }}"><i
+                                                                        class="fa-solid fa-turn-up"></i> Перевести на
+                                                                сл. курс</a></li>
+                                                        <li><a class="dropdown-item" href="#">Something else here</a>
+                                                        </li>
+                                                        <li>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+                                                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 {% else %}

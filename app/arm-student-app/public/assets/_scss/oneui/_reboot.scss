@@ -2,6 +2,72 @@
 // Reboot
 // --------------------------------------------------
 
+// Import Inter font
+
+// inter-300 - latin
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  src: local(""),
+    url("../fonts/inter/inter-v12-latin-300.woff2") format("woff2");
+}
+
+// inter-regular - latin
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("../fonts/inter/inter-v12-latin-regular.woff2") format("woff2");
+}
+
+// inter-500 - latin
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: local(""),
+    url("../fonts/inter/inter-v12-latin-500.woff2") format("woff2");
+}
+
+// inter-600 - latin
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  src: local(""),
+    url("../fonts/inter/inter-v12-latin-600.woff2") format("woff2");
+}
+
+// inter-700 - latin
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: local(""),
+    url("../fonts/inter/inter-v12-latin-700.woff2") format("woff2");
+}
+
+// inter-800 - latin
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  src: local(""),
+    url("../fonts/inter/inter-v12-latin-800.woff2") format("woff2");
+}
+
+// inter-900 - latin
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  src: local(""),
+    url("../fonts/inter/inter-v12-latin-900.woff2") format("woff2");
+}
+
+// Emphasis
 b,
 strong {
   font-weight: $font-weight-bold;

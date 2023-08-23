@@ -41,7 +41,6 @@ export default class Helpers {
       'jq-magnific-popup': () => this.jqMagnific(),
       'jq-slick': () => this.jqSlick(),
       'jq-datepicker': () => this.jqDatepicker(),
-      'jq-colorpicker': () => this.jqColorpicker(),
       'jq-masked-inputs': () => this.jqMaskedInputs(),
       'jq-select2': () => this.jqSelect2(),
       'jq-notify': (options) => this.jqNotify(options),
@@ -74,7 +73,7 @@ export default class Helpers {
    */
 
   /*
-   * Bootstrap Tooltip, for more examples you can check out https://getbootstrap.com/docs/5.0/components/tooltips/
+   * Bootstrap Tooltip, for more examples you can check out https://getbootstrap.com/docs/5.3/components/tooltips/
    *
    * Helpers.run('bs-tooltip');
    *
@@ -100,7 +99,7 @@ export default class Helpers {
   }
 
   /*
-   * Bootstrap Popover, for more examples you can check out https://getbootstrap.com/docs/5.0/components/popovers/
+   * Bootstrap Popover, for more examples you can check out https://getbootstrap.com/docs/5.3/components/popovers/
    *
    * Helpers.run('bs-popover');
    *
@@ -677,29 +676,10 @@ export default class Helpers {
         weekStart: el.data('week-start') || 0,
         autoclose: el.data('autoclose') || false,
         todayHighlight: el.data('today-highlight') || false,
+        startDate: el.data('start-date') || false,
         container: el.data('container') || '#page-container',
         orientation: 'bottom' // Position issue when using BS5, set it to bottom until officially supported
       });
-    });
-  }
-
-  /*
-   * Bootstrap Colorpicker init, for more examples you can check out https://github.com/itsjavi/bootstrap-colorpicker/
-   *
-   * Helpers.run('jq-colorpicker');
-   *
-   * Example usage:
-   *
-   * <input type="text" class="js-colorpicker form-control" value="#db4a39">
-   *
-   */
-  static jqColorpicker() {
-    // Get each colorpicker element (with .js-colorpicker class)
-    jQuery('.js-colorpicker:not(.js-colorpicker-enabled)').each((index, element) => {
-      // Add .js-enabled class to tag it as activated and init it
-      setTimeout(() => {
-        jQuery(element).addClass('js-colorpicker-enabled').colorpicker();
-      }, 500);
     });
   }
 
@@ -761,7 +741,7 @@ export default class Helpers {
       // Add .js-select2-enabled class to tag it as activated and init it
       el.addClass('js-select2-enabled').select2({
         placeholder: el.data('placeholder') || false,
-        dropdownParent: el.data('container') || document.getElementById('page-container'),
+        dropdownParent: document.querySelector(el.data('container') || '#page-container'),
       });
     });
   }
@@ -815,8 +795,8 @@ export default class Helpers {
     <span data-notify="title">{1}</span>
     <span data-notify="message">{2}</span>
   </p>
-  <div class="progress" data-notify="progressbar">
-    <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+  <div class="progress" data-notify="progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar progress-bar-{0}" style="width: 0%;"></div>
   </div>
   <a href="{3}" target="{4}" data-notify="url"></a>
   <a class="p-2 m-1 text-dark" href="javascript:void(0)" aria-label="Close" data-notify="dismiss">
@@ -858,8 +838,8 @@ export default class Helpers {
     <span data-notify="title">{1}</span>
     <span data-notify="message">{2}</span>
   </p>
-  <div class="progress" data-notify="progressbar">
-    <div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+  <div class="progress" data-notify="progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar progress-bar-{0}" style="width: 0%;"></div>
   </div>
   <a href="{3}" target="{4}" data-notify="url"></a>
   <a class="p-2 m-1 text-dark" href="javascript:void(0)" aria-label="Close" data-notify="dismiss">

@@ -5,11 +5,13 @@ namespace App\Service\Admission;
 
 use App\Entity\AbiturientPetition;
 use App\Entity\AbiturientPetitionStatus;
+use App\Entity\AdmissionPlan;
 use App\Message\PetitionLoadMessage;
 use App\Message\PetitionNewLoadMessage;
 use App\Message\Stamp\AnotherStamp;
 use App\Repository\AbiturientPetitionRepository;
 use App\Repository\AbiturientPetitionStatusRepository;
+use App\Repository\AdmissionPlanRepository;
 use App\Repository\AdmissionRepository;
 use App\Repository\AdmissionStatusRepository;
 use App\Repository\EducationFormRepository;
@@ -57,6 +59,7 @@ class PetitionLoadService
         private SpecializationRepository           $specializationRepository,
         private HubInterface                       $hub,
         private MessageBusInterface                $bus,
+        private AdmissionPlanRepository            $admissionPlanRepository,
         private string                             $Token = '',
 
     )
@@ -340,6 +343,9 @@ class PetitionLoadService
             $PetitionData = array();
             $PetitionData['details'] = $this->getDetailsPetiton($GUID);
         }
+        /***
+         * @var AbiturientPetition $petition
+         */
         $petition->setFirstName($PetitionData['details']['document']['firstName']);
         $petition->setLastName($PetitionData['details']['document']['lastName']);
         $petition->setMiddleName($PetitionData['details']['document']['middleName']);
@@ -351,11 +357,13 @@ class PetitionLoadService
         if (isset($PetitionData['details']['currentLocation']['formatted'])) {
             $petition->setCurrentLocationAddress($PetitionData['details']['currentLocation']['formatted']);
         };
+        $petition->setBirthDate(new DateTime(date('Y-m-d H:i:s.u', strtotime($PetitionData['details']['document']['birthDate']))));
         $petition->setbirthPlace($PetitionData['details']['document']['birthPlace']);
         $petition->setPasportIssueOrgan($PetitionData['details']['document']['source']);
         $petition->setPasportSeries($PetitionData['details']['document']['series']);
         $petition->setPasportNumber($PetitionData['details']['document']['number']);
         $petition->setPasportIssueOrgan($PetitionData['details']['document']['source']);
+        $petition->setPasportDateObtain(new DateTime(date('Y-m-d H:i:s.u', strtotime($PetitionData['details']['document']['dateObtain']))));
         $createDate = new DateTime(date('Y-m-d H:i:s.u', strtotime($PetitionData['details']['createdTs'])));
         $petition->setCreatedTs($createDate);
 
@@ -390,6 +398,7 @@ class PetitionLoadService
         $petition->setEducationDocumentNumber($PetitionData['details']['educationDocument']['number']);
         $petition->setNeedStudentAccommondation($PetitionData['details']['needDormitory']);
         $petition->setAttaches($PetitionData['details']['attaches']);
+        $petition->setAdmissionPlanPosition($this->convertAdmissionPlanPosition($petition->getFaculty(),$petition->getAdmission()));
         return $petition;
     }
 
@@ -397,6 +406,15 @@ class PetitionLoadService
     function getCurrentAdmission()
     {
         return $this->admissionRepository->findOneBy(['status' => $this->admissionStatusRepository->findOneBy(['Name' => 'RUNNING'])]);
+    }
+
+    private
+    function convertAdmissionPlanPosition($Faculty,$Admission)
+    {
+        dump($Faculty);
+        dump($Admission);
+        dump($this->admissionPlanRepository->findOneBy(['faculty'=>$Faculty,'admission'=>$Admission]));
+        return $this->admissionPlanRepository->findOneBy(['faculty'=>$Faculty,'admission'=>$Admission]);
     }
 
     private

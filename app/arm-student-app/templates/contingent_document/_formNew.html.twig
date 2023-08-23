@@ -1,5 +1,5 @@
 {{ form_start(form) }}
-<div class="d-none">{{ form_widget(form.student) }}</div>
+<div class="d-none">{{ form_row(form.student) }}</div>
 <div class="row">
     <div class="col-12 col-md-4">
         <div class="block block-rounded block-bordered block-themed">
@@ -7,25 +7,13 @@
                 <h3 class="block-title text-center text-md-start">Информация о приказе</h3>
             </div>
             <div class="block-content pb-4">
-                <div class="row">
-                    <span class="form-label">
-                    Номер приказа</span>{{ form_widget(form.number,{ 'attr': {'class':'form-control'}}) }}
+                <div class="row row-cols-2">
+                    <div class="col">{{ form_row(form.number) }}</div>
+                    <div class="col">{{ form_row(form.createDate) }}</div>
                 </div>
-                <div class="row">
-                    <span class="form-label">
-                   Дата</span>{{ form_widget(form.createDate,{ 'attr': {'class':'js-flatpickr form-control','placeholder':'d-m-y', 'data-date-format':"d-m-Y"}}) }}
-                </div>
-                <div class="row">
-                    <span class="form-label">
-                    Вид приказа</span>{{ form_widget(form.type ,{ 'attr': {'class':'form-control'}}) }}
-                </div>
-
-                <div class="row">
-                    <span class="form-label">
-                    ПОО</span>{{ form_widget(form.college ,{ 'attr': {'class':'form-control'}}) }}
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">{{ form_label(form.isActive) }}</label>{{ form_widget(form.isActive) }}
+                <div class="row">{{ form_row(form.type) }}</div>
+                <div class="row">{{ form_row(form.college) }}</div>
+                <div class="form-check">{{ form_row(form.isActive) }}
                 </div>
             </div>
         </div>
@@ -33,7 +21,7 @@
 
 </div>
 
-{{ form_widget(form) }}
+{{ form_row(form) }}
 <div class="block block-rounded block-bordered block-themed">
     <div class="block-header block-header-default bg-secondary">
         <span> </span>

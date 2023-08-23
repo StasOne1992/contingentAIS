@@ -39,4 +39,4 @@ class pageAuthReminder {
 }
 
 // Initialize when page loads
-One.onLoad(pageAuthReminder.init());
+One.onLoad(() => pageAuthReminder.init());

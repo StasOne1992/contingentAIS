@@ -7,46 +7,42 @@
                 <h3 class="block-title text-center text-md-start">Информация о приказе</h3>
             </div>
             <div class="block-content pb-4">
-                <div class="row">
-                    <span class="form-label">
-                    Номер приказа</span>{{ form_widget(form.number,{ 'attr': {'class':'form-control'}}) }}
+                <div class="row">{{ form_row(form.college) }}</div>
+                <div class="row row-cols-2">
+                    <div class="col">{{ form_row(form.number) }}</div>
+                    <div class="col">{{ form_row(form.createDate) }}</div>
                 </div>
-                <div class="row">
-                    <span class="form-label">
-                   Дата</span>{{ form_widget(form.createDate,{ 'attr': {'class':'js-flatpickr form-control','placeholder':'d-m-y', 'data-date-format':"d-m-Y"}}) }}
-                </div>
-                <div class="row">
-                    <span class="form-label">
-                    Вид приказа</span>{{ form_widget(form.type ,{ 'attr': {'class':'form-control'}}) }}
-                </div>
+                <div class="row">{{ form_row(form.type) }}</div>
+                <div class="row">{{ form_row(form.name) }}</div>
+                <div class="row">{{ form_row(form.reason) }}</div>
 
-                <div class="row">
-                    <span class="form-label">
-                    ПОО</span>{{ form_widget(form.college ,{ 'attr': {'class':'form-control'}}) }}
-                </div>
-                <div class="form-check">
+                <div class="form-check mt-2">
                     <label class="form-check-label">{{ form_label(form.isActive) }}</label>{{ form_widget(form.isActive) }}
                 </div>
             </div>
         </div>
-    </div>
 
+        {{ form_widget(form) }}
+        <div class="block block-rounded block-bordered block-themed">
+            <div class="block-header block-header-default bg-secondary">
+                <span> </span>
+                <div class="block-options">
+                    <button class="btn btn-primary btn-lg">{{ button_label|default('Save') }}</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {{ form_end(form) }}
     <div class="col-12 col-md-8">
         <div class="block block-rounded block-bordered block-themed">
             <div class="block-header block-header-default bg-secondary">
                 <h3 class="block-title text-center text-md-start">Студенты в приказе</h3>
-
                 <div class="block-options">
                     <div class="block-options-item">
                         <div class="btn-group" role="group" aria-label="Icons File group">
-                            <button type="button" class="btn btn-primary">
-                                <i class="fa fa-fw fa-file"></i>
-                            </button>
-                            <button type="button" class="btn btn-primary">
-                                <i class="fa fa-fw fa-save"></i>
-                            </button>
                             <button type="button" class="btn btn-alt-primary" data-bs-toggle="modal"
-                                    data-bs-target="#modal-block-extra-large"><i class="fa fa-plus-hexagon"></i>
+                                    data-bs-target="#modal-block-extra-large"><i class="fa fa-plus-hexagon"></i> Добавить студентов в приказ
                             </button>
                         </div>
                     </div>
@@ -63,23 +59,50 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% set itterator=0 %}
                     {% for element in form.vars.data.student %}
-                        {% set itterator=itterator+1 %}
                         <tr>
                             <td>
-                                {{ itterator }}
+                                {{ loop.index }}
                             </td>
-                            <td>{{ element.LastName~" "~element.FirstName~" "~element.MiddleName }}</td>
-                            <td>{{ element.StudentGroup }}</td>
+                            <td>{{ element.LastName~" "~element.FirstName~" "~element.MiddleName }}
+                                <br>
+                                {% if not (element.AbiturientPetition is null) %}
+                                    <small class="text-muted">{{ element.AbiturientPetition.getFaculty }}</small>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if not (element.StudentGroup is null) %}
+                                {{ element.StudentGroup }}
+                                {% else %}
+                                <div class="mb-4">
+                                    <div class="row">
+                                        <label class="form-label" for="example-select">Укажите
+                                            группу</label>
+                                        <div class="col">
+                                            <form action="{{ path('app_student_setGroup',{'id':element.id}) }}"
+                                                  method="post">
+                                                <input class="d-none" name="contingentDocumentID" value="{{ contingent_document.id }}">
+                                                <div class="input-group">
+                                                    <select class="form-select" id="group-select"
+                                                            name="group-select">
+                                                        <option selected disabled>--Группа не выбрана--</option>
+                                                        {% for group in studentGroups %}
+                                                            <option value="{{ group.id }}">{{ group.name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <button type="submit" class="btn btn-alt-primary">Установить
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                            </td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Icons File group">
-                                    <button type="button" class="btn btn-primary">
-                                        <i class="fa fa-fw fa-file"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-primary">
-                                        <i class="fa fa-fw fa-save"></i>
-                                    </button>
+                                    <a type="button" href="{{ path('app_student_edit',{'id':element.id}) }}" class="btn btn-primary">
+                                        <i class="fa fa-fw fa-pencil"></i> Изменить
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -91,19 +114,6 @@
         </div>
     </div>
 </div>
-
-{{ form_widget(form) }}
-<div class="block block-rounded block-bordered block-themed">
-    <div class="block-header block-header-default bg-secondary">
-        <span> </span>
-        <div class="block-options">
-            <button class="btn btn-primary btn-lg">{{ button_label|default('Save') }}</button>
-        </div>
-    </div>
-
-</div>
-
-{{ form_end(form) }}
 
 
 <!-- Extra Large Block Modal -->

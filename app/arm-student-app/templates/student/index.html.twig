@@ -72,9 +72,19 @@
 
                         </td>
                         <td class="d-none d-xl-table-cell">
-                            <small>{{ student.studentGroup.faculty.specialization.code~" "~student.studentGroup.faculty.specialization.name }}</small>
+
+                            {% if not ( student.studentGroup is null) %}
+                                <small>    {{ student.studentGroup.faculty.specialization.code~" "~student.studentGroup.faculty.specialization.name }}</small>
+                            {% else %}
+                                <small>Группа не назначена</small>
+                            {% endif %}
                         </td>
-                        <td class="d-none d-xl-table-cell">{{ student.studentGroup.name }}</td>
+                        <td class="d-none d-xl-table-cell">
+                            {% if not ( student.studentGroup is null) %}
+                                {{ student.studentGroup.name }}
+                            {% else %}
+                                <small>Группа не назначена</small>
+                            {% endif %}</td>
                         <td class="d-none d-xl-table-cell">{{ student.NumberZachetka }}
                             / {{ student.NumberStudBilet }}</td>
                         <td class="d-none d-sm-table-cell">{{ student.email }}</td>

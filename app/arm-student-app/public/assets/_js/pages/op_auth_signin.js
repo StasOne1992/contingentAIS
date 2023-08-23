@@ -48,4 +48,4 @@ class pageAuthSignIn {
 }
 
 // Initialize when page loads
-One.onLoad(pageAuthSignIn.init());
+One.onLoad(() => pageAuthSignIn.init());

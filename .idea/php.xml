@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BladeDebugConfiguration">
+    <cachePath />
+  </component>
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
@@ -286,6 +289,10 @@
       <path value="$PROJECT_DIR$/app/arm-student-app/vendor/stof/doctrine-extensions-bundle" />
       <path value="$PROJECT_DIR$/app/arm-student-app/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/app/arm-student-app/vendor/behat/transliterator" />
+      <path value="$PROJECT_DIR$/app/arm-student-app/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/app/arm-student-app/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/app/arm-student-app/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/app/arm-student-app/vendor/sabberworm/php-css-parser" />
     </include_path>
   </component>
   <component name="PhpInterpreters">
@@ -368,5 +375,8 @@
     <phpunit_settings>
       <PhpUnitSettings configuration_file_path="$PROJECT_DIR$/phpunit.xml.dist" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" use_configuration_file="true" />
     </phpunit_settings>
+  </component>
+  <component name="TwigDebugConfiguration">
+    <cachePath />
   </component>
 </project>

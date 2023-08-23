@@ -1,6 +1,6 @@
 FROM php:8.2-fpm
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends supervisor mc libssl-dev zlib1g-dev curl git unzip libxml2-dev libpq-dev libzip-dev \
+    && apt-get install -y --no-install-recommends supervisor systemctl sudo mc  libssl-dev zlib1g-dev curl git unzip libxml2-dev libpq-dev libzip-dev \
     && pecl install apcu \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install -j$(nproc) zip opcache intl pdo_pgsql pgsql  \
@@ -12,5 +12,12 @@ WORKDIR /var/www/project
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt install symfony-cli
+RUN apt-get install --reinstall ca-certificates
+## start SuperVisor service
 
-RUN service supervisor start
+ENTRYPOINT  service supervisor start && /bin/bash
+##RUN systemctl enable supervisor.service
+
+## start Messenger component
+#WORKDIR /var/www/project/bin
+#ENTRYPOINT php console messenger:consume async -v

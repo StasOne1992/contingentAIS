@@ -21,6 +21,9 @@ class ContingentDocumentType
     #[ORM\OneToMany(mappedBy: 'type', targetEntity: ContingentDocument::class)]
     private Collection $contingentDocuments;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Title = null;
+
     public function __construct()
     {
         $this->contingentDocuments = new ArrayCollection();
@@ -76,5 +79,17 @@ class ContingentDocumentType
     public function __toString(): string
     {
         return $this->getName();
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->Title;
+    }
+
+    public function setTitle(?string $Title): static
+    {
+        $this->Title = $Title;
+
+        return $this;
     }
 }

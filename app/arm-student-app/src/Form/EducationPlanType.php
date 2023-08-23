@@ -12,7 +12,13 @@ class EducationPlanType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('Title')
             ->add('Faculty')
+            ->add('DateStart')
+            ->add('DateEnd')
+            ->add('Qualification')
+            ->add('EducationForm')
+            ->add('BaseEducationType')
         ;
     }
 

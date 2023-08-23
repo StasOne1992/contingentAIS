@@ -7,7 +7,7 @@
   padding-top: 1rem;
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
-  color: #64748b;
+  color: $gray-600;
   line-height: 1.75;
   text-transform: uppercase;
   letter-spacing: 0.0625rem;
@@ -16,7 +16,7 @@
     margin-top: 0.25rem;
     font-size: $font-size-sm;
     font-weight: 400;
-    color: #64748b;
+    color: $gray-600;
     text-transform: none;
     letter-spacing: normal;
   }
