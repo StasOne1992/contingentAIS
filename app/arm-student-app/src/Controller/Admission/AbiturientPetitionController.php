@@ -39,6 +39,7 @@ use App\Service\GlobalHelpersService;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use DateTime;
+use function PHPUnit\Framework\isNull;
 
 #[Route('/admission/petition')]
 class AbiturientPetitionController extends AbstractController
@@ -110,7 +111,8 @@ class AbiturientPetitionController extends AbstractController
     {
         $this->personaSexRepository->findAll();
         $this->abiturientPetitionStatusRepository->findAll();
-        if ($abiturientPetition->getAdmissionPlanPosition()->isHaveAdmissionExamination()) {
+
+        if (!isNull($abiturientPetition->getAdmissionPlanPosition())) {
             $admissionExamination = $this->admissionExaminationRepository->findBy(['AdmissionPlanPosition' => $abiturientPetition->getAdmissionPlanPosition()->getId()]);
             $abiturientPetition->getResult();
         }
@@ -396,7 +398,7 @@ class AbiturientPetitionController extends AbstractController
 
         if($this->userRepository->findOneBy(['email'=>$login . '@student.vatholm.ru']))
         {
-            $user=$this->userRepository->findOneBy(['login'=>$login . '@student.vatholm.ru']);
+            $user=$this->userRepository->findOneBy(['email'=>$login . '@student.vatholm.ru']);
         }
         {
             $user = new User();

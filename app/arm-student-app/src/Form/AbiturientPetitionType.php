@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\AbiturientPetition;
 use App\Entity\AbiturientPetitionStatus;
 use App\Entity\Admission;
+use App\Entity\AdmissionPlan;
 use App\Entity\Faculty;
 use App\Entity\PersonaSex;
 use App\Entity\Regions;
@@ -111,6 +112,18 @@ class AbiturientPetitionType extends AbstractType
                 ])
             ],
             )
+            ->add('PasportDateObtain', DateType::class, [
+                'label' => 'Дата выдачи паспорта',
+                'widget' => 'single_text',
+                'html5' => false,
+                'empty_data' => '',
+                'attr' => array_merge($readOnly, $disabled_DP, [
+                    'class' => ' js-flatpickr form-control ',
+                    'required' => false,
+                    'placeholder' => 'Дата выдачи паспорта'
+                ])
+            ],
+            )
             ->add('DateProvision', DateType::class, [
                 'label' => 'Дата решения',
                 'widget' => 'single_text',
@@ -157,6 +170,16 @@ class AbiturientPetitionType extends AbstractType
                 ]),
                 'required' => false,
                 'class' => PersonaSex::class))
+
+            ->add('AdmissionPlanPosition', EntityType::class, array(
+                'label' => 'Позиция плана приёма',
+                'placeholder' => 'Укажите позицию плана приёма',
+                'empty_data' => null,
+                'attr' => array_merge($disabled, [
+                    'class' => 'form-select',
+                ]),
+                'required' => false,
+                'class' => AdmissionPlan::class))
             ->add('Region', EntityType::class, array(
                 'label' => 'Регион',
                 'placeholder' => 'Укажите регион проживания',
