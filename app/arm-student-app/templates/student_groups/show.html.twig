@@ -1,338 +1,594 @@
 {% extends 'base.html.twig' %}
+{% set refer = 1 %}
+{% set page_title = 'Студенческие группы' %}
+{% set sub_page_title =  'Группа '~student_group.name~' '~student_group.code %}
 
-{% block title %}StudentGroups{% endblock %}
-
+{% block title %}
+    {% if page_title is defined %} {{ page_title }} {% endif %}
+{% endblock %}
 {% block body %}
 
 
-<!-- Block Tabs Animated Slide Left -->
-<div class="block block-rounded block-themed ">
-    <ul class="nav nav-tabs nav-tabs-block" role="tablist">
-        <li class="nav-item">
-            <button class="nav-link active" id="btabs-animated-slideleft-home-tab" data-bs-toggle="tab"
-                    data-bs-target="#btabs-animated-slideleft-home" role="tab"
-                    aria-controls="btabs-animated-slideleft-home" aria-selected="true">Социальный паспорт
-            </button>
-        </li>
-        <li class="nav-item">
-            <button class="nav-link" id="btabs-animated-slideleft-profile-tab" data-bs-toggle="tab"
-                    data-bs-target="#btabs-animated-slideleft-profile" role="tab"
-                    aria-controls="btabs-animated-slideleft-profile" aria-selected="false">Список студентов
-            </button>
-        </li>
-        <li class="nav-item ms-auto">
-            <button class="nav-link" id="btabs-animated-slideleft-settings-tab" data-bs-toggle="tab"
-                    data-bs-target="#btabs-animated-slideleft-settings" role="tab"
-                    aria-controls="btabs-animated-slideleft-settings" aria-selected="false">
-                <i class="si si-settings"></i>
-            </button>
-        </li>
-    </ul>
-    <div class="block-content tab-content overflow-hidden">
-        <div class="tab-pane fade fade-left show active" id="btabs-animated-slideleft-home" role="tabpanel"
-             aria-labelledby="btabs-animated-slideleft-home-tab">
-            <h3 class="fw-large">Группа {{ student_group.name }} ({{ student_group.code }})</h3>
+    <!-- Block Tabs Animated Slide Left -->
+    <div class="block block-rounded block-themed ">
+        <ul class="nav nav-tabs nav-tabs-block" role="tablist">
+            <li class="nav-item">
+                <button class="nav-link active" id="btabs-animated-slideleft-home-tab" data-bs-toggle="tab"
+                        data-bs-target="#btabs-animated-slideleft-home" role="tab"
+                        aria-controls="btabs-animated-slideleft-home" aria-selected="true">Социальный паспорт
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="btabs-animated-slideleft-profile-tab" data-bs-toggle="tab"
+                        data-bs-target="#btabs-animated-slideleft-profile" role="tab"
+                        aria-controls="btabs-animated-slideleft-profile" aria-selected="false">Список студентов
+                </button>
+            </li>
 
-            <div class="row">
-                <div class="col-12 col-md-5">
-                    <div class="block block-rounded block-bordered block-themed">
-                        <div class="block-header block-header-default bg-secondary">
-                            <h3 class="block-title">Специальность</h3>
-                        </div>
-                        <div class="block-content pb-4">
-                            {{ student_group.faculty }}
+            <li class="nav-item ms-auto">
+                <button class="nav-link" id="btabs-animated-slideleft-settings-tab" data-bs-toggle="tab"
+                        data-bs-target="#btabs-animated-slideleft-settings" role="tab"
+                        aria-controls="btabs-animated-slideleft-settings" aria-selected="false">
+                    <i class="si si-settings"></i>
+                </button>
+            </li>
+        </ul>
+        <div class="block-content block-content-full tab-content overflow-hidden">
+            <div class="tab-pane fade fade-left show active" id="btabs-animated-slideleft-home" role="tabpanel"
+                 aria-labelledby="btabs-animated-slideleft-home-tab">
+                <h3 class="fw-large">Группа {{ student_group.name }} ({{ student_group.code }})</h3>
+                <div class="row">
+                    <div class="col-12 col-xl-6">
+                        <div class="p-2  bg-body-light  block block-bordered block-rounded ">
+                            <h2 class="content-heading p-2">Сведения о группе. Распределение по полу</h2>
+                            <div class="row p-2">
+                                <div class="col-12 col-md-4">
+                                    <div class="block block-rounded block-link-shadow bg-success">
+                                        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <i class="far fa-2x fa-users text-white-50"></i>
+                                            </div>
+                                            <dl class="ms-3 text-end mb-0">
+                                                <dt class="text-white h3 fw-extrabold mb-0">
+                                                    {{ student_group.socialPassport.countStudents }}
+                                                </dt>
+                                                <dd class="text-white fs-sm fw-medium text-muted mb-0">
+                                                    Всего
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <div class="block block-rounded block-link-shadow bg-amethyst">
+                                        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                                            <div class="d-none d-md-block">
+                                                <i class="far fa-2x fa-person text-white-50"></i>
+                                            </div>
+                                            <dl class="ms-0 ms-md-3 text-center text-md-end mb-0">
+                                                <dt class="text-white h3 fw-extrabold mb-0">
+                                                    {{ student_group.socialPassport.countMan }}
+                                                </dt>
+                                                <dd class="text-white fs-sm fw-medium text-muted mb-0">
+                                                    Мужской пол
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <div class="block block-rounded block-link-shadow bg-smooth">
+                                        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                                            <div class="d-none d-md-block">
+                                                <i class="far fa-2x fa-person-dress text-white-50"></i>
+                                            </div>
+                                            <dl class="ms-0 ms-md-3 text-center text-md-end mb-0">
+                                                <dt class="text-white h3 fw-extrabold mb-0">
+                                                    {{ student_group.socialPassport.countWoman }}
+                                                </dt>
+                                                <dd class="text-white fs-sm fw-medium text-muted mb-0">
+                                                    Женский пол
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="block block-rounded block-bordered block-themed">
-                        <div class="block-header block-header-default bg-secondary">
-                            <h3 class="block-title">Классный руководитель</h3>
-                        </div>
-                        <div class="block-content pb-4">
-                            {{ student_group.groupLeader}}
+                    <div class="col-12 col-xl-6">
+                        <div class="p-1  bg-body-light  block block-bordered block-rounded ">
+                            <h2 class="content-heading p-2">Сведения о группе. Распределение по полу</h2>
+                            <div class="row p-2 row-cols-1 row-cols-md-2">
+                                <div class="col">
+                                    <div class="block block-rounded block-link-shadow bg-gray-dark">
+                                        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                                            <div class="d-none d-md-block">
+                                                <i class="fa-regular fa-2x fa-user text-white-50"></i>
+                                            </div>
+                                            <dl class="ms-0 ms-md-3 text-center text-md-end mb-0">
+                                                <dt class="text-white h3 fw-extrabold mb-0">
+                                                    {{ student_group.socialPassport.countMan }}
+                                                </dt>
+                                                <dd class="text-white fs-sm fw-medium text-muted mb-0">
+                                                    Несовершеннолетние
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="block block-rounded block-link-shadow bg-success">
+                                        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                                            <div class="d-none d-md-block">
+                                                <i class="fas fa-2x fa-user text-white-50"></i>
+                                            </div>
+                                            <dl class="ms-0 ms-md-3 text-center text-md-end mb-0">
+                                                <dt class="text-white h3 fw-extrabold mb-0">
+                                                    {{ student_group.socialPassport.countWoman }}
+                                                </dt>
+                                                <dd class="text-white fs-sm fw-medium text-muted mb-0">
+                                                    Совершеннолетние
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-12 col-xl-6 ">
+                        <div class="p-1 bg-body-light block block-bordered block-rounded ">
+                            <h2 class="content-heading p-2">Сведения о группе. Распределение социальному статусу</h2>
+                            <div class="row p-2 row-cols-1 row-cols-md-2">
+                                <div class="col">
+                                    <div class="block block-rounded block-link-shadow bg-gray-dark">
+                                        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                                            <div class="d-none d-md-block">
+                                                <i class="fa-regular fa-2x fa-user text-white-50"></i>
+                                            </div>
+                                            <dl class="ms-0 ms-md-3 text-center text-md-end mb-0">
+                                                <dt class="text-white h3 fw-extrabold mb-0">
+                                                    {{ student_group.socialPassport.countMan }}
+                                                </dt>
+                                                <dd class="text-white fs-sm fw-medium text-muted mb-0">
+                                                    Дети сироты
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="block block-rounded block-link-shadow bg-success">
+                                        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                                            <div class="d-none d-md-block">
+                                                <i class="fas fa-2x fa-user text-white-50"></i>
+                                            </div>
+                                            <dl class="ms-0 ms-md-3 text-center text-md-end mb-0">
+                                                <dt class="text-white h3 fw-extrabold mb-0">
+                                                    {{ student_group.socialPassport.countWoman }}
+                                                </dt>
+                                                <dd class="text-white fs-sm fw-medium text-muted mb-0">
+                                                    Дети оставшиеся без попечения родителей
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="block block-rounded block-link-shadow bg-success">
+                                        <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                                            <div class="d-none d-md-block">
+                                                <i class="fas fa-2x fa-user text-white-50"></i>
+                                            </div>
+                                            <dl class="ms-0 ms-md-3 text-center text-md-end mb-0">
+                                                <dt class="text-white h3 fw-extrabold mb-0">
+                                                    {{ student_group.socialPassport.countWoman }}
+                                                </dt>
+                                                <dd class="text-white fs-sm fw-medium text-muted mb-0">
+                                                    Дети инвалиды
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
-                <div class="col-12 col-md-3">
-                    <div class="block block-rounded block-bordered block-themed">
-                        <div class="block-header block-header-default bg-secondary">
-                            <h3 class="block-title">Дата поступления / выпуска</h3>
-                        </div>
-                        <div class="block-content pb-4">
-                            {{ student_group.dateStart|format_datetime('medium', 'none', locale='ru')}} / {{ student_group.dataEnd|format_datetime('medium', 'none', locale='ru')}}
-                        </div>
+            </div>
+        </div>
+
+        <div class="row row-cols-3">
+            <div class="col">
+                <div class="block block-rounded block-bordered block-themed">
+                    <div class="block-header block-header-default bg-secondary">
+                        <h3 class="block-title">Специальность</h3>
+                    </div>
+                    <div class="block-content pb-4">
+                        {{ student_group.faculty }}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="block block-rounded block-bordered block-themed">
+                    <div class="block-header block-header-default bg-secondary">
+                        <h3 class="block-title">Классный руководитель</h3>
+                    </div>
+                    <div class="block-content pb-4">
+                        {{ student_group.groupLeader }}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="block block-rounded block-bordered block-themed">
+                    <div class="block-header block-header-default bg-secondary">
+                        <h3 class="block-title">Дата поступления / выпуска</h3>
+                    </div>
+                    <div class="block-content pb-4">
+                        {{ student_group.dateStart|format_datetime('medium', 'none', locale='ru') }}
+                        / {{ student_group.dataEnd|format_datetime('medium', 'none', locale='ru') }}
                     </div>
                 </div>
             </div>
 
-                <div class="row">
-                    <div class="col-12 col-md-4">
-                        <div class="block block-rounded block-bordered block-themed">
-                            <div class="block-header block-header-default bg-secondary">
-                                <h3 class="block-title">Распределение по полу</h3>
-                            </div>
-                            <div class="block-content">
-                                <div class="row">
-                                    <div class="col-10 "><h6>Общее количество студентов</h6></div>
-                                    <div class="col-2">{{ student_group.socialPassport.countStudents }}</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-10 "><h6>Количество студентов мужского пола</h6></div>
-                                    <div class="col-2">{{ student_group.socialPassport.countMan }}</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-10 "><h6>Количество студентов женского пола</h6></div>
-                                    <div class="col-2">{{ student_group.socialPassport.countWoman }}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="block block-rounded block-bordered block-themed">
-                            <div class="block-header block-header-default bg-secondary">
-                                <h3 class="block-title">Распределение по возрасту</h3>
-                            </div>
-                            <div class="block-content">
-                                <div class="row">
-                                    <div class="col-10 "><h6>Количество несовершеннолетних студентов</h6></div>
-                                    <div class="col-2">{{ student_group.socialPassport.countUnderage }}</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-10 "><h6>Количество совершеннолетних студентов</h6></div>
-                                    <div class="col-2"> {{student_group.socialPassport.countАdult }}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="block block-rounded block-bordered block-themed">
-                            <div class="block-header block-header-default bg-secondary">
-                                <h3 class="block-title">Распределение по социальному статусу</h3>
-                            </div>
-                            <div class="block-content">
-                                <div class="row">
-                                    <div class="col-10 "><h6>Дети сироты <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-trigger="click" data-bs-placement="top" title="Умерли оба или единственный родитель">?</button></h6></div>
-                                    <div class="col-2">{{ student_group.socialPassport.countUnderage }}</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-10 "><h6>Дети, оставшиеся без попечения родителей   <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-trigger="click" data-bs-placement="top" title="Лишены родительских прав один или оба родителя">?</button> </h6></div>
-                                    <div class="col-2"> {{student_group.socialPassport.countАdult }}</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-10 "><h6>Дети инвалиды  <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-trigger="click" data-bs-placement="top" title="Лишены родительских прав один или оба родителя">?</button> </h6></div>
-                                    <div class="col-2"> {{student_group.socialPassport.countInvalid }}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="block block-rounded block-bordered">
-                        <div class="block-header block-header-default">
-                            <h3 class="block-title"><small>Распределение по возрасту</small></h3>
-                        </div>
-                        <div class="block-content">
-                            <div class="row">
-                                <div class="col-2"><h6>Количество несовершеннолетних студентов</h6></div>
-                                <div class="col-2">{{ student_group.socialPassport.countStudents }}</div>
-                                <div class="col-2"><h6>Количество студентов мужского пола</h6></div>
-                                <div class="col-2">{{ student_group.socialPassport.countMan }}</div>
-                                <div class="col-2"><h6>Количество студентов женского пола</h6></div>
-                                <div class="col-2">{{ student_group.socialPassport.countWoman }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="block block-rounded block-bordered">
-                            <div class="block-header block-header-default">
-                                <h3 class="block-title"><small>По социальному статусу</small></h3>
-                            </div>
-                            <div class="block-content">
-                                <div class="row">
-                                    <div class="col-2"><h6>Дети сироты (умерли оба или единственный родитель)</h6></div>
-                                    <div class="col-2">{{ student_group.socialPassport.countStudents }}</div>
-                                    <div class="col-2"><h6>Дети, оставшиеся без попечения родителей (лишены родительских прав один или оба родителя)</h6></div>
-                                    <div class="col-2">{{ student_group.socialPassport.countMan }}</div>
-                                    <div class="col-2"><h6>Количество студентов женского пола</h6></div>
-                                    <div class="col-2">{{ student_group.socialPassport.countWoman }}</div>
-                                </div>
-                            </div>
-                        </div>
-                    <div class="row">
-                        <div class="col-2"><h6>Количество несовершеннолетних студентов</h6></div>
-                        <div class="col-8">{{ student_group }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2"><h6>Дети сироты (умерли оба или единственный родитель)</h6></div>
-                        <div class="col-8">{{ student_group.students.count }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2"><h6>Дети, оставшиеся без попечения родителей (лишены родительских прав
-                                один
-                                или оба родителя)</h6></div>
-                        <div class="col-8">{{ student_group.students.count }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2"><h6>Дети инвалиды</h6></div>
-                        <div class="col-8">{{ student_group.students.count }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2"><h6>Дети, оставшиеся без попечения родителей (лишены родительских прав
-                                один
-                                или оба родителя)
 
-                            </h6></div>
-                        <div class="col-8">{{ student_group.students.count }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2"><h6>Студенты, воспитывающиеся в неполных семьях (Ф.И.О.)</h6></div>
-                        <div class="col-8">{{ student_group.students.count }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2"><h6>Студенты из многодетных семей (Ф.И.О.)</h6></div>
-                        <div class="col-8">{{ student_group.students.count }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2"><h6>Студенты из неблагополучных семей (Ф.И.О.)</h6></div>
-                        <div class="col-8">{{ student_group.students.count }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2"><h6>Студенты, состоящие на учете ППДН, КДНиЗП, совершившие
-                                правонарушения</h6></div>
-                        <div class="col-8">{{ student_group.students.count }}</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2"><h6>Студенты, проживающие в общежитии</h6></div>
-                        <div class="col-8">{{ student_group.students.count }}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade fade-left" id="btabs-animated-slideleft-profile" role="tabpanel"
-                 aria-labelledby="btabs-animated-slideleft-profile-tab">
-
-                <div class="block block-rounded block-bordered">
-                    <div class="block-header block-header-default">
-                        <h3 class="block-title">Список студентов <small></small></h3>
-                        <div class="block-options">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-outline-primary dropdown-toggle"
-                                        id="dropdown-default-outline-primary" data-bs-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false">
-                                    <i class="fa-regular fa-plus"></i>
-                                </button>
-                                <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-default-outline-primary"
-                                     style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);"
-                                     data-popper-placement="bottom-start">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                                <a href="{{ path('app_student_new') }}" type="button"
-                                   class="btn-outline-primary btn-lg w-100 js-bs-popover-enabled"
-                                   data-bs-toggle="popover"
-                                   data-bs-placement="top" title=""
-                                   data-bs-content="Добавить"
-                                   data-bs-original-title="Добавить нового студента">
-                                    <i class="far fa-fw fa-plus"></i>
-                                </a>
-                            </div>
-                        </div>
+            <div class="col">
+                <div class="block block-rounded block-bordered block-themed">
+                    <div class="block-header block-header-default bg-secondary">
+                        <h3 class="block-title">Распределение по полу</h3>
                     </div>
                     <div class="block-content">
-                        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
-                            <table class="table table-bordered table-striped table-vcenter"
-                                   aria-describedby="DataTables_Table_0_info">
-                                <thead class="text-center">
-                                <tr>
-                                    <th>№<br> п/п</th>
-                                    <th>Фамилия Имя Отчество</th>
-                                    <th class="d-none d-xl-table-cell">Специальность</th>
-                                    <th class="d-none d-xl-table-cell">Группа</th>
-                                    <th class="d-none d-xl-table-cell">Номер зачётки/<br>Номер студ. билета</th>
-                                    <th class="d-none d-xl-table-cell">Email</th>
-                                    <th>Действия</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% set iterator = 0 %}
-                                {% for student in student_group.students %}
-                                    {% set iterator = iterator + 1 %}
-                                    <tr>
-                                        <td>{{ iterator }}</td>
-                                        <td>
-                                            <div class="row  align-items-center">
-                                                <div class="col-12  {% if(student.IsInvalid or student.IsOrphan or student.IsPoor or student.IsPaid) %}col-md-9{% endif %} ">{{ student.LastName }} {{ student.FirstName }} {{ student.MiddleName }}</div>
-                                                {% if(student.IsInvalid or student.IsOrphan or student.IsPoor or student.IsPaid) %}
-                                                    <div class="col-12 col-md-3 small">
-                                                        <div class="row">
+                        <div class="block block-rounded block-link-shadow bg-success">
+                            <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                                <div>
+                                    <i class="far fa-2x fa-user text-white-50"></i>
+                                </div>
+                                <dl class="ms-3 text-end mb-0">
+                                    <dt class="text-white h3 fw-extrabold mb-0">
+                                        {{ student_group.socialPassport.countStudents }}
+                                    </dt>
+                                    <dd class="text-white fs-sm fw-medium text-muted mb-0">
+                                        Всего
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
 
-                                                            {% if(student.IsInvalid) %}
-                                                                <span class="badge bg-info col-6 col-md-3">И</span>
-                                                            {% endif %}
-
-                                                            {% if(student.IsPoor) %}
-                                                                <span class="badge  bg-secondary  col-6 col-md-3">М</span>
-                                                            {% endif %}
-
-                                                            {% if(student.IsOrphan) %}
-                                                                <span class="badge bg-danger  col-6 col-md-3">С</span>
-                                                            {% endif %}
-                                                            {% if(student.IsPaid) %}
-                                                                <span class="badge bg-warning  col-6 col-md-3">П</span>
-                                                            {% endif %}  </div>
-                                                    </div>
-                                                {% endif %}
-                                            </div>
-
-                                        </td>
-                                        <td class="d-none d-xl-table-cell">
-                                            <small>{{ student.studentGroup.faculty.specialization.code~" "~student.studentGroup.faculty.specialization.name }}</small>
-                                        </td>
-                                        <td class="d-none d-xl-table-cell">{{ student.studentGroup.name }}</td>
-                                        <td class="d-none d-xl-table-cell">{{ student.NumberZachetka }}
-                                            / {{ student.NumberStudBilet }}</td>
-                                        <td class="d-none d-sm-table-cell">{{ student.email }}</td>
-
-                                        <td>
-                                            <div class="btn-group">
-                                                <a class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
-                                                   href="{{ path('app_student_show', {'id': student.id}) }}"> <i
-                                                            class="far fa-fw  fa-file-user"></i></a>
-                                                <a class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
-                                                   href="{{ path('app_student_edit', {'id': student.id}) }}"><i
-                                                            class="fa fa-fw fa-pencil-alt"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                {% else %}
-                                    <tr>
-                                        <td colspan="14">no records found</td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
-
-
+                        <div class="block block-rounded block-link-shadow bg-success">
+                            <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                                <div>
+                                    <i class="far fa-2x fa-user text-white-50"></i>
+                                </div>
+                                <dl class="ms-3 text-end mb-0">
+                                    <dt class="text-white h3 fw-extrabold mb-0">
+                                        {{ student_group.socialPassport.countStudents }}
+                                    </dt>
+                                    <dd class="text-white fs-sm fw-medium text-muted mb-0">
+                                        Всего
+                                    </dd>
+                                </dl>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade fade-left" id="btabs-animated-slideleft-settings" role="tabpanel"
-                 aria-labelledby="btabs-animated-slideleft-settings-tab">
-                <h4 class="fw-normal">Settings Content</h4>
-                <p>Content slides in to the left..</p>
+
+
+            <div class="col">
+                <div class="block block-rounded block-bordered block-themed">
+                    <div class="block-header block-header-default bg-secondary">
+                        <h3 class="block-title">Распределение по полу</h3>
+                    </div>
+                    <div class="block-content">
+                        <div class="row row-cols-auto">
+                            <div class="col-10 "><h6>Общее количество студентов</h6></div>
+                            <div class="col-2">{{ student_group.socialPassport.countStudents }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10 "><h6>Количество студентов мужского пола</h6></div>
+                            <div class="col-2">{{ student_group.socialPassport.countMan }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10 "><h6>Количество студентов женского пола</h6></div>
+                            <div class="col-2">{{ student_group.socialPassport.countWoman }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="block block-rounded block-bordered block-themed">
+                    <div class="block-header block-header-default bg-secondary">
+                        <h3 class="block-title">Распределение по возрасту</h3>
+                    </div>
+                    <div class="block-content">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-10"><h6>Количество несовершеннолетних студентов</h6></div>
+                                <div class="col-2">{{ student_group.socialPassport.countUnderage }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-10 "><h6>Количество совершеннолетних студентов</h6></div>
+                                <div class="col-2"> {{student_group.socialPassport.countАdult }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="block block-rounded block-bordered block-themed">
+                    <div class="block-header block-header-default bg-secondary">
+                        <h3 class="block-title">Распределение по социальному статусу</h3>
+                    </div>
+                    <div class="block-content">
+                        <div class="row">
+                            <div class="col-10 ">
+                                <h6>Дети сироты
+                                    <button type="button" class="btn" data-bs-toggle="tooltip"
+                                            data-bs-trigger="click" data-bs-placement="top"
+                                            title="Умерли оба или единственный родитель">?
+                                    </button>
+                                </h6>
+                            </div>
+                            <div class="col-2">{{ student_group.socialPassport.countUnderage }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10 ">
+                                <h6>Дети, оставшиеся без попечения родителей
+                                    <button type="button" class="btn" data-bs-toggle="tooltip"
+                                            data-bs-trigger="click" data-bs-placement="top"
+                                            title="Лишены родительских прав один или оба родителя">?
+                                    </button>
+                                </h6>
+                            </div>
+                            <div class="col-2"> {{student_group.socialPassport.countАdult }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10 ">
+                                <h6>Дети инвалиды
+                                    <button type="button" class="btn" data-bs-toggle="tooltip"
+                                            data-bs-trigger="click" data-bs-placement="top"
+                                            title="Лишены родительских прав один или оба родителя">?
+                                    </button>
+                                </h6>
+                            </div>
+                            <div class="col-2"> {{student_group.socialPassport.countInvalid }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="block block-rounded block-bordered">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title"><small>Распределение по возрасту</small></h3>
+                </div>
+                <div class="block-content">
+                    <div class="row">
+                        <div class="col-2"><h6>Количество несовершеннолетних студентов</h6></div>
+                        <div class="col-2">{{ student_group.socialPassport.countStudents }}</div>
+                        <div class="col-2"><h6>Количество студентов мужского пола</h6></div>
+                        <div class="col-2">{{ student_group.socialPassport.countMan }}</div>
+                        <div class="col-2"><h6>Количество студентов женского пола</h6></div>
+                        <div class="col-2">{{ student_group.socialPassport.countWoman }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="block block-rounded block-bordered">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title"><small>По социальному статусу</small></h3>
+                    </div>
+                    <div class="block-content">
+                        <div class="row">
+                            <div class="col-2"><h6>Дети сироты (умерли оба или единственный родитель)</h6></div>
+                            <div class="col-2">{{ student_group.socialPassport.countStudents }}</div>
+                            <div class="col-2"><h6>Дети, оставшиеся без попечения родителей (лишены родительских
+                                    прав один или оба родителя)</h6></div>
+                            <div class="col-2">{{ student_group.socialPassport.countMan }}</div>
+                            <div class="col-2"><h6>Количество студентов женского пола</h6></div>
+                            <div class="col-2">{{ student_group.socialPassport.countWoman }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><h6>Количество несовершеннолетних студентов</h6></div>
+                    <div class="col-8">{{ student_group }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><h6>Дети сироты (умерли оба или единственный родитель)</h6></div>
+                    <div class="col-8">{{ student_group.students.count }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><h6>Дети, оставшиеся без попечения родителей (лишены родительских прав
+                            один
+                            или оба родителя)</h6></div>
+                    <div class="col-8">{{ student_group.students.count }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><h6>Дети инвалиды</h6></div>
+                    <div class="col-8">{{ student_group.students.count }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><h6>Дети, оставшиеся без попечения родителей (лишены родительских прав
+                            один
+                            или оба родителя)
+
+                        </h6></div>
+                    <div class="col-8">{{ student_group.students.count }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><h6>Студенты, воспитывающиеся в неполных семьях (Ф.И.О.)</h6></div>
+                    <div class="col-8">{{ student_group.students.count }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><h6>Студенты из многодетных семей (Ф.И.О.)</h6></div>
+                    <div class="col-8">{{ student_group.students.count }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><h6>Студенты из неблагополучных семей (Ф.И.О.)</h6></div>
+                    <div class="col-8">{{ student_group.students.count }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><h6>Студенты, состоящие на учете ППДН, КДНиЗП, совершившие
+                            правонарушения</h6></div>
+                    <div class="col-8">{{ student_group.students.count }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-2"><h6>Студенты, проживающие в общежитии</h6></div>
+                    <div class="col-8">{{ student_group.students.count }}</div>
+                </div>
             </div>
         </div>
     </div>
+    <div class="tab-pane fade fade-left" id="btabs-animated-slideleft-profile" role="tabpanel"
+         aria-labelledby="btabs-animated-slideleft-profile-tab">
+        <div class="block block-rounded block-bordered">
+            <div class="block-header block-header-default">
+                <h3 class="block-title">Список студентов <small></small></h3>
+                <div class="block-options">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                id="dropdown-default-outline-primary" data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                            <i class="fa-regular fa-plus"></i>
+                        </button>
+                        <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-default-outline-primary"
+                             style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);"
+                             data-popper-placement="bottom-start">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                        <a href="{{ path('app_student_new') }}" type="button"
+                           class="btn-outline-primary btn-lg w-100 js-bs-popover-enabled"
+                           data-bs-toggle="popover"
+                           data-bs-placement="top" title=""
+                           data-bs-content="Добавить"
+                           data-bs-original-title="Добавить нового студента">
+                            <i class="far fa-fw fa-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="block-content">
+                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                    <table class="table table-bordered table-striped table-vcenter"
+                           aria-describedby="DataTables_Table_0_info">
+                        <thead class="text-center">
+                        <tr>
+                            <th>№<br> п/п</th>
+                            <th>Фамилия Имя Отчество</th>
+                            <th class="d-none d-xl-table-cell">Специальность</th>
+                            <th class="d-none d-xl-table-cell">Группа</th>
+                            <th class="d-none d-xl-table-cell">Номер зачётки/<br>Номер студ. билета</th>
+                            <th class="d-none d-xl-table-cell">Email</th>
+                            <th>Действия</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% set iterator = 0 %}
+                        {% for student in student_list %}
+
+                            {% set iterator = iterator + 1 %}
+                            <tr>
+                                <td>{{ iterator }}</td>
+                                <td>
+                                    <div class="row  align-items-center">
+                                        <div class="col-12  {% if(student.IsInvalid or student.IsOrphan or student.IsPoor or student.IsPaid) %}col-md-9{% endif %} ">{{ student.LastName }} {{ student.FirstName }} {{ student.MiddleName }}</div>
+                                        {% if(student.IsInvalid or student.IsOrphan or student.IsPoor or student.IsPaid) %}
+                                            <div class="col-12 col-md-3 small">
+                                                <div class="row">
+
+                                                    {% if(student.IsInvalid) %}
+                                                        <span class="badge bg-info col-6 col-md-3">И</span>
+                                                    {% endif %}
+
+                                                    {% if(student.IsPoor) %}
+                                                        <span class="badge  bg-secondary  col-6 col-md-3">М</span>
+                                                    {% endif %}
+
+                                                    {% if(student.IsOrphan) %}
+                                                        <span class="badge bg-danger  col-6 col-md-3">С</span>
+                                                    {% endif %}
+                                                    {% if(student.IsPaid) %}
+                                                        <span class="badge bg-warning  col-6 col-md-3">П</span>
+                                                    {% endif %}  </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+                                </td>
+                                <td class="d-none d-xl-table-cell">
+                                    <small>{{ student.studentGroup.faculty.specialization.code~" "~student.studentGroup.faculty.specialization.name }}</small>
+                                </td>
+                                <td class="d-none d-xl-table-cell">{{ student.studentGroup.name }}</td>
+                                <td class="d-none d-xl-table-cell">{{ student.NumberZachetka }}
+                                    / {{ student.NumberStudBilet }}</td>
+                                <td class="d-none d-sm-table-cell">{{ student.email }}</td>
+
+                                <td>
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                           href="{{ path('app_student_show', {'id': student.id}) }}"> <i
+                                                    class="far fa-fw  fa-file-user"></i></a>
+                                        <a class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled"
+                                           href="{{ path('app_student_edit', {'id': student.id}) }}"><i
+                                                    class="fa fa-fw fa-pencil-alt"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="14">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="tab-pane fade fade-left" id="btabs-animated-slideleft-settings" role="tabpanel"
+         aria-labelledby="btabs-animated-slideleft-settings-tab">
+        <h4 class="fw-normal">Генерация</h4>
+        <div class="row row-cols-auto pb-4 mx-auto">
+            <div class="col">
+                <a type="button" class="btn btn-secondary mx-atuo"
+                   href="{{ path('app_student_groups_list_to_elearning', {'id': student_group.id}) }}">Сгенерировать
+                    файл для ЦКП</a>
+            </div>
+            <div class="col">
+                <a type="button" class="btn btn-secondary mx-atuo"
+                   href="{{ path('app_student_groups_list_to_school_portal', {'id': student_group.id}) }}">Сгенерировать
+                    файл для ШП</a>
+            </div>
+            <div class="col">
+                <a type="button" class="btn btn-secondary mx-atuo"
+                   href="{{ path('app_student_groups_list_to_PerCo', {'id': student_group.id}) }}">Сгенерировать
+                    файл для СКУД PerCo</a>
+            </div>
+            <div class="col">
+                <a type="button" class="btn btn-secondary mx-atuo"
+                   href="{{ path('app_student_groups_list_to_ent', {'id': student_group.id}) }}">Сгенерировать
+                    файл для СКУД ЭНТ контроль доступа</a>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </div>
     <!-- END Block Tabs Animated Slide Left -->
-</div>
+    </div>
 
     <a href="{{ path('app_student_groups_index') }}">back to list</a>
 
     <a href="{{ path('app_student_groups_edit', {'id': student_group.id}) }}">edit</a>
 
     {{ include('student_groups/_delete_form.html.twig') }}
-    {% endblock %}
+{% endblock %}

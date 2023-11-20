@@ -51,6 +51,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(nullable: true)]
     private ?array $FrontEndParams = null;
 
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?College $College = null;
+
     public function __construct()
     {
     }
@@ -183,7 +186,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->IsStudent;
     }
 
-    public function setIsStudent(?bool $IsStudent): self
+    public function setIsStudent(?bool $IsStudent=true): self
     {
         $this->IsStudent = $IsStudent;
 
@@ -210,6 +213,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setFrontEndParams(?array $FrontEndParams): static
     {
         $this->FrontEndParams = $FrontEndParams;
+
+        return $this;
+    }
+
+    public function getCollege(): ?College
+    {
+        return $this->College;
+    }
+
+    public function setCollege(?College $College): static
+    {
+        $this->College = $College;
 
         return $this;
     }

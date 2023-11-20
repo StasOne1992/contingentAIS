@@ -8,6 +8,10 @@
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/app/arm-student-app/public" />
           </mappings>
+          <excludedPaths>
+            <excludedPath path="/app/arm-student-app/var/cache" />
+            <excludedPath path="/app/arm-student-app/var/log" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

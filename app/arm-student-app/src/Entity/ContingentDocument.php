@@ -35,7 +35,7 @@ class ContingentDocument
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'contingentDocuments')]
-    private ?College $college = null;
+    private ?College $College = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $Reason = null;
@@ -136,12 +136,12 @@ class ContingentDocument
 
     public function getCollege(): ?College
     {
-        return $this->college;
+        return $this->College;
     }
 
-    public function setCollege(?College $college): self
+    public function setCollege(?College $College): self
     {
-        $this->college = $college;
+        $this->College = $College;
 
         return $this;
     }

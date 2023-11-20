@@ -42,7 +42,8 @@
                     <div class="block-options-item">
                         <div class="btn-group" role="group" aria-label="Icons File group">
                             <button type="button" class="btn btn-alt-primary" data-bs-toggle="modal"
-                                    data-bs-target="#modal-block-extra-large"><i class="fa fa-plus-hexagon"></i> Добавить студентов в приказ
+                                    data-bs-target="#modal-block-extra-large"><i class="fa fa-plus-hexagon"></i>
+                                Добавить студентов в приказ
                             </button>
                         </div>
                     </div>
@@ -76,12 +77,12 @@
                                 {% else %}
                                 <div class="mb-4">
                                     <div class="row">
-                                        <label class="form-label" for="example-select">Укажите
+                                        <label id="labelstd-{{ element.id }}" class="form-label" for="example-select">Укажите
                                             группу</label>
                                         <div class="col">
-                                            <form action="{{ path('app_student_setGroup',{'id':element.id}) }}"
-                                                  method="post">
-                                                <input class="d-none" name="contingentDocumentID" value="{{ contingent_document.id }}">
+                                            <form id="frm-{{ element.id }}" action="{{ path('app_student_setGroup',{'id':element.id}) }}" method="POST">
+                                                <input class="d-none" name="contingentDocumentID"
+                                                       value="{{ contingent_document.id }}">
                                                 <div class="input-group">
                                                     <select class="form-select" id="group-select"
                                                             name="group-select">
@@ -90,17 +91,53 @@
                                                             <option value="{{ group.id }}">{{ group.name }}</option>
                                                         {% endfor %}
                                                     </select>
-                                                    <button type="submit" class="btn btn-alt-primary">Установить
+                                                    <button id="btn-{{ element.id }}" type="button"
+                                                            class="btn btn-alt-primary">Установить
                                                     </button>
                                                 </div>
                                             </form>
+                                            <div id="succsess-{{ element.id }}" class="d-none">
+
+                                            </div>
                                         </div>
                                     </div>
+                                    <script type="text/javascript">
+
+                                        $("#btn-{{ element.id }}").on("click", function () {
+                                            console.log('btn-{{ element.id }}.click');
+                                            console.log($("#frm-{{ element.id }}"));
+                                            $("#frm-{{ element.id }}").submit(function(e) {
+                                                e.preventDefault(); // avoid to execute the actual submit of the form.
+                                                var form = $(this);
+                                                var actionUrl = form.attr('action');
+                                                console.log(form);
+                                                console.log(actionUrl);
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: actionUrl,
+                                                    data: form.serialize(), // serializes the form's elements.
+                                                    success: function(data)
+                                                    {
+                                                        var frm=document.getElementById("frm-{{ element.id }}");
+                                                        var div=document.getElementById("succsess-{{ element.id }}");
+                                                        var labelstd=document.getElementById("labelstd-{{ element.id }}");
+                                                        frm.classList.add('d-none');
+                                                        div.classList.remove('d-none');
+                                                        labelstd.classList.add('d-none');
+                                                        div.innerHTML=data;
+                                                        alert(data); // show response from the php script.
+                                                    }
+                                                });
+                                            });
+                                            $("#frm-{{ element.id }}").submit();
+                                        });
+                                    </script>
                                     {% endif %}
                             </td>
                             <td class="text-center">
                                 <div class="btn-group" role="group" aria-label="Icons File group">
-                                    <a type="button" href="{{ path('app_student_edit',{'id':element.id}) }}" class="btn btn-primary">
+                                    <a type="button" href="{{ path('app_student_edit',{'id':element.id}) }}"
+                                       class="btn btn-primary">
                                         <i class="fa fa-fw fa-pencil"></i> Изменить
                                     </a>
                                 </div>

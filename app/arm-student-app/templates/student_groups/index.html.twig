@@ -29,8 +29,6 @@
                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
                     <div class="row">
                         <div class="col-sm-12">
-
-                            {{ dump(student_groups) }}
                             <table class="table table-bordered table-striped table-vcenter js-dataTable-responsive"
                                    aria-describedby="DataTables_Table_0_info">
                                 <thead class="text-center">
@@ -46,9 +44,9 @@
                                     <tr>
                                         <td>{{ loop.index }}</td>
                                         <td>
-                                            <a href="{{ path('app_student_groups_show', {'id': student_group.id}) }}"> {{ student_group.Name }}
-                                                <br><span
-                                                        class="text-muted">{{ student_group.Code }}</small></a></td>
+                                            <a href="{{ path('app_student_groups_show', {'id': student_group.id}) }}"> {{ student_group.Name }}</a>
+                                            <br><small
+                                                    class="text-muted text-small">{{ student_group.Code }}</small></td>
                                         <td>{{ student_group.GroupLeader }}</td>
                                         <td>{{ student_group.CourseNumber }}/{{ student_group.ParallelNumber }}</td>
                                         <td>
@@ -71,7 +69,30 @@
                                                                href="{{ path('app_student_groups_show', {'id': student_group.id}) }}"><i
                                                                         class="fa-solid fa-turn-up"></i> Перевести на
                                                                 сл. курс</a></li>
-                                                        <li><a class="dropdown-item" href="#">Something else here</a>
+                                                        <li>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+                                                        <li><a class="dropdown-item"
+                                                               href="{{ path('app_student_groups_list_to_elearning', {'id': student_group.id}) }}">Сгенерировать
+                                                                файл для ЦКП</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"
+                                                               href="{{ path('app_student_groups_list_to_school_portal', {'id': student_group.id}) }}">Сгенерировать
+                                                                файл для ШП</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"
+                                                               href="{{ path('app_student_groups_list_to_PerCo', {'id': student_group.id}) }}">Сгенерировать
+                                                                файл для PerCo</a>
+                                                        </li>
+                                                        <li>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+                                                        <li><a class="dropdown-item"
+                                                               href="{{ path('app_student_groups_generate_access_card_list', {'id': student_group.id}) }}">Сгенерировать лист ознакомления с правилами СКУД</a>
+                                                        </li>
+                                                        <li><a class="dropdown-item"
+                                                               href="{{ path('app_student_groups_generate_access_issue_card_list', {'id': student_group.id}) }}">Сгенерировать
+                                                                ведомость выдачи</a>
                                                         </li>
                                                         <li>
                                                             <hr class="dropdown-divider">

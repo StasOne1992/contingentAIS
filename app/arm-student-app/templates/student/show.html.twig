@@ -10,7 +10,7 @@
 {% block body %}
 
     <div class="row">
-        <div class="col-12 col-md-3">
+        <div class="col-12  col-xl-3">
             <div class="block block-rounded block-bordered block-themed">
 
                 <div class="block-content">
@@ -23,6 +23,7 @@
                 <div class="block-header block-header-default bg-secondary">
                     <div class="col-12">
                         <h3 class="block-title text-center">{{ student.LastName~" "~student.firstName~" "~student.MiddleName }}</h3>
+                        <small>{{ student.uuid }}</small>
                         <div class="row">
                             <p class=" text-sm-center mb-1">
                                 {% set difference = date(student.birthData|date('Y/m/d')).diff(date('now'|date('Y/m/d'))) %}
@@ -30,21 +31,32 @@
 
                                 <small class="mb-2"> {{ (leftDays // 365)~" лет" }}
                                     ...rolse... {{ student.studentGroup }} </small></p></div>
-                        <div class="row mt-2 mb-2">
-                            <div class=" d-flex justify-content-center">
-                                {% if(student.IsInvalid) %}
-                                    <span class="badge rounded-pill bg-info mx-1 d-flex">Инвалид</span>
-                                {% endif %}
-                                {% if(student.IsPoor) %}
-                                    <span class="badge rounded-pill bg-info mx-1 d-flex">Малоимущие</span>
-                                {% endif %}
-                                {% if(student.IsOrphan) %}
-                                    <span class="badge rounded-pill bg-danger mx-1d-flex">Сирота</span>
-                                {% endif %}
-                                {% if(student.IsPaid) %}
-                                    <span class="badge rounded-pill bg-warning mx-1 d-flex">Платно</span>
-                                {% endif %}
-                            </div>
+                        <div class="row row-cols-auto mt-1 mb-1">
+
+                            {% if(student.IsInvalid) %}
+                                <div class="col mx-auto "><span
+                                            class="badge rounded-pill bg-info mx-1 d-flex">Инвалид</span>
+                                </div>
+                            {% endif %}
+                            {% if(student.IsPoor) %}
+                                <div class="col mx-auto "><span class="badge rounded-pill bg-info mx-1 d-flex">Малоимущие</span>
+                                </div>
+                            {% endif %}
+                            {% if(student.IsOrphan) %}
+                                <div class="col mx-auto "><span
+                                            class="badge rounded-pill bg-danger mx-1d-flex">Сирота</span>
+                                </div>
+                            {% endif %}
+                            {% if(student.IsPaid) %}
+                                <div class="col mx-auto "><span
+                                            class="badge rounded-pill bg-warning mx-1 d-flex">Платно</span>
+                                </div>
+                            {% endif %}
+                            {% if(student.isLiveStudentAccommondation) %}
+                                <div class="col mx-auto"><span class="badge rounded-pill bg-warning mx-1 d-flex">Проживает в общажитии</span>
+                                </div>
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>
@@ -61,48 +73,51 @@
         </div>
 
 
-        <div class="col-12 col-md-9">
-            <div class="block  block-rounded">
+        <div class="col-12 col-xl-9">
+            <div class="block  block-rounded block-bordered block-content-full">
+                <ul class="nav nav-tabs nav-tabs-block align-items-center" role="tablist">
+                    <li class="nav-item ">
+                        <a class="nav-link active " id="btab-home-tab" data-bs-toggle="tab"
+                           data-bs-target="#btabs-home" role="tab"
+                           aria-controls="btabs-home" aria-selected="true">Основная информация</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link  " id="btabs-docs-tab" data-bs-toggle="tab"
+                                data-bs-target="#btabs-docs" role="tab"
+                                aria-controls="btabs-docs" aria-selected="false">Документы
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link " id="btabs-achievements-tab" data-bs-toggle="tab"
+                                data-bs-target="#btabs-achievements" role="tab"
+                                aria-controls="btabs-achievements" aria-selected="false">Достижения
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link  " id="btabs-penalty-tab" data-bs-toggle="tab"
+                                data-bs-target="#btabs-penalty" role="tab"
+                                aria-controls="btabs-penalty" aria-selected="false">Поощрения и взыскания
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link " id="btabs-social-profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#btabs-social-profile" role="tab"
+                                aria-controls="btabs-social-profile" aria-selected="false">Социальный профиль
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link " id="btabs-asc-tab" data-bs-toggle="tab"
+                                data-bs-target="#btabs-asc" role="tab"
+                                aria-controls="btabs-asc" aria-selected="false">Контроль доступа
+                        </button>
+                    </li>
+                </ul>
 
-                <div class="bg-secondary">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item ">
-                            <a class="nav-link active link-light" id="btab-home-tab" data-bs-toggle="tab"
-                               data-bs-target="#btabs-home" role="tab"
-                               aria-controls="btabs-home" aria-selected="true">Основная информация</a>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link  link-light" id="btabs-docs-tab" data-bs-toggle="tab"
-                                    data-bs-target="#btabs-docs" role="tab"
-                                    aria-controls="btabs-docs" aria-selected="false">Документы
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link  link-light" id="btabs-achievements-tab" data-bs-toggle="tab"
-                                    data-bs-target="#btabs-achievements" role="tab"
-                                    aria-controls="btabs-achievements" aria-selected="false">Достижения
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link  link-light" id="btabs-penalty-tab" data-bs-toggle="tab"
-                                    data-bs-target="#btabs-penalty" role="tab"
-                                    aria-controls="btabs-penalty" aria-selected="false">Поощрения и взыскания
-                            </button>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-link  link-light" id="btabs-social-profile-tab" data-bs-toggle="tab"
-                                    data-bs-target="#btabs-social-profile" role="tab"
-                                    aria-controls="btabs-social-profile" aria-selected="false">Социальный профиль
-                            </button>
-                        </li>
-
-                    </ul>
-                </div>
                 <div class="block-content tab-content overflow-hidden">
                     <div class="tab-pane fade fade-right show active" id="btabs-home"
                          role="tabpanel" aria-labelledby="btabs-home-tab">
                         <div class="row">
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 col-xl-4">
                                 <div class="block block-rounded block-bordered block-themed">
                                     <div class="block-header block-header-default bg-secondary">
                                         <h3 class="block-title text-center text-md-start">Сведения о студенте</h3>
@@ -112,7 +127,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="row">
-                                                <div class="col-4"><h6>Дата рождения</h6></div>
+                                                <div class="col-4"><b class="fw-sm">Дата рождения</b></div>
                                                 <div class="col-8">{{ student.birthData|format_datetime('medium', 'none', locale='ru') }}</div>
                                             </div>
                                             <div class="row">
@@ -125,7 +140,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-4"><h6>E-mail</h6></div>
-                                                <div class="col-8">{{ student.email }}</div>
+                                                <div class="col-8 fs-sm">{{ student.email }}</div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-4"><h6>Группа здоровья</h6></div>
@@ -135,7 +150,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-8">
+                            <div class="col-12 col-xl-8">
                                 <div class="block block-rounded block-bordered block-themed">
                                     <div class="block-header block-header-default bg-secondary">
                                         <h3 class="block-title text-center text-md-start">Основные документы</h3>
@@ -221,7 +236,7 @@
                                         {% endfor %}
                                     </div>
                                     <!--Вывод списка документов для Desktop-->
-                                    <table class="table table-bordered table-striped table-vcenter d-none d-md-block">
+                                    <table class="table table-bordered table-striped table-vcenter d-none d-md-block ">
                                         <thead>
                                         <tr>
                                             <td class="">Вид документа</td>
@@ -304,39 +319,45 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-12 col-md-12">
                             <div class="block block-rounded block-bordered block-themed ">
                                 <div class="block-header block-header-default bg-secondary">
                                     <h3 class="block-title text-start">Приказы о движении</h3>
                                     <div class="block-options">
-                                        <a type="button"
-                                           href="{{ path('app_characteristic_new_for_student',{'studentid': student.id}) }}"
-                                           class="btn btn-sm btn-light d-none d-md-block">
-                                            <i class="fas fa-plus"></i> Сформировать
-                                        </a>
-                                        <button type="button" class="btn btn-sm btn-light d-block d-md-none">
-                                            <span class="row"><i class="fas fa-plus"></i></span>
-                                        </button>
+                                        {% if is_granted('ROLE_ROOT') %}
+                                            <a type="button"
+                                               href="{{ path('app_characteristic_new_for_student',{'studentid': student.id}) }}"
+                                               class="btn btn-sm btn-light d-none d-md-block">
+                                                <i class="fas fa-plus"></i> Сформировать
+                                            </a>
+                                            <button type="button" class="btn btn-sm btn-light d-block d-md-none">
+                                                <span class="row"><i class="fas fa-plus"></i></span>
+                                            </button>
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="block-content">
                                     <!--Вывод списка документов для Mobile-->
                                     <div class="row">
-                                        <table class="table table-bordered table-striped table-vcenter js-dataTable-responsive">
-                                            <thead class="table-secondary">
-                                            <tr>
-                                                <td>Документ</td>
-                                                <td>Действия</td>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for document in student.contingentDocuments %}
-                                            <tr>
-                                                <td> {{ document.type~' '~document.number~' от '~document.createDate|date('d.m.Y') }}</td>
-                                                {% endfor %}
-                                            </tr>
-                                            </tbody>
-                                        </table>
+                                        <div class="col">
+                                            <table class="table table-bordered table-striped table-vcenter">
+                                                <thead class="">
+                                                <tr>
+                                                    <td>Документ</td>
+                                                    {% if is_granted('ROLE_ROOT') %} <td>Действия</td>{% endif %}
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for document in student.contingentDocuments %}
+                                                <tr>
+                                                    <td> {{ document.type~' '~document.number~' от '~document.createDate|date('d.m.Y') }}</td>
+                                                    {% if is_granted('ROLE_ROOT') %} <td></td>{% endif %}
+                                                    {% endfor %}
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -374,20 +395,20 @@
                                 </div>
                                 <div class="block-content">
                                     <div class="row pb-4">
-                                        <div class="col-12 col-md-4">
+                                        <div class="col-12 col-xl-4">
                                             <div class="row">
                                                 <div class="col-5"><h6>Тип семьи <small>(по составу)</small></h6></div>
                                                 <div class="col-7 h6"> {{ student.FamilyTypeID }}</div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-4">
+                                        <div class="col-12 col-xl-4">
                                             <div class="row">
                                                 {% if student.isPoor==1 %}
                                                     <div class="col h6">Малоимущая семья</div>
                                                 {% endif %}
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-4"></div>
+                                        <div class="col-12 col-xl-4"></div>
                                     </div>
                                 </div>
                             </div>
@@ -395,7 +416,12 @@
                                 <div class="block-header block-header-default bg-secondary">
                                     <h3 class="block-title text-start">Семья <small>Состав семьи</small></h3>
                                     <div class="block-options">
-                                        <a type="button" class="btn btn-sm btn-light d-none d-md-block">
+                                        <button type="button" class="btn btn-sm btn-light push"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#modal_block_app_legal_representative_new"><i class="fas fa-plus"></i>
+                                            Добавить (beta)
+                                        </button>
+                                        <a type="button" class="btn btn-sm btn-light d-none d-md-block" href="{{ path('app_legal_representative_new') }}">
                                             <i class="fas fa-plus"></i> Добавить
                                         </a>
                                         <button type="button" class="btn btn-sm btn-light d-block d-md-none">
@@ -436,33 +462,200 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="tab-pane fade fade-right" id="btabs-animated-slideright-settings" role="tabpanel"
-                     aria-labelledby="btabs-animated-slideright-settings-tab">
+                    <div class="tab-pane fade fade-right" id="btabs-asc" role="tabpanel"
+                         aria-labelledby="btabs-social-profile-tab">
 
+                        <div class="col-12 col-md-12">
 
+                            <div class="block block-rounded block-bordered block-themed ">
+                                <div class="block-header block-header-default bg-secondary">
+                                    <h3 class="block-title text-start">Контроль доступа <small>Выданные карты
+                                            доступа</small>
+                                    </h3>
+                                    <div class="block-options">
+                                        <div class="block-options-item">
+                                            <button type="button" class="btn btn-sm btn-light push"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#modal-block-normal"><i class="fas fa-plus"></i>
+                                                Добавить
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block-content">
+                                    <div class="row">
+                                        {% for card in student.AccessSystemControls %}
+                                            <div class="col-md-6 col-xl-3">
+                                                <a class="block block-rounded block-link-shadow
+                                                    {% if card.isLocked %}
+                                                    bg-danger
+                                                    {% else %}
+                                                    bg-success
+                                                    {% endif %}
+                                                    "
+                                                   href="javascript:void(0)">
+                                                    <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <i class="fa-regular fa-2x fa-id-card  text-white-50"></i>
+                                                        </div>
+                                                        <dl class="ms-3 text-end mb-0">
+                                                            <dt class="text-white h3 fw-extrabold mb-0">
+                                                                {{ card }}
+                                                            </dt>
+                                                            <dd class="text-white fs-sm fw-medium text-white-75 mb-0">
+                                                                {% if card.isLocked %}
+                                                                    Блок с {{ card.lockDate|date('d.m.Y') }}
+                                                                {% else %}
+                                                                    Активна с {{ card.issueDate|date('d.m.Y') }}
+                                                                {% endif %}
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-
-        <div class="row">
-
-
-        </div>
     </div>
 
-    <div class="col-12 col-md-3"></div>
-    <div class="col-12 col-md-9">
-        <div class="row">
-            <div class="col-12">
+    <!-- Модальное окно выдачи пропусков -->
+    <div class="modal" id="modal-block-normal" tabindex="-1" role="dialog" aria-labelledby="modal-block-normal"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="block block-rounded block-transparent mb-0">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">Выдать пропуск</h3>
+                        <div class="block-options">
+                            <div class="block-options-item">
+                                <button type="button" class="btn-block-option" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                    <i class="fa fa-fw fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-content fs-sm">
+                        <form action="{{ path('app_access_system_control_new') }}" method="POST">
+                            <div class="mb-4 d-none">
+                                <label class="form-label" for="example-text-input">Студент ID</label>
+                                <input type="text" class="form-control" id="studentID" name="studentID"
+                                       placeholder="Введите ID студента" value="{{ student.id }}">
+                            </div>
+                            <div class="row row-cols-2">
+                                <div class="mb-4 ">
+                                    <label class="form-label" for="example-text-input">Серия карты</label>
+                                    <input type="text" class="form-control" id="CardSeries" name="CardSeries"
+                                           placeholder="Введите серию карты">
+                                </div>
+                                <div class="mb-4 ">
+                                    <label class="form-label" for="example-text-input">№ карты</label>
+                                    <input type="text" class="form-control" id="CardNumber" name="CardNumber"
+                                           placeholder="Введите номер карты">
+                                </div>
+                            </div>
+                            <div class="mb-4 ">
+                                <label class="form-label" for="example-text-input">Заблокировать карты</label>
+                                {% for card in student.AccessSystemControls %}
+                                    {% if card.islocked!=true %}
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="card-{{ card.id }}"
+                                                   name="lockID[]" value="{{ card.id }}">
+                                            <label class="form-check-label" for="card-{{ card.id }}">Карта №{{ card }}
+                                                выдана {{ card.issueDate|date('d.m.Y') }}</label>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
 
+                            <div class="block-content block-content-full text-end bg-body">
+                                <button type="button" class="btn btn-sm btn-alt-secondary me-1" data-bs-dismiss="modal">
+                                    Закрыть
+                                </button>
+                                <button type="submit" class="btn btn-sm btn-primary" data-bs-dismiss="modal">Назначить карту
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <!-- Модальное окно добавления законных представителей -->
+    <div class="modal" id="modal_block_app_legal_representative_new" tabindex="-1" role="dialog" aria-labelledby="modal-block-normal"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="block block-rounded block-transparent mb-0">
+                    <div class="block-header block-header-default">
+                        <h3 class="block-title">Добавить законного представителя</h3>
+                        <div class="block-options">
+                            <div class="block-options-item">
+                                <button type="button" class="btn-block-option" data-bs-dismiss="modal"
+                                        aria-label="Close">
+                                    <i class="fa fa-fw fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-content fs-sm">
+                        <form action="{{ path('app_access_system_control_new') }}" method="POST">
+                            <div class="mb-4 ">
+                                <label class="form-label" for="example-text-input">Студент ID</label>
+                                <input type="text" class="form-control" id="studentID" name="studentID"
+                                       placeholder="Введите ID студента" value="{{ student.id }}">
+                            </div>
+                            <div class="row row-cols-2">
+                                <div class="mb-4 ">
+                                    <label class="form-label" for="example-text-input">Фамилия</label>
+                                    <input type="text" class="form-control" id="LastName" name="LastName"
+                                           placeholder="Введите фамилию">
+                                </div>
+                                <div class="mb-4 ">
+                                    <label class="form-label" for="example-text-input">Имя</label>
+                                    <input type="text" class="form-control" id="FirstName" name="FirstName"
+                                           placeholder="Введите имя">
+                                </div>
+                                <div class="mb-4 ">
+                                    <label class="form-label" for="example-text-input">Отчество</label>
+                                    <input type="text" class="form-control" id="MiddleName" name="MiddleName"
+                                           placeholder="Введите отчество">
+                                </div>
+                                <div class="mb-4 ">
+                                    <label class="form-label" for="example-text-input">Телефон</label>
+                                    <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber"
+                                           placeholder="Введите номер телефона">
+                                </div>
+                                <div class="mb-4 ">
+                                    <label class="form-label" for="example-text-input">Комментарий</label>
+                                    <input type="textarea" class="form-control" id="Comment" name="Comment"
+                                           placeholder="Введите комментарий">
+                                </div>
+                            </div>
+
+                            <div class="block-content block-content-full text-end bg-body">
+                                <button type="button" class="btn btn-sm btn-alt-secondary me-1" data-bs-dismiss="modal">
+                                    Закрыть
+                                </button>
+                                <button type="submit" class="btn btn-sm btn-primary" data-bs-dismiss="modal">Назначить карту
+                                </button>
+                            </div>
+                        </form>
+                        <form>
+
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-
-
 {% endblock %}

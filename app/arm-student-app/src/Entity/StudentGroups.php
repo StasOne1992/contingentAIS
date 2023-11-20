@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use function Symfony\Component\Translation\t;
 
 #[ORM\Entity(repositoryClass: StudentGroupsRepository::class)]
 class StudentGroups
@@ -129,6 +130,21 @@ class StudentGroups
     public function getStudents(): Collection
     {
         return $this->students;
+    }
+
+    /**
+     * @return Collection<int, Student>
+     */
+    public function getActiveStudents(): Collection
+    {
+        return $this->getStudents()->filter(
+            function ($item) {
+                if ($item->isIsActive()) {
+                    return $item;
+                }
+                return null;
+            }
+        );
     }
 
     public function addStudent(Student $student): self

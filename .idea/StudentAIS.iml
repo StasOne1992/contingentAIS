@@ -10,6 +10,16 @@
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/phenx/php-font-lib" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/phenx/php-svg-lib" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/sabberworm/php-css-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/npub/gos" />
+      <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/ezyang/htmlpurifier" />
+      <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/markbaker/matrix" />
+      <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/markbaker/complex" />
+      <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/maennchen/zipstream-php" />
+      <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/phpoffice/phpspreadsheet" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

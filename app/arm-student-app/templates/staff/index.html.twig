@@ -13,6 +13,7 @@
                 <th>LastName</th>
                 <th>MiddleName</th>
                 <th>Photo</th>
+                <th>UUid</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{ staff.LastName }}</td>
                 <td>{{ staff.MiddleName }}</td>
                 <td>{{ staff.Photo }}</td>
+                <td>{{ staff.uuid }}</td>
                 <td>
                     <a href="{{ path('app_staff_show', {'id': staff.id}) }}">show</a>
                     <a href="{{ path('app_staff_edit', {'id': staff.id}) }}">edit</a>

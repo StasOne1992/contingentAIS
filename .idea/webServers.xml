@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="21647119-0fad-4a53-832b-02b9f984ee53" name="arm.vatholm.ru" url="http://arm.vatholm.ru">
-        <fileTransfer rootFolder="/var/www/arm.vatholm.ru" host="arm.vatholm.ru" port="21">
+      <webServer id="21647119-0fad-4a53-832b-02b9f984ee53" name="arm.vatholm.ru" url="http://10.1.88.198">
+        <fileTransfer rootFolder="/var/www/arm.vatholm.ru" host="10.1.88.198" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

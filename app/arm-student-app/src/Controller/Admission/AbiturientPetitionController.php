@@ -8,6 +8,7 @@ use App\Entity\AbiturientPetitionStatus;
 use App\Entity\Admission;
 use App\Entity\AdmissionExaminationResult;
 use App\Entity\AdmissionPlan;
+use App\Entity\College;
 use App\Entity\ContingentDocument;
 use App\Entity\Faculty;
 use App\Entity\PersonalDocuments;
@@ -20,6 +21,7 @@ use App\Repository\AbiturientPetitionStatusRepository;
 use App\Repository\AdmissionExaminationRepository;
 use App\Repository\AdmissionPlanRepository;
 use App\Repository\AdmissionRepository;
+use App\Repository\CollegeRepository;
 use App\Repository\ContingentDocumentRepository;
 use App\Repository\FacultyRepository;
 use App\Repository\PersonalDocTypeListRepository;
@@ -38,6 +40,7 @@ use App\Repository\AdmissionExaminationResultRepository;
 use App\Service\GlobalHelpersService;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Core\Security;
 use DateTime;
 use function PHPUnit\Framework\isNull;
 
@@ -59,8 +62,13 @@ class AbiturientPetitionController extends AbstractController
         private GlobalHelpersService                 $globalHelpersService,
         private PersonalDocumentsRepository          $personalDocumentsRepository,
         private PersonalDocTypeListRepository        $personalDocTypeListRepository,
+        private CollegeRepository                    $cllegeRepository,
+        private Security                             $security,
+
     )
     {
+        $this->user = $this->security->getUser();
+
     }
 
     #[Route('/', name: 'app_abiturient_petition_index', methods: ['GET'])]
@@ -281,7 +289,7 @@ class AbiturientPetitionController extends AbstractController
         $admission = $this->admissionRepository->find($request->get('admissionID'));
         $facultyID = $this->facultyRepository->find($request->get('facultyID'));
         $abiturientPetitionList = $this->abiturientPetitionRepository->findBy(['admission' => $admission, 'Faculty' => $facultyID, 'documentObtained' => true, 'status' => $petitionStatus], ['educationDocumentGPA' => 'DESC']);
-        $contingentDocuments = $this->contingentDocumentRepository->findBy(['isActive' => false]);
+        $contingentDocuments = $this->contingentDocumentRepository->findBy(['isActive' => false, 'College' => $admission->getCollege()->getId()]);
         return $this->render('abiturient_petition/index.html.twig', [
             'abiturient_petitions' => $abiturientPetitionList,
             'facultyTitle' => $request->get('facultyTitle'),
@@ -350,7 +358,6 @@ class AbiturientPetitionController extends AbstractController
 
         if ($this->abiturientPetitionStatusRepository->findOneBy(['name' => 'RECOMMENDED']) != $abiturientPetition->getStatus()) {
             throw new AccessDeniedHttpException("Запрещено зачислять заявления со статусом отличном от 'Рекомендован' ");
-
         }
 
 
@@ -379,6 +386,7 @@ class AbiturientPetitionController extends AbstractController
         $student->setIsInvalid($abiturientPetition->isIsInvalid());
         $student->setIsPoor($abiturientPetition->isIsPoor());
         $student->setAbiturientPetition($abiturientPetition);
+        $student->setUUID(uniqid());
 
         $this->studentRepository->save($student, $flush);
 
@@ -394,11 +402,12 @@ class AbiturientPetitionController extends AbstractController
          */
 
 
-        $login = $this->globalHelpersService->translit(iconv('windows-1251', 'UTF-8', iconv('UTF-8', 'windows-1251', $student->getLastName()) . iconv('UTF-8', 'windows-1251', $student->getFirstName())[0] . iconv('UTF-8', 'windows-1251', $student->getMiddleName())[0]));
+        $studentFIO = $this->globalHelpersService->translit(iconv('windows-1251', 'UTF-8', iconv('UTF-8', 'windows-1251', $student->getLastName()) . iconv('UTF-8', 'windows-1251', $student->getFirstName())[0] . iconv('UTF-8', 'windows-1251', $student->getMiddleName())[0]));
 
-        if($this->userRepository->findOneBy(['email'=>$login . '@student.vatholm.ru']))
-        {
-            $user=$this->userRepository->findOneBy(['email'=>$login . '@student.vatholm.ru']);
+        $login = $this->checkUser($abiturientPetition, $studentFIO);
+
+        if ($this->userRepository->findOneBy(['email' => $login])) {
+            $user = $this->userRepository->findOneBy(['email' => $login]);
         }
         {
             $user = new User();
@@ -471,4 +480,26 @@ class AbiturientPetitionController extends AbstractController
         ]);
     }
 
+    /**
+     * @param AbiturientPetition $abiturientPetition
+     * @param string $login
+     * @return string
+     */
+    #[IsGranted("ROLE_STAFF_AB_PETITIONS_INDUCT")]
+    private function checkUser($abiturientPetition, $login): string
+    {
+        $studentDomain = $abiturientPetition->getAdmission()->getCollege()->getSettingsStudentsDomain();
+        $email = $login . '@' . $studentDomain;
+        $user = $this->userRepository->findOneBy(['email' => $email]);
+        $snils = (int)str_replace('-', '', str_replace(' ', '', $abiturientPetition->getDocumentSNILS()));
+        if ($user and $snils == $user->getStudent()->getDocumentSnils()) {
+            $result = $login;
+        } else {
+            $snilssubstr = mb_substr((string)$snils, 2, 3);
+
+            $result = $login . '.' . $snilssubstr;
+
+        }
+        return $result;
+    }
 }

@@ -119,19 +119,6 @@ class ContingentDocumentController extends AbstractController
             Response::HTTP_OK,
             ['Content-Type' => 'application/pdf']
         );
-
-
-
-     /*   $contingentDocument->getStudent()->getValues();
-        $collegeRepository->findBy(['id'=>$contingentDocument->getCollege()->getId()]);
-
-
-
-        $contingentDocument=$typicalDocuments->generateOrder($contingentDocument);
-
-        return $this->renderForm('_printtemplate.html.twig', [
-            'content' => $contingentDocument,
-        ]);*/
     }
 
     #[Route ('/setStudents/{id}', name: 'app_contingent_document_set', methods: ['GET', 'POST'])]

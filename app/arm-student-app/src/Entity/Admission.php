@@ -34,6 +34,9 @@ class Admission
     #[ORM\OneToMany(mappedBy: 'admission', targetEntity: AbiturientPetition::class)]
     private Collection $abiturientPetitions;
 
+    #[ORM\ManyToOne(inversedBy: 'admissions')]
+    private ?College $College = null;
+
     public function __construct()
     {
         $this->admissionPlans = new ArrayCollection();
@@ -154,6 +157,18 @@ class Admission
                 $abiturientPetition->setAdmission(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCollege(): ?College
+    {
+        return $this->College;
+    }
+
+    public function setCollege(?College $College): static
+    {
+        $this->College = $College;
 
         return $this;
     }

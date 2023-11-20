@@ -17,6 +17,8 @@ class StaffType extends AbstractType
             ->add('MiddleName')
             ->add('Photo')
             ->add('studentGroups')
+            ->add('email')
+            ->add('UUID')
         ;
     }
 

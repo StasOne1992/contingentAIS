@@ -59,11 +59,12 @@ class Builder
                 $decree = $menu->addChild('Документы', ['uri' => '#', 'attributes' => ['dropdown' => true]]);
                 $decree->addChild('Приказы о движении', ['route' => 'app_contingent_document_index']);
             }
-            $menu->addChild('Студенчекие группы', ['route' => 'app_student_groups_index']);
-            $education = $menu->addChild('Образование', ['uri' => '#', 'attributes' => ['dropdown' => true]]);
-            $education->addChild('Учебные планы', ['route' => 'app_education_plan_index']);
-            $education->addChild('Дисциплины', ['route' => 'app_education_subjects_index']);
-
+            if ($this->authorizationChecker->isGranted('ROLE_STAFF_CONT_DOC_R')) {
+                $menu->addChild('Студенческие группы', ['route' => 'app_student_groups_index']);
+                $education = $menu->addChild('Образование', ['uri' => '#', 'attributes' => ['dropdown' => true]]);
+                $education->addChild('Учебные планы', ['route' => 'app_education_plan_index']);
+                $education->addChild('Дисциплины', ['route' => 'app_education_subjects_index']);
+            }
         }
         if ($this->authorizationChecker->isGranted('ROLE_ROOT')) {
             $menu->addChild('Администрирование', ['attributes' => ['class' => 'nav-main-heading']]);

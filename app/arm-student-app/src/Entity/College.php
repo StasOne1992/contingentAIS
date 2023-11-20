@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CollegeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -40,6 +42,24 @@ class College
 
     #[ORM\Column(length: 13)]
     private ?string $fax = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $SettingsStaffDomain = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $SettingsStudentsDomain = null;
+
+    #[ORM\OneToMany(mappedBy: 'College', targetEntity: User::class)]
+    private Collection $users;
+
+    #[ORM\OneToMany(mappedBy: 'College', targetEntity: Admission::class)]
+    private Collection $admissions;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+        $this->admissions = new ArrayCollection();
+    }
 
     public function getFullName(): ?string
     {
@@ -161,5 +181,89 @@ class College
     public function __toString(): string
     {
      return $this->getShortName();
+    }
+
+    public function getSettingsStaffDomain(): ?string
+    {
+        return $this->SettingsStaffDomain;
+    }
+
+    public function setSettingsStaffDomain(?string $SettingsStaffDomain): static
+    {
+        $this->SettingsStaffDomain = $SettingsStaffDomain;
+
+        return $this;
+    }
+
+    public function getSettingsStudentsDomain(): ?string
+    {
+        return $this->SettingsStudentsDomain;
+    }
+
+    public function setSettingsStudentsDomain(?string $SettingsStudentsDomain): static
+    {
+        $this->SettingsStudentsDomain = $SettingsStudentsDomain;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->setCollege($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getCollege() === $this) {
+                $user->setCollege(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Admission>
+     */
+    public function getAdmissions(): Collection
+    {
+        return $this->admissions;
+    }
+
+    public function addAdmission(Admission $admission): static
+    {
+        if (!$this->admissions->contains($admission)) {
+            $this->admissions->add($admission);
+            $admission->setCollege($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdmission(Admission $admission): static
+    {
+        if ($this->admissions->removeElement($admission)) {
+            // set the owning side to null (unless already changed)
+            if ($admission->getCollege() === $this) {
+                $admission->setCollege(null);
+            }
+        }
+
+        return $this;
     }
 }

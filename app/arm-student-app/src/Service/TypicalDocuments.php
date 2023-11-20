@@ -2,7 +2,10 @@
 
 namespace App\Service;
 
+use App\Entity\AccessSystemControl;
 use App\Entity\AdmissionPlan;
+use App\Entity\StudentGroups;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Student;
 use App\Repository\AbiturientPetitionRepository;
@@ -21,6 +24,7 @@ class TypicalDocuments
         CollegeRepository                    $collegeRepository,
         StudentGroupsRepository              $StudentGroupRepo,
         private AbiturientPetitionRepository $abiturientPetitionRepository,
+        private RFIDService                  $RFIDService,
     )
     {
         $this->collegeRepo = $collegeRepository;
@@ -32,18 +36,25 @@ class TypicalDocuments
      * @param bool $logo Включить ли логотип
      * @return string
      */
-    public function getHeader($logo = true)
+    public function getHeader($logo = true,$contacts=true)
     {
         $collegeName = str_replace("\r\n", '<br>', $this->college->getFullName());
         $collegeAddress = '<p style="text-align: center;font-size: small">' . $this->college->getPostalAddress() . '</p>';
-        $collegeContacts = '<p style="text-align: center;font-size: small">' . 'Телефон:' . $this->college->getPhone() . ' Факс:' . $this->college->getFax() . '<br>' . ' e-mail:' . $this->college->getEmail() . ' ' . $this->college->getWebSite() . '</p>';
+
+        if ($contacts) {
+            $collegeContacts = '<p style="text-align: center;font-size: small">' . 'Телефон:' . $this->college->getPhone() . ' Факс:' . $this->college->getFax() . '<br>' . ' e-mail:' . $this->college->getEmail() . ' ' . $this->college->getWebSite() . '</p>';
+        }
+        else
+        {
+            $collegeContacts='';
+        }
         if ($logo) {
 
             $image = $this->college->getLogo();
             /*$type = pathinfo($image, PATHINFO_EXTENSION);
             $data = file_get_contents($image);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);*/
-            $logo=' <img src="data:image/png;base64,'. base64_encode(file_get_contents('https://'.$_SERVER['HTTP_HOST'].$image)).'">';
+            $logo = ' <img src="data:image/png;base64,' . base64_encode(file_get_contents('https://' . $_SERVER['HTTP_HOST'] . $image)) . '">';
             #$logo = '<img style="display: block; height:2cm; margin: 0 auto;" src="' . base64_encode($image). '">';
 
         } else {
@@ -246,4 +257,159 @@ class TypicalDocuments
     }
 
 
+    /**
+     * @param Group $content
+     * @return void
+     */
+    public function generateSKUDRulesAccept($content)
+    {
+        $this->setCollege(1);
+        $page = $this->getHeader(false,false) .
+            '<hr style="margin: 0;padding: 0;height: 3px;border: none;border-top: 4px solid #333; border-bottom: 2px solid #333;">' .
+            '
+        <h3 align="center"><b>
+        <span style="text-transform: uppercase">Лист ознакомления студентов</span>
+        </h3>
+        <p align="center"><i>с Положением об организации пропускного режима в ГБПОУ МО «Волоколамский аграрный техникум «Холмогорка» с использованием автоматизированной системы контроля и управления доступом (СКУД) (локальный акт № 186), инструкцией по использованию системы контроля доступа) (локальный акт № 184) утвержденных приказом директора ГБПОУ МО «ВАТ Холмогорка» 
+от 10 января 2019 года № 1/1</i></p>
+<p style="margin-top: 0.5cm" align="center">Группа <b>' . $content . '</b></p>        
+        ';
+        /**
+         * @var StudentGroups $content
+         */
+        $studentslist = $content->getStudents()->toArray();
+        $itter = 0;
+        foreach ($studentslist as $student) {
+            $itter = $itter + 1;
+            $data[$itter]['UUID'] = $student->getUUID();
+            $data[$itter]['LastName'] = $student->getLastName();
+            $data[$itter]['FirstName'] = $student->getFirstName();
+            $data[$itter]['MiddleName'] = $student->getMiddleName();
+            $data[$itter]['Position'] = 'Студент';
+            $data[$itter]['Group'] = $content->getCode();
+            $data[$itter]['DateInPoo'] = $content->getDateStart()->format('d.m.Y');;
+            /**
+             * @var AccessSystemControl $card
+             */
+            foreach ($student->getAccessSystemControls() as $card) {
+                $convert = $this->RFIDService->convert('hid', str_pad($card->getAccessCardSeries(), 3, '0', STR_PAD_LEFT) . ',' . str_pad($card->getAccesCardNumber(), 6, '0', STR_PAD_LEFT));
+                $data[$itter]['CardID'] = str_pad($card->getAccessCardSeries(), 3, '0', STR_PAD_LEFT) . '/' . str_pad($card->getAccesCardNumber(), 5, '0', STR_PAD_LEFT); //$convert['id'];
+            }
+            $data[$itter]['AccessRules'] = 'калитка_учебный_корпус';
+        };
+
+        //        $item['UUID'] = 'Таб. №';
+        //        $item['LastName'] = 'Фамилия';
+        //        $item['FirstName'] = 'Имя';
+        //        $item['MiddleName'] = 'Отчество';
+        //        $item['Position'] = 'Должность';
+        //        $item['Group'] = 'Подразделение';
+        //        $item['DateInPoo'] = 'Дата начала действия';
+        //        $item['CardID'] = 'Карта - ID';
+        //        $item['AccessRules'] = 'Схема доступа';
+
+        $table = '<table style="width: 100%;">
+            <thead>
+            <tr>
+            <th style="width: 1.2cm ;border: 1px solid ;">№ п/п</th>
+            <th style=";border: 1px solid ;">Таб. №</th>
+            <th style=";border: 1px solid ;">Студент</th>
+            <th style=";border: 1px solid ;">ИД карты</th>
+            <th style=";border: 1px solid ;">Дата выдачи</th>
+            <th  style=";border: 1px solid ;">Подпись</th>
+</tr>
+            </thead>
+            ';
+        $itter=1;
+        foreach ($data as $item) {
+            $table= $table.'<tr>' .
+            '<td style="text-align: center ;border: 1px solid ;">'.$itter.'</td>' .
+                '<td style="text-align: center;border: 1px solid ;">'.$item['UUID'] .'</td>' .
+                '<td style="text-align: left;border: 1px solid ;">'. $item['LastName'] .' '. $item['FirstName'] .' '.  $item['MiddleName'] .'</td>' .
+                '<td style="text-align: left;border: 1px solid ;">'. $item['CardID'] .'</td>' .
+                '<td style="text-align: center;border: 1px solid ;">'.'01.09.2023' .'</td>' .
+                '<td style="text-align: center;border: 1px solid ;"></td>' .
+            '</tr>';
+            $itter++;
+        };
+
+
+        return $this->newpage($page.$table);
+
+    }
+
+    public function generateSKUDissue($content)
+    {
+        $this->setCollege(1);
+        $page = $this->getHeader(false,false) .
+            '<hr style="margin: 0;padding: 0;height: 3px;border: none;border-top: 4px solid #333; border-bottom: 2px solid #333;">' .
+            '
+        <h3 align="center"><b>
+        <span style="text-transform: uppercase">Ведомость<br> учёта выдачи электронных пропусков</span>
+        </h3>
+<p style="margin-top: 0.5cm" align="center">Группа <b>' . $content . '</b></p>        
+        ';
+        /**
+         * @var StudentGroups $content
+         */
+        $studentslist = $content->getStudents()->toArray();
+        $itter = 0;
+        foreach ($studentslist as $student) {
+            $itter = $itter + 1;
+            $data[$itter]['UUID'] = $student->getUUID();
+            $data[$itter]['LastName'] = $student->getLastName();
+            $data[$itter]['FirstName'] = $student->getFirstName();
+            $data[$itter]['MiddleName'] = $student->getMiddleName();
+            $data[$itter]['Position'] = 'Студент';
+            $data[$itter]['Group'] = $content->getCode();
+            $data[$itter]['DateInPoo'] = $content->getDateStart()->format('d.m.Y');;
+            /**
+             * @var AccessSystemControl $card
+             */
+            foreach ($student->getAccessSystemControls() as $card) {
+                $convert = $this->RFIDService->convert('hid', str_pad($card->getAccessCardSeries(), 3, '0', STR_PAD_LEFT) . ',' . str_pad($card->getAccesCardNumber(), 6, '0', STR_PAD_LEFT));
+                $data[$itter]['CardID'] = str_pad($card->getAccessCardSeries(), 3, '0', STR_PAD_LEFT) . '/' . str_pad($card->getAccesCardNumber(), 5, '0', STR_PAD_LEFT); //$convert['id'];
+            }
+            $data[$itter]['AccessRules'] = 'калитка_учебный_корпус';
+        };
+
+        //        $item['UUID'] = 'Таб. №';
+        //        $item['LastName'] = 'Фамилия';
+        //        $item['FirstName'] = 'Имя';
+        //        $item['MiddleName'] = 'Отчество';
+        //        $item['Position'] = 'Должность';
+        //        $item['Group'] = 'Подразделение';
+        //        $item['DateInPoo'] = 'Дата начала действия';
+        //        $item['CardID'] = 'Карта - ID';
+        //        $item['AccessRules'] = 'Схема доступа';
+
+        $table = '<table style="width: 100%;">
+            <thead>
+            <tr>
+            <th style="width: 1.2cm ;border: 1px solid ;">№ п/п</th>
+            <th style=";border: 1px solid ;">Таб. №</th>
+            <th style=";border: 1px solid ;">Студент</th>
+            <th style=";border: 1px solid ;">ИД карты</th>
+            <th style=";border: 1px solid ;">Дата выдачи</th>
+            <th  style=";border: 1px solid ;">Подпись</th>
+</tr>
+            </thead>
+            ';
+        $itter=1;
+        foreach ($data as $item) {
+            $table= $table.'<tr>' .
+                '<td style="text-align: center ;border: 1px solid ;">'.$itter.'</td>' .
+                '<td style="text-align: center;border: 1px solid ;">'.$item['UUID'] .'</td>' .
+                '<td style="text-align: left;border: 1px solid ;">'. $item['LastName'] .' '. $item['FirstName'] .' '.  $item['MiddleName'] .'</td>' .
+                '<td style="text-align: center;border: 1px solid ;">'. $item['CardID'] .'</td>' .
+                '<td style="text-align: center;border: 1px solid ;">'.'01.09.2023' .'</td>' .
+                '<td style="text-align: center;border: 1px solid ;"></td>' .
+                '</tr>';
+            $itter++;
+        };
+
+
+        return $this->newpage($page.$table);
+
+    }
 }

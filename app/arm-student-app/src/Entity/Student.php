@@ -76,9 +76,8 @@ class Student
     #[ORM\Column(nullable: true)]
     private ?bool $isActive = null;
 
-    #[ORM\OneToMany(mappedBy: 'Student_ID', targetEntity: User::class)]
+    #[ORM\OneToMany(mappedBy: 'Student', targetEntity: User::class)]
     private Collection $users;
-
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $Photo = null;
@@ -125,6 +124,15 @@ class Student
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $FirstPassword = null;
 
+    #[ORM\OneToMany(mappedBy: 'Student', targetEntity: AccessSystemControl::class)]
+    private Collection $accessSystemControls;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $UUID = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $isLiveStudentAccommondation = null;
+
 
     public function __construct()
     {
@@ -135,6 +143,7 @@ class Student
         $this->users = new ArrayCollection();
         $this->characteristics = new ArrayCollection();
         $this->contingentDocuments = new ArrayCollection();
+        $this->accessSystemControls = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -676,6 +685,60 @@ class Student
     public function setFirstPassword(?string $FirstPassword): static
     {
         $this->FirstPassword = $FirstPassword;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, AccessSystemControl>
+     */
+    public function getAccessSystemControls(): Collection
+    {
+        return $this->accessSystemControls;
+    }
+
+    public function addAccessSystemControl(AccessSystemControl $accessSystemControl): static
+    {
+        if (!$this->accessSystemControls->contains($accessSystemControl)) {
+            $this->accessSystemControls->add($accessSystemControl);
+            $accessSystemControl->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAccessSystemControl(AccessSystemControl $accessSystemControl): static
+    {
+        if ($this->accessSystemControls->removeElement($accessSystemControl)) {
+            // set the owning side to null (unless already changed)
+            if ($accessSystemControl->getStudent() === $this) {
+                $accessSystemControl->setStudent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUUID(): ?string
+    {
+        return $this->UUID;
+    }
+
+    public function setUUID(?string $UUID): static
+    {
+        $this->UUID = $UUID;
+
+        return $this;
+    }
+
+    public function isIsLiveStudentAccommondation(): ?bool
+    {
+        return $this->isLiveStudentAccommondation;
+    }
+
+    public function setIsLiveStudentAccommondation(?bool $isLiveStudentAccommondation): static
+    {
+        $this->isLiveStudentAccommondation = $isLiveStudentAccommondation;
 
         return $this;
     }

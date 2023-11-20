@@ -1,0 +1,29 @@
+
+###> symfony/framework-bundle ###
+/app/arm-student-app/.env.local
+/app/arm-student-app/.env.local.php
+/app/arm-student-app/.env.*.local
+/app/arm-student-app/config/secrets/prod/prod.decrypt.private.php
+/app/arm-student-app/public/bundles/
+/app/arm-student-app/var/
+/app/arm-student-app/vendor/
+###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+
+
+

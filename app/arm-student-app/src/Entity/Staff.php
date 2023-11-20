@@ -34,6 +34,12 @@ class Staff
     #[ORM\OneToMany(mappedBy: 'GroupLeader', targetEntity: StudentGroups::class)]
     private Collection $studentGroups;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $UUID = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $email = null;
+
 
     public function __construct()
     {
@@ -155,6 +161,30 @@ class Staff
                 $studentGroup->setGroupLeader(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUUID(): ?string
+    {
+        return $this->UUID;
+    }
+
+    public function setUUID(?string $UUID): static
+    {
+        $this->UUID = $UUID;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
 
         return $this;
     }

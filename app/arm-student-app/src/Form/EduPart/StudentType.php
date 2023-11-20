@@ -93,7 +93,16 @@ class StudentType extends AbstractType
                     'class' => 'form-check-input',
                     'required' => false,
                 ],
-            ]);
+            ])
+            ->add('isLiveStudentAccommondation', CheckboxType::class, [
+                'label' => 'Проживает в общежитии',
+                'required' => false,
+                'attr' => [
+                    'class' => 'form-check-input',
+                    'required' => false,
+                ],
+            ])
+        ;
 
 
     }
