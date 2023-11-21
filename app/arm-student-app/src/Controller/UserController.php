@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\RolesRepository;
 use App\Repository\UserRepository;
+use App\Service\Messenger\BackgroudMessage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +23,12 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\param;
 #[Route('/user')]
 class UserController extends AbstractController
 {
+    public function __construct(
+        private BackgroudMessage $message,
+    )
+    {
+    }
+
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
@@ -39,8 +46,9 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $userRepository->save($user, true);
-
+            $this->message->push('toast-notify', 'success', ' fa fa-check me-1 ', 'Пользователь создан!', "Пользователь ".$user);
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+
         }
         return $this->renderForm('user/new.html.twig', [
             'user' => $user,
@@ -59,11 +67,12 @@ class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, UserRepository $userRepository, RolesRepository $rolesRepository): Response
     {
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $userRepository->save($user, true);
-
+            $this->message->push('toast-notify', 'success', ' fa fa-check me-1 ', 'Пользователь изменён!', "Пользователь ".$user->getUserIdentifier());
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
         }
 

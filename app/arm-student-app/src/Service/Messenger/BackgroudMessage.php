@@ -3,19 +3,26 @@
 namespace App\Service\Messenger;
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\Mercure\Update;
 
 class BackgroudMessage
 {
-    private
+    public function __construct(
+        private HubInterface    $hub,
+    )
+    {
+    }
+
+    public
     function push($topics, $type, $icon, $header, $message,): Response
     {
         $update = new Update(
             $topics,
-            json_encode(['type' => $type, 'header' => $header, 'icon' => $icon, 'message' => $message])
+            json_encode(['type' => $type, 'header' => $header, 'icon' => $icon, 'message' => $message]),
+            //true
         );
-        $this->hub->publish($update);
-
+        $this->hub->publish($update,);
         return new Response('published!');
     }
 }

@@ -243,6 +243,22 @@
     }
 </script>
 
+
+<script>
+    //    One.helpers('jq-notify', {from: 'bottom', message: 'Your message!'});
+    const ToastNotify = new EventSource("{{ mercure('toast-notify')|escape('js') }}");
+    ToastNotify.onmessage = event => {
+        var message = JSON.parse(event.data);
+        One.helpers('jq-notify', {
+            type: message.type,
+            from: 'bottom',
+            icon: message.icon,
+            title: message.header,
+            message: message.header + ' ' + message.message
+        });
+    }
+
+</script>
 <script>
 
     !(function () {

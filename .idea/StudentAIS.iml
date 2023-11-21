@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/app/arm-student-app/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/app/arm-student-app/templates" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/dompdf/dompdf" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/phenx/php-font-lib" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/phenx/php-svg-lib" />
