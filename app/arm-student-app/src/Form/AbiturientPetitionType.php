@@ -7,7 +7,7 @@ use App\Entity\AbiturientPetitionStatus;
 use App\Entity\Admission;
 use App\Entity\AdmissionPlan;
 use App\Entity\Faculty;
-use App\Entity\PersonaSex;
+use App\Entity\Gender;
 use App\Entity\Regions;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -169,7 +169,7 @@ class AbiturientPetitionType extends AbstractType
                     'class' => 'form-select',
                 ]),
                 'required' => false,
-                'class' => PersonaSex::class))
+                'class' => Gender::class))
 
             ->add('AdmissionPlanPosition', EntityType::class, array(
                 'label' => 'Позиция плана приёма',

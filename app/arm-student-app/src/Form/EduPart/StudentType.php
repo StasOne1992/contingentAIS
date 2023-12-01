@@ -3,6 +3,7 @@
 namespace App\Form\EduPart;
 
 use App\Entity\FamilyTypeList;
+use App\Entity\Gender;
 use App\Entity\HealthGroup;
 use App\Entity\Student;
 use App\Entity\StudentGroups;
@@ -47,7 +48,13 @@ class StudentType extends AbstractType
                 'empty_data' => null,
                 'required' => false,
                 'class' => HealthGroup::class))
-            ->add('Sex')
+            ->add('Gender', EntityType::class,array(
+                'label' => 'Пол',
+                'placeholder' => 'Укажите пол',
+                'empty_data' => null,
+                'required' => true,
+                    'class' => Gender::class,
+            ))
             ->add('isActive', CheckboxType::class, [
                 'required' => false,
                 'attr' => [

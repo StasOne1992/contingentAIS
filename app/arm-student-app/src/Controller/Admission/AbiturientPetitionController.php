@@ -26,7 +26,7 @@ use App\Repository\ContingentDocumentRepository;
 use App\Repository\FacultyRepository;
 use App\Repository\PersonalDocTypeListRepository;
 use App\Repository\PersonalDocumentsRepository;
-use App\Repository\PersonaSexRepository;
+use App\Repository\genderRepository;
 use App\Repository\StudentRepository;
 use App\Repository\UserRepository;
 use App\Service\Admission\PetitionLoadService;
@@ -53,7 +53,7 @@ class AbiturientPetitionController extends AbstractController
         private AdmissionRepository                  $admissionRepository,
         private AbiturientPetitionStatusRepository   $abiturientPetitionStatusRepository,
         private AdmissionExaminationResultRepository $admissionExaminationResultRepository,
-        private PersonaSexRepository                 $personaSexRepository,
+        private GenderRepository                     $genderRepository,
         private AdmissionExaminationRepository       $admissionExaminationRepository,
         private AdmissionPlanRepository              $admissionPlanRepository,
         private ContingentDocumentRepository         $contingentDocumentRepository,
@@ -117,7 +117,7 @@ class AbiturientPetitionController extends AbstractController
     #[IsGranted("ROLE_STAFF_AB_PETITIONS_U")]
     public function edit(Request $request, AbiturientPetition $abiturientPetition): Response
     {
-        $this->personaSexRepository->findAll();
+        $this->genderRepository->findAll();
         $this->abiturientPetitionStatusRepository->findAll();
 
         if (!isNull($abiturientPetition->getAdmissionPlanPosition())) {

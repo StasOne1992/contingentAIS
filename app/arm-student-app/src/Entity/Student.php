@@ -71,7 +71,7 @@ class Student
     private Collection $personalDocuments;
 
     #[ORM\ManyToOne(inversedBy: 'students')]
-    private ?PersonaSex $Sex = null;
+    private ?Gender $Gender = null;
 
     #[ORM\Column(nullable: true)]
     private ?bool $isActive = null;
@@ -416,14 +416,14 @@ class Student
         return $this;
     }
 
-    public function getSex(): ?PersonaSex
+    public function getGender(): ?Gender
     {
-        return $this->Sex;
+        return $this->Gender;
     }
 
-    public function setSex(?PersonaSex $Sex): self
+    public function setGender(?Gender $Gender): self
     {
-        $this->Sex = $Sex;
+        $this->Gender = $Gender;
 
         return $this;
     }

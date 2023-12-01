@@ -4,14 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45536ea5-9412-4026-bc64-5f6634c799f3" name="Changes" comment="Категория мероприятий">
-      <change beforePath="$PROJECT_DIR$/.idea/StudentAIS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/StudentAIS.iml" afterDir="false" />
+    <list default="true" id="45536ea5-9412-4026-bc64-5f6634c799f3" name="Changes" comment="Фоновые сообщения">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b88c91e9-7b1c-4aa0-8a08-279a37ccb6c2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b88c91e9-7b1c-4aa0-8a08-279a37ccb6c2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b88c91e9-7b1c-4aa0-8a08-279a37ccb6c2/storage_v2/_src_/database/pgs_arm_student.9WwQoQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b88c91e9-7b1c-4aa0-8a08-279a37ccb6c2/storage_v2/_src_/database/pgs_arm_student.9WwQoQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/.env" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Dashboard/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Dashboard/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admin/StudentCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admin/StudentCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admin/UserCrudController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admin/UserCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/ServicesDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/ServicesDashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/SystemServicesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/SystemServicesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AbiturientPetitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AbiturientPetitionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AbiturientPetitionStatusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AbiturientPetitionStatusController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/Examination/AdmissionExaminationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/Examination/AdmissionExaminationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/StudentGroupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/StudentGroupsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/Messenger/BackgroudMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Service/Messenger/BackgroudMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/AbiturientPetition.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/AbiturientPetition.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/PersonaSex.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Student.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/gender.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Gender.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AbiturientPetitionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Form/AbiturientPetitionType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EduPart/StudentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Form/EduPart/StudentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/PersonaSexRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Repository/GenderRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionLoadService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionLoadService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student/_add_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student/_add_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -490,7 +508,7 @@
       <workItem from="1699009827609" duration="3103000" />
       <workItem from="1699371550921" duration="765000" />
       <workItem from="1699622436268" duration="6547000" />
-      <workItem from="1700494766088" duration="6845000" />
+      <workItem from="1700494766088" duration="18256000" />
     </task>
     <task id="LOCAL-00001" summary="Восстановлены файлы проекта&#10;Выполнена настройка представления списка заявлений&#10;Реализован функционал выгрузки заявлений на сайт через API сайта&#10;Добавлены новые поля для заявления&#10;Доработана процедура загрузки информации из ВИС&#10;Реализована возможность блокировки заявлений от обновлений из ВИС">
       <created>1689240112658</created>
@@ -576,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700496701170</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Фоновые сообщения">
+      <created>1700549505228</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1700549505228</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -618,7 +643,8 @@
     <MESSAGE value="Реструктуризация проекта.&#10;Переход на контейнеры" />
     <MESSAGE value="Реструктуризация проекта.&#10;Большое количество изменений:&#10;- Изменение механики работы Приемной комиссии&#10;- Модуль зачисление&#10;- Профиль студента&#10;- Экранные формы&#10;- Новые сущности" />
     <MESSAGE value="Категория мероприятий" />
-    <option name="LAST_COMMIT_MESSAGE" value="Категория мероприятий" />
+    <MESSAGE value="Фоновые сообщения" />
+    <option name="LAST_COMMIT_MESSAGE" value="Фоновые сообщения" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

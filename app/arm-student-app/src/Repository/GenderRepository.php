@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\PersonaSex;
+use App\Entity\Gender;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<PersonaSex>
+ * @extends ServiceEntityRepository<Gender>
  *
- * @method PersonaSex|null find($id, $lockMode = null, $lockVersion = null)
- * @method PersonaSex|null findOneBy(array $criteria, array $orderBy = null)
- * @method PersonaSex[]    findAll()
- * @method PersonaSex[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Gender|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Gender|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Gender[]    findAll()
+ * @method Gender[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PersonaSexRepository extends ServiceEntityRepository
+class GenderRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, PersonaSex::class);
+        parent::__construct($registry, Gender::class);
     }
 
-    public function save(PersonaSex $entity, bool $flush = false): void
+    public function save(Gender $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class PersonaSexRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(PersonaSex $entity, bool $flush = false): void
+    public function remove(Gender $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class PersonaSexRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return PersonaSex[] Returns an array of PersonaSex objects
+//     * @return Gender[] Returns an array of Gender objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class PersonaSexRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?PersonaSex
+//    public function findOneBySomeField($value): ?Gender
 //    {
 //        return $this->createQueryBuilder('p')
 //            ->andWhere('p.exampleField = :val')

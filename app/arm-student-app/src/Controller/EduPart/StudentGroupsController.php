@@ -31,15 +31,21 @@ class StudentGroupsController extends AbstractController
     public function index(StudentGroupsRepository $studentGroupsRepository): Response
     {
         //ToDo: Исправить проверку ролей на основе классов Security
-        $user = $this->getUser();
-        if (in_array('ROLE_CL', $user->getRoles()) and !in_array('ROLE_ROOT', $user->getRoles())) {
-            dump('haverole CL');
-        } else if (in_array('ROLE_ROOT', $user->getRoles())) {
-            dump('RoleRoot');
+
+        if ($this->getUser()!=null) {
+            $user = $this->getUser();
+            if (in_array('ROLE_CL', $user->getRoles()) and !in_array('ROLE_ROOT', $user->getRoles())) {
+                dump('haverole CL');
+            } else if (in_array('ROLE_ROOT', $user->getRoles())) {
+                dump('RoleRoot');
+            }
+            return $this->render('student_groups/index.html.twig', [
+                'student_groups' => $studentGroupsRepository->findAll(),
+            ]);
         }
 
         return $this->render('student_groups/index.html.twig', [
-            'student_groups' => $studentGroupsRepository->findAll(),
+            'student_groups' => array(),
         ]);
     }
 

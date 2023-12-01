@@ -4,6 +4,7 @@ namespace App\Controller\Admission;
 
 use App\Entity\AbiturientPetitionStatus;
 use App\Form\AbiturientPetitionStatusType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\AbiturientPetitionStatusRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AbiturientPetitionStatusController extends AbstractController
 {
     #[Route('/', name: 'app_abiturient_petition_status_index', methods: ['GET'])]
+    #[IsGranted("ROLE_STAFF_ADMISSION_EXAMINATION_SUBJECT_R")]
     public function index(AbiturientPetitionStatusRepository $abiturientPetitionStatusRepository): Response
     {
         return $this->render('abiturient_petition_status/index.html.twig', [
@@ -22,6 +24,7 @@ class AbiturientPetitionStatusController extends AbstractController
     }
 
     #[Route('/new', name: 'app_abiturient_petition_status_new', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_STAFF_ADMISSION_EXAMINATION_SUBJECT_C")]
     public function new(Request $request, AbiturientPetitionStatusRepository $abiturientPetitionStatusRepository): Response
     {
         $abiturientPetitionStatus = new AbiturientPetitionStatus();
@@ -40,7 +43,9 @@ class AbiturientPetitionStatusController extends AbstractController
         ]);
     }
 
+
     #[Route('/{id}/show', name: 'app_abiturient_petition_status_show', methods: ['GET'])]
+    #[IsGranted("ROLE_STAFF_ADMISSION_EXAMINATION_SUBJECT_R")]
     public function show(AbiturientPetitionStatus $abiturientPetitionStatus): Response
     {
         return $this->render('abiturient_petition_status/show.html.twig', [
@@ -49,6 +54,7 @@ class AbiturientPetitionStatusController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_abiturient_petition_status_edit', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_STAFF_ADMISSION_EXAMINATION_SUBJECT_U")]
     public function edit(Request $request, AbiturientPetitionStatus $abiturientPetitionStatus, AbiturientPetitionStatusRepository $abiturientPetitionStatusRepository): Response
     {
         $form = $this->createForm(AbiturientPetitionStatusType::class, $abiturientPetitionStatus);
@@ -67,6 +73,7 @@ class AbiturientPetitionStatusController extends AbstractController
     }
 
     #[Route('/{id}/delete', name: 'app_abiturient_petition_status_delete', methods: ['POST'])]
+    #[IsGranted("ROLE_STAFF_ADMISSION_EXAMINATION_SUBJECT_D")]
     public function delete(Request $request, AbiturientPetitionStatus $abiturientPetitionStatus, AbiturientPetitionStatusRepository $abiturientPetitionStatusRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$abiturientPetitionStatus->getId(), $request->request->get('_token'))) {

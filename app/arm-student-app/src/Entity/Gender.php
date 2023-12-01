@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PersonaSexRepository;
+use App\Repository\GenderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PersonaSexRepository::class)]
-class PersonaSex
+#[ORM\Entity(repositoryClass: GenderRepository::class)]
+class Gender
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -62,7 +62,7 @@ class PersonaSex
     {
         if (!$this->students->contains($student)) {
             $this->students->add($student);
-            $student->setSex($this);
+            $student->setGender($this);
         }
 
         return $this;
@@ -72,8 +72,8 @@ class PersonaSex
     {
         if ($this->students->removeElement($student)) {
             // set the owning side to null (unless already changed)
-            if ($student->getSex() === $this) {
-                $student->setSex(null);
+            if ($student->getGender() === $this) {
+                $student->setGender(null);
             }
         }
 

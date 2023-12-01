@@ -18,7 +18,7 @@ use App\Repository\EducationFormRepository;
 use App\Repository\EducationTypeRepository;
 use App\Repository\FacultyRepository;
 use App\Repository\FinancialTypeRepository;
-use App\Repository\PersonaSexRepository;
+use App\Repository\GenderRepository;
 use App\Repository\SpecializationRepository;
 use DateTime;
 use Exception;
@@ -47,7 +47,7 @@ class PetitionLoadService
     (
         private HttpClientInterface                $client,
         private AbiturientPetitionRepository       $petitionRepository,
-        private PersonaSexRepository               $personaGenderRpository,
+        private GenderRepository                   $genderRpository,
         private FacultyRepository                  $facultyRepository,
         private AbiturientPetitionStatusRepository $abiturientPetitionStatusRepository,
         private AbiturientPetitionRepository       $abiturientPetitionRepository,
@@ -485,7 +485,7 @@ class PetitionLoadService
     private
     function convertGender($gender)
     {
-        return $this->personaGenderRpository->findOneBy(['genderName' => $gender]);
+        return $this->genderRpository->findOneBy(['genderName' => $gender]);
     }
 
     private

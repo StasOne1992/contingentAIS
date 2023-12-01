@@ -6,6 +6,7 @@ use App\Entity\SystemServices;
 use App\Form\SystemServicesType;
 use App\Repository\SystemServicesRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 #[Route('administrator/system/services')]
+#[IsGranted("ROLE_ROOT")]
 class SystemServicesController extends AbstractController
 {
     #[Route('/', name: 'app_system_services_index', methods: ['GET'])]
@@ -25,6 +27,7 @@ class SystemServicesController extends AbstractController
     }
 
     #[Route('/new', name: 'app_system_services_new', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_ROOT")]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $systemService = new SystemServices();
@@ -45,6 +48,7 @@ class SystemServicesController extends AbstractController
     }
 
     #[Route('/{id}/show', name: 'app_system_services_show', methods: ['GET'])]
+    #[IsGranted("ROLE_ROOT")]
     public function show(Systemservices $systemSerivce): Response
     {
         return $this->render('administrator/system_services/show.html.twig', [
@@ -53,6 +57,7 @@ class SystemServicesController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_system_services_edit', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_ROOT")]
     public function edit(Request $request, Systemservices $systemSerivce, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(SystemservicesType::class, $systemSerivce);
@@ -71,6 +76,7 @@ class SystemServicesController extends AbstractController
     }
 
     #[Route('/{id}/delete', name: 'app_system_services_delete', methods: ['POST'])]
+    #[IsGranted("ROLE_ROOT")]
     public function delete(Request $request, Systemservices $systemSerivce, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $systemSerivce->getId(), $request->request->get('_token'))) {
@@ -81,6 +87,7 @@ class SystemServicesController extends AbstractController
     }
 
     #[Route('/{id}/status', name: 'app_system_services_status', methods: ['GET'])]
+    #[IsGranted("ROLE_ROOT")]
     public function status(Systemservices $systemSerivce): Response
     {
         $process = new Process(['systemctl', 'status', $systemSerivce->getSystemName()]);
@@ -96,6 +103,7 @@ class SystemServicesController extends AbstractController
     }
 
     #[Route('/{id}/start', name: 'app_system_services_start', methods: ['GET'])]
+    #[IsGranted("ROLE_ROOT")]
     public function start(Systemservices $systemSerivce): Response
     {
         $process = new Process(['su','systemctl', 'start', $systemSerivce->getSystemName()]);
@@ -111,6 +119,7 @@ class SystemServicesController extends AbstractController
     }
 
     #[Route('/{id}/stop', name: 'app_system_services_stop', methods: ['GET'])]
+    #[IsGranted("ROLE_ROOT")]
     public function stop(Systemservices $systemSerivce): Response
     {
         $process = new Process(['systemctl','stop', $systemSerivce->getSystemName()]);

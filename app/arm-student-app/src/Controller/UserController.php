@@ -7,6 +7,7 @@ use App\Form\UserType;
 use App\Repository\RolesRepository;
 use App\Repository\UserRepository;
 use App\Service\Messenger\BackgroudMessage;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +24,7 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\param;
 #[Route('/user')]
 class UserController extends AbstractController
 {
+    #[IsGranted("ROLE_STAFF_STUDENT_R")]
     public function __construct(
         private BackgroudMessage $message,
     )
@@ -30,6 +32,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
+    #[IsGranted("ROLE_STAFF_STUDENT_R")]
     public function index(UserRepository $userRepository): Response
     {
         return $this->render('user/index.html.twig', [
@@ -38,6 +41,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_STAFF_STUDENT_C")]
     public function new(Request $request, UserRepository $userRepository, RolesRepository $rolesRepository): Response
     {
         $user = new User();
@@ -57,6 +61,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/show', name: 'app_user_show', methods: ['GET'])]
+    #[IsGranted("ROLE_STAFF_STUDENT_R")]
     public function show(User $user): Response
     {
         return $this->render('user/show.html.twig', [
@@ -65,6 +70,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_STAFF_STUDENT_U")]
     public function edit(Request $request, User $user, UserRepository $userRepository, RolesRepository $rolesRepository): Response
     {
 
@@ -83,6 +89,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/delete', name: 'app_user_delete', methods: ['POST'])]
+    #[IsGranted("ROLE_STAFF_STUDENT_D")]
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {

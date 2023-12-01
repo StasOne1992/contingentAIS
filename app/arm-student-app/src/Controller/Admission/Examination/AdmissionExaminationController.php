@@ -4,6 +4,7 @@ namespace App\Controller\Admission\Examination;
 
 use App\Entity\AdmissionExamination;
 use App\Form\AdmissionExaminationType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\AbiturientPetitionRepository;
 use App\Repository\AdmissionExaminationRepository;
 use App\Service\Admission\AdmissionExaminationPreparationService;
@@ -29,6 +30,7 @@ class AdmissionExaminationController extends AbstractController
     }
 
     #[Route('/', name: 'app_admission_examination_index', methods: ['GET'])]
+    #[IsGranted("ROLE_STAFF_ADMISSION_EXAMINATION_R")]
     public function index(AdmissionExaminationRepository $admissionExaminationRepository): Response
     {
         return $this->render('admission_examination/index.html.twig', [
@@ -37,6 +39,7 @@ class AdmissionExaminationController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admission_examination_new', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_STAFF_ADMISSION_EXAMINATION_C")]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $admissionExamination = new AdmissionExamination();
@@ -57,6 +60,7 @@ class AdmissionExaminationController extends AbstractController
     }
 
     #[Route('/{id}/show', name: 'app_admission_examination_show', methods: ['GET'])]
+    #[IsGranted("ROLE_STAFF_ADMISSION_EXAMINATION_R")]
     public function show(AdmissionExamination $admissionExamination): Response
     {
         return $this->render('admission_examination/show.html.twig', [
@@ -65,6 +69,7 @@ class AdmissionExaminationController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admission_examination_edit', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_STAFF_ADMISSION_EXAMINATION_U")]
     public function edit(Request $request, AdmissionExamination $admissionExamination, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(AdmissionExaminationType::class, $admissionExamination);
@@ -83,6 +88,7 @@ class AdmissionExaminationController extends AbstractController
     }
 
     #[Route('/{id}/preparation', name: 'app_admission_examination_preparation', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_STAFF_ADMISSION_EXAMINATION_P,ROLE_STAFF_AB_PETITIONS_U")]
     public function preparation(Request $request, AdmissionExamination $admissionExamination, EntityManagerInterface $entityManager): Response
     {
         $admissionExaminationListToCreate=array();

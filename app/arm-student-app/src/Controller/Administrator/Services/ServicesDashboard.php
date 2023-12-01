@@ -3,6 +3,7 @@
 namespace App\Controller\Administrator\Services;
 
 use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 #[Route('/administrator/services')]
+#[IsGranted("ROLE_ROOT")]
 class ServicesDashboard extends AbstractController
 {
     public function __construct(
@@ -44,6 +46,7 @@ class ServicesDashboard extends AbstractController
 
 
     #[Route('/', name: 'app_services_dashboard_index', methods: ['GET'])]
+    #[IsGranted("ROLE_ROOT")]
     public function index(): Response
     {
 
@@ -54,6 +57,7 @@ class ServicesDashboard extends AbstractController
     }
 
     #[Route('/{command}/run', name: 'app_services_run_command', methods: ['GET'])]
+    #[IsGranted("ROLE_ROOT")]
     public function runCommand(Request $request): Response
     {
         $command=$request->get('command');

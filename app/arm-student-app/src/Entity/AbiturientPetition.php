@@ -38,7 +38,7 @@ class AbiturientPetition
     private ?\DateTimeInterface $createdTs = null;
 
     #[ORM\ManyToOne(inversedBy: 'abiturientPetitions')]
-    private ?PersonaSex $gender = null;
+    private ?Gender $Gender = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $phone = null;
@@ -280,14 +280,14 @@ class AbiturientPetition
         return $this->getNumber().' '.$this->getLastName().' '.$this->getFirstName().' '.$this->getMiddleName();
     }
 
-    public function getGender(): ?PersonaSex
+    public function getGender(): ?Gender
     {
-        return $this->gender;
+        return $this->Gender;
     }
 
-    public function setGender(?PersonaSex $gender): static
+    public function setGender(?Gender $Gender): static
     {
-        $this->gender = $gender;
+        $this->Gender = $Gender;
 
         return $this;
     }
