@@ -43,6 +43,9 @@ class SecurityController extends AbstractController
         if ($this->isGranted('ROLE_ROOT')) {
             return $this->redirectToRoute('app_dashboard_index');
         }
+        if ($this->isGranted('ROLE_STUDENT')) {
+            return $this->redirectToRoute('app_student_dashboard');
+        }
         if ($this->isGranted('ROLE_USER')) {
             return $this->redirectToRoute('app_dashboard_index');
         }
@@ -53,9 +56,7 @@ class SecurityController extends AbstractController
         if ($this->isGranted('ROLE_CL')) {
             return $this->redirectToRoute('app_dashboard_index');
         }
-        if ($this->isGranted('ROLE_STUDENT')) {
-            return $this->redirectToRoute('app_student_dashboard');
-        }
+
         throw new \Exception(AccessDeniedException::class);
     }
 

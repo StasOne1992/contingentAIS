@@ -3,20 +3,16 @@
 namespace App\Service;
 
 use App\Entity\AccessSystemControl;
-use App\Repository\StudentGroupsRepository;
-
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Entity\StudentGroups;
+use App\Entity\Gender;
 use App\Entity\Student;
-use Symfony\Component\HttpFoundation\Response;
+use App\Repository\StudentGroupsRepository;
 use Npub\Gos\Snils;
-use App\Service\XlsxService;
-use function PHPUnit\Framework\isNull;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use App\Service\GlobalHelpersService;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 
 class StudentGroupsService extends AbstractController
@@ -42,7 +38,11 @@ class StudentGroupsService extends AbstractController
         $group = $groupObj->getStudents()->getValues();
         $count = 0;
         foreach ($group as $student) {
-            $current = $student->getSex();
+            /**
+             * @var Student $student
+             * @var Gender $current
+             */
+            $current = $student->getGender();
             if ($current->getId() == 2) $count = $count + 1;
         }
         return $count;
@@ -54,7 +54,11 @@ class StudentGroupsService extends AbstractController
         $group = $groupObj->getStudents()->getValues();
         $count = 0;
         foreach ($group as $student) {
-            $current = $student->getSex();
+            /**
+             * @var Student $student
+             * @var Gender $current
+             */
+            $current = $student->getGender();
             if ($current->getId() == 1) $count = $count + 1;
         }
         return $count;
@@ -66,8 +70,13 @@ class StudentGroupsService extends AbstractController
         $group = $groupObj->getStudents()->getValues();
         $count = 0;
         foreach ($group as $student) {
+            /**
+             * @var Student $student
+             * @var bool $current
+             */
             $current = $student->isIsOrphan() ?? false;
-            if ($current == true) $count = $count + 1;
+            if ($current) {
+                $count = $count + 1;}
         }
         return $count;
     }
@@ -78,6 +87,10 @@ class StudentGroupsService extends AbstractController
         $group = $groupObj->getStudents()->getValues();
         $count = 0;
         foreach ($group as $student) {
+            /**
+             * @var Student $student
+             * @var bool $current
+             */
             $current = $student->isIsInvalid() ?? false;
             if ($current == true) $count = $count + 1;
         }
@@ -90,6 +103,10 @@ class StudentGroupsService extends AbstractController
         $group = $groupObj->getStudents()->getValues();
         $count = 0;
         foreach ($group as $student) {
+            /**
+             * @var Student $student
+             * @var DateTime $current
+             */
             $current = $student->getBirthData();
 
             $now = date_create('now');
@@ -109,7 +126,10 @@ class StudentGroupsService extends AbstractController
         $count = 0;
         foreach ($group as $student) {
             $current = $student->getBirthData();
-
+            /**
+             * @var Student $student
+             * @var DateTime $current
+             */
             $now = date_create('now');
             $current = $now->diff($current)->y;
 
@@ -126,6 +146,10 @@ class StudentGroupsService extends AbstractController
         $group = $groupObj->getStudents()->getValues();
         $count = 0;
         foreach ($group as $student) {
+            /**
+             * @var Student $student
+             * @var bool $current
+             */
             $current = $student->isIsWithoutParents() ?? false;
             if ($current == true) $count = $count + 1;
 
@@ -139,6 +163,10 @@ class StudentGroupsService extends AbstractController
         $group = $groupObj->getStudents()->getValues();
         $count = 0;
         foreach ($group as $student) {
+            /**
+             * @var Student $student
+             * @var bool $current
+             */
             $current = $student->isIsPoor() ?? false;
             if ($current == true) $count = $count + 1;
 
@@ -146,24 +174,21 @@ class StudentGroupsService extends AbstractController
         return $count;
     }
 
-
-    /*public function countWoman($groupObj): int
-    {
-        $group=$groupObj->getStudents()->getValues();
-        $count=0;
-        foreach  ($group as $student)
-        {
-            $sex=$student->getSex();
-            if ($sex->getId()==2) $count=$count+1;
-        }
-        return $count;
-    }
-    */
-
     public
     function generateSocialPasport($groupObj): array
     {
         $socialPassport = [];
+        /**
+         * coutnStudents - всего
+         * countWoman - женщины
+         * countMan - мужчины
+         * countOrphan - сироты
+         * countInvalid - инвалиды и ОВЗ
+         * countIsPoor - малоимущие
+         * countUnderage - не совершеннолетние
+         * countAdult - совершеннолетние
+         * countWithoutParents - дети, оставшиеся без попечения родителей
+         */
         $socialPassport['countStudents'] = count($groupObj->getActiveStudents()->getValues());
         $socialPassport['countWoman'] = $this->countWoman($groupObj);
         $socialPassport['countMan'] = $this->countMan($groupObj);
@@ -172,7 +197,8 @@ class StudentGroupsService extends AbstractController
         $socialPassport['countWithoutParents'] = $this->countWithoutParents($groupObj);
         $socialPassport['countIsPoor'] = $this->countPoor($groupObj);
         $socialPassport['countUnderage'] = $this->countUnderage($groupObj);
-        $socialPassport['countАdult'] = $this->countАdult($groupObj);
+        $socialPassport['countAdult'] = $this->countАdult($groupObj);
+
         return $socialPassport;
     }
 
@@ -228,7 +254,7 @@ class StudentGroupsService extends AbstractController
             $data[$itter]['FirstName'] = $student->getFirstName();
             $data[$itter]['MiddleName'] = $student->getMiddleName();
             $data[$itter]['LastName'] = $student->getLastName();
-            $data[$itter]['Gender'] = $student->getSex();
+            $data[$itter]['Gender'] = $student->getGender();
             $data[$itter]['BirthDate'] = $student->getBirthData()->format('d.m.Y');
             $data[$itter]['DateInPoo'] = $group->getDateStart()->format('d.m.Y');
             $data[$itter]['DateInGroup'] = $group->getDateStart()->format('d.m.Y');
@@ -283,7 +309,7 @@ class StudentGroupsService extends AbstractController
             } else {
                 $data[$itter]['StudentAccommodation'] = '';
             }
-            $data[$itter]['Gender'] = $student->getSex();
+            $data[$itter]['Gender'] = $student->getGender();
         }
 
 

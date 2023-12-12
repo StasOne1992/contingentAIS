@@ -26,7 +26,7 @@ use App\Repository\ContingentDocumentRepository;
 use App\Repository\FacultyRepository;
 use App\Repository\PersonalDocTypeListRepository;
 use App\Repository\PersonalDocumentsRepository;
-use App\Repository\genderRepository;
+use App\Repository\GenderRepository;
 use App\Repository\StudentRepository;
 use App\Repository\UserRepository;
 use App\Service\Admission\PetitionLoadService;

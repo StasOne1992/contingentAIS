@@ -1,3 +1,4 @@
+{% if (app.user.staff is defined) %}
 {% if (app.user.staff.photo=='') %}
 {% set userphoto = '/assets/media/avatars/avatar0.jpg' %}
 {% else %}
@@ -61,3 +62,4 @@
         </div>
     </div>
 </div>
+{% endif %}

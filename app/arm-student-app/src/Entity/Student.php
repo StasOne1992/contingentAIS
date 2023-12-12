@@ -2,14 +2,12 @@
 
 namespace App\Entity;
 
-use App\Form\EduPart\StudentType;
 use App\Repository\StudentRepository;
+use App\Service\StudentService;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Boolean;
-use PhpParser\Node\Expr\New_;
 
 #[ORM\Entity(repositoryClass: StudentRepository::class)]
 class Student
@@ -134,6 +132,7 @@ class Student
     private ?bool $isLiveStudentAccommondation = null;
 
 
+
     public function __construct()
     {
         $this->legalRepresentatives = new ArrayCollection();
@@ -144,8 +143,13 @@ class Student
         $this->characteristics = new ArrayCollection();
         $this->contingentDocuments = new ArrayCollection();
         $this->accessSystemControls = new ArrayCollection();
+        $this->loginValues = new ArrayCollection();
     }
 
+    private StudentService $studentService;
+
+    #[ORM\OneToMany(mappedBy: 'Student', targetEntity: LoginValues::class)]
+    private Collection $loginValues;
     public function getId(): ?int
     {
         return $this->id;
@@ -495,8 +499,8 @@ class Student
 
     public function setStudentGroup(?StudentGroups $StudentGroup): self
     {
-        $this->StudentGroup = $StudentGroup;
 
+        $this->StudentGroup = $StudentGroup;
         return $this;
     }
 
@@ -739,6 +743,36 @@ class Student
     public function setIsLiveStudentAccommondation(?bool $isLiveStudentAccommondation): static
     {
         $this->isLiveStudentAccommondation = $isLiveStudentAccommondation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LoginValues>
+     */
+    public function getLoginValues(): Collection
+    {
+        return $this->loginValues;
+    }
+
+    public function addLoginValue(LoginValues $loginValue): static
+    {
+        if (!$this->loginValues->contains($loginValue)) {
+            $this->loginValues->add($loginValue);
+            $loginValue->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLoginValue(LoginValues $loginValue): static
+    {
+        if ($this->loginValues->removeElement($loginValue)) {
+            // set the owning side to null (unless already changed)
+            if ($loginValue->getStudent() === $this) {
+                $loginValue->setStudent(null);
+            }
+        }
 
         return $this;
     }

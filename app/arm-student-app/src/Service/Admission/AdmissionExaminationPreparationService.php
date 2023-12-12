@@ -18,9 +18,19 @@ use http\Env\Response;
 /**
  * Service to prepair petition to Examination
  */
+
+
 class AdmissionExaminationPreparationService
 {
-
+    /***
+     * @param AbiturientPetitionRepository $abiturientPetitionRepository
+     * @param AdmissionExaminationResultRepository $admissionExaminationResultRepository
+     * @param AdmissionExaminationRepository $admissionExaminationRepository
+     * @param AdmissionRepository $admissionRepository
+     * @param AdmissionExaminationSubjectsRepository $admissionExaminationSubjectsRepository
+     * @param AdmissionPlanRepository $admissionPlanRepository
+     * @param EntityManagerInterface $entityManager
+     */
     public function __construct(
         private AbiturientPetitionRepository           $abiturientPetitionRepository,
         private AdmissionExaminationResultRepository   $admissionExaminationResultRepository,

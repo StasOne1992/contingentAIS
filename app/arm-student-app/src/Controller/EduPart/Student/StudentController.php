@@ -2,27 +2,28 @@
 
 namespace App\Controller\EduPart\Student;
 
+use App\Entity\PersonalDocuments;
 use App\Entity\Student;
 use App\Entity\StudentGroups;
 use App\Entity\User;
-use App\Form\EduPart\StudentType;
 use App\Form\EduPart\StudentImportType;
+use App\Form\EduPart\StudentType;
 use App\Repository\CollegeRepository;
+use App\Repository\PersonalDocTypeListRepository;
 use App\Repository\StudentGroupsRepository;
 use App\Repository\StudentRepository;
 use App\Repository\UserRepository;
+use App\Service\FileUploader;
 use App\Service\GlobalHelpersService;
 use App\Service\StudentService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\File\File;
-use App\Service\FileUploader;
-use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\isNull;
 
 
 #[Route('/student')]
@@ -36,14 +37,14 @@ class StudentController extends AbstractController
 
     #[Route('/', name: 'app_student_index', methods: ['GET'])]
     #[IsGranted("ROLE_STAFF_STUDENT_R")]
-    public function index(Request $request,StudentRepository $studentRepository,StudentGroupsRepository $studentGroupsRepository): Response
+
+    public function index(Request $request, StudentRepository $studentRepository, StudentGroupsRepository $studentGroupsRepository): Response
     {
+        $user=$this->getUser();
         if($request->get('groupid')) {
             $group=$studentGroupsRepository->find($request->get('groupid'));
             $students = $studentRepository->findBy(['isActive' => true,'StudentGroup'=>$group], ['LastName' => 'ASC']);
-        }
-        else
-        {
+        } else {
             $students = $studentRepository->findBy(['isActive' => true], ['LastName' => 'ASC']);
         }
         return $this->render('student/index.html.twig', [
@@ -73,33 +74,108 @@ class StudentController extends AbstractController
 
     #[Route('/import', name: 'app_student_import', methods: ['GET', 'POST'])]
     #[IsGranted("ROLE_STAFF_STUDENT_IMP")]
-    public function import(Request $request, StudentRepository $studentRepository, FileUploader $fileUploader): Response
+    public function import(Request $request, StudentRepository $studentRepository, FileUploader $fileUploader, PersonalDocTypeListRepository $personalDocTypeListRepository, StudentGroupsRepository $studentGroupsRepository): Response
     {
         $student = new Student();
         $form = $this->createForm(StudentImportType::class, $student);
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $brochureFile */
             $brochureFile = $form->get('brochure')->getData();
             if ($brochureFile) {
                 $brochureFileName = $fileUploader->upload($brochureFile);
-
                 $fileName = new File($this->getParameter('student_import_directory') . '/' . $brochureFileName);
                 $csvData = file_get_contents($fileName);
                 $lines = explode(PHP_EOL, $csvData);
-                $array = array();
+                $students = array();
+                $personaDocument = array();
+                unset($lines[0]);
                 foreach ($lines as $line) {
-                    $array[] = str_getcsv($line);
+                    $temparray = str_getcsv($line);
+                    $personalDocuments=array();
+                    if (array_key_exists(1, $temparray)) {
+                        $row['id'] = $temparray[0];
+                        $row['first_name'] = $temparray[1];
+                        $row['last_name'] = $temparray[2];
+                        $row['middle_name'] = $temparray[3];
+                        $row['family_type_id_id'] = $temparray[4];
+                        $row['healtg_group_id_id'] = $temparray[5];
+                        $row['gender_id'] = $temparray[6];
+                        $row['number_zachetka'] = $temparray[7];
+                        $row['number_stud_bilet'] = $temparray[8];
+                        $row['birth_data'] = $temparray[9];
+                        $row['phone_number'] = $temparray[10];
+                        $row['email'] = $temparray[11];
+                        $row['document_snils'] = $temparray[12];
+                        $row['document_medical_id'] = $temparray[13];
+                        $row['address_fact'] = $temparray[14];
+                        $row['address_main'] = $temparray[15];
+                        $row['is_active'] = $temparray[16];
+                        $row['photo'] = $temparray[17];
+                        $row['student_group_id'] = $temparray[18];
+                        $row['is_orphan'] = $temparray[19];
+                        $row['is_paid'] = $temparray[20];
+                        $row['is_invalid'] = $temparray[21];
+                        $row['is_poor'] = $temparray[22];
+                        $row['pasport_number'] = $temparray[23];
+                        $row['pasport_series'] = $temparray[24];
+                        $row['pasport_date'] = $temparray[25];
+                        $row['pasport_issue_organ'] = $temparray[26];
+                        $row['education_document_type'] = $temparray[27];
+                        $row['edu_doc_series'] = $temparray[28];
+                        $row['edu_doc_number'] = $temparray[29];
+                        $row['edu_doc_issue_organ'] = $temparray[30];
+                        $row['edu_doc_date'] = $temparray[31];
+                        $row['edu_doc_reg_number'] = $temparray[32];
+                        $row['avg_mark'] = $temparray[33];
+                        $row['is_without_parents'] = $temparray[34];
+                        $row['abiturient_petition_id'] = $temparray[35];
+                        $row['first_password'] = $temparray[36];
+                        $row['uuid'] = $temparray[37];
+                        $row['is_live_student_accommondation'] = $temparray[38];
+
+                        $thisStudent = $studentRepository->findBy(['DocumentSnils' => $row['document_snils']]);
+                        if (!is_null($thisStudent)) {
+                            dump($thisStudent);
+                        } else {
+                            $student = new Student();
+                            $student->setFirstName($row['first_name']);
+                            $student->setLastName($row['last_name']);
+                            $student->setMiddleName($row['middle_name']);
+                            $student->setAddressMain($row['address_main']);
+                            $student->setAddressFact($row['address_fact']);
+                            $student->setBirthData(new \DateTime(date("d M Y", date(strtotime($row['birth_data'])))));
+                            $student->setDocumentSnils($row['document_snils']);
+                            $student->setPasportSeries($row['pasport_series']);
+                            $student->setPasportNumber($row['pasport_number']);
+                            $student->setPasportIssueOrgan($row['pasport_issue_organ']);
+                            $student->setIsActive(true);
+                            $student->setPasportDate(new \DateTime(date("d M Y", date(strtotime($row['pasport_date'])))));
+                            $studentGroup = $studentGroupsRepository->findBy(['Code' => $row['student_group_id']]);
+                            dump($row['student_group_id'], $studentGroup);
+
+                            $students[] = $student;
+                            $attestat = new PersonalDocuments();
+                            $attestat->setStudent($student);
+                            $docType = $personalDocTypeListRepository->findOneby(['Title' => $row['education_document_type']]);
+                            $attestat->setDocumentType($docType);
+                            $attestat->setDocumentNumber($row['edu_doc_number']);
+                            $attestat->setDocumentSeries($row['edu_doc_series']);
+                            $attestat->setDocumentOfficialSeal($row['edu_doc_issue_organ']);
+                            $attestat->setDocumentIssueDate(new \DateTime(date("d M Y", date(strtotime($row['edu_doc_date'])))));
+                            $personalDocuments[] = $attestat;
+                        }
+                    }
                 }
-                dd($array);
             }
-
-            return $this->redirectToRoute('app_student_index', [], Response::HTTP_SEE_OTHER);
+            dd($students, $personalDocuments);
+            return $this->render('student/_import_form.html.twig', [
+                'students' => $students,
+            ]);
         }
-
         return $this->renderForm('student/import.html.twig', ['student' => $student,
             'form' => $form,]);
+
     }
 
     #[Route('/{id}/show', name: 'app_student_show', methods: ['GET'])]
@@ -112,6 +188,7 @@ class StudentController extends AbstractController
         $student->getCharacteristics()->getValues();
         $student->getLegalRepresentatives()->getValues();
         $student->getContingentDocuments()->getValues();
+
         return $this->render('student/show.html.twig', [
             'student' => $student,
         ]);
@@ -121,8 +198,14 @@ class StudentController extends AbstractController
     #[IsGranted("ROLE_STAFF_STUDENT_U")]
     public function edit(Request $request, Student $student, StudentRepository $studentRepository): Response
     {
+
         $form = $this->createForm(StudentType::class, $student);
         $form->handleRequest($request);
+        if (!$student->getStudentGroup()) {
+            $group = new StudentGroups();
+            $group->setName("Группа не указана");
+            $student->setStudentGroup($group);
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $studentRepository->save($student, true);
@@ -145,7 +228,7 @@ class StudentController extends AbstractController
             $student->getStudentGroup(),
             Response::HTTP_OK,
             ['content-type' => 'text/html']
-        );;
+        );
         //return $this->redirectToRoute('app_contingent_document_edit', ['id'=>$request->get('contingentDocumentID')], Response::HTTP_SEE_OTHER);
     }
 

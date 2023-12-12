@@ -301,8 +301,7 @@ class PetitionLoadService
         }
     }
 
-    public
-    function pubCreatePetition($PetitionData): void
+    public function pubCreatePetition($PetitionData): void
     {
         //dd($PetitionData);
         $petition = $this->createPetition($PetitionData);
@@ -331,10 +330,8 @@ class PetitionLoadService
 
     }
 
-    private
-    function fillPetition($petition, $PetitionData): AbiturientPetition
+    private function fillPetition($petition, $PetitionData): AbiturientPetition
     {
-
         if (is_array($PetitionData)) {
             $petition->setGUID($PetitionData['id']);
             $PetitionData['details'] = $this->getDetailsPetiton($PetitionData['id']);
@@ -343,9 +340,11 @@ class PetitionLoadService
             $PetitionData = array();
             $PetitionData['details'] = $this->getDetailsPetiton($GUID);
         }
+
         /***
          * @var AbiturientPetition $petition
          */
+
         $petition->setFirstName($PetitionData['details']['document']['firstName']);
         $petition->setLastName($PetitionData['details']['document']['lastName']);
         $petition->setMiddleName($PetitionData['details']['document']['middleName']);
@@ -366,6 +365,7 @@ class PetitionLoadService
         $petition->setPasportDateObtain(new DateTime(date('Y-m-d H:i:s.u', strtotime($PetitionData['details']['document']['dateObtain']))));
         $createDate = new DateTime(date('Y-m-d H:i:s.u', strtotime($PetitionData['details']['createdTs'])));
         $petition->setCreatedTs($createDate);
+
 
         $basicEducationType = $PetitionData['details']['basicEducationType']['name'];
         $studyForms = $PetitionData['details']['studyForm']['name'];
