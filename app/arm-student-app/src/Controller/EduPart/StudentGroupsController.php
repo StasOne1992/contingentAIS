@@ -84,6 +84,16 @@ class StudentGroupsController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/show-students', name: 'app_student_groups_show_students', methods: ['GET'])]
+    public function show_students(StudentGroups $studentGroup, StudentGroupsService $StudentGroupsService, StudentGroupsRepository $StudentGroupsRepository): Response
+    {
+        $students=$studentGroup->getStudents();
+
+        return $this->render('student/index.html.twig', [
+            'students' => $students,
+        ]);
+    }
+
     #[Route('/{id}/edit', name: 'app_student_groups_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, StudentGroups $studentGroup, StudentGroupsRepository $studentGroupsRepository): Response
     {

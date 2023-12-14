@@ -16,8 +16,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\param;
 
 ;
-
-
 /**
  * @method getDoctrine()
  */

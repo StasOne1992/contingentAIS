@@ -3,6 +3,7 @@
 namespace App\Controller\EduPart\Student;
 
 use App\Entity\PersonalDocuments;
+use App\Entity\Staff;
 use App\Entity\Student;
 use App\Entity\StudentGroups;
 use App\Entity\User;
@@ -37,16 +38,21 @@ class StudentController extends AbstractController
 
     #[Route('/', name: 'app_student_index', methods: ['GET'])]
     #[IsGranted("ROLE_STAFF_STUDENT_R")]
-
     public function index(Request $request, StudentRepository $studentRepository, StudentGroupsRepository $studentGroupsRepository): Response
     {
-        $user=$this->getUser();
-        if($request->get('groupid')) {
-            $group=$studentGroupsRepository->find($request->get('groupid'));
-            $students = $studentRepository->findBy(['isActive' => true,'StudentGroup'=>$group], ['LastName' => 'ASC']);
+
+        $currentUserGroups = array();
+        if (($this->getUser()->getStaff()) && !(($this->isGranted('ROLE_ROOT')) || $this->isGranted('ROLE_ADMIN'))) {
+            /**
+             * @var Staff $staff
+             * @var User $user
+             */
+            $user = $this->getUser();
+            $studentGroupArray = $user->getStaff()->getStudentGroups()->getValues();
         } else {
-            $students = $studentRepository->findBy(['isActive' => true], ['LastName' => 'ASC']);
+            $studentGroupArray = $studentGroupsRepository->findAll();
         }
+        $students = $studentRepository->findBy(['StudentGroup' => $studentGroupArray, 'isActive' => true], ['LastName' => 'ASC']);
         return $this->render('student/index.html.twig', [
             'students' => $students,
         ]);
@@ -184,14 +190,39 @@ class StudentController extends AbstractController
     {
         //TODO: Убрать возможность смотреть чужих студентов
 
-        $student->getPersonalDocuments()->getValues();
-        $student->getCharacteristics()->getValues();
-        $student->getLegalRepresentatives()->getValues();
-        $student->getContingentDocuments()->getValues();
 
-        return $this->render('student/show.html.twig', [
-            'student' => $student,
-        ]);
+        if (($this->getUser()->getStaff()) && !(($this->isGranted('ROLE_ROOT')) || $this->isGranted('ROLE_ADMIN'))) {
+            /**
+             * @var Staff $staff
+             * @var User $user
+             */
+            $user = $this->getUser();
+            $studentGroupArray = $user->getStaff()->getStudentGroups()->getValues();
+            $studentGroupIdArray = array();
+            foreach ($studentGroupArray as $group) {
+                $studentGroupIdArray[] = $group->getId();
+            }
+            if (in_array($student->getStudentGroup()->getId(), $studentGroupIdArray)) {
+                $student->getPersonalDocuments()->getValues();
+                $student->getCharacteristics()->getValues();
+                $student->getLegalRepresentatives()->getValues();
+                $student->getContingentDocuments()->getValues();
+
+                return $this->render('student/show.html.twig', [
+                    'student' => $student,
+                ]);
+            }
+        } elseif (($this->getUser()->getStaff()) && (($this->isGranted('ROLE_ROOT')) || $this->isGranted('ROLE_ADMIN'))) {
+            $student->getPersonalDocuments()->getValues();
+            $student->getCharacteristics()->getValues();
+            $student->getLegalRepresentatives()->getValues();
+            $student->getContingentDocuments()->getValues();
+
+            return $this->render('student/show.html.twig', [
+                'student' => $student,
+            ]);
+        }
+        return $this->redirectToRoute('app_access_denied', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{id}/edit', name: 'app_student_edit', methods: ['GET', 'POST'])]
@@ -199,29 +230,64 @@ class StudentController extends AbstractController
     public function edit(Request $request, Student $student, StudentRepository $studentRepository): Response
     {
 
-        $form = $this->createForm(StudentType::class, $student);
-        $form->handleRequest($request);
-        if (!$student->getStudentGroup()) {
-            $group = new StudentGroups();
-            $group->setName("Группа не указана");
-            $student->setStudentGroup($group);
-        }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $studentRepository->save($student, true);
-            return $this->redirectToRoute('app_student_index', [], Response::HTTP_SEE_OTHER);
-        }
+        if (($this->getUser()->getStaff()) && !(($this->isGranted('ROLE_ROOT')) || $this->isGranted('ROLE_ADMIN'))) {
+            /**
+             * @var Staff $staff
+             * @var User $user
+             */
+            $user = $this->getUser();
+            $studentGroupArray = $user->getStaff()->getStudentGroups()->getValues();
+            $studentGroupIdArray = array();
+            foreach ($studentGroupArray as $group) {
+                $studentGroupIdArray[] = $group->getId();
+            }
+            if (in_array($student->getStudentGroup()->getId(), $studentGroupIdArray)) {
+                $form = $this->createForm(StudentType::class, $student);
+                $form->handleRequest($request);
+                if (!$student->getStudentGroup()) {
+                    $group = new StudentGroups();
+                    $group->setName("Группа не указана");
+                    $student->setStudentGroup($group);
+                }
 
-        return $this->renderForm('student/edit.html.twig', [
-            'student' => $student,
-            'form' => $form,
-        ]);
+                if ($form->isSubmitted() && $form->isValid()) {
+                    $studentRepository->save($student, true);
+                    return $this->redirectToRoute('app_student_index', [], Response::HTTP_SEE_OTHER);
+                }
+
+                return $this->renderForm('student/edit.html.twig', [
+                    'student' => $student,
+                    'form' => $form,
+                ]);
+            }
+        } elseif (($this->getUser()->getStaff()) && (($this->isGranted('ROLE_ROOT')) || $this->isGranted('ROLE_ADMIN'))) {
+            $form = $this->createForm(StudentType::class, $student);
+            $form->handleRequest($request);
+            if (!$student->getStudentGroup()) {
+                $group = new StudentGroups();
+                $group->setName("Группа не указана");
+                $student->setStudentGroup($group);
+            }
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $studentRepository->save($student, true);
+                return $this->redirectToRoute('app_student_index', [], Response::HTTP_SEE_OTHER);
+            }
+
+            return $this->renderForm('student/edit.html.twig', [
+                'student' => $student,
+                'form' => $form,
+            ]);
+        }
+        return $this->redirectToRoute('app_access_denied', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/{id}/setGroup', name: 'app_student_setGroup', methods: ['POST'])]
     #[IsGranted("ROLE_STAFF_STUDENT_U")]
     public function setGroup(Request $request, Student $student, StudentRepository $studentRepository, StudentGroupsRepository $studentGroupsRepository): Response
     {
+
         $student->setStudentGroup($studentGroupsRepository->find($request->get('group-select')));
         $studentRepository->save($student, true);
         return new Response(
