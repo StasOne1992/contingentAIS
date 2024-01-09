@@ -6,6 +6,7 @@ use App\Entity\PersonalDocuments;
 use App\Form\PersonalDocumentsType;
 use App\Repository\PersonalDocumentsRepository;
 use PhpParser\Node\Expr\New_;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\StudentRepository;
 
 #[Route('/documents/personal')]
+#[IsGranted("ROLE_USER")]
 class PersonalDocumentsController extends AbstractController
 {
     #[Route('/', name: 'app_personal_documents_index', methods: ['GET'])]

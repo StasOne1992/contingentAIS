@@ -6,12 +6,14 @@ use App\Entity\EducationSubjects;
 use App\Form\EducationSubjectsType;
 use App\Repository\EducationSubjectsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/education/subjects')]
+#[IsGranted("ROLE_USER")]
 class EducationSubjectsController extends AbstractController
 {
     #[Route('/', name: 'app_education_subjects_index', methods: ['GET'])]

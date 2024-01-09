@@ -9,8 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/family/TypeList')]
+#[IsGranted("ROLE_USER")]
 class FamilyTypeListController extends AbstractController
 {
     #[Route('/', name: 'app_family_type_list_index', methods: ['GET'])]

@@ -6,12 +6,14 @@ use App\Entity\LoginValues;
 use App\Form\LoginValuesType;
 use App\Repository\LoginValuesRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/login/values')]
+#[IsGranted("ROLE_USER")]
 class LoginValuesController extends AbstractController
 {
     #[Route('/', name: 'app_login_values_index', methods: ['GET'])]

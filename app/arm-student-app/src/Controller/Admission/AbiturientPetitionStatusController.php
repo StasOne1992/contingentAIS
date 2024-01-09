@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admission/petition/status')]
+#[IsGranted("ROLE_USER")]
 class AbiturientPetitionStatusController extends AbstractController
 {
     #[Route('/', name: 'app_abiturient_petition_status_index', methods: ['GET'])]

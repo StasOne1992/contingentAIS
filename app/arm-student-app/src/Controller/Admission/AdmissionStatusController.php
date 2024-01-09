@@ -5,12 +5,14 @@ namespace App\Controller\Admission;
 use App\Entity\AdmissionStatus;
 use App\Form\AdmissionStatusType;
 use App\Repository\AdmissionStatusRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/priem/admission-status')]
+#[IsGranted("ROLE_USER")]
 class AdmissionStatusController extends AbstractController
 {
     #[Route('/', name: 'app_admission_status_index', methods: ['GET'])]

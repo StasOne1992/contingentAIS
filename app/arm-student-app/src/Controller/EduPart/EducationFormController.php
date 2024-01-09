@@ -9,8 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/education_form')]
+#[IsGranted("ROLE_USER")]
 class EducationFormController extends AbstractController
 {
     #[Route('/', name: 'app_education_form_index', methods: ['GET'])]

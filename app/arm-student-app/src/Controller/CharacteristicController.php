@@ -6,6 +6,7 @@ use App\Entity\Characteristic;
 use App\Form\CharacteristicType;
 use App\Repository\CharacteristicRepository;
 use App\Repository\StudentRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Service\CharacteristicGenerate;
 
 #[Route('/characteristic')]
+#[IsGranted("ROLE_USER")]
 class CharacteristicController extends AbstractController
 {
     #[Route('/', name: 'app_characteristic_index', methods: ['GET'])]

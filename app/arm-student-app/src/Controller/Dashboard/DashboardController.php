@@ -11,8 +11,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\StudentGroupsRepository;
 use App\Form\dashboard\DashboardType;
 use App\Service\Messenger\BackgroudMessage;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 #[Route('/dashboard')]
+#[IsGranted("ROLE_USER")]
 class DashboardController extends AbstractController
 {
     public function __construct()

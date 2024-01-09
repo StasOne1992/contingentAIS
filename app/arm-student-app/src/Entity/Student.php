@@ -144,12 +144,16 @@ class Student
         $this->contingentDocuments = new ArrayCollection();
         $this->accessSystemControls = new ArrayCollection();
         $this->loginValues = new ArrayCollection();
+        $this->eventsLists = new ArrayCollection();
     }
 
     private StudentService $studentService;
 
     #[ORM\OneToMany(mappedBy: 'Student', targetEntity: LoginValues::class)]
     private Collection $loginValues;
+
+    #[ORM\ManyToMany(targetEntity: EventsList::class, mappedBy: 'EventParticipant')]
+    private Collection $eventsLists;
     public function getId(): ?int
     {
         return $this->id;
@@ -772,6 +776,33 @@ class Student
             if ($loginValue->getStudent() === $this) {
                 $loginValue->setStudent(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EventsList>
+     */
+    public function getEventsLists(): Collection
+    {
+        return $this->eventsLists;
+    }
+
+    public function addEventsList(EventsList $eventsList): static
+    {
+        if (!$this->eventsLists->contains($eventsList)) {
+            $this->eventsLists->add($eventsList);
+            $eventsList->addEventParticipant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventsList(EventsList $eventsList): static
+    {
+        if ($this->eventsLists->removeElement($eventsList)) {
+            $eventsList->removeEventParticipant($this);
         }
 
         return $this;

@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admission;
 
-use App\Entity\Regions;
 use App\Repository\AbiturientPetitionRepository;
 use App\Repository\AbiturientPetitionStatusRepository;
 use App\Repository\AdmissionPlanRepository;
@@ -10,13 +9,14 @@ use App\Repository\AdmissionRepository;
 use App\Repository\AdmissionStatusRepository;
 use App\Repository\FacultyRepository;
 use App\Repository\RegionsRepository;
-use App\Service\Admission\PetitionLoadService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admission/dashboard')]
+#[IsGranted("ROLE_USER")]
 class AdmissionDashboard extends AbstractController
 {
     public function __construct(

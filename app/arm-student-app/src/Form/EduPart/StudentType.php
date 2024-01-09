@@ -109,6 +109,7 @@ class StudentType extends AbstractType
                     'required' => false,
                 ],
             ])
+
         ;
 
 

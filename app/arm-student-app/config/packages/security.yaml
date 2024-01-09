@@ -13,7 +13,7 @@ security:
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
-      security: false
+      security: true
     main:
       lazy: true
       provider: app_user_provider
@@ -180,6 +180,7 @@ security:
     # Простой способ контролировать доступ к большим разделам вашего сайта
   # Примечание: будет использоваться только *первый* соответствующий элемент управления доступом.
   access_control:
+    - { path: ^/_profiler/, roles: ROLE_ROOT}
     - { path: ^/sign_in, role: PUBLIC_ACCESS }
     - { path: ^/accessDenied, role: PUBLIC_ACCESS }
     - { path: ^/student-app, roles: [ ROLE_STUDENT ] }

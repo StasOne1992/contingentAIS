@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Entity\LegalRepresentativeTypeList;
 use App\Form\LegalRepresentativeTypeListType;
 use App\Repository\LegalRepresentativeTypeListRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/leg_repres_types')]
+#[IsGranted("ROLE_USER")]
 class LegalRepresentativeTypeListController extends AbstractController
 {
     #[Route('/', name: 'app_legal_representative_type_list_index', methods: ['GET'])]

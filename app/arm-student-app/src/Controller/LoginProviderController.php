@@ -6,12 +6,14 @@ use App\Entity\LoginProvider;
 use App\Form\LoginProviderType;
 use App\Repository\LoginProviderRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/login/provider')]
+#[IsGranted("ROLE_USER")]
 class LoginProviderController extends AbstractController
 {
     #[Route('/', name: 'app_login_provider_index', methods: ['GET'])]

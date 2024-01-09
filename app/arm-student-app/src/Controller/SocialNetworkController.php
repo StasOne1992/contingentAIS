@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Entity\SocialNetwork;
 use App\Form\SocialNetworkType;
 use App\Repository\SocialNetworkRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/socialnetwork')]
+#[IsGranted("ROLE_USER")]
 class SocialNetworkController extends AbstractController
 {
     #[Route('/', name: 'app_social_network_index', methods: ['GET'])]

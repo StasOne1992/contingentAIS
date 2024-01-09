@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Entity\College;
 use App\Form\CollegeType;
 use App\Repository\CollegeRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/college')]
+#[IsGranted("ROLE_USER")]
 class CollegeController extends AbstractController
 {
     #[Route('/', name: 'app_college_index', methods: ['GET'])]

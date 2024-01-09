@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventsCategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EventsCategoryRepository::class)]
@@ -18,6 +20,14 @@ class EventsCategory
 
     #[ORM\Column(length: 255)]
     private ?string $Title = null;
+
+    #[ORM\OneToMany(mappedBy: 'EventCategory', targetEntity: EventsList::class)]
+    private Collection $eventsLists;
+
+    public function __construct()
+    {
+        $this->eventsLists = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -46,5 +56,39 @@ class EventsCategory
         $this->Title = $Title;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, EventsList>
+     */
+    public function getEventsLists(): Collection
+    {
+        return $this->eventsLists;
+    }
+
+    public function addEventsList(EventsList $eventsList): static
+    {
+        if (!$this->eventsLists->contains($eventsList)) {
+            $this->eventsLists->add($eventsList);
+            $eventsList->setEventCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventsList(EventsList $eventsList): static
+    {
+        if ($this->eventsLists->removeElement($eventsList)) {
+            // set the owning side to null (unless already changed)
+            if ($eventsList->getEventCategory() === $this) {
+                $eventsList->setEventCategory(null);
+            }
+        }
+
+        return $this;
+    }
+    public function __toString(): string
+    {
+        return $this->getTitle();
     }
 }

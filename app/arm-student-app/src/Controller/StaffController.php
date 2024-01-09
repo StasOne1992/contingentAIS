@@ -9,6 +9,7 @@ use App\Repository\CollegeRepository;
 use App\Repository\StaffRepository;
 use App\Repository\UserRepository;
 use App\Service\GlobalHelpersService;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/staff')]
+#[IsGranted("ROLE_USER")]
 class StaffController extends AbstractController
 {
     #[Route('/', name: 'app_staff_index', methods: ['GET'])]

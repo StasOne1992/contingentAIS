@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="pgs_arm_student@arm.vatholm.ru" uuid="334218b2-754a-4393-bdc3-714564bc747b">
+    <data-source source="LOCAL" name="pgs_arm_student@10.1.88.198" uuid="334218b2-754a-4393-bdc3-714564bc747b">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://arm.vatholm.ru:5432/pgs_arm_student</jdbc-url>
+      <jdbc-url>jdbc:postgresql://10.1.88.198:15432/pgs_arm_student</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="postgres@10.1.88.198" uuid="b88c91e9-7b1c-4aa0-8a08-279a37ccb6c2">

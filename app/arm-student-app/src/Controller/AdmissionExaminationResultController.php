@@ -6,12 +6,14 @@ use App\Entity\AdmissionExaminationResult;
 use App\Form\AdmissionExaminationResultType;
 use App\Repository\AdmissionExaminationResultRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admission/examination/result')]
+#[IsGranted("ROLE_USER")]
 class AdmissionExaminationResultController extends AbstractController
 {
     #[Route('/', name: 'app_admission_examination_result_index', methods: ['GET'])]

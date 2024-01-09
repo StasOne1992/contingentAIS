@@ -19,6 +19,7 @@ class StaffType extends AbstractType
             ->add('studentGroups')
             ->add('email')
             ->add('UUID')
+            ->add('College')
         ;
     }
 

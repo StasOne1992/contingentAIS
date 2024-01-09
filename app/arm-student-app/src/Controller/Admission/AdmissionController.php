@@ -6,6 +6,7 @@ use App\Entity\Admission;
 use App\Form\AdmissionType;
 use App\Repository\AdmissionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mercure\HubInterface;
@@ -13,6 +14,7 @@ use Symfony\Component\Mercure\Update;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admission/admissions')]
+#[IsGranted("ROLE_USER")]
 class AdmissionController extends AbstractController
 {
     #[Route('/', name: 'app_admission_index', methods: ['GET'])]

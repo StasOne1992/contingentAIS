@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EventsList index{% endblock %}
+
+{% block body %}
+    <h1>EventsList index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>EventDate</th>
+                <th>IsGroupEvent</th>
+                <th>EventStartTime</th>
+                <th>EventEndTime</th>
+                <th>Comment</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for events_list in events_lists %}
+            <tr>
+                <td>{{ events_list.id }}</td>
+                <td>{{ events_list.Name }}</td>
+                <td>{{ events_list.EventDate ? events_list.EventDate|date('Y-m-d') : '' }}</td>
+                <td>{{ events_list.IsGroupEvent ? 'Yes' : 'No' }}</td>
+                <td>{{ events_list.EventStartTime ? events_list.EventStartTime|date('H:i:s') : '' }}</td>
+                <td>{{ events_list.EventEndTime ? events_list.EventEndTime|date('H:i:s') : '' }}</td>
+                <td>{{ events_list.Comment }}</td>
+                <td>
+                    <a href="{{ path('app_events_list_show', {'id': events_list.id}) }}">show</a>
+                    <a href="{{ path('app_events_list_edit', {'id': events_list.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_events_list_new') }}">Create new</a>
+{% endblock %}

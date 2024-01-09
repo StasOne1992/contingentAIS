@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admission;
 
-use App\Controller\IsGranted;
 use App\Entity\AbiturientPetition;
 use App\Entity\AbiturientPetitionStatus;
 use App\Entity\Admission;
@@ -40,11 +39,13 @@ use App\Repository\AdmissionExaminationResultRepository;
 use App\Service\GlobalHelpersService;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Security\Core\Security;
 use DateTime;
 use function PHPUnit\Framework\isNull;
 
 #[Route('/admission/petition')]
+#[IsGranted("ROLE_USER")]
 class AbiturientPetitionController extends AbstractController
 {
     public function __construct(
@@ -381,7 +382,7 @@ class AbiturientPetitionController extends AbstractController
         $student->setPasportIssueOrgan($abiturientPetition->getPasportIssueOrgan());
         $student->setAddressFact($abiturientPetition->getregistrationAddress());
         $student->setAddressMain($abiturientPetition->getregistrationAddress());
-        $student->setSex($abiturientPetition->getGender());
+        $student->setGender($abiturientPetition->getGender());
         $student->setIsOrphan($abiturientPetition->isIsOrphan());
         $student->setIsInvalid($abiturientPetition->isIsInvalid());
         $student->setIsPoor($abiturientPetition->isIsPoor());

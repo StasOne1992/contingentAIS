@@ -6,6 +6,7 @@ use App\Entity\AdmissionPlan;
 use App\Form\AdmissionPlanType;
 use App\Repository\AdmissionPlanRepository;
 use App\Service\TypicalDocuments;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 
 #[Route('/admission/plan')]
+#[IsGranted("ROLE_USER")]
 class AdmissionPlanController extends AbstractController
 {
     #[Route('/', name: 'app_admission_plan_index', methods: ['GET'])]

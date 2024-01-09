@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Entity\Specialization;
 use App\Form\SpecializationType;
 use App\Repository\SpecializationRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/specialization')]
+#[IsGranted("ROLE_USER")]
 class SpecializationController extends AbstractController
 {
     #[Route('/', name: 'app_specialization_index', methods: ['GET'])]

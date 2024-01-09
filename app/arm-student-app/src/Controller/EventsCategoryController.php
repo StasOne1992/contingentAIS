@@ -6,12 +6,14 @@ use App\Entity\EventsCategory;
 use App\Form\EventsCategoryType;
 use App\Repository\EventsCategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/events/category')]
+#[IsGranted("ROLE_USER")]
 class EventsCategoryController extends AbstractController
 {
     #[Route('/', name: 'app_events_category_index', methods: ['GET'])]

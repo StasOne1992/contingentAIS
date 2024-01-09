@@ -9,8 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/contingent/document/type')]
+#[IsGranted("ROLE_USER")]
 class ContingentDocumentTypeController extends AbstractController
 {
     #[Route('/', name: 'app_contingent_document_type_index', methods: ['GET'])]

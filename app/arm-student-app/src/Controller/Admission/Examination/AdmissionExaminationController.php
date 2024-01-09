@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admission/examination')]
+#[IsGranted("ROLE_USER")]
 class AdmissionExaminationController extends AbstractController
 {
     /**

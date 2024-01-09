@@ -15,9 +15,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\StudentGroupsService;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/student-groups')]
+#[IsGranted("ROLE_USER")]
 class StudentGroupsController extends AbstractController
 {
     public function __construct(

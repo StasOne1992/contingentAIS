@@ -40,11 +40,15 @@ class Staff
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
 
+    #[ORM\ManyToMany(targetEntity: EventsList::class, mappedBy: 'EventResponsible')]
+    private Collection $eventsLists;
+
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->studentGroups = new ArrayCollection();
+        $this->eventsLists = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -185,6 +189,33 @@ class Staff
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EventsList>
+     */
+    public function getEventsLists(): Collection
+    {
+        return $this->eventsLists;
+    }
+
+    public function addEventsList(EventsList $eventsList): static
+    {
+        if (!$this->eventsLists->contains($eventsList)) {
+            $this->eventsLists->add($eventsList);
+            $eventsList->addEventResponsible($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventsList(EventsList $eventsList): static
+    {
+        if ($this->eventsLists->removeElement($eventsList)) {
+            $eventsList->removeEventResponsible($this);
+        }
 
         return $this;
     }
