@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use function PHPUnit\Framework\isNull;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[Route('/student-app')]
 #[IsGranted("ROLE_USER")]

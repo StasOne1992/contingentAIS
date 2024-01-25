@@ -2,6 +2,7 @@
 
 namespace App\Controller\EduPart\Student;
 
+use App\Entity\EventsResult;
 use App\Entity\PersonalDocuments;
 use App\Entity\Staff;
 use App\Entity\Student;
@@ -10,6 +11,7 @@ use App\Entity\User;
 use App\Form\EduPart\StudentImportType;
 use App\Form\EduPart\StudentType;
 use App\Repository\CollegeRepository;
+use App\Repository\EventsListRepository;
 use App\Repository\PersonalDocTypeListRepository;
 use App\Repository\StudentGroupsRepository;
 use App\Repository\StudentRepository;
@@ -17,7 +19,7 @@ use App\Repository\UserRepository;
 use App\Service\FileUploader;
 use App\Service\GlobalHelpersService;
 use App\Service\StudentService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+////use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -25,6 +27,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 
 #[Route('/student')]
@@ -36,22 +43,12 @@ class StudentController extends AbstractController
     {
     }
 
-    #[Route('/', name: 'app_student_index', methods: ['GET'])]
+    #[Route('/index', name: 'app_student_index', methods: ['GET'])]
     #[IsGranted("ROLE_STAFF_STUDENT_R")]
     public function index(Request $request, StudentRepository $studentRepository, StudentGroupsRepository $studentGroupsRepository): Response
     {
+        $studentGroupArray = $studentGroupsRepository->findAll();
 
-        $currentUserGroups = array();
-        if (($this->getUser()->getStaff()) && !(($this->isGranted('ROLE_ROOT')) || $this->isGranted('ROLE_ADMIN'))) {
-            /**
-             * @var Staff $staff
-             * @var User $user
-             */
-            $user = $this->getUser();
-            $studentGroupArray = $user->getStaff()->getStudentGroups()->getValues();
-        } else {
-            $studentGroupArray = $studentGroupsRepository->findAll();
-        }
         $students = $studentRepository->findBy(['StudentGroup' => $studentGroupArray, 'isActive' => true], ['LastName' => 'ASC']);
         return $this->render('student/index.html.twig', [
             'students' => $students,
@@ -207,6 +204,7 @@ class StudentController extends AbstractController
                 $student->getCharacteristics()->getValues();
                 $student->getLegalRepresentatives()->getValues();
                 $student->getContingentDocuments()->getValues();
+                $student->getEventsResults();
 
                 return $this->render('student/show.html.twig', [
                     'student' => $student,
@@ -356,6 +354,66 @@ class StudentController extends AbstractController
         }
 
         return $this->redirectToRoute('app_student_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/json', name: 'app_student_json_index', methods: ['GET'])]
+    #[IsGranted("ROLE_STAFF_STUDENT_R")]
+    public function json_index(Request $request, StudentRepository $studentRepository, StudentGroupsRepository $studentGroupsRepository, EventsListRepository $eventsListRepository): Response
+    {
+        $students = array();
+        if ($request->get('requestType')) {
+            $requestType = $request->get('requestType');
+            if ($requestType == "EventList") {
+                $event = $eventsListRepository->find($request->get('event'));
+                /**
+                 * @var EventsResult $eventStudent
+                 */
+                $eventStudent = $event->getEventsResults();
+
+                foreach ($eventStudent as $item) {
+                    $student = $item->getStudent();
+                    /***
+                     * @var Student $student ,
+                     */
+                    if ($student) {
+                        dump($student->getFirstName());
+                    }
+                    else
+                        dump("er");
+                }
+                dd("");
+                // $students=;
+            } else {
+                $students = $studentRepository->findAll();
+            }
+
+        }
+
+
+        $encoders = [new XmlEncoder(), new JsonEncoder()];
+        $defaultContext = [
+            AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function (object $object, string $format, array $context): string {
+                return $object->getId();
+            },
+        ];
+        $normalizer = new ObjectNormalizer(null, null, null, null, null, null, $defaultContext);
+        $serializer = new Serializer([$normalizer], $encoders);
+
+        $result = array();
+        foreach ($students as $student) {
+            $result[] = $student->getAsJson();
+        }
+        $jsonContent = $serializer->serialize($result, 'json');
+
+        $response = new Response($jsonContent);
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+
+        $students = $studentRepository->findBy(['StudentGroup' => $studentGroupArray, 'isActive' => true], ['LastName' => 'ASC']);
+        $students = $studentRepository->findAll();
+        return $this->render('student/index.html.twig', [
+            'students' => $students,
+        ]);
     }
 
 }

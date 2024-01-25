@@ -6,7 +6,7 @@ use App\Entity\Characteristic;
 use App\Form\CharacteristicType;
 use App\Repository\CharacteristicRepository;
 use App\Repository\StudentRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,6 +33,7 @@ class CharacteristicController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $characteristicRepository->save($characteristic, true);
 
             return $this->redirectToRoute('app_characteristic_index', [], Response::HTTP_SEE_OTHER);
@@ -52,7 +53,7 @@ class CharacteristicController extends AbstractController
         $characteristic->setStudent($studentRepository->findOneBy(['id' => $request->attributes->all()['studentid']]));
         $characteristicRepository->save($characteristic);
         $characteristic->blockStudentEdit = true;
-        $characteristic->ShowGenerator = true;
+        $characteristic->ShowGenerator = false;
 
         $form = $this->createForm(CharacteristicType::class, $characteristic);
         $form->handleRequest($request);

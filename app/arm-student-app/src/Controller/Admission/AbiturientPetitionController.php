@@ -39,8 +39,7 @@ use App\Repository\AdmissionExaminationResultRepository;
 use App\Service\GlobalHelpersService;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Bundle\SecurityBundle\Security;
 use DateTime;
 use function PHPUnit\Framework\isNull;
 

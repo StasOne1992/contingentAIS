@@ -6,7 +6,7 @@ use App\Repository\EventsPlacesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[ORM\Entity(repositoryClass: EventsPlacesRepository::class)]
 class EventsPlaces

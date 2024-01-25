@@ -329,7 +329,7 @@
                                             <a type="button"
                                                href="{{ path('app_characteristic_new_for_student',{'studentid': student.id}) }}"
                                                class="btn btn-sm btn-light d-none d-md-block">
-                                                <i class="fas fa-plus"></i> Сформировать
+                                                <i class="fas fa-plus"></i> Добавить приказ
                                             </a>
                                             <button type="button" class="btn btn-sm btn-light d-block d-md-none">
                                                 <span class="row"><i class="fas fa-plus"></i></span>
@@ -369,8 +369,33 @@
                         <div class="block block-rounded block-bordered block-themed">
                             <div class="block-header block-header-default bg-secondary">
                                 <h3 class="block-title text-center text-md-start">Участие в мероприятиях</h3>
+                                <div class="block-options">
+                                    <div class="block-options-item">
+                                        <a href="{{ path('app_events_result_new',{student_id:student.id})  }}" class="btn btn-outline-light btn-sm"><i class="fa fa-plus"></i> Добавить</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="block-content">
+                                <table class="table table-bordered table-striped table-sm">
+                                    <thead class="table-dark">
+                                    <tr>
+                                        <th>Мероприятие</th>
+                                        <th>Результат</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for event in student.eventsResults %}
+
+                                        <tr>
+                                            <td>{{ event.Event }}</td>
+                                            <td>{{ event.ResultType }}</td>
+                                            <td></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

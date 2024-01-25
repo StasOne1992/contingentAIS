@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 #[ORM\Entity(repositoryClass: EventsListRepository::class)]
@@ -60,11 +59,15 @@ class EventsList
     #[ORM\Column(nullable: true)]
     private ?bool $IsArchived = null;
 
+    #[ORM\OneToMany(mappedBy: 'Event', targetEntity: EventsResult::class)]
+    private Collection $eventsResults;
+
 
     public function __construct()
     {
         $this->EventResponsible = new ArrayCollection();
         $this->EventParticipant = new ArrayCollection();
+        $this->eventsResults = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -274,5 +277,40 @@ class EventsList
         $this->IsArchived = $IsArchived;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, EventsResult>
+     */
+    public function getEventsResults(): Collection
+    {
+        return $this->eventsResults;
+    }
+
+    public function addEventsResult(EventsResult $eventsResult): static
+    {
+        if (!$this->eventsResults->contains($eventsResult)) {
+            $this->eventsResults->add($eventsResult);
+            $eventsResult->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventsResult(EventsResult $eventsResult): static
+    {
+        if ($this->eventsResults->removeElement($eventsResult)) {
+            // set the owning side to null (unless already changed)
+            if ($eventsResult->getEvent() === $this) {
+                $eventsResult->setEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getName();
     }
 }

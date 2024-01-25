@@ -6,6 +6,17 @@
     {% if page_title is defined %} {{ page_title }} {% endif %}
 {% endblock %}
 
+{% block topmenu_items %}
+    <a href="{{ path('app_student_groups_new') }}" type="button"
+       class="btn btn-light btn-sm w-100 js-bs-popover-enabled"
+       data-bs-toggle="popover"
+       data-bs-placement="top" title=""
+       data-bs-content="Добавить"
+       data-bs-original-title="Добавить новую группу">
+        <i class="far fa-fw fa-plus"></i>Добавить
+    </a>
+
+{% endblock %}
 
 {% block body %}
     <div class="">
@@ -14,14 +25,6 @@
                 <h3 class="block-title">{{ page_title }} <small></small></h3>
                 <div class="block-options">
 
-                    <a href="{{ path('app_student_groups_new') }}" type="button"
-                       class="btn btn-outline-light btn-lg w-100 js-bs-popover-enabled"
-                       data-bs-toggle="popover"
-                       data-bs-placement="top" title=""
-                       data-bs-content="Добавить"
-                       data-bs-original-title="Добавить нового студента">
-                        <i class="far fa-fw fa-plus"></i>Добавить
-                    </a>
 
                 </div>
             </div>

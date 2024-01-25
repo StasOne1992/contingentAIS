@@ -20,7 +20,15 @@
     {% if page_title is defined %} {{ page_title }} {% endif %}
 {% endblock %}
 
-
+    {% block topmenu_items %}
+        {{ parent() }}
+        {{ include('characteristic/_delete_form.html.twig') }}
+        <button type="button" class="btn btn-sm btn-alt-primary" disabled data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop">
+            Сгенерировать характеристику (в разработке)
+        </button>
+        <button type="submit" form="characteristic" class="btn btn-sm  btn-primary">{{ button_label|default('Save') }}</button>
+    {% endblock %}
 {% block body %}
     {{ include('characteristic/_form.html.twig', {'button_label': 'Записать изменения'}) }}
     {{ include('characteristic/_generate_modal.html.twig') }}
@@ -28,10 +36,15 @@
 
 {% endblock %}
 {% block customjs %}
-
-    {% if ShowGenerator==true %}
+    {% if (ShowGenerator) %}
         var modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
         modal.show();
     {% endif %}
+
+    ClassicEditor
+    .create( document.querySelector( '#ckeditor' ) )
+    .catch( error => {
+    console.error( error );
+    } );
 
 {% endblock %}

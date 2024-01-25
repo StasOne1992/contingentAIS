@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="21647119-0fad-4a53-832b-02b9f984ee53" name="arm.vatholm.ru" url="http://10.1.88.198">
-        <fileTransfer rootFolder="/var/www/arm.vatholm.ru" accessType="SFTP" host="10.1.88.198" port="22" sshConfigId="473b1549-b142-48ff-9d33-2ca70967bee6" sshConfig="stasone@10.1.88.198:22 password">
+        <fileTransfer rootFolder="/var/www/arm.vatholm.ru" accessType="SFTP" host="10.1.88.198" port="22" sshConfigId="473b1549-b142-48ff-9d33-2ca70967bee6" sshConfig="stasone@10.1.88.198:22" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

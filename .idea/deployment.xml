@@ -11,6 +11,7 @@
           <excludedPaths>
             <excludedPath path="/app/arm-student-app/var/cache" />
             <excludedPath path="/app/arm-student-app/var/log" />
+            <excludedPath path="/app/arm-student-app/var" />
           </excludedPaths>
         </serverdata>
       </paths>

@@ -7,7 +7,7 @@ use App\Form\UserType;
 use App\Repository\UserRepository;
 use App\Service\Messenger\BackgroudMessage;
 use App\Service\User\UserService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

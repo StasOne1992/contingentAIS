@@ -14,7 +14,14 @@
 {% set canreset = 0 %}
 
 {% block title %}New Characteristic{% endblock %}
-
+    {% block topmenu_items %}
+        {{ parent() }}
+        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop">
+            Сгенерировать характеристику (dev)
+        </button>
+        <button type="submit" form="characteristic" class="btn btn-sm  btn-alt-primary">{{ button_label|default('Save') }}</button>
+    {% endblock %}
 {% block body %}
     <h1>Create new Characteristic</h1>
 

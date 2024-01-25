@@ -55,10 +55,14 @@ class College
     #[ORM\OneToMany(mappedBy: 'College', targetEntity: Admission::class)]
     private Collection $admissions;
 
+    #[ORM\ManyToMany(targetEntity: Staff::class, mappedBy: 'College')]
+    private Collection $staff;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->admissions = new ArrayCollection();
+        $this->staff = new ArrayCollection();
     }
 
     public function getFullName(): ?string
@@ -262,6 +266,33 @@ class College
             if ($admission->getCollege() === $this) {
                 $admission->setCollege(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Staff>
+     */
+    public function getStaff(): Collection
+    {
+        return $this->staff;
+    }
+
+    public function addStaff(Staff $staff): static
+    {
+        if (!$this->staff->contains($staff)) {
+            $this->staff->add($staff);
+            $staff->addCollege($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStaff(Staff $staff): static
+    {
+        if ($this->staff->removeElement($staff)) {
+            $staff->removeCollege($this);
         }
 
         return $this;

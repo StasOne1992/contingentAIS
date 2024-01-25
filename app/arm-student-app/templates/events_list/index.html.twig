@@ -1,10 +1,20 @@
 {% extends 'base.html.twig' %}
+{% set refer = 1 %}
+{% set page_title = 'Мероприятия' %}
+{% set sub_page_title =  'Добавить мероприятие' %}
 
-{% block title %}EventsList index{% endblock %}
+{% block title %}
+    {% if page_title is defined %} {{ page_title }} {% endif %}
+{% endblock %}
+
+{% block topmenu_items %}
+    {{ parent() }}
+    <a href="{{ path('app_events_list_new') }}" class="btn btn-sm btn-outline-light push"><i class="fa fa-plus"></i>
+        Добавить</a>
+{% endblock %}
 
 {% block body %}
-    <h1>EventsList index</h1>
-
+    <div id="studentList"></div>
     <table class="table">
         <thead>
             <tr>
@@ -29,8 +39,9 @@
                 <td>{{ events_list.EventEndTime ? events_list.EventEndTime|date('H:i:s') : '' }}</td>
                 <td>{{ events_list.Comment }}</td>
                 <td>
-                    <a href="{{ path('app_events_list_show', {'id': events_list.id}) }}">show</a>
-                    <a href="{{ path('app_events_list_edit', {'id': events_list.id}) }}">edit</a>
+                    <button onclick="getStudentList({{ events_list.id }})">Назначить участников</button>
+                    <a href="{{ path('app_events_list_show', {'id': events_list.id}) }}">Просмотреть</a>
+                    <a href="{{ path('app_events_list_edit', {'id': events_list.id}) }}">Редактировать</a>
                 </td>
             </tr>
         {% else %}
@@ -40,6 +51,40 @@
         {% endfor %}
         </tbody>
     </table>
+{% endblock %}
 
-    <a href="{{ path('app_events_list_new') }}">Create new</a>
+{% block customjs %}
+
+        function getStudentList(eventId) {
+            $container = document.getElementById("studentList");
+            $container.replaceChildren();
+            $.ajax({
+                type: "GET",
+                url: "/student/json/",
+                dataType: 'json',
+                data: {
+                    requestType: "EventList",
+                    event: eventId},
+                success: function (result) {
+                    result.forEach(function (value) {
+                            var checkbox = document.createElement('input');
+                            checkbox.type = "checkbox";
+                            checkbox.name = "name";
+                            checkbox.value = value["id"];
+                            checkbox.id = value["id"];
+                            var label = document.createElement('label')
+                            label.htmlFor = "id";
+                            label.appendChild(document.createTextNode(value['LastName'] + " " + value['FirstName'] + " " + value['MiddleName']));
+                            $container.appendChild(checkbox);
+                            $container.appendChild(label);
+                        }
+                    )
+                    //(element)=>console.log(element));
+                },
+                error: function (result) {
+                    alert('error');
+                }
+            });
+        }
+
 {% endblock %}

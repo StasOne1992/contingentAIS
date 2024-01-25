@@ -116,7 +116,7 @@
                             {% if sub_page_title is defined %} {{ sub_page_title |raw }} {% endif %}
                         </h2>
                     </div>
-                    <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
+                    <!--<nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-alt">
                             <li class="breadcrumb-item">
                                 <a class="link-fx" href="javascript:void(0)">Layout</a>
@@ -128,7 +128,7 @@
                                 Default
                             </li>
                         </ol>
-                    </nav>
+                    </nav>-->
                 </div>
 
 
@@ -153,7 +153,7 @@
             </div>
         </div>
         <!-- Page Content -->
-        <div class="content">
+        <div class="content pt-0">
             <div class="progress d-none" id="pbmain_div" style="height: 50px">
                 <div id="pbmain"
                      class="progress-bar  progress-bar-striped progress-bar-animated bg-secondary text-light"
@@ -202,6 +202,7 @@
 <script src="/assets/js/plugins/jquery.maskedinput/jquery.maskedinput.min.js"></script>
 <script src="/assets/js/plugins/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
 <script src="/assets/js/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="/assets/js/plugins/ckeditor5-classic/build/ckeditor.js"></script>
 <!--End Form Plugins -->
 
 <!--slick-carousel-->
@@ -220,6 +221,7 @@
 <script src="/assets/js/plugins/datatables-buttons-pdfmake/vfs_fonts.js"></script>
 <script src="/assets/js/plugins/datatables-buttons/buttons.print.min.js"></script>
 <script src="/assets/js/plugins/datatables-buttons/buttons.html5.min.js"></script>
+
 <!-- End DataTable -->
 
 
@@ -230,7 +232,7 @@
 
 
 <script>
-    One.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-notify', 'jq-maxlength', 'jq-select2', 'jq-masked-inputs', 'jq-rangeslider', 'jq-slick']);
+    One.helpersOnLoad(['js-flatpickr', 'jq-datepicker', 'jq-notify', 'jq-maxlength', 'jq-select2', 'jq-masked-inputs', 'jq-rangeslider', 'jq-slick','js-ckeditor5']);
 
 </script>
 

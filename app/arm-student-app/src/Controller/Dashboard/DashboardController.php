@@ -5,13 +5,12 @@ namespace App\Controller\Dashboard;
 
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\StudentGroupsRepository;
-use App\Form\dashboard\DashboardType;
+
 use App\Service\Messenger\BackgroudMessage;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/dashboard')]
 #[IsGranted("ROLE_USER")]
 class DashboardController extends AbstractController

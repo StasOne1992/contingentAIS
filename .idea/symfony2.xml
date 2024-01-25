@@ -3,5 +3,9 @@
   <component name="Symfony2PluginSettings">
     <option name="directoryToWeb" value="app/arm-student-app/public" />
     <option name="directoryToApp" value="app/arm-student-app" />
+    <option name="pluginEnabled" value="true" />
+    <option name="profilerCsvPath" value="" />
+    <option name="profilerHttpEnabled" value="true" />
+    <option name="profilerHttpUrl" value="https://arm.vatholm.ru" />
   </component>
 </project>

@@ -6,7 +6,7 @@ use App\Entity\PersonalDocuments;
 use App\Form\PersonalDocumentsType;
 use App\Repository\PersonalDocumentsRepository;
 use PhpParser\Node\Expr\New_;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

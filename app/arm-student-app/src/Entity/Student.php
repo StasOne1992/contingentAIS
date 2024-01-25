@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use PHPUnit\Util\Json;
 
 #[ORM\Entity(repositoryClass: StudentRepository::class)]
 class Student
@@ -145,8 +146,22 @@ class Student
         $this->accessSystemControls = new ArrayCollection();
         $this->loginValues = new ArrayCollection();
         $this->eventsLists = new ArrayCollection();
+        $this->eventsResults = new ArrayCollection();
     }
 
+    public function getAsJson():array
+    {
+        $result=[];
+        $result['id']=$this->getId();
+        $result['LastName']=$this->getLastName();
+        $result['MiddleName']=$this->getMiddleName();
+        $result['FirstName']=$this->getFirstName();
+        $result['Gender']['Id']=$this->getGender()->getId();
+        $result['Gender']['Title']=$this->getGender()->getName();
+        $result['StudentGroup']['Id']=$this->StudentGroup->getId();
+        $result['StudentGroup']['Name']=$this->StudentGroup->getName();
+        return $result;
+    }
     private StudentService $studentService;
 
     #[ORM\OneToMany(mappedBy: 'Student', targetEntity: LoginValues::class)]
@@ -154,6 +169,9 @@ class Student
 
     #[ORM\ManyToMany(targetEntity: EventsList::class, mappedBy: 'EventParticipant')]
     private Collection $eventsLists;
+
+    #[ORM\OneToMany(mappedBy: 'Student', targetEntity: EventsResult::class)]
+    private Collection $eventsResults;
     public function getId(): ?int
     {
         return $this->id;
@@ -438,7 +456,7 @@ class Student
 
     public function __toString()
     {
-        return (string)$this->getFirstName() . ' ' . $this->getLastName() . ' ' . $this->getMiddleName();
+        return (string)$this->getLastName() . ' ' . $this->getFirstName() . ' ' . $this->getMiddleName();
     }
 
     public function isIsActive(): ?bool
@@ -803,6 +821,36 @@ class Student
     {
         if ($this->eventsLists->removeElement($eventsList)) {
             $eventsList->removeEventParticipant($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, EventsResult>
+     */
+    public function getEventsResults(): Collection
+    {
+        return $this->eventsResults;
+    }
+
+    public function addEventsResult(EventsResult $eventsResult): static
+    {
+        if (!$this->eventsResults->contains($eventsResult)) {
+            $this->eventsResults->add($eventsResult);
+            $eventsResult->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventsResult(EventsResult $eventsResult): static
+    {
+        if ($this->eventsResults->removeElement($eventsResult)) {
+            // set the owning side to null (unless already changed)
+            if ($eventsResult->getStudent() === $this) {
+                $eventsResult->setStudent(null);
+            }
         }
 
         return $this;

@@ -43,12 +43,16 @@ class Staff
     #[ORM\ManyToMany(targetEntity: EventsList::class, mappedBy: 'EventResponsible')]
     private Collection $eventsLists;
 
+    #[ORM\ManyToMany(targetEntity: College::class, inversedBy: 'staff')]
+    private Collection $College;
+
 
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->studentGroups = new ArrayCollection();
         $this->eventsLists = new ArrayCollection();
+        $this->College = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -216,6 +220,30 @@ class Staff
         if ($this->eventsLists->removeElement($eventsList)) {
             $eventsList->removeEventResponsible($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, College>
+     */
+    public function getCollege(): Collection
+    {
+        return $this->College;
+    }
+
+    public function addCollege(College $college): static
+    {
+        if (!$this->College->contains($college)) {
+            $this->College->add($college);
+        }
+
+        return $this;
+    }
+
+    public function removeCollege(College $college): static
+    {
+        $this->College->removeElement($college);
 
         return $this;
     }

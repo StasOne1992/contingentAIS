@@ -4,7 +4,7 @@ namespace App\Controller\Admission\Examination;
 
 use App\Entity\AdmissionExamination;
 use App\Form\AdmissionExaminationType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\AbiturientPetitionRepository;
 use App\Repository\AdmissionExaminationRepository;
 use App\Service\Admission\AdmissionExaminationPreparationService;

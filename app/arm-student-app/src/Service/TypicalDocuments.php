@@ -258,7 +258,7 @@ class TypicalDocuments
 
 
     /**
-     * @param Group $content
+     * @param StudentGroups $content
      * @return void
      */
     public function generateSKUDRulesAccept($content)

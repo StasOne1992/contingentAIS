@@ -16,6 +16,17 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+        filters:
+            studentFilter:
+                class: App\Doctrine\Filter\StudentFilter
+                enabled: false
+                parameters:
+                    discontinued: false
+            studentGroupFilter:
+                class: App\Doctrine\Filter\studentGroupFilter
+                enabled: false
+                parameters:
+                    discontinued: false
 
 when@test:
     doctrine:

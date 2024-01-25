@@ -1,7 +1,7 @@
-{{ form_start(form) }}
+{{ form_start(form, {'attr': {'id': 'characteristic'}}) }}
 <div class="row">
     <div class="col-12">
-        <div class="block block-rounded block-bordered block-themed pb-3">
+        <div class="block block-rounded block-bordered block-themed ">
             <div class="block-header block-header-default bg-secondary">
                 <h3 class="block-title">Сведения о студенте<small> </small></h3>
             </div>
@@ -10,7 +10,7 @@
                     <div class="col-12 col-sm-4">
                         <label class="form-label">    {{ form_label(form.Student) }} </label>
                         {% if blockStudentEdit==true %}
-                            {{ form_widget(form.Student,{ 'attr': {'class': 'form-select','disabled':"disabled"} }) }}
+                            {{ form_widget(form.Student,{'attr': {'class': 'form-select','disabled':"disabled"} }) }}
                         {% else %}
                             {{ form_widget(form.Student,{ 'attr': {'class': 'form-select'} }) }}
                         {% endif %}
@@ -21,27 +21,14 @@
                     </div>
                     <div class="col-12">
                         <label class="form-label"> {{ form_label(form.Content) }}</label>
-                        {{ form_widget(form.Content,{ 'attr': {'class': 'js-maxlength form-control js-maxlength-enabled','maxlength':'50','data-always-show':'true','rows':10, 'data-placement':'top'} }) }}
+                        {{ form_widget(form.Content,{'id':'ckeditor','attr': {'name': 'ckeditor','rows':10, 'data-placement':'top'} }) }}
                     </div>
                 </div>
             </div>
             <div class="block-header block-header-default   bg-secondary">
                 <div class="block-title"></div>
                 <diV class="block-options">
-                    <div class="block-options-item">
-                        {{ include('characteristic/_delete_form.html.twig') }}
-                    </div>
-                    <div class="block-options-item">
 
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop">
-                            Сгенерировать характеристику
-                        </button>
-                    </diV>
-
-                    <div class="block-options-item">
-                        <button class="btn btn-alt-primary">{{ button_label|default('Save') }}</button>
-                    </div>
 
                 </div>
             </div>

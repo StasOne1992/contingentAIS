@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\LegalRepresentativeTypeList;
 use App\Form\LegalRepresentativeTypeListType;
 use App\Repository\LegalRepresentativeTypeListRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

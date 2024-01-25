@@ -1,3 +1,6 @@
 {{ form_start(form, {'attr': {'id': 'student_groups'}}) }}
     {{ form_widget(form) }}
+<button class="btn btn-primary">{% if buttonicon is defined %}<i
+        class="fa-fw {{ buttonicon }}"></i> {% endif %}{{ button_label|default('Сохранить') }}
+</button>
 {{ form_end(form) }}
