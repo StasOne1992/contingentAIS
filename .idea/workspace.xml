@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="45536ea5-9412-4026-bc64-5f6634c799f3" name="Changes" comment=" 1">
+    <list default="true" id="45536ea5-9412-4026-bc64-5f6634c799f3" name="Changes" comment="Symfony update to V7.0.2">
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/PG_VERSION" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/112" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/113" afterDir="false" />
@@ -1519,124 +1519,6 @@
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/postgresql.conf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/postmaster.opts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/postmaster.pid" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/migrations/Version20240125175220.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/Student/StudentControllerJson.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsResultController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsResultTypesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Doctrine/Filter/StudentFilter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Doctrine/Filter/studentGroupFilter.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsResult.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsResultTypes.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Form/EventsResultType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Form/EventsResultTypesType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Listener/OnRequestListener.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EventsResultRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EventsResultTypesRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result/show.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result_types/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result_types/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result_types/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result_types/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result_types/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_result_types/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/StudentAIS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/StudentAIS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/334218b2-754a-4393-bdc3-714564bc747b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/334218b2-754a-4393-bdc3-714564bc747b.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/334218b2-754a-4393-bdc3-714564bc747b/storage_v2/_src_/database/pgs_arm_student.9WwQoQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/334218b2-754a-4393-bdc3-714564bc747b/storage_v2/_src_/database/pgs_arm_student.9WwQoQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b88c91e9-7b1c-4aa0-8a08-279a37ccb6c2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b88c91e9-7b1c-4aa0-8a08-279a37ccb6c2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/.env" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/bin/phpunit" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/bin/phpunit" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/packages/monolog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/packages/monolog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/packages/translation.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/phpunit.xml.dist" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/phpunit.xml.dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/AccessSystemControlController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/AccessSystemControlController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admin/DashboardController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admin/StudentCrudController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admin/UserCrudController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/ServicesDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/ServicesDashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/SystemServicesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/SystemServicesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AbiturientPetitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AbiturientPetitionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AbiturientPetitionStatusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AbiturientPetitionStatusController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionDashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionExaminationResultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionExaminationResultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionPlanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionPlanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionStatusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionStatusController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/Examination/AdmissionExaminationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/Examination/AdmissionExaminationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/Examination/AdmissionExaminationSubjectsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/Examination/AdmissionExaminationSubjectsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/Reports/AdmissionRports.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/Reports/AdmissionRports.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/AdmissionExaminationResultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/AdmissionExaminationResultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/CharacteristicController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/CharacteristicController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/CollegeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/CollegeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Dashboard/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Dashboard/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/ContingentDocumentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/ContingentDocumentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/ContingentDocumentTypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/ContingentDocumentTypeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/EducationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/EducationFormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/FacultyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/FacultyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/FamilyTypeListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/FamilyTypeListController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/Student/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/Student/StudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/StudentGroupsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/StudentGroupsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationFormController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationFormController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationPlanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationPlanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationSubjectsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationSubjectsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsLevelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsLevelController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsListController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsPlacesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsPlacesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/FacultyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/FacultyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LegalRepresentativeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LegalRepresentativeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LegalRepresentativeTypeListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LegalRepresentativeTypeListController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LoginProviderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LoginProviderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LoginValuesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LoginValuesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/PersonalDocumentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/PersonalDocumentsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/SocialNetworkController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/SocialNetworkController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/SpecializationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/SpecializationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/StaffController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/StaffController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/StudentApp/StudentAppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/StudentApp/StudentAppController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/College.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/College.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsLevel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsLevel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsList.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsPlaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsPlaces.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Gender.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Gender.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Staff.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/PersonaSexRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/TypicalDocuments.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/src/Service/TypicalDocuments.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/_userdropdown.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/_userdropdown.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/characteristic/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/characteristic/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/characteristic/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/characteristic/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/characteristic/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/characteristic/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/characteristic/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/characteristic/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/characteristic/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/characteristic/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/events_list/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_list/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/events_list/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_list/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/_static-student-list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/_static-student-list.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/arm-student-app/tests/bootstrap.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/tests/bootstrap.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -2151,7 +2033,7 @@
       <workItem from="1706186329223" duration="147000" />
       <workItem from="1706186520501" duration="370000" />
       <workItem from="1706186901583" duration="8191000" />
-      <workItem from="1706196654956" duration="13626000" />
+      <workItem from="1706196654956" duration="13695000" />
     </task>
     <task id="LOCAL-00001" summary="Восстановлены файлы проекта&#10;Выполнена настройка представления списка заявлений&#10;Реализован функционал выгрузки заявлений на сайт через API сайта&#10;Добавлены новые поля для заявления&#10;Доработана процедура загрузки информации из ВИС&#10;Реализована возможность блокировки заявлений от обновлений из ВИС">
       <created>1689240112658</created>
@@ -2272,7 +2154,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704813021885</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Symfony update to V7.0.2">
+      <option name="closed" value="true" />
+      <created>1706210336216</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1706210336216</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Symfony update to V7.0.2">
+      <option name="closed" value="true" />
+      <created>1706210356290</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1706210356290</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -2317,7 +2215,8 @@
     <MESSAGE value="Фоновые сообщения" />
     <MESSAGE value="Внесены изменения в работу контроллеров:&#10;1. Студенты - закрыта проблема несанкционированного доступа к профилю студентов;&#10;2. Студенческие группы - добавлен метод show-students для отображения студентов в группе &#10;Внесены изменения в шаблон:&#10;1. Панель управления - заменена ссылка на метод отображения списка группы на новый show-students&#10;&#10;Прочее:&#10;1. Добавлен скрипт установки install.bash" />
     <MESSAGE value=" 1" />
-    <option name="LAST_COMMIT_MESSAGE" value=" 1" />
+    <MESSAGE value="Symfony update to V7.0.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Symfony update to V7.0.2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

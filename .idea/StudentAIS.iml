@@ -20,6 +20,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/psr/http-client" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/psr/http-factory" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/phpoffice/phpspreadsheet" />
+      <excludeFolder url="file://$MODULE_DIR$/.docker/postgresql/data" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/behat/transliterator" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/doctrine/annotations" />
