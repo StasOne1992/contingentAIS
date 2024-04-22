@@ -98,7 +98,6 @@
       overflow-x: hidden;
       transform: translateX(-($sidebar-width - $sidebar-mini-width))
         translateY(0) translateZ(0);
-      transition: transform $side-transition;
     }
 
     .sidebar-mini.sidebar-o.sidebar-r & {

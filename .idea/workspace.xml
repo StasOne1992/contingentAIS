@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45536ea5-9412-4026-bc64-5f6634c799f3" name="Changes" comment="Symfony update to V7.0.2">
-      <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/PG_VERSION" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/112" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/113" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/1247" afterDir="false" />
@@ -23,12 +22,10 @@
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13595" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13595_fsm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13595_vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13598" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13599" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13600" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13600_fsm" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13600_vm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13603" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13604" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13605" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13605_fsm" afterDir="false" />
@@ -1519,6 +1516,651 @@
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/postgresql.conf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/postmaster.opts" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.docker/postgresql/data/postmaster.pid" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/App/MainApp/Controller/ModMosregVIS.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_js/pages/op_auth_two_factor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/oneui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/fontawesome/fa-brands-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/fontawesome/fa-brands-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/fontawesome/fa-regular-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/fontawesome/fa-regular-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/fontawesome/fa-solid-900.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/fontawesome/fa-solid-900.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/fontawesome/fa-v4compatibility.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/fontawesome/fa-v4compatibility.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v13-latin-300.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v13-latin-500.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v13-latin-600.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v13-latin-700.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v13-latin-800.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v13-latin-900.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v13-latin-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_auth_two_factor.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/hy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/hy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_hi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_hi.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/group_membership/_delete_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/group_membership/_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/group_membership/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/group_membership/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/group_membership/new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/group_membership/show.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/mod_mosreg_vis/_delete_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/mod_mosreg_vis/_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/mod_mosreg_vis/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/mod_mosreg_vis/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/mod_mosreg_vis/new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/mod_mosreg_vis/show.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/person/_delete_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/person/_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/person/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/person/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/person/new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/person/show.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_punishment/_delete_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_punishment/_form.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_punishment/edit.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_punishment/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_punishment/new.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_punishment/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.docker/php/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/php/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.docker/supervisor/conf.d/messenger-worker.conf" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/supervisor/conf.d/messenger-worker.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/StudentAIS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/StudentAIS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/334218b2-754a-4393-bdc3-714564bc747b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/334218b2-754a-4393-bdc3-714564bc747b.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/334218b2-754a-4393-bdc3-714564bc747b/storage_v2/_src_/database/pgs_arm_student.9WwQoQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/334218b2-754a-4393-bdc3-714564bc747b/storage_v2/_src_/database/pgs_arm_student.9WwQoQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/bin/console" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/bin/console" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/composer.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/packages/doctrine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/packages/messenger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/packages/messenger.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_js/pages/be_ui_icons.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_js/pages/be_ui_icons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_buttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_buttons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_nav.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_reboot.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_reboot.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_root.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_root.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_utilities.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_utilities.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_variables-dark.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_variables-dark.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/forms/_floating-labels.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/forms/_floating-labels.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/forms/_form-check.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/forms/_form-check.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/forms/_form-control.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/forms/_form-control.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/forms/_form-range.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/forms/_form-range.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/forms/_form-select.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/forms/_form-select.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/helpers/_color-bg.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/helpers/_color-bg.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/helpers/_vr.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/helpers/_vr.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/mixins/_banner.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/mixins/_banner.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/mixins/_grid.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/bootstrap/mixins/_grid.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/oneui/_reboot.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/oneui/_reboot.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/oneui/_rtl-support.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/oneui/_rtl-support.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/oneui/_sidebar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/oneui/_sidebar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/oneui/mixins/_theme-dark.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/oneui/mixins/_theme-dark.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/_variables.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/brands.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/brands.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/fontawesome.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/fontawesome.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/regular.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/regular.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/solid.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/solid.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/v4-shims.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/_scss/vendor/fontawesome/v4-shims.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/oneui.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/oneui.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/amethyst.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/amethyst.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/amethyst.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/amethyst.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/city.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/city.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/city.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/city.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/flat.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/flat.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/flat.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/flat.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/modern.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/modern.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/modern.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/modern.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/smooth.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/smooth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/smooth.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/css/themes/smooth.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Bold-Italic.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Bold-Italic.t1a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Bold-Italic.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Bold.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Bold.t1a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Bold.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Italic.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Italic.t1a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Italic.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Regular.afm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Regular.t1a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/PT-Astra-Serif_Regular.ufm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/pt-astra-serif_bold-italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/pt-astra-serif_bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/pt-astra-serif_italic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/PT-Astra-Serif/pt-astra-serif_regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v12-latin-300.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v12-latin-500.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v12-latin-600.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v12-latin-700.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v12-latin-800.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v12-latin-900.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/fonts/inter/inter-v12-latin-regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/lib/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/lib/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/oneui.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/oneui.app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/oneui.app.min.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/oneui.app.min.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_calendar.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_calendar.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_charts.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_charts.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_dialogs.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_dialogs.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_image_cropper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_image_cropper.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_maps_vector.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_maps_vector.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_rating.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_comp_rating.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_forms_validation.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_forms_validation.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_pages_dashboard.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_pages_dashboard.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_pages_dashboard_v1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_pages_dashboard_v1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_pages_ecom_dashboard.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_pages_ecom_dashboard.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_tables_datatables.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_tables_datatables.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_ui_animations.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_ui_animations.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_ui_icons.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_ui_icons.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_ui_progress.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/be_ui_progress.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_auth_lock.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_auth_lock.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_auth_reminder.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_auth_reminder.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_auth_signin.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_auth_signin.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_auth_signup.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_auth_signup.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_coming_soon.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_coming_soon.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_installation.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/pages/op_installation.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.cjs.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.cjs.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.umd.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.umd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.umd.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chart.umd.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chunks/helpers.segment.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chunks/helpers.segment.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chunks/helpers.segment.cjs.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chunks/helpers.segment.cjs.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chunks/helpers.segment.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chunks/helpers.segment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chunks/helpers.segment.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/chunks/helpers.segment.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/helpers.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/helpers.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/scales/scale.time.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/scales/scale.time.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/scales/scale.timeseries.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/scales/scale.timeseries.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/types/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/chart.js/types/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/LICENSE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/ckeditor.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/ckeditor.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/ckeditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/ckeditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/ckeditor.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/ckeditor.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/af.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/af.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ar.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ast.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ast.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/az.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/az.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/bg.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/bg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/bn.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/bn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/bs.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/bs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/cs.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/cs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/da.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/da.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/de-ch.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/de-ch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/de.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/de.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/el.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/el.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/en-au.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/en-au.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/en-gb.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/en-gb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/eo.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/eo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/es-co.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/es-co.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/es.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/es.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/et.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/et.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/eu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/eu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/fa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/fi.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/fi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/fr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/gl.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/gl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/gu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/gu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/he.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/he.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/hi.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/hi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/hr.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/hr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/hu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/hu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/id.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/id.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/it.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/it.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ja.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ja.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/jv.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/jv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/km.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/km.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/kn.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/kn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ko.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ko.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ku.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ku.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/lt.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/lt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/lv.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/lv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ms.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/nb.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/nb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ne.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ne.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/nl.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/nl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/no.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/no.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/oc.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/oc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/pl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/pt-br.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/pt-br.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/pt.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/pt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ro.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ru.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/si.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/si.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sk.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sl.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sq.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sr-latn.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sr-latn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sr.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sv.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/sv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/th.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/th.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/tk.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/tk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/tr.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/tr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/tt.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/tt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ug.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ug.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/uk.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/uk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ur.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/ur.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/uz.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/uz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/vi.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/vi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/zh-cn.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/zh-cn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/zh.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-classic/build/translations/zh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/LICENSE.md" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/LICENSE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/ckeditor.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/ckeditor.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/ckeditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/ckeditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/ckeditor.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/ckeditor.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/af.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/af.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ar.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ast.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ast.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/az.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/az.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/bg.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/bg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/bn.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/bn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/bs.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/bs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/cs.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/cs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/da.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/da.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/de-ch.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/de-ch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/de.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/de.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/el.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/el.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/en-au.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/en-au.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/en-gb.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/en-gb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/eo.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/eo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/es-co.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/es-co.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/es.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/es.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/et.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/et.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/eu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/eu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/fa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/fi.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/fi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/fr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/gl.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/gl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/gu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/gu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/he.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/he.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/hi.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/hi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/hr.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/hr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/hu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/hu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/id.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/id.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/it.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/it.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ja.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ja.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/jv.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/jv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/km.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/km.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/kn.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/kn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ko.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ko.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ku.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ku.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/lt.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/lt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/lv.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/lv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ms.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ms.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/nb.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/nb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ne.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ne.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/nl.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/nl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/no.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/no.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/oc.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/oc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/pl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/pt-br.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/pt-br.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/pt.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/pt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ro.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ru.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/si.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/si.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sk.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sl.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sq.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sr-latn.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sr-latn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sr.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sv.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/sv.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/th.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/th.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/tk.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/tk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/tr.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/tr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/tt.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/tt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ug.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ug.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/uk.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/uk.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ur.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/ur.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/uz.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/uz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/vi.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/vi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/zh-cn.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/zh-cn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/zh.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/ckeditor5-inline/build/translations/zh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.common.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.esm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/cropperjs/cropper.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/datatables-buttons/dataTables.buttons.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/datatables-buttons/dataTables.buttons.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/datatables-buttons/dataTables.buttons.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/datatables-buttons/dataTables.buttons.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/fullcalendar/index.global.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/fullcalendar/index.global.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/fullcalendar/index.global.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/fullcalendar/index.global.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/fullcalendar/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/fullcalendar/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/additional-methods.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/additional-methods.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/additional-methods.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/additional-methods.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/jquery.validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/jquery.validate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/jquery.validate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/jquery.validate.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ar.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ar.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_az.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_az.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_bg.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_bg.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_bn_BD.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_bn_BD.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ca.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ca.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_cs.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_cs.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_da.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_da.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_de.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_de.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_el.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_el.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_es.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_es.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_es_AR.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_es_AR.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_es_PE.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_es_PE.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_et.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_et.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_eu.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_eu.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_fa.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_fa.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_fi.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_fi.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_fr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_fr.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_fr.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ge.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ge.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_gl.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_gl.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_he.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_he.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_hr.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_hr.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_hu.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_hu.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_hy_AM.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_hy_AM.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_id.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_id.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_is.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_is.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_it.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_it.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ja.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ja.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ka.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ka.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_kk.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_kk.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ko.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ko.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_lt.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_lt.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_lv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_lv.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_mk.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_mk.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_my.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_my.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_nl.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_nl.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_no.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_no.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_pl.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_pl.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_pt_BR.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_pt_BR.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_pt_BR.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_pt_BR.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_pt_PT.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_pt_PT.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ro.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ro.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ru.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ru.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sd.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sd.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_si.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_si.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sk.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sk.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sl.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sl.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sr.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sr.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sr_lat.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sr_lat.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sv.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_sv.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_th.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_th.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_tj.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_tj.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_tr.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_tr.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_uk.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_uk.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ur.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_ur.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_vi.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_vi.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_zh.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_zh.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_zh_TW.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/messages_zh_TW.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_de.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_de.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_es_CL.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_es_CL.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_fi.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_fi.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_it.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_it.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_nl.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_nl.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_pt.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/jquery-validation/localization/methods_pt.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.all.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.all.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.all.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.all.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/public/assets/js/plugins/sweetalert2/sweetalert2.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/be_blocks_options.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/public/hello world.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/postgresql/data/PG_VERSION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/AccessSystemControlController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/ServicesDashboard.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Administrator/Services/SystemServicesController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AbiturientPetitionController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AbiturientPetitionStatusController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionDashboard.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionExaminationResultController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionPlanController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/AdmissionStatusController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/Examination/AdmissionExaminationController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/Examination/AdmissionExaminationSubjectsController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Admission/Reports/AdmissionRports.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/AdmissionExaminationResultController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/AuthController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/CharacteristicController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/CollegeController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Dashboard/DashboardController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/ContingentDocumentController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/ContingentDocumentTypeController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/EducationFormController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/FacultyController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/FamilyTypeListController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/Student/StudentController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/Student/StudentControllerJson.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EduPart/StudentGroupsController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationFormController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationPlanController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EducationSubjectsController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsCategoryController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsLevelController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsListController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsPlacesController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsResultController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/EventsResultTypesController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/FacultyController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LegalRepresentativeController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LegalRepresentativeTypeListController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LoginProviderController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/LoginValuesController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/Mercure/PublishController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/PersonalDocumentsController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/RegistrationController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/SecurityController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/SocialNetworkController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/SpecializationController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/StaffController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/StudentApp/StudentAppController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Controller/UserController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Doctrine/Filter/StudentFilter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Doctrine/Filter/studentGroupFilter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13598" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/AbiturientPetition.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/AbiturientPetitionStatus.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/AccessSystemControl.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Admission.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/AdmissionExamination.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/AdmissionExaminationResult.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/AdmissionExaminationSubjects.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/AdmissionPlan.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/AdmissionStatus.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Characteristic.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/College.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/ContingentDocument.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/ContingentDocumentType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EducationForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EducationPlan.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EducationSemester.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EducationSubjects.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EducationType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EducationYear.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsCategory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsLevel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsPlaces.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsResult.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/EventsResultTypes.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Faculty.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/FamilyTypeList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/FinancialType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Gender.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/HealthGroup.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/LegalRepresentative.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/LegalRepresentativeTypeList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/LoginProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/LoginValues.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/PersonalDocTypeList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/PersonalDocuments.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Regions.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Roles.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/SocialNetwork.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/SocialNetworkTypeList.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Specialization.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Staff.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/Student.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/StudentGroups.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/SystemServices.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Entity/User.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/EventListener/ExceptionListener.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AbiturientPetitionLoadType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AbiturientPetitionStatusType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AbiturientPetitionType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AccessSystemControlType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AdmissionExaminationResultType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AdmissionExaminationSubjectsType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AdmissionExaminationType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AdmissionPlanType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AdmissionStatusType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/AdmissionType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/CharacteristicType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/CollegeType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/ContingentDocumentForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/ContingentDocumentTypeType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EduPart/StudentImportType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EduPart/StudentType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EducationFormType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EducationPlanType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EducationSubjectsType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EventsCategoryType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EventsLevelType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EventsListType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EventsPlacesType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EventsResultType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/EventsResultTypesType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/FacultyType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/FamilyTypeListType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/LegalRepresentativeType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/LegalRepresentativeTypeListType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/LoginProviderType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/LoginValuesType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/PersonalDocumentsType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/RegistrationFormType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/SocialNetworkType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/SpecializationType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/StaffType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/StudentGroupsType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/SystemServicesType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/UserType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/dashboard/DashboardType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Form/student-app/StudentProfile.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Kernel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Listener/OnRequestListener.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Menu/Builder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Message/PetitionLoadMessage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Message/PetitionNewLoadMessage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/MessageHandler/PetitionLoadMessageHandler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/MessageHandler/PetitionNewLoadMessageHandler.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Messenger/AuditMiddleware.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.docker/postgresql/data/base/1/13603" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/AbiturientPetitionRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/AbiturientPetitionStatusRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/AccessSystemControlRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/AdmissionExaminationRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/AdmissionExaminationResultRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/AdmissionExaminationSubjectsRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/AdmissionPlanRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/AdmissionRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/AdmissionStatusRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/CharacteristicRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/CollegeRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/ContingentDocContentRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/ContingentDocRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/ContingentDocTypeRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/ContingentDocumentRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/ContingentDocumentTypeRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EducationFormRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EducationPlanRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EducationSemesterRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EducationSubjectsRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EducationTypeRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EducationYearRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EventsCategoryRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EventsLevelRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EventsListRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EventsPlacesRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EventsResultRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/EventsResultTypesRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/FacultyRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/FamilyTypeListRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/FinancialTypeRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/GenderRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/HealthGroupRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/LegalRepresentativeRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/LegalRepresentativeTypeListRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/LoginProviderRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/LoginValuesRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/PersonalDocTypeListRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/PersonalDocumentsRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/RegionsRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/RolesRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/SocialNetworkRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/SocialNetworkTypeListRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/SpecializationRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/StaffRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/StudentGroupsRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/StudentRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/SystemServicesRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Repository/UserRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Security/LoginFormAuthenticator.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/AdmissionExaminationPreparationService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionAsyncService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionLoadService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/Admission/PetitionToSiteService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/CharacteristicGenerate.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/ContingentDocumentService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/DataService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/EventsService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/FileUploader.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/GlobalHelpersService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/Messenger/BackgroudMessage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/PersonalDocumentsService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/RFIDService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/SecurityService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/StudentApp/StudentAppService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/StudentGroupsService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/StudentService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/TypicalDocuments.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/User/UserService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/UsersService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/src/Service/XlsxService.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/admission_dashboard/admission_dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/admission_dashboard/admission_dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/admission_dashboard/show_petition_list.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/admission_dashboard/show_petition_list.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/college/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/college/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/college/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/college/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/contingent_document/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/contingent_document/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/contingent_document/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/contingent_document/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/dashboard/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/dashboard/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/events_list/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/events_list/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/_menu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/_menu.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/_usermenu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/_usermenu.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/dashboard.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/dashboard.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/profile/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student-app/profile/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student/_add_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student/_add_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/_static-summary.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/_static-summary.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/arm-student-app/templates/student_groups/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1894,6 +2536,7 @@
     "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
+    "Docker.Docker.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "true",
@@ -1907,15 +2550,14 @@
     "database.data.extractors.current.export.id": "Excel (xlsx)",
     "git-widget-placeholder": "master",
     "grid.search.filter.rows": "true",
-    "last_opened_file_path": "C:/Users/root/PhpstormProjects/StudentAIS/app/arm-student-app/public/assets/fonts/fontawesome",
+    "last_opened_file_path": "C:/Users/root/PhpstormProjects/StudentAIS/app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "service.view.auto.scroll.to.source": "true",
-    "settings.editor.selected.configurable": "Symfony.ProfilerSettingsForm",
+    "settings.editor.selected.configurable": "database.data.views",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -1933,11 +2575,11 @@
       <recent name="C:\Users\root\PhpstormProjects\StudentAIS\.docker\certs" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\app\arm-student-app\public\upload\college" />
-      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\app\arm-student-app\templates\administrator" />
-      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\app\arm-student-app\templates\admission_dashboard" />
-      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\.docker\supervisor" />
-      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\.docker" />
+      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\app\arm-student-app\App\MainApp\Entity" />
+      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\app\arm-student-app\App\StudentApp\Form" />
+      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\app\arm-student-app\src\StudentApp" />
+      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\app\arm-student-app\src\App" />
+      <recent name="C:\Users\root\PhpstormProjects\StudentAIS\app\arm-student-app\public\assets\js" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -1966,6 +2608,10 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Docker.Docker" />
+      <item itemvalue="PHPUnit.phpunit.xml.dist" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -2033,7 +2679,27 @@
       <workItem from="1706186329223" duration="147000" />
       <workItem from="1706186520501" duration="370000" />
       <workItem from="1706186901583" duration="8191000" />
-      <workItem from="1706196654956" duration="13695000" />
+      <workItem from="1706196654956" duration="14038000" />
+      <workItem from="1706518967568" duration="12609000" />
+      <workItem from="1706603444861" duration="7318000" />
+      <workItem from="1707746095639" duration="31048000" />
+      <workItem from="1708953267356" duration="9617000" />
+      <workItem from="1709014025672" duration="10993000" />
+      <workItem from="1709039618133" duration="1417000" />
+      <workItem from="1709108953942" duration="3603000" />
+      <workItem from="1709557846542" duration="598000" />
+      <workItem from="1710425966800" duration="10049000" />
+      <workItem from="1710828376929" duration="13542000" />
+      <workItem from="1710861984005" duration="4512000" />
+      <workItem from="1711093547565" duration="5541000" />
+      <workItem from="1711439755796" duration="9316000" />
+      <workItem from="1711533711492" duration="2940000" />
+      <workItem from="1713192517710" duration="4578000" />
+      <workItem from="1713250451396" duration="1420000" />
+      <workItem from="1713253403930" duration="484000" />
+      <workItem from="1713253893797" duration="4844000" />
+      <workItem from="1713291180996" duration="601000" />
+      <workItem from="1713771597180" duration="23013000" />
     </task>
     <task id="LOCAL-00001" summary="Восстановлены файлы проекта&#10;Выполнена настройка представления списка заявлений&#10;Реализован функционал выгрузки заявлений на сайт через API сайта&#10;Добавлены новые поля для заявления&#10;Доработана процедура загрузки информации из ВИС&#10;Реализована возможность блокировки заявлений от обновлений из ВИС">
       <created>1689240112658</created>
@@ -2170,7 +2836,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706210356290</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Symfony update to V7.0.2">
+      <option name="closed" value="true" />
+      <created>1706210389667</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1706210389667</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -2217,6 +2891,17 @@
     <MESSAGE value=" 1" />
     <MESSAGE value="Symfony update to V7.0.2" />
     <option name="LAST_COMMIT_MESSAGE" value="Symfony update to V7.0.2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>remoteDeploymentFS://&lt;21647119-0fad-4a53-832b-02b9f984ee53&gt;/app/arm-student-app/src/Controller/app/Administrator/Services/SystemServicesController.php</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

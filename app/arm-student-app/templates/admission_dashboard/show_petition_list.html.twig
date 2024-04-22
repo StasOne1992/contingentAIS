@@ -41,7 +41,7 @@
                             {{ abiturient_petition.localNumber }}
                             <br>
                             {{ abiturient_petition.number }}</td>
-                        <td>{{ abiturient_petition.lastName~' '~abiturient_petition.firstName~' '~ abiturient_petition.middleName }}
+                        <td>{{ abiturient_petition.getLastName~' '~abiturient_petition.getFirstName~' '~ abiturient_petition.getMiddleName }}
                             <br>
                             {% if(abiturient_petition.status.name=="REGISTERED") %}
                                 <span class="badge bg-black-50">{{ abiturient_petition.status.title }}</span>

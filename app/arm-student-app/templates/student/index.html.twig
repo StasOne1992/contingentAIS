@@ -34,7 +34,7 @@
                     <th>Фамилия Имя Отчество</th>
                     <th class="d-none d-xl-table-cell">Специальность</th>
                     <th class="d-none d-xl-table-cell">Группа</th>
-                    <th class="d-none d-xl-table-cell">Номер зачётки/<br>Номер студ. билета</th>
+                    <th class="d-none d-xl-table-cell">№ зачётки/<br>№ студ. билета</th>
                     <th class="d-table-cell d-xl-none">Сведения</th>
                     <th >Действия</th>
                 </tr>
@@ -49,7 +49,7 @@
                             <div class="row  align-items-center">
 
                                 <div class="col-12">
-                                    {{ student.LastName }} {{ student.FirstName }} {{ student.MiddleName }}
+                                    {{ student.getFullName()}}
                                 </div>
 
                                 <div class="row row-cols-auto mx-auto small">

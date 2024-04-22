@@ -72,10 +72,10 @@
       ):not(.list-group-item-action):not(.close):not(.fc-event):not(
         .text-success-light
       ):not(.text-danger-light):not(.text-warning-light):not(.text-info-light) {
-      color: lighten($primary, 5%);
+      color: lighten($primary, 12%);
 
       &.link-fx::before {
-        background-color: lighten($primary, 5%);
+        background-color: lighten($primary, 12%);
       }
 
       &:hover {
@@ -91,7 +91,7 @@
     @include bg-variant(".bg-muted", darken($body-bg-light, 30%));
 
     // Contextual text colors
-    @include text-emphasis-variant(".text-primary", lighten($primary, 5%));
+    @include text-emphasis-variant(".text-primary", lighten($primary, 12%));
 
     @include text-emphasis-variant(".text-success", lighten($success, 5%));
     @include text-emphasis-variant(".text-warning", lighten($warning, 5%));
@@ -431,8 +431,8 @@
 
     // Tables
     .table {
-      --#{$prefix}table-color: darken($body-bg-dark, 10%);
-      --#{$prefix}table-bg: $primary-darker;
+      --#{$prefix}table-color: #{darken($body-bg-dark, 10%)};
+      --#{$prefix}table-bg: #{$primary-darker};
       --#{$prefix}table-striped-color: #{$body-bg-light};
       --#{$prefix}table-striped-bg: #{darken($primary-darker, 1.5%)};
       --#{$prefix}table-active-color: #{$body-bg-light};

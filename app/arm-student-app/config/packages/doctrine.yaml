@@ -8,6 +8,7 @@ doctrine:
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
+        report_fields_where_declared: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
@@ -24,6 +25,11 @@ doctrine:
                     discontinued: false
             studentGroupFilter:
                 class: App\Doctrine\Filter\studentGroupFilter
+                enabled: false
+                parameters:
+                    discontinued: false
+            EventsResultFilter:
+                class: App\Doctrine\Filter\EventsResultFilter
                 enabled: false
                 parameters:
                     discontinued: false

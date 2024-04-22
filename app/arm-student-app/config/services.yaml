@@ -13,12 +13,12 @@ services:
   _defaults:
     autowire: true      # Automatically injects dependencies in your services.
     autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-  App\EventListener\ExceptionListener:
+  App\MainApp\EventListener\ExceptionListener:
     tags:
       - { name: kernel.event_listener, event: kernel.exception }
 
   on_request_listener:
-    class: App\Listener\OnRequestListener
+    class: App\MainApp\Listener\OnRequestListener
     arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
     tags:
       -
@@ -27,7 +27,7 @@ services:
         method: onKernelRequest
 
   app.menu_builder:
-    class: App\Menu\Builder
+    class: App\MainApp\Menu\Builder
     arguments: [ "@knp_menu.factory" ]
     tags:
       - { name: knp_menu.menu_builder, method: mainMenu, alias: mainMenu } # The alias is what is used to retrieve the menu
@@ -41,15 +41,15 @@ services:
   # makes classes in src/ available to be used as services
   # this creates a service per class whose id is the fully-qualified class name
   App\:
-    resource: '../src/'
+    resource: '../App'
     exclude:
-      - '../src/DependencyInjection/'
-      - '../src/Entity/'
-      - '../src/Kernel.php'
+      - '../App/DependencyInjection/'
+      - '../App/Kernel.php'
 
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones
 
-  App\Service\FileUploader:
+  App\MainApp\Service\FileUploader:
       arguments:
         $targetDirectory: '%student_import_directory%'
+

@@ -3,7 +3,7 @@ framework:
     buses:
       messenger.bus.default:
         middleware:
-          - App\Messenger\AuditMiddleware
+          - App\MainApp\Messenger\AuditMiddleware
     failure_transport: failed
 
     transports:
@@ -27,5 +27,5 @@ framework:
 
       # Route your messages to the transports
       # 'App\Message\YourMessage': async
-      'App\Message\PetitionLoadMessage': async
-      'App\Message\PetitionNewLoadMessage': async
+      'App\MainApp\Message\PetitionLoadMessage': async
+      'App\MainApp\Message\PetitionNewLoadMessage': async

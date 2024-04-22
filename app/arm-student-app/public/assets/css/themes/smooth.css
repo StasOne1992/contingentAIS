@@ -1,5 +1,5 @@
 /*!
- * oneui - v5.7.0
+ * oneui - v5.8.0
  * @author pixelcave - https://pixelcave.com
  * Copyright (c) 2023
  */
@@ -646,7 +646,7 @@ button.bg-sidebar-dark:focus {
 .table-primary {
   --bs-table-color: #000;
   --bs-table-bg: #f2c7dd;
-  --bs-table-border-color: #dab3c7;
+  --bs-table-border-color: #c29fb1;
   --bs-table-striped-bg: #e6bdd2;
   --bs-table-striped-color: #000;
   --bs-table-active-bg: #dab3c7;
@@ -1553,10 +1553,10 @@ table.dataTable.table-striped > tbody > tr.odd > * {
   color: #adb3b8;
 }
 .dark-mode a:not(.mini-nav-item):not(.badge):not(.btn):not(.btn-block-option):not(.block):not(.dropdown-item):not(.nav-link):not(.page-link):not(.alert-link):not(.nav-main-link):not(.list-group-item-action):not(.close):not(.fc-event):not(.text-success-light):not(.text-danger-light):not(.text-warning-light):not(.text-info-light) {
-  color: #d95798;
+  color: #df74aa;
 }
 .dark-mode a:not(.mini-nav-item):not(.badge):not(.btn):not(.btn-block-option):not(.block):not(.dropdown-item):not(.nav-link):not(.page-link):not(.alert-link):not(.nav-main-link):not(.list-group-item-action):not(.close):not(.fc-event):not(.text-success-light):not(.text-danger-light):not(.text-warning-light):not(.text-info-light).link-fx::before {
-  background-color: #d95798;
+  background-color: #df74aa;
 }
 .dark-mode a:not(.mini-nav-item):not(.badge):not(.btn):not(.btn-block-option):not(.block):not(.dropdown-item):not(.nav-link):not(.page-link):not(.alert-link):not(.nav-main-link):not(.list-group-item-action):not(.close):not(.fc-event):not(.text-success-light):not(.text-danger-light):not(.text-warning-light):not(.text-info-light):hover {
   color: #d4428b;
@@ -1602,13 +1602,13 @@ table.dataTable.table-striped > tbody > tr.odd > * {
   background-color: #8b939a !important;
 }
 .dark-mode .text-primary {
-  color: #d95798 !important;
+  color: #df74aa !important;
 }
 .dark-mode a.text-primary.link-fx::before {
-  background-color: #d95798 !important;
+  background-color: #df74aa !important;
 }
 .dark-mode a.text-primary:hover, .dark-mode a.text-primary:focus {
-  color: #ce2f7e !important;
+  color: #d64a90 !important;
 }
 .dark-mode .text-success {
   color: #16b15e !important;
@@ -1942,8 +1942,8 @@ table.dataTable.table-striped > tbody > tr.odd > * {
   color: #9fa6ac !important;
 }
 .dark-mode .table {
-  --bs-table-color: darken($body-bg-dark, 10%);
-  --bs-table-bg: $primary-darker;
+  --bs-table-color: #c8ccd0;
+  --bs-table-bg: #2a303b;
   --bs-table-striped-color: #f8f9f9;
   --bs-table-striped-bg: #272c37;
   --bs-table-active-color: #f8f9f9;
@@ -1959,7 +1959,7 @@ table.dataTable.table-striped > tbody > tr.odd > * {
 .dark-mode .table-primary {
   --bs-table-color: #fff;
   --bs-table-bg: rgba(170, 53, 111, 0.75);
-  --bs-table-border-color: rgba(183, 85, 134, 0.775);
+  --bs-table-border-color: rgba(195, 112, 153, 0.8);
   --bs-table-striped-bg: rgba(177, 69, 123, 0.7625);
   --bs-table-striped-color: #fff;
   --bs-table-active-bg: rgba(183, 85, 134, 0.775);
@@ -1972,7 +1972,7 @@ table.dataTable.table-striped > tbody > tr.odd > * {
 .dark-mode .table-info {
   --bs-table-color: #fff;
   --bs-table-bg: rgba(30, 58, 138, 0.75);
-  --bs-table-border-color: rgba(65, 89, 156, 0.775);
+  --bs-table-border-color: rgba(96, 116, 172, 0.8);
   --bs-table-striped-bg: rgba(48, 74, 147, 0.7625);
   --bs-table-striped-color: #fff;
   --bs-table-active-bg: rgba(65, 89, 156, 0.775);
@@ -1985,7 +1985,7 @@ table.dataTable.table-striped > tbody > tr.odd > * {
 .dark-mode .table-success {
   --bs-table-color: #fff;
   --bs-table-bg: rgba(20, 83, 45, 0.75);
-  --bs-table-border-color: rgba(57, 110, 78, 0.775);
+  --bs-table-border-color: rgba(89, 134, 107, 0.8);
   --bs-table-striped-bg: rgba(39, 97, 62, 0.7625);
   --bs-table-striped-color: #fff;
   --bs-table-active-bg: rgba(57, 110, 78, 0.775);
@@ -1998,7 +1998,7 @@ table.dataTable.table-striped > tbody > tr.odd > * {
 .dark-mode .table-danger {
   --bs-table-color: #fff;
   --bs-table-bg: rgba(127, 29, 29, 0.75);
-  --bs-table-border-color: rgba(147, 64, 64, 0.775);
+  --bs-table-border-color: rgba(165, 95, 95, 0.8);
   --bs-table-striped-bg: rgba(137, 47, 47, 0.7625);
   --bs-table-striped-color: #fff;
   --bs-table-active-bg: rgba(147, 64, 64, 0.775);
@@ -2011,7 +2011,7 @@ table.dataTable.table-striped > tbody > tr.odd > * {
 .dark-mode .table-warning {
   --bs-table-color: #fff;
   --bs-table-bg: rgba(113, 63, 18, 0.75);
-  --bs-table-border-color: rgba(135, 93, 55, 0.775);
+  --bs-table-border-color: rgba(155, 119, 88, 0.8);
   --bs-table-striped-bg: rgba(124, 78, 37, 0.7625);
   --bs-table-striped-color: #fff;
   --bs-table-active-bg: rgba(135, 93, 55, 0.775);

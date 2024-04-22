@@ -63,7 +63,7 @@
         let pageContainer = document.getElementById("page-container")
 
 
-        {% if app.user.FrontEndParams is defined %}
+        {% if app.user.FrontEndParams is defined and app.user.FrontEndParams['frontend']['sidebar']['sidebar_mini'] is defined  %}
             sidebar_mini = '{{ app.user.FrontEndParams['frontend']['sidebar']['sidebar_mini'] |raw }}',
             sidebar_style = '{{ app.user.FrontEndParams['frontend']['sidebar']['sidebar_style'] |raw }}',
             layout_dark_mode = '{{ app.user.FrontEndParams['frontend']['layout']['dark_mode_'] |raw }}';

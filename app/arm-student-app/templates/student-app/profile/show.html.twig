@@ -19,7 +19,7 @@
                              class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-1">{{ student.firstName~" "~student.LastName }}</h5>
                         <p class="text-muted text-sm-center mb-1">{{ student.email }}</p>
-                        {% set difference = date(student.birthData|date('Y/m/d')).diff(date('now'|date('Y/m/d'))) %}
+                        {% set difference = date(student.BirthDate|date('Y/m/d')).diff(date('now'|date('Y/m/d'))) %}
                         {% set leftDays = difference.days %}
 
                         <small class="text-muted mb-2"> {{ (leftDays // 365)~" лет" }} ...role... группа ..., </small>
@@ -148,7 +148,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-4"><h6>Дата рождения</h6></div>
-                                    <div class="col-3">{{ student.birthData|format_datetime('medium', 'none', locale='ru') }}</div>
+                                    <div class="col-3">{{ student.BirthDate|format_datetime('medium', 'none', locale='ru') }}</div>
                                     <div class="col-2"><h6>Пол</h6></div>
                                     <div class="col-3">{{ student.sex }}</div>
                                     <hr>

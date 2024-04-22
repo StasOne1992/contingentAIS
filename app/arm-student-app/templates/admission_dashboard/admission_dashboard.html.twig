@@ -48,71 +48,101 @@
                             </h2>
                             <div class="row">
                                 {% for item in facultyPetitionCount %}
-
-                                    <div class="col-12 col-sm-6 col-lg-4">
-                                        <div class="block block-rounded block-themed  mb-4">
-                                            <div class="block-header bg-secondary">
-                                                {{ item.Faculty }}
-                                            </div>
-                                            <div class="block-content block-content-full bg-body-light ">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-9">
+                                                <div class="block block-rounded block-themed  mb-4">
+                                                    <div class="block-header bg-secondary fs-4">
+                                                        {{ item.Faculty }}
+                                                    </div>
+                                                    <div class="block-content block-content-full bg-body-light ">
 
                                                 <div class="row">
-                                                    <div class="col-4 mx-auto">
-                                                        <div class="fs-2 fw-semibold  text-success">{{ item.PetitionCount }}</div>
-                                                        <div class="fw-bold text-uppercase">Всего</div>
+                                                    <div class="col-4 col-sm-2 mx-auto my-auto">
+                                                        <div class="fs-2 fw-black text-success text-center mx-auto">{{ item.PetitionCount }}</div>
+                                                        <div class="fw-bold text-uppercase text-center mx-auto">Всего</div>
                                                     </div>
-                                                    <div class="col-8">
-                                                        <dl class="row">
-                                                            <dt class="col-9 mb-0 fw-normal">Оригиналов</dt>
-                                                            <dd class="col-3 mb-0 fw-bolder"><span
-                                                                        class="text-info">{{ item.Origins }}</span></dd>
-                                                            <dt class="col-9 mb-0 fw-normal">Отозвано</dt>
-                                                            <dd class="col-3 mb-0 fw-bolder"><span
-                                                                        class="text-warning">{{ item.Rejected }}</span>
-                                                            </dd>
-                                                            <dt class="col-9 mb-0 fw-normal">Зарегистрировано</dt>
-                                                            <dd class="col-3 mb-0 fw-bolder"><span
-                                                                        class="text-danger">{{ item.Registred }}</span>
-                                                            </dd>
-                                                            <dt class="col-9 mb-0 fw-normal">В ФИС ГИА</dt>
-                                                            <dd class="col-3 mb-0 fw-bolder"><span
-                                                                        class="text-info">{{ item.FISGIA }}</span></dd>
-                                                            <dt class="col-9 mb-0 fw-normal">Рекомендованы</dt>
-                                                            <dd class="col-3 mb-0 fw-bolder"><span
-                                                                        class="text-success">{{ item.Enroll }}</span></dd>
-                                                            <dt class="col-9 mb-0 fw-normal">Зачислено</dt>
-                                                            <dd class="col-3 mb-0 fw-bolder"><span
-                                                                        class="text-success">{{ item.Induct }}</span></dd>
-                                                        </dl>
+                                                    <div class="col-8 col-sm-10 my-auto">
+                                                        <div class="row row-cols-auto row-cols-sm-2">
+                                                            <div class="col">
+                                                                <div class="row">
+                                                                    <span class="mb-0 fw-normal">Оригиналов: <span
+                                                                                class="text-info fw-black">{{ item.Origins }}</span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="row">
+                                                            <span class="mb-0 fw-normal">Отозвано: <span
+                                                                        class="text-warning fw-black">{{ item.Rejected }}</span>
+                                                            </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="row">
+                                                                    <span class="mb-0 fw-normal">Зарегистрировано: <span
+                                                                                class="text-danger fw-black">{{ item.Registred }}</span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="row">
+                                                            <span class="mb-0 fw-normal">В ФИС ГИА: <span
+                                                                        class="text-info fw-black">{{ item.FISGIA }}</span></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="row">
+                                                            <span class="mb-0 fw-normal">Рекомендованы:
+                                                            <span
+                                                                    class="text-success fw-black">{{ item.Enroll }}</span></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="row">
+                                                                    <span class="mb-0 fw-normal">Зачислено: <span
+                                                                                class="text-success fw-black">{{ item.Induct }}</span></span>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="block-header mx-auto bg-secondary">
-                                                <div class="row row-cols-1">
-                                                    <a
-                                                            class="btn btn-outline-light text-center mx-auto mb-2 block-link-shadow"
-                                                            href="{{ path('app_admission_dashboard_faculty_petition_index',{admission:item.Admission.id,faculty:item.Faculty.id}) }}">
-                                                        Список заявлений
-                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-3">
+                                                <div class="block block-rounded">
+                                                    <div class="block-header mx-auto bg-secondary">
+                                                        <div class="row w-100 row-cols-1 mx-auto">
+                                                            <div class="col">
+                                                                <a class="btn w-100 btn-outline-light text-center"
+                                                                   href="{{ path('app_admission_dashboard_faculty_petition_index',{admission:item.Admission.id,faculty:item.Faculty.id}) }}">
+                                                                    Список заявлений
+                                                                </a>
+                                                            </div>
+                                                            <div class="col">
+                                                                {% if (item.Faculty.getAdmissionExaminations().getValues()|length>0) %}
+                                                                    <a class="btn w-100 btn-outline-light text-center col "
+                                                                       href="{{ path('app_abiturient_petition_show_by_admission_and_faculty_and_exam_result',{admissionID:item.Admission.id,facultyID:item.Faculty.id,facultyTitle:item.Faculty.Name}) }}">Рейтинг
+                                                                        оригиналов с учетом ВИ</a>
+                                                                {% else %}
+                                                                    <a class="btn w-100  btn-outline-light text-center col  "
+                                                                       href="{{ path('app_abiturient_petition_show_by_admission_and_faculty',{admissionID:item.Admission.id,facultyID:item.Faculty.id,facultyTitle:item.Faculty.Name}) }}">Рейтинг
+                                                                        оригиналов</a>
+                                                                {% endif %}
 
-                                                    {% if (item.Faculty.getAdmissionExaminations().getValues()|length>0) %}
-                                                        <a class="btn btn-outline-light text-center mx-auto w-100 mb-2 "
-                                                           href="{{ path('app_abiturient_petition_show_by_admission_and_faculty_and_exam_result',{admissionID:item.Admission.id,facultyID:item.Faculty.id,facultyTitle:item.Faculty.Name}) }}">Рейтинг
-                                                            оригиналов с учетом ВИ</a>
-                                                    {% else %}
-                                                        <a class="btn btn-outline-light text-center mx-auto w-100 mb-2 "
-                                                           href="{{ path('app_abiturient_petition_show_by_admission_and_faculty',{admissionID:item.Admission.id,facultyID:item.Faculty.id,facultyTitle:item.Faculty.Name}) }}">Рейтинг
-                                                            оригиналов</a>
-                                                    {% endif %}
-
-
-
-                                                    <a class="btn btn-outline-light text-center mx-auto w-100 mb-2 "
-                                                       href="{{ path('app_abiturient_petition_show_by_admission_and_faculty_enroll',{admissionID:item.Admission.id,facultyID:item.Faculty.id,facultyTitle:item.Faculty.Name}) }}">Рекомендованные</a>
-
-                                                    <a class="btn btn-outline-light text-center mx-auto w-100 mb-2 "
-                                                       href="{{ path('app_abiturient_petition_show_by_admission_and_faculty_induct',{admissionID:item.Admission.id,facultyID:item.Faculty.id,facultyTitle:item.Faculty.Name}) }}">Зачисленные</a>
-
+                                                            </div>
+                                                            <div class="col">
+                                                                <a class="btn w-100  btn-outline-light text-center col "
+                                                                   href="{{ path('app_abiturient_petition_show_by_admission_and_faculty_enroll',{admissionID:item.Admission.id,facultyID:item.Faculty.id,facultyTitle:item.Faculty.Name}) }}">Рекомендованные</a>
+                                                            </div>
+                                                            <div class="col">
+                                                                <a class="btn w-100  btn-outline-light text-center col "
+                                                                   href="{{ path('app_abiturient_petition_show_by_admission_and_faculty_induct',{admissionID:item.Admission.id,facultyID:item.Faculty.id,facultyTitle:item.Faculty.Name}) }}">Зачисленные</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
