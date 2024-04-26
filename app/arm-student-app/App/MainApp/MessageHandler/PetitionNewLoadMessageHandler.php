@@ -4,7 +4,7 @@ namespace App\MainApp\MessageHandler;
 
 
 use App\MainApp\Message\PetitionNewLoadMessage;
-use App\MainApp\Service\Admission\PetitionLoadService;
+use App\mod_mosregvis\Service\PetitionLoadService;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Notifier\NotifierInterface;
 

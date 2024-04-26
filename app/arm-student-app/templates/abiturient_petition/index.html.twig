@@ -41,64 +41,65 @@
     {% if page_title is defined %} {{ page_title }} {% endif %}
 {% endblock %}
 
+{% block topmenu_items %}
+    <div class="row row-cols-1 row-cols-sm-auto">
+        <div class="block-options-item">
+            <div class="dropdown">
+                <button type="button" class="btn btn-outline-light dropdown-toggle"
+                        id="dropdown-VIS"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        {% if not is_granted('ROLE_STAFF_AB_PETITIONS_VIS') %}
+                            {{ ' disabled' }}
+                        {% endif %}>
+
+                    <span><i class="fa fa-right-left"></i> Обмен с ВИС</span>
+                </button>
+                {% if is_granted('ROLE_STAFF_AB_PETITIONS_VIS') %}
+                    <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-VIS">
+                        <a class="dropdown-item" href="{{ path('app_abiturient_petition_loadFromVIS') }}"><i
+                                    class='fa-solid fa-file-circle-plus'></i> Загрузить новые</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item"
+                           href="{{ path('app_abiturient_petition_updateAllFromVIS') }}">
+                            <i class="fa fa-solid fa-arrows-rotate"></i> Обновить все</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="block-options-item">
+            <div class="dropdown">
+                <button type="button" class="btn btn-outline-light dropdown-toggle"
+                        id="dropdown-VIS"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        {% if not is_granted('ROLE_STAFF_AB_PETITIONS_VIS') %}
+                            {{ ' disabled' }}
+                        {% endif %}>
+
+                    <span><i class="fa fa-right-left"></i> Обмен с сайтом</span>
+                </button>
+                {% if is_granted('ROLE_STAFF_AB_PETITIONS_VIS') %}
+                    <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-VIS">
+                        <a class="dropdown-item"
+                           href="{{ path('app_abiturient_petition_uploadToSite') }}"><i
+                                    class='fa-solid fa-file-circle-plus'></i> Загрузить заявления на
+                            сайт</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% if is_granted('ROLE_STAFF_AB_PETITIONS_MANUAL_C') %}
+            <div class="block-options-item"><a href="{{ path('app_abiturient_petition_new') }}"
+                                               type="button" class="btn btn-outline-light">
+                    <i class="fa fa-plus"></i> <span>Добавить заявление</span>
+                </a></div>
+        {% endif %}
+    </div>
+{% endblock %}
 {% block body %}
     <div class="block block-rounded block-bordered block-themed">
         <div class="block-header block-header-default bg-secondary">
             <h3 class="block-title">Заявления абитуриентов <small></small></h3>
             <div class="block-options">
-                <div class="row row-cols-1 row-cols-sm-auto">
-                    <div class="block-options-item">
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-outline-light dropdown-toggle"
-                                    id="dropdown-VIS"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    {% if not is_granted('ROLE_STAFF_AB_PETITIONS_VIS') %}
-                                        {{ ' disabled' }}
-                                    {% endif %}>
-
-                                <span><i class="fa-regular fa-right-left"></i> Обмен с ВИС</span>
-                            </button>
-                            {% if is_granted('ROLE_STAFF_AB_PETITIONS_VIS') %}
-                                <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-VIS">
-                                    <a class="dropdown-item" href="{{ path('app_abiturient_petition_loadFromVIS') }}"><i
-                                                class='fa-solid fa-file-circle-plus'></i> Загрузить новые</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item"
-                                       href="{{ path('app_abiturient_petition_updateAllFromVIS') }}">
-                                        <i
-                                                class="fa-sharp fa-solid fa-arrows-rotate"></i> Обновить все</a>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="block-options-item">
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-outline-light dropdown-toggle"
-                                    id="dropdown-VIS"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    {% if not is_granted('ROLE_STAFF_AB_PETITIONS_VIS') %}
-                                        {{ ' disabled' }}
-                                    {% endif %}>
-
-                                <span><i class="fa-regular fa-right-left"></i> Обмен с сайтом</span>
-                            </button>
-                            {% if is_granted('ROLE_STAFF_AB_PETITIONS_VIS') %}
-                                <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-VIS">
-                                    <a class="dropdown-item"
-                                       href="{{ path('app_abiturient_petition_uploadToSite') }}"><i
-                                                class='fa-solid fa-file-circle-plus'></i> Загрузить заявления на
-                                        сайт</a>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    {% if is_granted('ROLE_STAFF_AB_PETITIONS_MANUAL_C') %}
-                        <div class="block-options-item"><a href="{{ path('app_abiturient_petition_new') }}"
-                                                           type="button" class="btn btn-outline-light">
-                                <i class="fa-regular fa-plus"></i> <span>Добавить заявление</span>
-                            </a></div>
-                    {% endif %}
-                </div>
 
             </div>
         </div>

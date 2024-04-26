@@ -17,7 +17,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/admission/reports')]
 #[IsGranted("ROLE_USER")]
-class AdmissionRports extends AbstractController
+class AdmissionReports extends AbstractController
 {
     private AbiturientPetitionRepository $abiturientPetitionRepository;
     private AbiturientPetitionStatusRepository $abiturientPetitionStatusRepository;

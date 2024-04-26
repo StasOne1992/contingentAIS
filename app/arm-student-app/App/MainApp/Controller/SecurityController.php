@@ -2,7 +2,9 @@
 
 namespace App\MainApp\Controller;
 
+use App\MainApp\Repository\CollegeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
@@ -11,6 +13,19 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
+    private RequestStack $requestStack;
+    private CollegeRepository $collegeRepository;
+
+    public function __construct(
+        RequestStack $requestStack,
+        CollegeRepository $collegeRepository
+    )
+    {
+        $this->collegeRepository = $collegeRepository;
+        $this->requestStack = $requestStack;
+
+    }
+
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -40,20 +55,14 @@ class SecurityController extends AbstractController
     #[Route(path: '/secure', name: 'app_secure')]
     public function indexAction()
     {
+        $session=$this->requestStack->getSession();
+        $session->set('college',$this->getUser()->getCollege());
         if ($this->isGranted('ROLE_ROOT')) {
             return $this->redirectToRoute('app_dashboard_index');
         }
         if ($this->isGranted('ROLE_STUDENT')) {
             return $this->redirectToRoute('app_student_dashboard');
-        }
-        if ($this->isGranted('ROLE_USER')) {
-            return $this->redirectToRoute('app_dashboard_index');
-        }
-        if ($this->isGranted('ROLE_ADM')) {
-            return $this->redirectToRoute('app_dashboard_index');
-        }
-
-        if ($this->isGranted('ROLE_CL')) {
+        } else {
             return $this->redirectToRoute('app_dashboard_index');
         }
 

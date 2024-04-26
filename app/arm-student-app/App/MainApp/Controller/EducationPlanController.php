@@ -5,7 +5,6 @@ namespace App\MainApp\Controller;
 use App\MainApp\Entity\EducationPlan;
 use App\MainApp\Form\EducationPlanType;
 use App\MainApp\Repository\EducationPlanRepository;
-use App\Controller\App\IsGranted;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

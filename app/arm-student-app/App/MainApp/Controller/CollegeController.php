@@ -2,10 +2,11 @@
 
 namespace App\MainApp\Controller;
 
+use App\Controller\App\IsGranted;
 use App\MainApp\Entity\College;
 use App\MainApp\Form\CollegeType;
 use App\MainApp\Repository\CollegeRepository;
-use App\Controller\App\IsGranted;
+use App\mod_mosregvis\Repository\modmosregvisRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,8 +18,9 @@ use Symfony\Component\Routing\Attribute\Route;
 #[IsGranted("ROLE_USER")]
 class CollegeController extends AbstractController
 {
+
     #[Route('/', name: 'app_college_index', methods: ['GET'])]
-    public function index(CollegeRepository $collegeRepository): Response
+    public function index(CollegeRepository $collegeRepository, modmosregvisRepository $modmosregvisRepository): Response
     {
         return $this->render('college/index.html.twig', [
             'colleges' => $collegeRepository->findAll(),

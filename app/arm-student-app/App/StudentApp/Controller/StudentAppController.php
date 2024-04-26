@@ -11,8 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-//use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-
 #[Route('/student-app')]
 #[IsGranted("ROLE_USER")]
 class StudentAppController extends AbstractController
@@ -37,7 +35,7 @@ class StudentAppController extends AbstractController
     {
         $this->Student=$this->studentService->getStudentByUserId($this->getUser()->getStudent());
 
-        return $this->render('student-app/dashboard.html.twig',
+        return $this->render('@StudentApp/dashboard/dashboard.html.twig',
                 [
                     'student' => $this->Student
                 ]);

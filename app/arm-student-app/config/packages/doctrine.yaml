@@ -14,22 +14,32 @@ doctrine:
         mappings:
             App:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+                dir: '%kernel.project_dir%/App/MainApp/Entity'
+                prefix: 'App\MainApp\Entity'
+                alias: MainApp
+            StudentApp:
+                is_bundle: false
+                dir: '%kernel.project_dir%/App/StudentApp/Entity'
+                prefix: 'App\StudentApp\Entity'
+                alias: StudentApp
+            mod_mosregvis:
+                is_bundle: false
+                dir: '%kernel.project_dir%/App/mod_mosregvis/Entity'
+                prefix: 'App\mod_mosregvis\Entity'
+                alias: mod_mosregvis
         filters:
             studentFilter:
-                class: App\Doctrine\Filter\StudentFilter
+                class: App\MainApp\Doctrine\Filter\StudentFilter
                 enabled: false
                 parameters:
                     discontinued: false
             studentGroupFilter:
-                class: App\Doctrine\Filter\studentGroupFilter
+                class: App\MainApp\Doctrine\Filter\studentGroupFilter
                 enabled: false
                 parameters:
                     discontinued: false
             EventsResultFilter:
-                class: App\Doctrine\Filter\EventsResultFilter
+                class: App\MainApp\Doctrine\Filter\EventsResultFilter
                 enabled: false
                 parameters:
                     discontinued: false

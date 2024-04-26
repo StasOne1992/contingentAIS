@@ -5,7 +5,7 @@
 
                 <a type="button" class="btn btn-sm btn-dark"
                    href="{{ path('app_abiturient_petition_edit', {'id': abiturient_petition.id}) }}"><i
-                            class="fa fa-regular pull-right fa-pencil me-1"></i>Изменить</a>
+                            class="fa  pull-right fa-pencil me-1"></i>Изменить</a>
                 <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle dropdown-toggle-split"
                         id="dropdown-split-primary" data-bs-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
@@ -14,11 +14,11 @@
                 <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-split-primary">
                     <a class="dropdown-item" target="_blank"
                        href="{{ 'http://prof.mo.mosreg.ru/#spo/petition/'~abiturient_petition.GUID }}"><i
-                                class="fa-regular fa-arrow-up-right-from-square "></i> Открыть
+                                class=" fa-arrow-up-right-from-square "></i> Открыть
                         в ВИС</a>
                     <a class="dropdown-item"
                        href="{{ path('app_abiturient_petition_updateFromVIS',{'GUID':abiturient_petition.GUID}) }}"><i
-                                class="fas fa-regular fa-download"></i> Обновить из ВИС</a>
+                                class="fas fa-download"></i> Обновить из ВИС</a>
                     <a class="dropdown-item disabled" disabled="disabled" href="javascript:void(0)">Something else
                         here</a>
                     <div class="dropdown-divider"></div>
@@ -31,7 +31,7 @@
             <div class="btn-group  mx-auto">
                 <button type="button" class="btn btn-alt-primary" data-bs-toggle="modal"
                         data-bs-target="#contingentDocumentList-{{ abiturient_petition.id }}">
-                    <i class="fa-regular fa-file-circle-plus"></i> Зачислить
+                    <i class=" fa-file-circle-plus"></i> Зачислить
                 </button>
 
                 <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle dropdown-toggle-split"
@@ -42,10 +42,10 @@
                 <div class="dropdown-menu fs-sm" aria-labelledby="dropdown-split-primary">
                     <a class="dropdown-item"
                        href="{{ path('app_abiturient_petition_edit', {'id': abiturient_petition.id}) }}"><i
-                                class="fa fa-regular pull-right fa-pencil me-1"></i>Изменить</a>
+                                class="fa  pull-right fa-pencil me-1"></i>Изменить</a>
                     <a class="dropdown-item" target="_blank"
                        href="{{ 'http://prof.mo.mosreg.ru/#spo/petition/'~abiturient_petition.GUID }}"><i
-                                class="fa-regular fa-arrow-up-right-from-square "></i> Открыть
+                                class=" fa-arrow-up-right-from-square "></i> Открыть
                         в ВИС</a>
                 </div>
             </div>
@@ -112,7 +112,7 @@
                                         Закрыть
                                     </button>
                                     <button type="submit" class="btn btn-sm btn-primary" data-bs-dismiss="modal"><i
-                                                class="fa-regular fa-file-circle-plus"></i> Зачислить
+                                                class=" fa-file-circle-plus"></i> Зачислить
                                     </button>
 
                                 </div>
@@ -130,7 +130,7 @@
         <div class="row pt-4 mx-2">
             <a class="btn btn-primary btn-sm"
                href="{{ path('app_abiturient_petition_enroll',{'id': abiturient_petition.id}) }}"> <i
-                        class="fa-regular fa-badge-check"> </i> Рекомендовать</a>
+                        class=" fa-badge-check"> </i> Рекомендовать</a>
         </div>
     {% endif %}
 </div>

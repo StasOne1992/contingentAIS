@@ -1,6 +1,6 @@
 <?php
 
-namespace App\MainApp\Service\Admission;
+namespace App\mod_mosregvis\Service;
 
 
 use App\MainApp\Entity\AbiturientPetition;
@@ -20,9 +20,11 @@ use App\MainApp\Repository\GenderRepository;
 use App\MainApp\Repository\SpecializationRepository;
 use App\MainApp\Repository\UserRepository;
 use App\Message\Stamp\AnotherStamp;
+use App\mod_mosregvis\Entity\mosregApiConnection;
 use DateTime;
 use Exception;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\Mercure\Update;
@@ -33,6 +35,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class PetitionLoadService
@@ -63,9 +66,17 @@ class PetitionLoadService
     private Serializer $serializer;
     private Security $security;
     private UserRepository $userRepository;
+    private RequestStack $requestStack;
+    private ModMosregApiService $mosregApiService;
+    private mosregApiConnection $apiConnection;
 
+    /**
+     * @throws TransportExceptionInterface
+     * @throws \JsonException
+     */
     public function __construct
     (
+        ModMosregApiService         $mosregApiService,
         HttpClientInterface                $client,
         AbiturientPetitionRepository       $petitionRepository,
         GenderRepository                   $genderRepository,
@@ -82,9 +93,14 @@ class PetitionLoadService
         MessageBusInterface                $bus,
         AdmissionPlanRepository            $admissionPlanRepository,
         Security                           $security,
-        UserRepository                     $userRepository
+        UserRepository                     $userRepository,
+        RequestStack                       $requestStack,
+        mosregApiConnection                $apiConnection,
     )
     {
+        $this->apiConnection = $apiConnection;
+        $this->mosregApiService = $mosregApiService;
+        $this->requestStack = $requestStack;
         $this->userRepository = $userRepository;
         $this->security = $security;
         $this->abiturientPetitionStatusRepository = $abiturientPetitionStatusRepository;
@@ -105,8 +121,10 @@ class PetitionLoadService
         $encoders = [new XmlEncoder(), new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
         $this->serializer = new Serializer($normalizers, $encoders);
-        $this->setAuthToken();
-        $this->checkAuth();
+        $this->apiConnection = $this->mosregApiService->ApiConnection();
+        //$this->setAuthToken();
+        //$this->checkAuth();
+
     }
 
 
@@ -118,25 +136,8 @@ class PetitionLoadService
     private
     function getAuthToken(): string
     {
-        $college = $this->userRepository->findby(['email' => $this->security->getUser()->getUserIdentifier()])[0]->getCollege();
-        dd($college->getModMosregVis());
-        $response = $this->client->request('POST', 'http://prof.mo.mosreg.ru/api/login',
-            [
-                'headers' => ['Accept: */*', 'Content-Type: application/json', 'Cookie: Cookie_1=value'],
-                'body' => $authinfo = json_encode(
-                    [
-                        $authinfo['username'] = 'sergachovsv',
-                        $authinfo['password'] = '3e605cd3bedf0aad5463a6bc3345a2d436294ec861d9962f531c004e4ec73508'
-                    ],
-                    JSON_THROW_ON_ERROR)
-            ]);
-        if (200 !== $response->getStatusCode()) {
-
-            throw new Exception('Ошибка авторизации на сервере. Код ошибки:  ' . $response->getStatusCode());
-        }
-        $responseJson = $response->getContent();
-        $responseData = json_decode($responseJson, true, 512, JSON_THROW_ON_ERROR);
-        return $responseData['token'];
+        //return $this->mosregApiService->getAuthToken();
+        return '';
     }
 
     private function setAuthToken(): void
@@ -146,18 +147,20 @@ class PetitionLoadService
 
     private function checkAuth()
     {
-        $response = $this->client->request('GET', 'http://prof.mo.mosreg.ru/api/spoPetition/search/advancedSearch?page=0&size=5000&order=asc&projection=grid&q=%7B%22spoEducationYear%22%3A%225%22%7D',
-            ['headers' => ['Authorization: Token ' . $this->Token]]);
-        if (401 === $response->getStatusCode()) {
+        /*if ($this->mosregApiService->checkAuth($this->Token)) {
             $this->setAuthToken();
-        }
+        }*/
     }
 
     private
     function getPetitionList(): array
     {
 
-        $response = $this->client->request('GET', 'http://prof.mo.mosreg.ru/api/spoPetition/search/advancedSearch?page=0&size=5000&order=asc&projection=grid&q=%7B%22spoEducationYear%22%3A%225%22%7D',
+        dump(urldecode('http://prof.mo.mosreg.ru/api/spoPetition/search/advancedSearch?page=0&size=5000&order=asc&projection=grid&q=%7B%22spoEducationYear%22%3A%226%22%7D'));
+
+        dd('');
+
+        $response = $this->client->request('GET', 'http://prof.mo.mosreg.ru/api/spoPetition/search/advancedSearch?page=0&size=5000&order=asc&projection=grid&q=%7B%22spoEducationYear%22%3A%226%22%7D',
             ['headers' => ['Authorization: Token ' . $this->Token]]);
         if (200 !== $response->getStatusCode()) {
 

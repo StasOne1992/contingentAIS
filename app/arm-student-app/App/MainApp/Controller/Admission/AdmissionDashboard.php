@@ -2,8 +2,9 @@
 
 namespace App\MainApp\Controller\Admission;
 
-use App\Controller\App\Admission\IsGranted;
+use App\MainApp\Controller\Admission\Reports\AdmissionReports;
 use App\MainApp\Entity\AbiturientPetitionStatus;
+use App\MainApp\Entity\Admission;
 use App\MainApp\Repository\AbiturientPetitionRepository;
 use App\MainApp\Repository\AbiturientPetitionStatusRepository;
 use App\MainApp\Repository\AdmissionPlanRepository;
@@ -11,17 +12,13 @@ use App\MainApp\Repository\AdmissionRepository;
 use App\MainApp\Repository\AdmissionStatusRepository;
 use App\MainApp\Repository\FacultyRepository;
 use App\MainApp\Repository\RegionsRepository;
-use App\MainApp\Controller\Admission\Reports\AdmissionRports;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-//use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-/**
- * @property \MainApp\Entity\Admission|null $currentAdmission
- */
 #[Route('/admission/dashboard')]
 #[IsGranted("ROLE_USER")]
 class AdmissionDashboard extends AbstractController
@@ -62,7 +59,7 @@ class AdmissionDashboard extends AbstractController
      */
     private AbiturientPetitionStatus $statusINDUCTED;
     private \Doctrine\Common\Collections\Collection $currentAdmissionPlan;
-    private ?\MainApp\Entity\Admission $currentAdmission;
+    private Admission $currentAdmission;
     private ?array $SummaryMetricReport;
     private ?array $byRegionsReport;
 
@@ -73,9 +70,8 @@ class AdmissionDashboard extends AbstractController
         AdmissionStatusRepository          $admissionStatusRepository,
         AdmissionPlanRepository            $admissionPlanRepository,
         FacultyRepository                  $facultyRepository,
-        //private PetitionLoadService                $petitionLoadService,
         RegionsRepository                  $regionsRepository,
-        AdmissionRports                    $admissionRports,
+        AdmissionReports                   $admissionReports,
     )
     {
         $this->regionsRepository = $regionsRepository;
@@ -95,7 +91,7 @@ class AdmissionDashboard extends AbstractController
              */
             $abiturientPetitionStatus[$item->getName()] = $item;
         }
-        $this->SummaryMetricReport = $admissionRports->SummaryMetricReport($this->currentAdmission);
+        $this->SummaryMetricReport = $admissionReports->SummaryMetricReport($this->currentAdmission);
 
         $this->statusREGISTRED = $abiturientPetitionStatus['REGISTERED'];
         $this->statusREJECTED = $abiturientPetitionStatus['REJECTED'];
@@ -108,7 +104,7 @@ class AdmissionDashboard extends AbstractController
         /*$this->SummaryMetricReport = array();
 */
         $this->ToLoad = $this->SummaryMetricReport['CanLoad']['Value'];
-        $this->byRegionsReport = $admissionRports->RegionReport($this->currentAdmission);
+        $this->byRegionsReport = $admissionReports->RegionReport($this->currentAdmission);
 
 
         $counter = 0;

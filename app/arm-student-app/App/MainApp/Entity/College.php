@@ -3,17 +3,17 @@
 namespace App\MainApp\Entity;
 
 use App\MainApp\Repository\CollegeRepository;
+use App\mod_mosregvis\Entity\MosregVISCollege;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CollegeRepository::class)]
+#[ORM\InheritanceType('SINGLE_TABLE')]
 class College
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Id, ORM\GeneratedValue, ORM\Column]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -61,11 +61,6 @@ class College
     #[ORM\OneToMany(mappedBy: 'College', targetEntity: StudentGroups::class)]
     private Collection $studentGroups;
 
-    /**
-     * @var Collection<int, ModMosregVIS>
-     */
-    #[ORM\OneToMany(mappedBy: 'college', targetEntity: ModMosregVIS::class)]
-    private Collection $modMosregVIS;
 
     public function __construct()
     {
@@ -73,7 +68,7 @@ class College
         $this->admissions = new ArrayCollection();
         $this->staff = new ArrayCollection();
         $this->studentGroups = new ArrayCollection();
-        $this->modMosregVIS = new ArrayCollection();
+
     }
 
     public function getFullName(): ?string
@@ -339,33 +334,5 @@ class College
         return $this;
     }
 
-    /**
-     * @return Collection<int, ModMosregVIS>
-     */
-    public function getModMosregVIS(): Collection
-    {
-        return $this->modMosregVIS;
-    }
 
-    public function addModMosregVI(ModMosregVIS $modMosregVI): static
-    {
-        if (!$this->modMosregVIS->contains($modMosregVI)) {
-            $this->modMosregVIS->add($modMosregVI);
-            $modMosregVI->setCollege($this);
-        }
-
-        return $this;
-    }
-
-    public function removeModMosregVI(ModMosregVIS $modMosregVI): static
-    {
-        if ($this->modMosregVIS->removeElement($modMosregVI)) {
-            // set the owning side to null (unless already changed)
-            if ($modMosregVI->getCollege() === $this) {
-                $modMosregVI->setCollege(null);
-            }
-        }
-
-        return $this;
-    }
 }
