@@ -12,12 +12,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Config\Definition\Exception\Exception;
+use function PHPUnit\Framework\isEmpty;
 
 #[Route('/mod_mosregvis')]
 #[IsGranted("ROLE_USER")]
 class modmosregvisController extends AbstractController
 {
-    #[Route('/', name: 'mod_mosregvis_index', methods: ['GET'])]
+    #[Route('/index', name: 'mod_mosregvis_index', methods: ['GET'])]
     public function index(modMosregVisRepository $modMosregVisRepository): Response
     {
         return $this->render('@mod_mosregvis/index.html.twig',
@@ -69,10 +71,14 @@ class modmosregvisController extends AbstractController
     #[Route('/getorgidfromvis', name: 'mod_mosregvis_getorgidfromvis', methods: ['GET','POST'])]
     public function mod_mosregvis_getorgidfromvis(Request $request, modMosregVisRepository $modMosregVisRepository, ModMosregApiOpenService $modMosregApiOpenService): Response
     {
-        $requestData = json_decode($request->getContent(), true, 512, JSON_THROW_ON_ERROR);
-        $responseData=$modMosregApiOpenService->getOrgIdByUser($requestData['username'],$requestData['password']);
         $response = new Response();
-        $response->setContent($responseData);
+        if (is_null($request->getContent())) {
+            $requestData = json_decode($request->getContent(), true, 512, JSON_THROW_ON_ERROR);
+            $responseData = $modMosregApiOpenService->getOrgIdByUser($requestData['username'], $requestData['password']);
+            $response->setContent($responseData);
+        }
+        else     throw new Exception("Ошибка. Не заданы параметры для запроса. Код ошибки: 0xf054");
+
         return $response;
     }
 
