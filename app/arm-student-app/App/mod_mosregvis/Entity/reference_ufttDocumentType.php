@@ -17,11 +17,11 @@ class reference_ufttDocumentType
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?int $code = null;
+    #[ORM\Column(length: 255)]
+    private ?string $code = null;
 
     #[ORM\Column(length: 255)]
-    private  ?int $title = null;
+    private ?string $title = null;
 
     public function getId(): ?int
     {
@@ -43,22 +43,22 @@ class reference_ufttDocumentType
         $this->name = $name;
     }
 
-    public function getCode(): ?int
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
-    public function setCode(?int $code): void
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
 
-    public function getTitle(): ?int
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function setTitle(?int $title): void
+    public function setTitle(?string $title): void
     {
         $this->title = $title;
     }

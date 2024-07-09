@@ -104,10 +104,8 @@ class AbiturientPetition
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $EducationDocumentNumber = null;
-
     #[ORM\Column(nullable: true)]
     private ?bool $HaveErrorInPetition = null;
-
     #[ORM\ManyToOne(inversedBy: 'abiturientPetitions')]
     private ?Regions $Region = null;
 

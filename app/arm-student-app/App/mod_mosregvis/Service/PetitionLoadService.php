@@ -12,6 +12,7 @@ use App\MainApp\Repository\AbiturientPetitionStatusRepository;
 use App\MainApp\Repository\AdmissionPlanRepository;
 use App\MainApp\Repository\AdmissionRepository;
 use App\MainApp\Repository\AdmissionStatusRepository;
+use App\MainApp\Repository\CollegeRepository;
 use App\MainApp\Repository\EducationFormRepository;
 use App\MainApp\Repository\EducationTypeRepository;
 use App\MainApp\Repository\FacultyRepository;
@@ -69,6 +70,7 @@ class PetitionLoadService
     private RequestStack $requestStack;
     private ModMosregApiService $mosregApiService;
     private mosregApiConnection $apiConnection;
+    private CollegeRepository $collegeRepository;
 
     /**
      * @throws TransportExceptionInterface
@@ -76,7 +78,7 @@ class PetitionLoadService
      */
     public function __construct
     (
-        ModMosregApiService         $mosregApiService,
+        ModMosregApiService $mosregApiService,
         HttpClientInterface                $client,
         AbiturientPetitionRepository       $petitionRepository,
         GenderRepository                   $genderRepository,
@@ -96,8 +98,10 @@ class PetitionLoadService
         UserRepository                     $userRepository,
         RequestStack                       $requestStack,
         mosregApiConnection                $apiConnection,
+        CollegeRepository   $collegeRepository,
     )
     {
+        $this->collegeRepository = $collegeRepository;
         $this->apiConnection = $apiConnection;
         $this->mosregApiService = $mosregApiService;
         $this->requestStack = $requestStack;
@@ -155,7 +159,17 @@ class PetitionLoadService
     private
     function getPetitionList(): array
     {
+        dump('Start_getPetitionList');
+        dump($this->apiConnection);
 
+        $admission = $this->admissionRepository->find($this->apiConnection->getAdmissionId());
+        dump($admission);
+
+        $spoEducationYear = '1';
+        $q = 'q={"spoEducationYear":"' . $spoEducationYear . '"}';
+        $url = $this->apiConnection->getApiUrl() . '/spoPetition/search/advancedSearch?page=0&size=5000&order=asc&projection=grid&' . urlencode($q);
+        dump($url);
+        //http://prof.mo.mosreg.ru/api/spoPetition/search/advancedSearch?page=0&size=5000&order=asc&projection=grid&q={"spoEducationYear":"6"}
         dump(urldecode('http://prof.mo.mosreg.ru/api/spoPetition/search/advancedSearch?page=0&size=5000&order=asc&projection=grid&q=%7B%22spoEducationYear%22%3A%226%22%7D'));
 
         dd('');
@@ -174,6 +188,7 @@ class PetitionLoadService
             return $responseData['_embedded']['spoPetitions'];
         }
         return array();
+        dump('End_getPetitionList');
     }
     ###
     ### Конец блока взаимодействия с ВИС Зачисление в ПОО Московская область

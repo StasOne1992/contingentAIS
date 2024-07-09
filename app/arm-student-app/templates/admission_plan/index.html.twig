@@ -3,8 +3,10 @@
 {% set canreset = 0 %}
 {% set page_title = 'Приемная комиссия' %}
 
-{% set sub_page_title = 'КЦП' %}
-
+{% set sub_page_title = 'Конкурсы' %}
+{% block topmenu_items %}
+    <a class="btn btn-sm btn-outline-light" href="{{ path('app_admission_plan_new') }}"><i class="fa fa-plus"></i> Добавить</a>
+{% endblock %}
 {% block title %}
     {% if page_title is defined %} {{ page_title }} {% endif %}
 {% endblock %}
@@ -13,23 +15,25 @@
         <div class="block-header block-header-default bg-secondary">
             <h3 class="block-title">Перечень специальностей <small></small></h3>
             <div class="block-options">
-                <a href="{{ path('app_admission_plan_new') }}">Create new</a>
+
             </div>
         </div>
         <div class="block-content">
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>TargetCount</th>
-                    <th>faculty</th>
-                    <th>actions</th>
+                    <th>№ п/п</th>
+                    <th>Приемная комиссия</th>
+                    <th>Количество мест</th>
+                    <th>Специальность</th>
+                    <th>Действия</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for admission_plan in admission_plans %}
                     <tr>
                         <td>{{ admission_plan.id }}</td>
+                        <td>{{ admission_plan.admission }}</td>
                         <td>{{ admission_plan.TargetCount }}</td>
                         <td>{{ admission_plan.faculty }}</td>
                         <td>
@@ -43,7 +47,7 @@
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="3">no records found</td>
+                        <td colspan="3">Нет ни одной записи</td>
                     </tr>
                 {% endfor %}
                 </tbody>

@@ -19,7 +19,6 @@ class ModMosregApiOpenService
 
     public function __construct(
         HttpClientInterface $client
-
     )
     {
         $this->client = $client;
@@ -40,26 +39,35 @@ class ModMosregApiOpenService
         return false;
     }
 
+    /**
+     * @throws ClientExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws \JsonException
+     * @throws TransportExceptionInterface
+     */
     public function getOrgIdByUser($username, $password): string
     {
-
-        if ($this->isApiAvailable()) {
-            $response = $this->client->request('POST', $this->ApiUrl . '/login',
-                [
-                    'headers' => ['Accept: */*', 'Content-Type: application/json', 'Cookie: Cookie_1=value'],
-                    'body' => json_encode(
-                        [
-                            'username' => $username,
-                            'password' => $password
-                        ],
-                        JSON_THROW_ON_ERROR)
-                ]);
+        try {
+            if ($this->isApiAvailable()) {
+                $response = $this->client->request('POST', $this->ApiUrl . '/login',
+                    [
+                        'headers' => ['Accept: */*', 'Content-Type: application/json', 'Cookie: Cookie_1=value'],
+                        'body' => json_encode(
+                            [
+                                'username' => $username,
+                                'password' => $password
+                            ],
+                            JSON_THROW_ON_ERROR)
+                    ]);
+            }
+        } catch (\JsonException $e) {
+        } catch (TransportExceptionInterface $e) {
         }
         if ($response->getStatusCode() != 200) {
             throw new Exception(sprintf("Ошибка получения токена авторизации к API. Код ошибки:%s", $response->getStatusCode()));
         }
         $Token = json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR)['token'];
-        $orgID = '';
         if ($this->isApiAvailable()) {
             $response = $this->client->request('POST', $this->ApiUrl . '/check/authenticated',
                 [

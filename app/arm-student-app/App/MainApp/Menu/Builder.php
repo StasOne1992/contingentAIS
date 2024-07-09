@@ -32,7 +32,7 @@ class Builder
             if ($this->authorizationChecker->isGranted('ROLE_STAFF_AB_PETITIONS_FULL')) {
                 $admission = $menu->addChild('Приемная кампания', ['uri' => '/', 'attributes' => ['dropdown' => true]]);
                 $admission->addChild('Приемные кампании', ['route' => 'app_admission_index']);
-                $admission->addChild('КЦП', ['route' => 'app_admission_plan_index']);
+                $admission->addChild('Конкурсы', ['route' => 'app_admission_plan_index']);
             }
             $admissionExamination = $menu->addChild('Вступительные испытания', ['uri' => '#', 'attributes' => ['dropdown' => true]]);
             $admissionExamination->addChild('Испытания', ['route' => 'app_admission_examination_index']);

@@ -184,16 +184,30 @@ class ModMosregApiService
             $connection->setPassword($moduleParams->getPassword());
             $connection->setUsername($moduleParams->getUsername());
             $connection->setCollegeId($moduleParams->getOrgId());
+            $connection->setApiUrl($this->ApiUrl);
+            $connection->setApiAvailableUrl($this->ApiAvailableUrl);
+            $connection->setApiHeaders($this->ApiHeaders);
             $connection->setToken($this->getAuthToken($moduleParams->getUsername(),$moduleParams->getPassword()));
+            $countActiveAdmission = 0;
+            foreach ($this->college->getAdmissions() as $admission) {
+                if ($admission->isIsActive() and $countActiveAdmission <= 1) {
+                    $connection->setAdmissionId($admission->getId());
+                    $countActiveAdmission += 1;
+                }
+            }
+            if ($countActiveAdmission > 1) {
+                throw new Exception("Ошибка. Найдено более одной активной приемной кампании. Код ошибки:0xf001");
+            } elseif ($countActiveAdmission == 0) {
+                throw new Exception("Ошибка. Не найдены активные приемные кампании. Код ошибки:0xf001");
+            }
 
-            dd($connection, '');
         } else {
             throw new Exception("Ошибка в конфигурации модуля взаимодействия с ВИС Московской области не заполнены данные для подключения к API. Код ошибки:0xf001");
         }
         return $connection;
     }
 
-    private function checkConnection(mosregApiConnection $connection)
+    public function checkConnection(mosregApiConnection $connection): bool
     {
         if ($this->isApiAvailable()) {
             $response = $this->client->request('GET', 'http://prof.mo.mosreg.ru/api/',

@@ -13,9 +13,14 @@ services:
   _defaults:
     autowire: true      # Automatically injects dependencies in your services.
     autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
   App\MainApp\EventListener\ExceptionListener:
     tags:
       - { name: kernel.event_listener, event: kernel.exception }
+
+  #App\mod_mosregvis\Service\ModMosregReferenceService:
+  #  bind:
+  #    $entityManager: '@doctrine.orm.entity_manager'
 
   on_request_listener:
     class: App\MainApp\Listener\OnRequestListener

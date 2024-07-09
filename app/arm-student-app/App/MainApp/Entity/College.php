@@ -334,5 +334,15 @@ class College
         return $this;
     }
 
+    public function getActiveAdmission(): ?Admission
+    {
+        foreach ($this->getAdmissions() as $item) {
+            if ($item->isIsActive()) {
+                return $item;
+            }
+        }
+        return null;
+    }
+
 
 }

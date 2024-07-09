@@ -8,6 +8,9 @@
       <sourceFolder url="file://$MODULE_DIR$/app/arm-student-app/App" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/app/arm-student-app/tests/MainApp" isTestSource="true" packagePrefix="MainApp\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/app/arm-student-app/tests/StudentApp" isTestSource="true" packagePrefix="StudentApp\Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/arm-student-app/App/MainApp" isTestSource="false" packagePrefix="App\MainApp\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/arm-student-app/App/StudentApp" isTestSource="false" packagePrefix="App\StudentApp\" />
+      <sourceFolder url="file://$MODULE_DIR$/app/arm-student-app/App/mod_mosregvis" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/dompdf/dompdf" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/phenx/php-font-lib" />
       <excludeFolder url="file://$MODULE_DIR$/app/arm-student-app/vendor/phenx/php-svg-lib" />

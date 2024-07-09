@@ -18,8 +18,6 @@ class Faculty
     #[ORM\Column(length: 255)]
     private ?string $Name = null;
 
-
-
     #[ORM\OneToMany(mappedBy: 'Faculty', targetEntity: StudentGroups::class)]
     private Collection $studentGroups;
 
@@ -106,7 +104,7 @@ class Faculty
 
     public function __toString(): string
     {
-     return $this->Name;
+        return $this->Name . " (" . $this->getEducationForm()->getTitle() . " форма, " . $this->getFinancialType()->getTitle() . ", " . $this->getEducationType()->getTitle() . ")";
     }
 
     public function getSpecialization(): ?Specialization

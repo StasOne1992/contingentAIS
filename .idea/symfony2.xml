@@ -7,9 +7,13 @@
     <option name="profilerCsvPath" value="" />
     <option name="profilerHttpEnabled" value="true" />
     <option name="profilerHttpUrl" value="https://arm.vatholm.ru" />
+    <option name="lastServiceGeneratorLanguage" value="yaml" />
     <option name="twigNamespaces">
       <list>
         <twig_namespace custom="true" namespaceType="ADD_PATH" path="app/arm-student-app/templates" />
+        <twig_namespace custom="true" namespace="MainApp" namespaceType="ADD_PATH" path="app/arm-student-app/App/MainApp/Templates" />
+        <twig_namespace custom="true" namespace="mod_mosregvis" namespaceType="ADD_PATH" path="app/arm-student-app/App/mod_mosregvis/Templates" />
+        <twig_namespace custom="true" namespace="StudentApp" namespaceType="ADD_PATH" path="app/arm-student-app/App/StudentApp/Templates" />
       </list>
     </option>
   </component>

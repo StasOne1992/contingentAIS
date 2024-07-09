@@ -6,7 +6,7 @@ use App\Controller\App\IsGranted;
 use App\MainApp\Entity\College;
 use App\MainApp\Form\CollegeType;
 use App\MainApp\Repository\CollegeRepository;
-use App\mod_mosregvis\Repository\modmosregvisRepository;
+use App\mod_mosregvis\Repository\modMosregVisRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,6 +49,7 @@ class CollegeController extends AbstractController
     #[Route('/{id}', name: 'app_college_show', methods: ['GET'])]
     public function show(College $college): Response
     {
+        dd($college->getActiveAdmission());
         dd($college->getModMosregVIS());
         return $this->render('college/show.html.twig', [
             'college' => $college,

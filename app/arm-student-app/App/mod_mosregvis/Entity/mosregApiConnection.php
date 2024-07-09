@@ -10,7 +10,11 @@ class mosregApiConnection
     private string $yearOrderId;
     private string $username;
     private string $password;
+    private string $apiUrl;
 
+    private string $apiAvailableUrl;
+    private array $apiHeaders;
+    private int $admissionId;
 
     public function getToken(): string
     {
@@ -70,6 +74,46 @@ class mosregApiConnection
     public function setYearOrderId(string $yearOrderId): void
     {
         $this->yearOrderId = $yearOrderId;
+    }
+
+    public function getApiUrl(): string
+    {
+        return $this->apiUrl;
+    }
+
+    public function setApiUrl(string $apiUrl): void
+    {
+        $this->apiUrl = $apiUrl;
+    }
+
+    public function getApiAvailableUrl(): string
+    {
+        return $this->apiAvailableUrl;
+    }
+
+    public function setApiAvailableUrl(string $apiAvailableUrl): void
+    {
+        $this->apiAvailableUrl = $apiAvailableUrl;
+    }
+
+    public function getApiHeaders(): array
+    {
+        return $this->apiHeaders;
+    }
+
+    public function setApiHeaders(array $apiHeaders): void
+    {
+        $this->apiHeaders = $apiHeaders;
+    }
+
+    public function getAdmissionId(): int
+    {
+        return $this->admissionId;
+    }
+
+    public function setAdmissionId(int $admissionId): void
+    {
+        $this->admissionId = $admissionId;
     }
 
 }
