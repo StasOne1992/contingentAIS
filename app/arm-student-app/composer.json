@@ -62,7 +62,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "App",
-            "App\\StudentApp\\": "App/StudentApp",
+            "App\\StudentApp\\": "App/mod_student_app",
             "App\\MainApp\\": "App/MainApp"
         }
     },

@@ -2,11 +2,13 @@
 
 namespace App\mod_mosregvis\Service;
 
-use App\MainApp\Entity\College;
 use App\mod_mosregvis\Entity\mosregApiConnection;
 use App\mod_mosregvis\Entity\MosregVISCollege;
 use App\mod_mosregvis\Entity\reference_eduYearStatus;
 use App\mod_mosregvis\Entity\reference_SpoEducationYear;
+use App\mod_mosregvis\Entity\reference_spoSpecialityDictionary;
+use App\mod_mosregvis\Entity\reference_studyDiscipline;
+use App\mod_mosregvis\Entity\reference_trainingProgramGradation;
 use App\mod_mosregvis\Entity\reference_ufttDocumentType;
 use App\mod_mosregvis\Repository\reference_SpoEducationYearRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -42,7 +44,7 @@ class ModMosregReferenceService extends ModMosregApiProvider
     {
         if ($name != '' && $name != 'full') {
         } elseif ($name == '' or $name == 'full') {
-            foreach ($this->getReference() as $key => $value) {
+            foreach ($this->getReference("full") as $key => $value) {
                 $func = 'update' . $key;
                 $this->$func($value);
             }
@@ -62,7 +64,7 @@ class ModMosregReferenceService extends ModMosregApiProvider
             if (count($findItem = $repository->findBy(['guid' => $item['id']])) == 0) {
                 $reference = new reference_SpoEducationYear();
             } else {
-                $reference = $findItem;
+                $reference = $findItem[0];
             }
             /**
              * @var reference_SpoEducationYear $reference
@@ -79,9 +81,6 @@ class ModMosregReferenceService extends ModMosregApiProvider
             $this->entityManager->persist($reference);
             $this->entityManager->flush();
         }
-
-        dd('end');
-
     }
 
     private function updateeduYearStatus(array $eduYearStatus): void
@@ -105,9 +104,6 @@ class ModMosregReferenceService extends ModMosregApiProvider
         }
     }
 
-    /**
-     * @throws NotSupported
-     */
     private function updateReferenceDocumentType(array $ReferenceDocumentType): void
     {
         $documentTypeRepository = $this->entityManager->getRepository(reference_ufttDocumentType::class);
@@ -129,24 +125,93 @@ class ModMosregReferenceService extends ModMosregApiProvider
         }
     }
 
+    private function updateSpoSpecialityDictionary(array $spoSpecialityDictionary): void
+    {
+        $repository = $this->entityManager->getRepository(reference_spoSpecialityDictionary::class);
+        $trainingProgramGradationRepository = $this->entityManager->getRepository(reference_trainingProgramGradation::class);
+        $PPKRS = $trainingProgramGradationRepository->findBy(['name' => 'PPKRS'])[0];
+        $PPSSZ = $trainingProgramGradationRepository->findBy(['name' => 'PPSSZ'])[0];
+        foreach ($spoSpecialityDictionary as $item) {
+            /**
+             * @var reference_spoSpecialityDictionary $referense ;
+             */
+            $reference = new reference_spoSpecialityDictionary();
+            if (!count($foundItem = $repository->findBy(['code' => $item['code']])) == 0) {
+                $reference = $foundItem[0];
+            }
+            $reference->setidVis($item['id']);
+            $reference->setName($item['name']);
+            $reference->setCode($item['code']);
+            $reference->setQualification($item['qualification']);
+            if ($item['trainingProgramGradation']['name'] == "PPKRS") {
+                $reference->setTrainingProgramGradation($PPKRS);
+            } elseif ($item['trainingProgramGradation']['name'] == 'PPSSZ') {
+                $reference->setTrainingProgramGradation($PPSSZ);
+            } else {
+                $reference->setTrainingProgramGradation(null);
+            }
+            $this->entityManager->persist($reference);
+            $this->entityManager->flush();
+        }
+    }
+
+    private function updateStudyDiscipline(array $studyDisciplines): void
+    {
+        $repository = $this->entityManager->getRepository(reference_studyDiscipline::class);
+        foreach ($studyDisciplines as $item) {
+            /**
+             * @var reference_studyDiscipline $referense ;
+             */
+            $reference = new reference_studyDiscipline();
+            if (!count($foundItem = $repository->findBy(['idVis' => $item['id']])) == 0) {
+                $reference = $foundItem[0];
+            }
+            $reference->setIdVis($item['id']);
+            $reference->setName($item['name']);
+            $reference->setDisciplineGroup(is_null($item['disciplineGroup']) ?  null : $item['disciplineGroup']['title']);
+            $reference->setIsSpo($item['isSpo']);
+            $reference->setIsOdo($item['isOdo']);
+            $reference->setIsSchool($item['isSchool']);
+            $this->entityManager->persist($reference);
+            $this->entityManager->flush();
+        }
+    }
+
     /**
      * @param string $name *Опционально. Имя сущности для обновления
      * @return ?array
      * @throws \JsonException
      */
     public
-    function getReference(string $name = ''): ?array
+    function getReference(string $name = ""): ?array
     {
-        if ($name == 'ReferenceDocumentType') return $this->getReferenceDocumentType();
-        elseif ($name == 'getSpoEducationYear') return $this->getSpoEducationYear();
-        elseif ($name == 'eduYearStatus') return $this->geteduYearStatus();
-        elseif ($name = '' or $name = 'full') {
-            dump(' getReference full else');
-            $result['ReferenceDocumentType'] = $this->getReferenceDocumentType();
-            $result['eduYearStatus'] = $this->geteduYearStatus();
-            $result['SpoEducationYear'] = $this->getSpoEducationYear();
-        } else {
-            $result = array();
+        switch ($name) {
+            case 'ReferenceDocumentType':
+                return $this->getReferenceDocumentType();
+                break;
+            case 'getSpoEducationYear':
+                return $this->getSpoEducationYear();
+                break;
+            case 'eduYearStatus':
+                return $this->geteduYearStatus();
+                break;
+            case 'getSpoSpecialityDictionary':
+                return $this->getSpoSpecialityDictionary();
+                break;
+            case 'getStudyDiscipline':
+                return $this->getStudyDiscipline();
+                break;
+            case 'full':
+                dump(' getReference full else');
+                $result['ReferenceDocumentType'] = $this->getReferenceDocumentType();
+                $result['eduYearStatus'] = $this->geteduYearStatus();
+                $result['SpoEducationYear'] = $this->getSpoEducationYear();
+                $result['SpoSpecialityDictionary'] = $this->getSpoSpecialityDictionary();
+                $result['StudyDiscipline'] = $this->getStudyDiscipline();
+                break;
+            default:
+                $result = array();
+                break;
         }
         dump($result);
         return $result;
@@ -208,5 +273,39 @@ class ModMosregReferenceService extends ModMosregApiProvider
             new Exception(sprintf("Ошибка авторизации API. Код ошибки: 401 Unauthorized "));
         }
         return json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR)['_embedded']['spoEducationYears'];
+    }
+
+    private
+    function getSpoSpecialityDictionary(): array
+    {
+        if ($this->isApiAvailable()) {
+            $response = $this->client->request('GET', $this->apiConnection->getApiUrl() . '/spoSpecialityDictionary?size=5000&sort=name&order=asc',
+                [
+                    'headers' => array_merge($this->apiConnection->getApiHeaders(), ['Authorization' => 'Token ' . $this->apiConnection->getToken()])
+                ]);
+        }
+        if ($response->getStatusCode() != 200) {
+            new Exception(sprintf("Ошибка получения данных организации из API. Код ошибки:%s", $response->getStatusCode()));
+        } elseif ($response->getStatusCode() == 401) {
+            new Exception(sprintf("Ошибка авторизации API. Код ошибки: 401 Unauthorized "));
+        }
+        return json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR)['_embedded']['spoSpecialityDictionaries'];
+    }
+
+    private
+    function getStudyDiscipline(): array
+    {
+        if ($this->isApiAvailable()) {
+            $response = $this->client->request('GET', $this->apiConnection->getApiUrl() . '/studyDiscipline/search/forSpo?page=0&size=5000&sort=name&order=asc',
+                [
+                    'headers' => array_merge($this->apiConnection->getApiHeaders(), ['Authorization' => 'Token ' . $this->apiConnection->getToken()])
+                ]);
+        }
+        if ($response->getStatusCode() != 200) {
+            new Exception(sprintf("Ошибка получения данных организации из API. Код ошибки:%s", $response->getStatusCode()));
+        } elseif ($response->getStatusCode() == 401) {
+            new Exception(sprintf("Ошибка авторизации API. Код ошибки: 401 Unauthorized "));
+        }
+        return json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR)['_embedded']['studyDisciplines'];
     }
 }

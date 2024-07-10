@@ -1,6 +1,6 @@
 <?php
 
-namespace App\StudentApp\Controller;
+namespace App\mod_student_app\Controller;
 
 use App\MainApp\Entity\Student;
 use App\StudentApp\Form\StudentProfile;
@@ -35,7 +35,7 @@ class StudentAppController extends AbstractController
     {
         $this->Student=$this->studentService->getStudentByUserId($this->getUser()->getStudent());
 
-        return $this->render('@StudentApp/dashboard/dashboard.html.twig',
+        return $this->render('@mod_student_app/dashboard/dashboard.html.twig',
                 [
                     'student' => $this->Student
                 ]);

@@ -19,9 +19,9 @@ doctrine:
                 alias: MainApp
             StudentApp:
                 is_bundle: false
-                dir: '%kernel.project_dir%/App/StudentApp/Entity'
-                prefix: 'App\StudentApp\Entity'
-                alias: StudentApp
+                dir: '%kernel.project_dir%/App/mod_student_app/Entity'
+                prefix: 'App\mod_student_app\Entity'
+                alias: mod_student_app
             mod_mosregvis:
                 is_bundle: false
                 dir: '%kernel.project_dir%/App/mod_mosregvis/Entity'

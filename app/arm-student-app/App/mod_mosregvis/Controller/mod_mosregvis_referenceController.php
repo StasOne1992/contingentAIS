@@ -25,7 +25,7 @@ class mod_mosregvis_referenceController extends AbstractController
 
         $apiConnection = $mosregApiService->ApiConnection();
         $modMosregApiProvider = new ModMosregReferenceService($apiConnection, $client, $entityManager);
-        $modMosregApiProvider->updateReference('full');
+        $modMosregApiProvider->updateReference("full");
         dd('');
         return $this->render('@mod_mosregvis/index.html.twig',
             [

@@ -314,8 +314,8 @@
   </component>
   <component name="PhpInterpreters">
     <interpreters>
-      <interpreter id="a1d69503-9825-4d48-a140-9b82e3f4e97b" name="stasone@10.1.88.198:22 password" home="sshConfig://DATA" auto="false" debugger_id="php.debugger.XDebug">
-        <remote_data INTERPRETER_PATH="/usr/bin/php" HELPERS_PATH="/home/stasone/.phpstorm_helpers" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" SSH_CONFIG_ID="473b1549-b142-48ff-9d33-2ca70967bee6" SSH_CONFIG_NAME="stasone@10.1.88.198:22" SSH_CREDENTIALS_ID="sshConfig://stasone@10.1.88.198:22 password" />
+      <interpreter id="a1d69503-9825-4d48-a140-9b82e3f4e97b" name="stasone@10.1.88.198:22 password" home="sshConfig://DATA" false="false" debugger_id="php.debugger.XDebug">
+        <remote_data INTERPRETER_PATH="/usr/bin/php" HELPERS_PATH="/home/stasone/.phpstorm_helpers" VALID="true" RUN_AS_ROOT_VIA_SUDO="false" SSH_CONFIG_ID="473b1549-b142-48ff-9d33-2ca70967bee6" SSH_CONFIG_NAME="stasone@10.1.88.198:22 key" SSH_CREDENTIALS_ID="sshConfig://stasone@10.1.88.198:22 password" />
       </interpreter>
     </interpreters>
   </component>

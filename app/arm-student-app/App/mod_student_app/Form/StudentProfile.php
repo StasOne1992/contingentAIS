@@ -1,6 +1,6 @@
 <?php
 
-namespace App\StudentApp\Form;
+namespace App\mod_student_app\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
