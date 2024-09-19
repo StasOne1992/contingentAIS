@@ -54,6 +54,10 @@ services:
       - ./.docker/logs/nginx:/var/log/nginx/
       - ./.docker/certs:/var/www/ssl-home/project
       - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - nginx-conf:
+          type: bind
+          source: ./.docker/nginx/default.conf
+          target: /etc/nginx/conf.d/default.conf
     depends_on:
       - php82-service
     networks:
