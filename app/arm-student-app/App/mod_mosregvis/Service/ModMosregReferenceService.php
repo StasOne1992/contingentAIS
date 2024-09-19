@@ -60,6 +60,7 @@ class ModMosregReferenceService extends ModMosregApiProvider
         $repository = $this->entityManager->getRepository(reference_SpoEducationYear::class);
         $yearStatusRepository = $this->entityManager->getRepository(reference_eduYearStatus::class);
         $collegeRepository = $this->entityManager->getRepository(MosregVISCollege::class);
+        $i=2;
         foreach ($SpoEducationYear as $item) {
             if (count($findItem = $repository->findBy(['guid' => $item['id']])) == 0) {
                 $reference = new reference_SpoEducationYear();
@@ -69,6 +70,8 @@ class ModMosregReferenceService extends ModMosregApiProvider
             /**
              * @var reference_SpoEducationYear $reference
              */
+            $reference->setOrderId($i);
+            $i++;
             $reference->setGuid($item['id']);
             $reference->setName($item['educationYearDictionary']['name']);
             if ($currentYearStatus = $yearStatusRepository->findBy(['code' => $item['educationYearStatus']['code']])) {

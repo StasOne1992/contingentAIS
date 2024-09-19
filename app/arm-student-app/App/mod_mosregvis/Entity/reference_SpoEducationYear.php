@@ -104,4 +104,14 @@ class reference_SpoEducationYear
         $this->yearStatus = $yearStatus;
     }
 
+    public function getOrderId(): ?int
+    {
+        return $this->orderId;
+    }
+
+    public function setOrderId(?int $orderId): void
+    {
+        $this->orderId = $orderId;
+    }
+
 }
