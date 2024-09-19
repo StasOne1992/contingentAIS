@@ -53,7 +53,7 @@ services:
       - ./app/arm-student-app:/var/www/project
       - ./.docker/logs/nginx:/var/log/nginx/
       - ./.docker/certs:/var/www/ssl-home/project
-      - ${PWD}.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       - php82-service
     networks:
