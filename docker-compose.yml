@@ -1,8 +1,6 @@
+name: vatholm-arm
 services:
-
-  ###> doctrine/doctrine-bundle ###
   ### Docker-compose PostgreSQL сервер ###
-
   database:
     image: postgres:${POSTGRES_VERSION:-14.8}-alpine
     restart: always
@@ -22,8 +20,6 @@ services:
       com.symfony.server.service-prefix: 'DATABASE_URL'
     networks:
       - nginx-php-PSQL
-
-  ###< doctrine/doctrine-bundle ###
 
   php82-service:
     build:
