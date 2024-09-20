@@ -1,4 +1,4 @@
-name: vatholm-arm
+version: '3'
 services:
   ### Docker-compose PostgreSQL сервер ###
   database:
