@@ -24,10 +24,10 @@ services:
   php82-service:
     build:
       context: .
-      dockerfile: ./.docker/php/Dockerfile
+     # dockerfile: ./.docker/php/Dockerfile
     #   docker build --pull --rm -f "/root/php-arm/Dockerfile" -t phpfpm-arm-vatholm-ru:latest
     restart: always
-    #image: phpfpm-arm-vatholm-ru:latest
+    image: phpfpm-arm-vatholm-ru:latest
     container_name: php82-container
     ports:
       - "9000:9000"
