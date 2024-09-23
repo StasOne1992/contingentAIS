@@ -11,7 +11,9 @@ RUN pecl install apcu \
     && docker-php-ext-configure zip \
     && docker-php-source delete
 
+
 WORKDIR /var/www/html/web-app
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt install symfony-cli
