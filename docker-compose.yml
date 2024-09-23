@@ -55,6 +55,7 @@ services:
     depends_on:
       - php82-service
     networks:
+      - bridge
       - nginx-php-PSQL
 
 
