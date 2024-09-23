@@ -45,8 +45,8 @@ services:
     restart: always
     container_name: nginx-container
     ports:
-      - "80:80"
-      - "443:443"
+      - "8080:80"
+      - "1443:443"
     volumes:
       - ./app/arm-student-app:/var/www/project
       - ./.docker/logs/nginx:/var/log/nginx/
