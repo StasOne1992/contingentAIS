@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig host="10.1.88.198" id="473b1549-b142-48ff-9d33-2ca70967bee6" keyPath="C:\Users\User\.ssh\id_rsa" port="22" nameFormat="DESCRIPTIVE" username="stasone" useOpenSSHConfig="true" />
+      <sshConfig connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="10.1.88.198" id="473b1549-b142-48ff-9d33-2ca70967bee6" keyPath="C:\Users\User\.ssh\id_rsa" port="22" nameFormat="DESCRIPTIVE" username="stasone" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>
