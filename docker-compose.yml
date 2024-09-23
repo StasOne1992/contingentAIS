@@ -1,4 +1,4 @@
-version: '3.8'
+#version: '3.8'
 name: arm-vatholm-prod
 services:
   ### Docker-compose PostgreSQL сервер ###
@@ -60,7 +60,6 @@ services:
     depends_on:
       - php82-service
     networks:
-      - bridge
       - nginx-php-PSQL
 
 
